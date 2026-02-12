@@ -195,15 +195,15 @@ All O1 deliverables must satisfy these six criteria:
 
 ---
 
-### O3 — Reach $500k ARR Run-Rate
+### O3 — Reach $500k Income (60% ARR/40% non-ARR) Run-Rate
 
 > *Build a repeatable revenue engine through disease-specific-first enterprise subscriptions, disciplined pipeline management, and systematic expansion — proving ArcaScience is a scalable commercial entity.*
 
 | KR | Target | Stretch | Owner |
 |---|---|---|---|
 | ARR run-rate | $500k | $650k | CEO |
-| New logos signed | 3 | 5 | CEO |
-| Accounts expanded | 2 | 4 | CEO + Product |
+| New logos signed | 5 | 7 | CEO |
+| Accounts expanded | 1 | 4 | CEO + Product |
 | Pipeline coverage (qualified pipe / target) | 3x ($1.5M) | 4x ($2M) | CEO |
 | Win rate on qualified opps | 25% | 35% | CEO |
 | Average sales cycle | <60 days | <45 days | CEO |
@@ -378,13 +378,13 @@ All O1 deliverables must satisfy these six criteria:
 
 ---
 
-### O3 — Revenue Engine (Owner: CEO, supported by all)
+### O3 — Revenue Engine: $500k Income (60% ARR/40% non-ARR) (Owner: CEO, supported by all)
 
 | KR | Metric | Owner | Weekly KPI | Wk1 | Wk2 | Wk3 | Wk4 | Wk5 | Wk6 | Wk7 | Wk8 | Wk9 | Wk10 | Wk11 | Wk12 | Target | Stretch |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | KR1 | ARR closed (cumulative $) | CEO | New ARR this week | | | | | | | | | | | | | $500k | $650k |
-| KR2 | New logos (cumulative) | CEO | Logos signed | | | | | | | | | | | | | 3 | 5 |
-| KR3 | Expansions (cumulative) | CEO/Prod | Expansions closed | | | | | | | | | | | | | 2 | 4 |
+| KR2 | New logos (cumulative) | CEO | Logos signed | | | | | | | | | | | | | 5 | 7 |
+| KR3 | Expansions (cumulative) | CEO/Prod | Expansions closed | | | | | | | | | | | | | 1 | 4 |
 | KR4 | Pipeline $ (qualified) | CEO | Total pipe $ | | | | | | | | | | | | | $1.5M | $2M |
 | KR5 | Win rate % | CEO | Rolling % | | | | | | | | | | | | | 25% | 35% |
 | KR6 | Sales cycle (days avg) | CEO | Rolling avg days | | | | | | | | | | | | | <60 | <45 |
