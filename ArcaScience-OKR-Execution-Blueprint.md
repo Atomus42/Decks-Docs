@@ -255,7 +255,7 @@ All O1 deliverables must satisfy these six criteria:
 | Tier 1 | BRA Essentials | Platform (5 seats), 1 disease-specific version, standard onboarding, BRAT/CIOMS exports | $75k-$100k/yr | Mid-market biotech |
 | Tier 2 | BRA Professional | Platform (15 seats), 2 disease-specific versions, guided onboarding | $125k-$175k/yr | Mid-to-large pharma |
 | Tier 3 | BRA Enterprise | Unlimited seats, 3+ disease-specific versions, dedicated CSM, on-prem, SLA | $200k-$300k/yr ongoing | Top-20 pharma |
-| Add-on | Therapeutic Axis | Additional disease-specific version | $25k-$40k/yr | Any tier |
+| Add-on | Therapeutic Axis | Additional disease-specific version | $50k-$100k/yr | Any tier |
 
 **Five pricing rules:**
 1. Never sell platform without a disease-specific version — "Platform + Therapeutic Axis" is the minimum unit
@@ -763,7 +763,7 @@ DECISION: [Advance / Hold / Escalate / Disqualify]
 | "Does it work for oncology?" → need proof-of-concept | Validated datasets with KOL sign-off → proof exists | **-4 weeks** PoC phase eliminated |
 | "What exactly are we buying?" → scope negotiation | Defined scope: structured datasets + functional demo + success criteria | **-2 weeks** proposal-to-signature |
 | Platform = commodity pricing ($50k-$75k) | "Platform + Lung Cancer version" = specialized ($100k-$125k) | **+$25k-$50k ACV** |
-| No upsell path | "Add Immunology version" = $25k-$40k | **Built-in expansion** |
+| No upsell path | "Add Immunology version" = $50k-$100k | **Built-in expansion** |
 
 **Net effect:** 40-60% shorter sales cycle. +10-15pp win rate. +$25-50k ACV. Built-in expansion.
 
