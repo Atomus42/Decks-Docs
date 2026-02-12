@@ -123,6 +123,8 @@ All O1 deliverables must satisfy these six criteria:
 
 ### O2 — Creation of a Disease-Specific Platform Version
 
+**Owner:** Vassili (Clinical Lead / Medical Strategy — Benefit-Risk & Validation)
+
 > *Structure, validate, and integrate disease-specific datasets for 2 therapeutic axes/diseases into the BRA platform, with functional demos ready for each axis.*
 
 #### KR 2.1 — Structuring of all relevant Data (Landscape, Disease, Benefit, Risk) for 2 therapeutic axes/Diseases
@@ -216,30 +218,29 @@ All O1 deliverables must satisfy these six criteria:
 
 | Source | Deals | ACV | Total ARR |
 |---|---|---|---|
-| New logos (enterprise) | 1 | $175k | $175k |
-| New logos (mid-market) | 2 | $100k | $200k |
-| Expansion (existing) | 2 | $40k | $80k |
-| Pilot conversion | 1 | $45k | $45k |
+| New logos (enterprise) | 2 | $125k | $250k |
+| New logos (mid-market) | 3 | $60k | $180k |
+| Expansion (existing) | 1 | $70k | $70k |
 | **Total** | **6** | **$83k avg** | **$500k** |
 
 ### Conservative ($350k — 70% = success)
 
 | Source | Deals | ACV | Total |
 |---|---|---|---|
-| Enterprise | 1 | $150k | $150k |
-| Mid-market | 1 | $100k | $100k |
-| Expansion | 1 | $50k | $50k |
+| Enterprise | 1 | $125k | $125k |
+| Mid-market | 2 | $60k | $120k |
+| Expansion | 1 | $55k | $55k |
 | Pilot | 1 | $50k | $50k |
-| **Total** | **4** | | **$350k** |
+| **Total** | **5** | | **$350k** |
 
 ### Aggressive ($650k — stretch)
 
 | Source | Deals | ACV | Total |
 |---|---|---|---|
-| Enterprise | 2 | $175k | $350k |
-| Mid-market | 2 | $75k | $150k |
-| Expansion | 3 | $50k | $150k |
-| **Total** | **7** | | **$650k** |
+| Enterprise | 3 | $125k | $375k |
+| Mid-market | 4 | $50k | $200k |
+| Expansion | 4 | $19k | $75k |
+| **Total** | **11** | | **$650k** |
 
 **The Iron Rule:** Weeks 1-6 = pipeline weeks. Weeks 7-12 = closing weeks.
 
@@ -349,7 +350,7 @@ All O1 deliverables must satisfy these six criteria:
 
 ---
 
-### O2 — Disease-Specific Platform Version (Owners: Vassili, Data-Team, CEO)
+### O2 — Disease-Specific Platform Version (Owner: Vassili — Medical Team)
 
 | KR | Metric | Owner | Weekly KPI | Wk1 | Wk2 | Wk3 | Wk4 | Wk5 | Wk6 | Wk7 | Wk8 | Wk9 | Wk10 | Wk11 | Wk12 | Target |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
