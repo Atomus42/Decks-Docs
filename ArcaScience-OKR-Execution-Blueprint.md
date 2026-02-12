@@ -252,9 +252,9 @@ All O1 deliverables must satisfy these six criteria:
 
 | Tier | Name | Includes | Price | For |
 |---|---|---|---|---|
-| Tier 1 | BRA Essentials | Platform (5 seats), 1 disease-specific version, standard onboarding | $75k-$100k/yr | Mid-market biotech |
-| Tier 2 | BRA Professional | Platform (15 seats), 2 disease-specific versions, guided onboarding, BRAT/CIOMS exports | $125k-$175k/yr | Mid-to-large pharma |
-| Tier 3 | BRA Enterprise | Unlimited seats, all disease-specific versions, dedicated CSM, on-prem, SLA | $200k-$300k/yr | Top-20 pharma |
+| Tier 1 | BRA Essentials | Platform (5 seats), 1 disease-specific version, standard onboarding, BRAT/CIOMS exports | $75k-$100k/yr | Mid-market biotech |
+| Tier 2 | BRA Professional | Platform (15 seats), 2 disease-specific versions, guided onboarding | $125k-$175k/yr | Mid-to-large pharma |
+| Tier 3 | BRA Enterprise | Unlimited seats, 3+ disease-specific versions, dedicated CSM, on-prem, SLA | $200k-$300k/yr ongoing | Top-20 pharma |
 | Add-on | Therapeutic Axis | Additional disease-specific version | $25k-$40k/yr | Any tier |
 
 **Five pricing rules:**
