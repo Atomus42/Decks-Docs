@@ -1,0 +1,502 @@
+[
+  {
+    "id": 1,
+    "timestamp": "04:18",
+    "speaker": "Steph",
+    "type": "concern",
+    "verbatim_quote": "There's the type of thing that I have seen in industry. Where it's setting out the benefits and risk at the point of authorization. A lot of what we do is managing those risks. And they're not obviously as I said earlier, looking at safety post authorization. So that's kind of where we would be looking to use something like this.",
+    "interpreted_concern": "Steph signals that ArcaScience's pitch is oriented toward pre-authorization, but MHRA's primary need is POST-authorization safety management. The tool must demonstrate clear post-authorization utility or it is not relevant to their work.",
+    "priority": "critical",
+    "category": "post_auth_applicability"
+  },
+  {
+    "id": 2,
+    "timestamp": "04:35",
+    "speaker": "Steph",
+    "type": "question",
+    "verbatim_quote": "So it'd be interesting to see or know how you bring together the data sources and... using but AI model, but also, you know, when you're looking at data sources, how are you ensuring the quality of those data sources.",
+    "interpreted_concern": "Steph wants to understand the data quality assurance mechanisms. Not just what sources are used, but how the platform validates that input data is reliable, complete, and fit for purpose before drawing conclusions.",
+    "priority": "critical",
+    "category": "data_sources"
+  },
+  {
+    "id": 3,
+    "timestamp": "05:11",
+    "speaker": "Steph",
+    "type": "question",
+    "verbatim_quote": "Because it looks to me like the platform does make, you know, judgments on those benefits and risks dependent on what it's looking at. And how I guess I'm asking about, you know, the black box of that AI tool and what's it based on, because that's fundamental for us to understand that.",
+    "interpreted_concern": "Steph is asking about AI explainability and auditability. She perceives the platform as a black box that makes judgments, and she needs to understand the basis for those outputs. This is a regulatory fundamental -- if they cannot audit the reasoning, they cannot rely on it.",
+    "priority": "critical",
+    "category": "auditability"
+  },
+  {
+    "id": 4,
+    "timestamp": "11:58",
+    "speaker": "Allison",
+    "type": "skepticism",
+    "verbatim_quote": "So my antibodies are going through the roof just because it says fill your benefit risk in seconds. Don't spend months looking at it. Which already raises loads and loads of concerns in my mind.",
+    "interpreted_concern": "The marketing messaging ('benefit risk in seconds') is deeply counterproductive with a senior regulator. It sounds irresponsible and trivializing of a process MHRA takes very seriously. The messaging must be completely reframed for regulatory audiences.",
+    "priority": "critical",
+    "category": "messaging"
+  },
+  {
+    "id": 5,
+    "timestamp": "12:20",
+    "speaker": "Allison",
+    "type": "question",
+    "verbatim_quote": "24 small AI models trained by clinicians. Okay. Well, I mean, how can you do that then? And this is showing because I didn't look at the presentation, but I just don't understand how you can do that.",
+    "interpreted_concern": "Allison fundamentally does not understand the technical architecture claim of 24 small models and finds it implausible. She needs a clear, credible explanation of the model architecture that shows how task-specific small models achieve what is being claimed.",
+    "priority": "critical",
+    "category": "model_validation"
+  },
+  {
+    "id": 6,
+    "timestamp": "12:32",
+    "speaker": "Allison",
+    "type": "concern",
+    "verbatim_quote": "Across the huge range of topics, we may get at the agency. I can understand how you could do that on a company basis where they're looking at 1 drug potentially and they've got all their data coming in on one drug. But we have a 100 benefit risk assessors, looking across 600 drugs and millions of thousands and hundreds of thousands of devices. Our questions are not always the same.",
+    "interpreted_concern": "Allison is challenging scalability. ArcaScience's model works for one drug at a time for a pharma client, but MHRA covers 600+ drugs and hundreds of thousands of devices simultaneously. Each assessment has unique questions. The solution must scale horizontally across diverse, concurrent use cases without bespoke setup every time.",
+    "priority": "critical",
+    "category": "scalability"
+  },
+  {
+    "id": 7,
+    "timestamp": "13:07",
+    "speaker": "Allison",
+    "type": "question",
+    "verbatim_quote": "When you've got such complex models that they're happening in series, how do you validate them? That's because it ever at the end, you don't, how do you identify where that error might have happened?",
+    "interpreted_concern": "This is a fundamental model validation and error traceability question. With 24 models in series, errors can compound and become untraceable. Allison needs to know how each model is independently validated and how errors are traced back through the chain. This is a core regulatory requirement for any tool they would adopt.",
+    "priority": "critical",
+    "category": "model_validation"
+  },
+  {
+    "id": 8,
+    "timestamp": "18:30",
+    "speaker": "Sharinto",
+    "type": "question",
+    "verbatim_quote": "I just had a question. In terms of that information and Stephen mention this as well a little bit earlier in terms of that quality control. Because obviously the information is going to be variable. Some forms of information may not necessarily be complete.",
+    "interpreted_concern": "Sharinto is reinforcing Steph's data quality concern. The platform must handle incomplete, inconsistent, and variable-quality data without producing skewed outputs. This is a practical reality of post-authorization data.",
+    "priority": "high",
+    "category": "data_sources"
+  },
+  {
+    "id": 9,
+    "timestamp": "18:42",
+    "speaker": "Sharinto",
+    "type": "question",
+    "verbatim_quote": "So how does the system manage with that? Because what we wouldn't want is a skewed view because of perhaps incomplete or inconsistent data or data that's a variable quality as well. So does it come up with levels of uncertainty, or does it flag where there are issues? For example, because of gaps in information source.",
+    "interpreted_concern": "Sharinto wants specific mechanisms: uncertainty quantification, gap flagging, and quality indicators. The system must not present incomplete data as if it were complete. It must surface confidence levels and flag data gaps transparently to the assessor.",
+    "priority": "critical",
+    "category": "model_validation"
+  },
+  {
+    "id": 10,
+    "timestamp": "23:23",
+    "speaker": "Allison",
+    "type": "skepticism",
+    "verbatim_quote": "So I am struggling to understand how we would use this in the post authorization space. I can sort of see how you might use it in that context because you've got structured data coming in from clinical trials, such as high quality and you're looking for signals which potentially have not been found, but you've got a lot of high quality data with a lot of variables around the individual. And you build bespoke models for every use case effectively.",
+    "interpreted_concern": "Allison can see the pre-authorization use case but is explicitly stating she does NOT see how it works post-authorization. Pre-auth has structured, high-quality data; post-auth has messy, unstructured, diverse data. This is the central credibility gap that must be closed.",
+    "priority": "critical",
+    "category": "post_auth_applicability"
+  },
+  {
+    "id": 11,
+    "timestamp": "23:56",
+    "speaker": "Allison",
+    "type": "concern",
+    "verbatim_quote": "And bespoke data sources for every use case for you that have that in the post authorization space. We could not... am really struggling to see how we could use it in our work. Because we couldn't build a bespoke model for every use case.",
+    "interpreted_concern": "The bespoke-per-use-case model is a dealbreaker for MHRA. They need something that works generically across use cases without requiring custom setup each time. The follow-up must demonstrate a scalable, reusable approach.",
+    "priority": "critical",
+    "category": "scalability"
+  },
+  {
+    "id": 12,
+    "timestamp": "24:15",
+    "speaker": "Allison",
+    "type": "requirement",
+    "verbatim_quote": "So say, I want to know about... I want to build, I don't know, benefit risk summary. On the risk of antidepressants and persistent sexual dysfunction. So nothing in the clinical trials, effectively because they were 12 week clinical trials. So everything is observational data, anecdotal reports, yellow card reports, you know, things in the media, discussion with patients, whole quality reports.",
+    "interpreted_concern": "Allison provides a concrete test case: antidepressants and persistent sexual dysfunction. This is a post-auth scenario where clinical trial data is inadequate (only 12-week trials) and the evidence base is observational, anecdotal, and heterogeneous. The platform must handle this type of messy, real-world data or it has no utility for MHRA.",
+    "priority": "critical",
+    "category": "post_auth_applicability"
+  },
+  {
+    "id": 13,
+    "timestamp": "24:58",
+    "speaker": "Allison",
+    "type": "constraint",
+    "verbatim_quote": "What I can't see working is for every specific use case, I have to build a bespoke model.",
+    "interpreted_concern": "Hard constraint: the solution must NOT require bespoke model building per use case. This is repeated and emphatic. Any follow-up must clearly demonstrate that models are reusable and only configuration (not retraining) is needed.",
+    "priority": "critical",
+    "category": "scalability"
+  },
+  {
+    "id": 14,
+    "timestamp": "25:44",
+    "speaker": "Allison",
+    "type": "question",
+    "verbatim_quote": "Yeah, I don't understand how you would validate. Yeah, so if I asked your system that question. But could it do it today without, or would you need to build a model for it?",
+    "interpreted_concern": "Direct challenge: can the system answer an ad hoc post-authorization question TODAY without new model development? This is a litmus test. If the answer is 'we need to set up a pipeline first,' it confirms Allison's fear that the tool is not operationally viable for MHRA.",
+    "priority": "critical",
+    "category": "model_validation"
+  },
+  {
+    "id": 15,
+    "timestamp": "26:31",
+    "speaker": "Allison",
+    "type": "concern",
+    "verbatim_quote": "But we don't do efficacy, of course, we do effectiveness... so no, can't necessarily take efficacy or effectiveness from clinical trial and assume that it translates into her performance on the market.",
+    "interpreted_concern": "Critical distinction: MHRA works with real-world effectiveness, not clinical trial efficacy. The platform must understand and handle this distinction. Efficacy data from RCTs does not translate directly to post-market performance.",
+    "priority": "high",
+    "category": "post_auth_applicability"
+  },
+  {
+    "id": 16,
+    "timestamp": "26:59",
+    "speaker": "Allison",
+    "type": "concern",
+    "verbatim_quote": "And how they translate into the UK system. Because, you know, usage of drugs is very different across the world, and safety events do not necessarily translate across the world, you know, we see different expressions or different safety events depending on how a drug is used first line, second line, third line in different scenarios.",
+    "interpreted_concern": "UK-specific context matters enormously. Drug usage patterns (first-line vs second-line vs third-line), prescribing practices, and safety profiles differ by country. The platform must account for UK-specific treatment pathways, not just global averages.",
+    "priority": "critical",
+    "category": "uk_context"
+  },
+  {
+    "id": 17,
+    "timestamp": "27:25",
+    "speaker": "Allison",
+    "type": "requirement",
+    "verbatim_quote": "That's kind of something you need to build. Absolutely, because that affects the benefit risk. If there's a drug earlier, you use third line, and there's no other alternative for a patient, then a benefit risk is different to a first line therapy that they can then move on to something else.",
+    "interpreted_concern": "The benefit-risk calculus changes based on line of therapy and available alternatives. The platform must be able to contextualize benefit-risk based on where a drug sits in the treatment pathway, which varies by country and indication.",
+    "priority": "high",
+    "category": "uk_context"
+  },
+  {
+    "id": 18,
+    "timestamp": "31:45",
+    "speaker": "Allison",
+    "type": "skepticism",
+    "verbatim_quote": "Okay from where though because okay so if I take antidepressants as in that example. I don't believe that data is available easily or with any confidence for drugs on the market. So we're looking across 28 different antidepressants here.",
+    "interpreted_concern": "Allison challenges Carlo's claim that effectiveness data 'is available.' For marketed drugs like the 28 antidepressants, real-world effectiveness data is NOT easily available or reliable. ArcaScience must not overstate data availability.",
+    "priority": "high",
+    "category": "data_sources"
+  },
+  {
+    "id": 19,
+    "timestamp": "32:07",
+    "speaker": "Allison",
+    "type": "concern",
+    "verbatim_quote": "And you can look at the clear original clinical trial, but most of those were 12 weeks long. And if you look back the original clinical trials, we are dependent on market... really real world database, electronic health records or observational studies, which are not easy to derive benefits from.",
+    "interpreted_concern": "Post-authorization benefit assessment depends on real-world databases, EHR, and observational studies -- all of which are difficult to derive clean benefit signals from. The platform must demonstrate competence with these messy data types, not just clinical trials.",
+    "priority": "critical",
+    "category": "data_sources"
+  },
+  {
+    "id": 20,
+    "timestamp": "32:28",
+    "speaker": "Allison",
+    "type": "skepticism",
+    "verbatim_quote": "Benefit is the most challenging thing we have to try and get a handle on across the different populations and different ages, comorbidities, ethnicities, whatever. And you make it sound so easy, and it's so so hard.",
+    "interpreted_concern": "ArcaScience is perceived as trivializing the complexity of benefit assessment across heterogeneous populations. This is a tone and credibility issue. The follow-up must acknowledge the genuine difficulty and position the tool as an aid, not a solution.",
+    "priority": "critical",
+    "category": "messaging"
+  },
+  {
+    "id": 21,
+    "timestamp": "34:43",
+    "speaker": "Allison",
+    "type": "concern",
+    "verbatim_quote": "I mean, I think that those are much easier questions than for drugs that have been on the market for a long time. And safety events emerge.",
+    "interpreted_concern": "The Sanofi rare disease example is not representative of MHRA's hardest problems. Drugs on the market for decades with emerging safety signals are far more complex than new drug development scenarios. The follow-up must address long-marketed drug scenarios.",
+    "priority": "high",
+    "category": "post_auth_applicability"
+  },
+  {
+    "id": 22,
+    "timestamp": "35:04",
+    "speaker": "Allison",
+    "type": "concern",
+    "verbatim_quote": "Even so, you've got such different amount of data relative to, you know, most of our problems. Actually, but really take the time and drugs that have been on the market for longer. And you know, you've got a lot of people using them and you may have a rare event. And you're trying to understand causality of that event across a lot of different data sources.",
+    "interpreted_concern": "The core post-auth challenge: establishing causality for rare events in widely-used drugs across heterogeneous data sources. This is fundamentally different from the pre-auth use cases ArcaScience has demonstrated. The platform must show it can support causal reasoning, not just data aggregation.",
+    "priority": "critical",
+    "category": "post_auth_applicability"
+  },
+  {
+    "id": 23,
+    "timestamp": "36:23",
+    "speaker": "Allison",
+    "type": "requirement",
+    "verbatim_quote": "That's what I want you to solve.",
+    "interpreted_concern": "Direct statement of what Allison wants: solve the POST-authorization problem, not the pre-authorization one. This is the clearest possible signal of what the follow-up must focus on.",
+    "priority": "critical",
+    "category": "post_auth_applicability"
+  },
+  {
+    "id": 24,
+    "timestamp": "36:28",
+    "speaker": "Allison",
+    "type": "skepticism",
+    "verbatim_quote": "I'm not interested... you know, you're talking to a load of post authorization people here, you know, we look at the preauthorization data, but our challenge is dissecting and interrogating... if you think this is messy, noisy data, you know, welcome to the world of post authorization, which is a million times worse. So how do you solve my problem rather than this problem?",
+    "interpreted_concern": "The most forceful statement in the meeting. Allison is telling ArcaScience: stop pitching the pre-auth use case, we are post-auth people. Post-auth data is orders of magnitude messier. Every subsequent communication must be anchored in post-authorization scenarios or it will be ignored.",
+    "priority": "critical",
+    "category": "post_auth_applicability"
+  },
+  {
+    "id": 25,
+    "timestamp": "38:54",
+    "speaker": "Allison",
+    "type": "requirement",
+    "verbatim_quote": "I mean, I need to see. I'd like to see under the hood, really because it's still a bit skeptical, and you haven't convinced me yet that this could... we could use this in our work, and I'm really keen to look for ways to create efficiency.",
+    "interpreted_concern": "Allison explicitly states she is NOT convinced but is open-minded and wants to be. She needs a deep technical dive ('under the hood') rather than high-level pitches. The follow-up must provide transparent technical detail, not marketing material.",
+    "priority": "critical",
+    "category": "model_validation"
+  },
+  {
+    "id": 26,
+    "timestamp": "39:18",
+    "speaker": "Allison",
+    "type": "requirement",
+    "verbatim_quote": "In order to invest our time in something like this, I need to be confident it has utility in the space that we're working at at the moment, and I probably need a deeper dive, and I can't see how we could use it in our day-to-day work. And that's probably because I'm not seeing under the hood yet.",
+    "interpreted_concern": "Time investment justification: Allison needs demonstrated utility in her actual daily work before committing more resources. The proof of concept must map directly to a real MHRA workflow, not a theoretical capability demonstration.",
+    "priority": "critical",
+    "category": "post_auth_applicability"
+  },
+  {
+    "id": 27,
+    "timestamp": "40:08",
+    "speaker": "Sharinto",
+    "type": "question",
+    "verbatim_quote": "It's just for clarity in my own mind, if that's okay? In terms of the data input, you've very much reliant on us to provide you with all of the sources that we would potentially need in order to collect the information and create those test cases.",
+    "interpreted_concern": "Sharinto is probing the operational burden: does MHRA have to do all the data sourcing and integration work themselves? If so, that significantly reduces the value proposition. The platform's value must extend beyond just processing data that MHRA has already collected.",
+    "priority": "high",
+    "category": "collaboration_terms"
+  },
+  {
+    "id": 28,
+    "timestamp": "40:48",
+    "speaker": "Sharinto",
+    "type": "concern",
+    "verbatim_quote": "Okay. So in terms of confidentiality, I'm thinking, and that's obviously where we'll be coming from in terms of protecting that information, because it would obviously be highly sensitive with regards to what we've got access to.",
+    "interpreted_concern": "Confidentiality is a foundational concern. MHRA handles highly sensitive data (patient-level, commercially confidential regulatory submissions). Any data sharing arrangement must have robust confidentiality protections.",
+    "priority": "critical",
+    "category": "confidentiality"
+  },
+  {
+    "id": 29,
+    "timestamp": "41:03",
+    "speaker": "Sharinto",
+    "type": "question",
+    "verbatim_quote": "And then perhaps another question, and this probably relates back to some of what you talked about more on the authorisation side. But healthcare information, how are you managing that at the moment again? Is that where your clients are coming to you with a particular source for that healthcare information and you integrate it into the platform.",
+    "interpreted_concern": "Sharinto wants to understand the data flow for healthcare information. Where does it come from, who controls it, and how is it integrated? This relates to data governance and the operational model for any MHRA engagement.",
+    "priority": "high",
+    "category": "data_sources"
+  },
+  {
+    "id": 30,
+    "timestamp": "41:27",
+    "speaker": "Sharinto",
+    "type": "question",
+    "verbatim_quote": "I'm just trying to get a handle of where the information is coming from and what we would need to consider if we were to want to move forward with a case.",
+    "interpreted_concern": "Sharinto is thinking practically about what it would take to actually run a proof of concept. She needs a clear picture of prerequisites, data requirements, and operational considerations before MHRA could commit.",
+    "priority": "high",
+    "category": "collaboration_terms"
+  },
+  {
+    "id": 31,
+    "timestamp": "42:42",
+    "speaker": "Allison",
+    "type": "constraint",
+    "verbatim_quote": "So how would you handle a lot of the work? We look at we might use CPRD, which is our real world database, but that is billions and billions of data points. 30 million patient records over 30 years. And we might interrogate that. We can't give you that, you can't keep them working on them.",
+    "interpreted_concern": "Hard data constraint: CPRD (30M patient records, 30 years) cannot be shared with ArcaScience. This is one of MHRA's primary real-world data sources and it is off-limits. The platform must be able to work without access to CPRD, or must operate on-premises within MHRA's infrastructure.",
+    "priority": "critical",
+    "category": "confidentiality"
+  },
+  {
+    "id": 32,
+    "timestamp": "43:13",
+    "speaker": "Allison",
+    "type": "constraint",
+    "verbatim_quote": "We couldn't use that data source and yeah, that's an important one. So I think you know you could use a PSUR. I'm trying to think about which data sources you could use. Which... can't give you our yellow card data because that's far too confidential. Because it's patient level data. We're not allowed to share that.",
+    "interpreted_concern": "Both CPRD and Yellow Card data are off-limits due to patient-level confidentiality. These are MHRA's two most important proprietary data sources. The proof of concept must work with publicly available data only, or with an on-premises deployment model.",
+    "priority": "critical",
+    "category": "confidentiality"
+  },
+  {
+    "id": 33,
+    "timestamp": "43:44",
+    "speaker": "Allison",
+    "type": "question",
+    "verbatim_quote": "I mean, most of the data is not in a nice, you know, structured form that you can, you know, you can run algorithms over. A lot of it will be literature. So how do you handle sort of published studies?",
+    "interpreted_concern": "The primary available data for a proof of concept would be published literature, which is unstructured. Allison wants to know specifically how the platform handles published studies -- not just case reports but complex observational studies and meta-analyses.",
+    "priority": "high",
+    "category": "data_sources"
+  },
+  {
+    "id": 34,
+    "timestamp": "44:01",
+    "speaker": "Allison",
+    "type": "requirement",
+    "verbatim_quote": "And how do you know within that published study? What my assessors would do is they would say, okay, there's this observational study that seemed to show an association between the drug and the event. What that assessor then does is not just take the abstract and assume the abstract is right. They look at the methodology, they look at the confidence intervals. They look at the patient populations included. They look at the heterogeneity of the data sources, and they reach an opinion about whether that article is valid and should be included or what are the limitations and benefits of that article and then that gets built into their assessment report.",
+    "interpreted_concern": "This is a detailed specification of what MHRA assessors actually do with published literature. The platform must go beyond data extraction to support critical appraisal: methodology assessment, confidence interval evaluation, population analysis, heterogeneity assessment, and study validity determination. If it only extracts surface-level data, it does not replace or meaningfully assist the assessor's work.",
+    "priority": "critical",
+    "category": "model_validation"
+  },
+  {
+    "id": 35,
+    "timestamp": "44:45",
+    "speaker": "Allison",
+    "type": "skepticism",
+    "verbatim_quote": "I'm not clear on how you would handle the published literature within your models.",
+    "interpreted_concern": "After hearing the explanation of the 24 models, Allison still does not understand how published literature is handled. The technical explanation has not been persuasive. The follow-up must provide a concrete, step-by-step demonstration of literature processing.",
+    "priority": "high",
+    "category": "model_validation"
+  },
+  {
+    "id": 36,
+    "timestamp": "47:22",
+    "speaker": "Allison",
+    "type": "concern",
+    "verbatim_quote": "So that's a case report. Yeah, that's a case report. I'm not talking about case reports. I'm talking about big observational studies or meta-analyses. All that type of thing where you don't have patient level data, where you're extracting this... you're trying to understand the quality of that record.",
+    "interpreted_concern": "ArcaScience demonstrated extraction from a case report, but Allison's real need is for observational studies and meta-analyses -- fundamentally different data structures. She needs to see the platform handle aggregate-level, complex study designs, not individual case reports.",
+    "priority": "critical",
+    "category": "data_sources"
+  },
+  {
+    "id": 37,
+    "timestamp": "47:40",
+    "speaker": "Allison",
+    "type": "question",
+    "verbatim_quote": "How does your model handle those sort of workout?",
+    "interpreted_concern": "Direct question about how the models handle observational studies and meta-analyses. This was not adequately answered in the meeting and must be addressed in the follow-up with concrete examples.",
+    "priority": "critical",
+    "category": "model_validation"
+  },
+  {
+    "id": 38,
+    "timestamp": "50:00",
+    "speaker": "Allison",
+    "type": "skepticism",
+    "verbatim_quote": "Okay, that's extracting information into a structured form for you. To then... it doesn't tell you about the quality of that study. Still.",
+    "interpreted_concern": "After Charbel's detailed explanation, Allison identifies the fundamental gap: the platform extracts data but does not assess study quality. Data extraction without quality assessment is insufficient for regulatory use. MHRA assessors need to know whether a study's conclusions are reliable, not just what the study says.",
+    "priority": "critical",
+    "category": "model_validation"
+  },
+  {
+    "id": 39,
+    "timestamp": "52:07",
+    "speaker": "Allison",
+    "type": "constraint",
+    "verbatim_quote": "I think we think you're going to need to think about it. Because most of the things that we do are actually highly confidential and I don't think we could share to be honest an ongoing safety issue with you. I don't think we could do that because I just think it would be too confidential at this stage.",
+    "interpreted_concern": "Ongoing safety issues cannot be shared with an external vendor. Any proof of concept must use a COMPLETED, publicly disclosed safety issue. This is a hard constraint on the collaboration scope.",
+    "priority": "critical",
+    "category": "confidentiality"
+  },
+  {
+    "id": 40,
+    "timestamp": "52:47",
+    "speaker": "Allison",
+    "type": "requirement",
+    "verbatim_quote": "The only thing I'm thinking about is whether we could look at a safety issue that's already in the public domain that we've already reported on. And kind of set you the challenge as to what you would find from that, because I'm still struggling to be honest, to understand what information you present, how it's presented, and the utility of it.",
+    "interpreted_concern": "Allison proposes the proof of concept format: a previously concluded, publicly reported safety issue used as a blind test. She wants to compare what the platform would have found versus what MHRA actually found. She is also signaling that she still does not understand the platform's output format or practical utility.",
+    "priority": "critical",
+    "category": "collaboration_terms"
+  },
+  {
+    "id": 41,
+    "timestamp": "53:09",
+    "speaker": "Allison",
+    "type": "constraint",
+    "verbatim_quote": "Because what we can't do is every time we have a safety issue... because there might be 80 safety issues ongoing at any one time across medicines and medical devices, and we can't develop an AI model for every use case. That's, you know, that's clearly not possible.",
+    "interpreted_concern": "Repeated and quantified scalability constraint: 80 concurrent safety issues means 80 concurrent use cases. Developing or configuring AI models for each is not operationally feasible. The solution must be deployable across diverse use cases with minimal per-case setup.",
+    "priority": "critical",
+    "category": "scalability"
+  },
+  {
+    "id": 42,
+    "timestamp": "53:36",
+    "speaker": "Allison",
+    "type": "requirement",
+    "verbatim_quote": "So how could you give out something generic? It's beyond the literature search because I can get ChatGPT to do that potentially or copilot or something. You know, beyond that, that would support the assessors, but doesn't require, you know, bespoke models to be generated every time.",
+    "interpreted_concern": "Two critical points: (1) The platform must offer something BEYOND what ChatGPT/Copilot can do for literature search -- otherwise there is no unique value proposition. (2) It must work generically without bespoke model generation per use case. The follow-up must articulate the differentiation from general-purpose AI tools.",
+    "priority": "critical",
+    "category": "scalability"
+  },
+  {
+    "id": 43,
+    "timestamp": "53:51",
+    "speaker": "Allison",
+    "type": "concern",
+    "verbatim_quote": "That's kind of where we would be, because otherwise our struggling to see how it could actually be put into our framework, and also really struggling with the confidentiality issue. Because it's beyond your working with the company on their drug development pathway... here we're working with multiple companies and multiple safety issues in different scenarios, and with very highly sensitive patient level data.",
+    "interpreted_concern": "Two intertwined blockers: (1) Operational framework fit -- the tool must slot into MHRA's existing workflows. (2) Confidentiality is structurally different from pharma clients -- MHRA handles data from MULTIPLE companies simultaneously, making confidentiality far more complex than a single-company engagement.",
+    "priority": "critical",
+    "category": "confidentiality"
+  },
+  {
+    "id": 44,
+    "timestamp": "54:47",
+    "speaker": "Allison",
+    "type": "constraint",
+    "verbatim_quote": "To see what you could have delivered if we have asked you... absolutely stage or tested the model as an early stage. If you're interested in doing that... absolutely you don't have funding for this. So, you know, it's not something that we could offer funding for at the moment.",
+    "interpreted_concern": "No budget available from MHRA for a proof of concept. ArcaScience must fund the proof of concept themselves. This is a hard financial constraint on the collaboration.",
+    "priority": "critical",
+    "category": "collaboration_terms"
+  },
+  {
+    "id": 45,
+    "timestamp": "55:08",
+    "speaker": "Allison",
+    "type": "requirement",
+    "verbatim_quote": "It really would be a proof... some sort of proof of concept where we were just, you know, testing or challenging your system.",
+    "interpreted_concern": "The next step is explicitly defined as a proof of concept / challenge test, not a purchase or partnership. MHRA will evaluate, not co-develop. ArcaScience must deliver a standalone demonstration that proves value.",
+    "priority": "high",
+    "category": "collaboration_terms"
+  },
+  {
+    "id": 46,
+    "timestamp": "57:51",
+    "speaker": "Allison",
+    "type": "requirement",
+    "verbatim_quote": "But let us take it away, and think about it again, and we'll have another look at the platform. And then we'll have an internal conversation. Come back to you, I think that's probably the best next step forward.",
+    "interpreted_concern": "MHRA will deliberate internally before committing to next steps. ArcaScience should not assume the engagement continues -- they must wait for MHRA to come back after their internal review.",
+    "priority": "high",
+    "category": "collaboration_terms"
+  },
+  {
+    "id": 47,
+    "timestamp": "58:06",
+    "speaker": "Allison",
+    "type": "requirement",
+    "verbatim_quote": "We'll try and think through working through the beta version. We've still got access to that right and then to see if we can see an actual good use case. And then we'll come back to you.",
+    "interpreted_concern": "MHRA wants to independently explore the beta platform to identify a use case themselves. This means the beta must be compelling and navigable enough for MHRA staff to self-discover value without ArcaScience hand-holding.",
+    "priority": "high",
+    "category": "collaboration_terms"
+  },
+  {
+    "id": 48,
+    "timestamp": "29:01",
+    "speaker": "Steph",
+    "type": "question",
+    "verbatim_quote": "Yeah, so just looking at the, you know, model how I envisaged it, it would be able to, you know, stratify the benefits and the risks. Is not going to give a definitive answer that, you know, the risk of you know, sexual dysfunction with antidepressants is, you know, 20% or whatever, but it does, it would draw from different sources and summarize that, tell you what your benefits and your risks are and then I think it would be up to us to use that in forming a benefit risk assessment in the same way that we would now. Is that exactly how it's intended to work?",
+    "interpreted_concern": "Steph is seeking confirmation that the platform is an information aggregation and stratification tool, NOT a decision-making tool. She wants to confirm that the human assessor retains full judgment and the platform only provides organized input materials. This framing is more acceptable to MHRA than any suggestion of automated assessment.",
+    "priority": "high",
+    "category": "auditability"
+  },
+  {
+    "id": 49,
+    "timestamp": "30:26",
+    "speaker": "Steph",
+    "type": "question",
+    "verbatim_quote": "So, you know, for a brand new, you know, innovative product at the point for authorization, you would have very clear what the benefits and risks are. And then the model would add more information to that, as there were more studies published. And you know, we could link in... yellow card reports into the model and it could... so it would be almost a repository of information for us to use in our assessment.",
+    "interpreted_concern": "Steph envisions the tool as a living repository that accumulates evidence over a product's lifecycle. She wants to confirm this longitudinal use case where new data (publications, yellow card reports) continuously feeds into an evolving benefit-risk picture.",
+    "priority": "high",
+    "category": "post_auth_applicability"
+  },
+  {
+    "id": 50,
+    "timestamp": "03:44",
+    "speaker": "Steph",
+    "type": "question",
+    "verbatim_quote": "Yes, so it's a good job. But I've looked at it... latest version. Yeah, and it was interesting. And I think, you know, in terms of facilitating some of our assessment, it offers utility.",
+    "interpreted_concern": "Steph provides the most positive MHRA feedback in the meeting: the platform 'offers utility' and is 'interesting.' This is a qualified endorsement that should be built upon. Steph is the most receptive MHRA participant.",
+    "priority": "medium",
+    "category": "post_auth_applicability"
+  }
+]
