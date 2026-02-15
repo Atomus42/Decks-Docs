@@ -1,0 +1,653 @@
+Interlocuteur 1 (00:00)
+Less evaluation group 2. So as Allison said, we are integrated function that looks at safety of medicines. And medical devices, and we're also involved in the risk management assessment of new products. 
+
+Interlocuteur 1 (00:18)
+And then post authorization of the safety. I'll hand you over to shrink. 
+
+Interlocuteur 2 (00:26)
+Hello, everyone. Nice to meet you all. So my name is sharinto, and I'm deputy director for benefit risk evaluation one, which steph's really just described the key areas of focus for our group, but between the 2 of us we share different aspects of medicines. 
+
+Interlocuteur 2 (00:42)
+And medical devices across the nice habitual. 
+
+Interlocuteur 3 (00:46)
+Nice to meet you as well, right? Well, an, uh, I'll start and then maybe Kallo you can follow. I am the CEO in kofunder at casain's. 
+
+Interlocuteur 3 (00:57)
+I am specializing data management attached to the scientific materials. I was the scientific data management system lead at the GSK. Before I was fully involved in the creation of this company Caro. 
+
+Interlocuteur 4 (01:16)
+Now, Carlo petruziello I kind of help and oversee business development and based in the US and my objective is really to help the company scaling grow and commercialize into North America, so we're excited to be chatting with you to upload a little bit and hopefully we can answer some questions and show you. All the capabilities of our company, because that's a pleasure. Thank you very much. 
+
+Interlocuteur 3 (01:36)
+Alright to implement maybe yeah. 
+
+Interlocuteur 5 (01:39)
+Hello, my name's Eric D Genova. I also am responsible for business development and based in the US. I'm relatively new to the organization. 
+
+Interlocuteur 5 (01:47)
+So I'm interested to learn how we're positioning our possible solution with your needs and requirement. 
+
+Interlocuteur 6 (01:56)
+Initially in terms of science, and there is A I missed each other. 
+
+Interlocuteur 7 (02:08)
+I didn't quite catch your role. I'm fray. 
+
+Interlocuteur 6 (02:10)
+No chief business officer, I'm a chief business officer at the Ed 
+
+Interlocuteur 8 (02:17)
+Find out I am sharbel. I am the product manager of the company. I'm responsible of the conception process of the products and the features we have 
+
+Interlocuteur 7 (02:27)
+Okay. 
+
+Interlocuteur 3 (02:29)
+All right, so yeah, as you make scenes a lot of business. But a lot of people that are brand new in the company as well. So that he can and Kallo, and not, it's a good advantage that they are not even English speakers as well. 
+
+Interlocuteur 3 (02:42)
+So as friends are not that good sometimes. All right 
+
+Interlocuteur 4 (02:48)
+I can do distinguished if I have to be so, don't worry. 
+
+Interlocuteur 3 (02:55)
+All right. So well, first thing, just like freely speaking. Can we kick off this meeting by you giving us the feedback first feedback on what the platform I've given you in terms of impression in terms of initial questions. 
+
+Interlocuteur 3 (03:12)
+Interrogation that you may have since it's been like two weeks thing. I think that you have had the possibility to test 2 months 2 months okay? 
+
+Interlocuteur 6 (03:22)
+I will square nood. 
+
+Interlocuteur 7 (03:30)
+I have to admit I have noted it. So I will have to ask the Queen if they've had an opportunity steph share 
+
+Interlocuteur 1 (03:44)
+Yes, so it's a good job. But I've looked at it lately's version. Yeah, and it was interesting. 
+
+Interlocuteur 1 (03:56)
+And I think, you know, in terms of F****** some of our assessment. It offers utility. I think I'd like to sort of backtrack, maybe if you talk through it and go through some of the elements. 
+
+Interlocuteur 1 (04:18)
+There's the type of thing that I have seen in industry. Where it's setting out the benefits and risk at the point of authorization. A lot of what we do is managing those risks. 
+
+Interlocuteur 1 (04:35)
+And they're not obviously as I said earlier, looking at safety post authorization. So that's kind of where we would be looking To use something like this. So it'd be interesting to see or know how you bring together the data sources And he's like using But AI model, but also, you know, when you're looking at data sources, how are you? 
+
+Interlocuteur 1 (05:11)
+Ensuring the quality of those data sources. Because it looks to me like the platform does make, you know, judgments on those benefits and risks dependent on what it's looking at. And how I guess I'm asking about, you know, the black folks of that AI tool and WhatsApp based on, because that's fundamental for us to understand that. 
+
+Interlocuteur 3 (05:39)
+Absolutely, check out her head. 
+
+Interlocuteur 4 (05:40)
+Can I take one step back? Just ask you a question like how you actually go about benefit risk analysis. Currently, do you use other third parties? 
+
+Interlocuteur 4 (05:48)
+Do you kind of do it yourself? Do you have your own model? I mean, do you work with cros? 
+
+Interlocuteur 4 (05:52)
+Do you have your own databases like what do you typically do right now, current 
+
+Interlocuteur 1 (05:57)
+So we would do a benefit risk assessment. Ourselves, so we talk in In the Porsche authorization space here because it's a different team who do that at the point of a new grand authorization. So we would do that ourselves, typically, we'd look up data sources, that we have, such as, you know, yellow card. 
+
+Interlocuteur 1 (06:22)
+We would look at the literature we would get signals from a variety of sources, including stakeholders. We, although we have sort of templates and guidance for conducting a benefit risk assessment, we don't tend to use you know, one of the structured approaches like, you know, with seons 12, we don't tend to do that, because they're, you know, it can. Depend on the safety issue we would. 
+
+Interlocuteur 1 (06:57)
+If we were looking at studies, we would tend to get input from our epi team to ensure the quality of those students, so we would gnaw the limitations of the data that we were using. Okay. Does that give you enough of flavor? 
+
+Interlocuteur 4 (07:21)
+Thank you very much. 
+
+Interlocuteur 3 (07:24)
+Thank you. All right, so yeah, cause a lot of questions are quite fundamental that you just addressed most of the time. The very first one that comes up related to the sources, reliability of the models, and then you use ability of the solution that I'm sure are going to be addressing very soon afterwards, like what's the role of a human in the loop in terms of what is the capability of qualifying himself. 
+
+Interlocuteur 3 (07:49)
+The data and choosing and making sure that there's nothing is missing. So comprehensive natural platform is another worry that most of the time people have. So most of this question can address them either by freely speaking like this, but we do have some presentation that sort of you know, address these questions. 
+
+Interlocuteur 3 (08:09)
+So what would you prefer to us? Have a free conversation like this, or just like, have a 1 like 10 minutes block with. Yeah better, I guess all right? 
+
+Interlocuteur 7 (08:20)
+Why didn't you do that? But we can interrupt you and we have questions as you go through 
+
+Interlocuteur 3 (08:24)
+That, yeah, okay, all right, because those are very, very typical questions that comes up like very often. All right. So So so so here it is. 
+
+Interlocuteur 3 (08:35)
+So we went, we went through this presentation very quickly the last time. Because we felt it was very important for us to just give you a full presentation of the full work through across the solution. But now that you have on your side, you know, this question comes up. 
+
+Interlocuteur 3 (08:50)
+So just one thing we are a very well established company in the field of benefit risk evaluation and safety detection. We were founded in 2018 and the AI model that we've developed since then. Starting to answer the first question that you had steph about the reliability of the models we've trained them and developed them from 2018, based on the technology that does not hallucinate and fighting this Assumption, the problem that we're already at that time in 2018 were very, very, very much vivid about AI ability. 
+
+Interlocuteur 3 (09:23)
+Because, well, at that time, it was IBM Watson, that was the big disappointment for the whole. This is a healthcare planet, so reliability was big at that time, so it was complicated. Come back from there. 
+
+Interlocuteur 3 (09:40)
+But we did, we started working on a new structure of AI system. AI models. We call them small language models. 
+
+Interlocuteur 3 (09:48)
+And so because it's small, and because we didn't want it to be able to address the first step, which is massive structuration of data sources answering the second racial question that he had, which is which sources are. We leveraging with the solution. The average answer is that any sources that is relevant for building a benefit risk assessment is addressed in integrated into the system. 
+
+Interlocuteur 3 (10:11)
+Apart from imaging which we don't do, we don't do imaging and omex, data, we don't do omix data, neither at the moment that this will be coming in the near future. So everything that's semantic, everything that bears information that are important for the efficacy modeling, or the safety modeling and profiling from the data engineering perspective. We developed models to be able to structure them, so it involve open sources, obviously sort of PubMed midline clinical trials that gave institutional databases like fires or vias. 
+
+Interlocuteur 3 (10:43)
+For instance, and then any kind of data that is like private that is relevant. So when we work with sunofe, for instance, then in preclinical, then they will be loading and connecting their preclinical data system to the structuring engine. And then there will be indexed into the whole database, and then they may have, like other system, like other databases, like pharmapendum or fx, you know, any other kind of sources or mbas. 
+
+Interlocuteur 3 (11:09)
+For instance, then it will be then plugged in and everything works on their end or on the end of the person that will be working with. For these situations. It would be on your end of the M HRA for instance, yes. 
+
+Interlocuteur 1 (11:22)
+Yeah, so I'm presuming that we could plug in any other data source, our internal data sourcing into that 
+
+Interlocuteur 3 (11:29)
+Yes, yes, absolutely. That's the second most important data source. The very first one is the public data sources, which is, I think the most important one just to first to showcase the capabilities of what we're capable of of the solution was capable of doing gives us the very first step, which usually what we do is like we do, what we call blind approval that you have. 
+
+Interlocuteur 3 (11:48)
+The result you have a benefit risk assist on your end. We do that on public data, and then we can assess the quality of that. Yes, I listen. 
+
+Interlocuteur 7 (11:58)
+Okay, so my antibodies are going through the roof just because it says fill your benefit risk in seconds. Don't spend months looking at it. Which already raises loads and loads of concerns in my mind, but if I try and move past that 24 small AI models trained by admissions. 
+
+Interlocuteur 7 (12:20)
+Okay. Well, I mean, how can you do that then? And this is showing because I didn't look at the presentation, but I just don't understand how you can do that. 
+
+Interlocuteur 7 (12:32)
+Across the huge range of topics, we may get at the agency. I can understand how you could do that. On a company basis where they're looking at 1 drug potentially and they've got all their data coming in on one drug. 
+
+Interlocuteur 7 (12:48)
+But we have a 100 benefit risks, assessors, looking across 600 drugs and millions of thousands and hundreds of thousands of devices. Our questions are not Always the same, absolutely. 
+
+Interlocuteur 3 (13:05)
+Yeah, so 
+
+Interlocuteur 7 (13:07)
+When you've got such complex models that they're happening in series, how do you validate them? That's because it ever at the end, you don't, how do you identify where that error might have happened? 
+
+Interlocuteur 3 (13:19)
+I've peered right? So I was wondering I was asking myself, like, should we start this meeting by telling the aim of what a collaboration between arkasins and the Amish area would look like, and I was televising. Let's address that in the middle of the meeting, but it feels like it is the moment right now. 
+
+Interlocuteur 3 (13:34)
+So, you know, you see, bill benefit risk evaluations in seconds. You know, we were very cautious to not say benefit risk assessments in seconds. And because the second part of this slide involves like, how much important it is to have a human that is then sorting this information that is building up the strategy. 
+
+Interlocuteur 3 (13:53)
+The knowledge that only a clinician or a specialist in the pathology has to be able to do the benefit risk assessment. So what we do is most of the time we do a statement of work with our clients. That is the phase in which during which we set up what kind of characteristic they will be looking for in terms of endpoint. 
+
+Interlocuteur 3 (14:12)
+What kind of system of organ will be concerned by development? And so we had an internal discussion, still having internal discussion in Arkansas, and because we're small company to have this set up and this specialization of the platform done in advance so that we come up with the platform with, you know, it's efficient on breast cancers. It's efficient on lung cancers. 
+
+Interlocuteur 3 (14:38)
+It's efficient on multiple sclerosis, and so on. And so forth, so there is indeed heavy. Well, there is a very important phase at which that is the very first one that is the pipeline setup that requires the knowledge of the operators of the clinicians of the benefit with specialists to have it working for one very specific disease. 
+
+Interlocuteur 7 (15:05)
+Okay. 
+
+Interlocuteur 3 (15:06)
+Right. I think you may have wanted to talk about the other side of the table from the other side. 
+
+Interlocuteur 8 (15:15)
+Okay so I think how managed how it could be able to answer to questions if I had due reform lecture question. It is how our models can be able to answer to different therapeutic areas that can therapeutic questions. Different, the answer is for me. 
+
+Interlocuteur 8 (15:34)
+It's very simple that AI models aren't trained for specific therapeutic area, they are trained for specific task. And that's what differentiate our cast science from any other company, what we do with that. We train, instead of using an LLM, was a black box, asking in question, and wondering from where the answer is coming, what we do that. 
+
+Interlocuteur 8 (15:56)
+We use specific trained AI models that are trained for a specific task. I will give you a very concrete example, so it's for you. It's very clear, for example, to extract And to extract the efficacy endpoints that are related to a specific effect. 
+
+Interlocuteur 8 (16:14)
+Therapeutic area there is a specific there are 4 model strains in order to extract structure embedded or like cluster and then normalize the name of these endpoints. These models are trained for trained in a like normalized proportion for all the therapeutic areas from all quarterfices, 1234 from, so the data set we used in order to train the models are very. I would say. 
+
+Interlocuteur 8 (16:50)
+Variables, we have a lot of phases, we have a lot of traptic aliens, and you have a lot of data. It's not time for 100 and 200 and 300 documents. It has been trained for more than 10000 documents. 
+
+Interlocuteur 8 (17:05)
+So at the end, what we do is that the model is trained for all the therapeutic areas. But for one another But only one task 
+
+Interlocuteur 3 (17:15)
+All right, so the classes of information that the models are extracting is always the same. You know, specific endporn, specific introduction, specific adverse events, the level of severity and so on. So these are the classes with formation that the models are extracting not specific to the disease. 
+
+Interlocuteur 3 (17:31)
+But then the specification to the disease happens during the statement of work. And now the collaboration that we would like to see happening with between us and a regulatory authorities would be to set up this technology for classes of pathologies, and for which then you will have the highest level of confidence in the outputs. Because you have set up the system for selecting the classical information, selecting how the models will be extracting and so on the sources and so on, and you know that it is going to be relevant for the Putin. 
+
+Interlocuteur 3 (18:02)
+And I'm sorry, Turing, just one last thing. The models, so there's small language models. Small, meaning that they have been trained Chavez, said on huge amount of information. 
+
+Interlocuteur 3 (18:12)
+But from a very specific question. So the information that comes in and comes out is auditable at both ends, and then is used on the next step auditable at both ends. So there's no black box in between yes, urine 
+
+Interlocuteur 2 (18:30)
+Yeah, I just had a question. In terms of that information and Stephen mention this as well a little bit earlier in terms of that quality control. Because obviously the information is going to be variable. 
+
+Interlocuteur 2 (18:42)
+Some forms of information may not necessarily be complete. So how does the system manage with that? Because what we wouldn't want is diskewed view because of perhaps incomplete or inconsistent data or data. 
+
+Interlocuteur 2 (18:56)
+That's a variable quality as well. So does it come up with levels of uncertainty, or does it flag where there are issues? For example, because of gaps in information source 
+
+Interlocuteur 3 (19:10)
+Chameleon, when I start this one or should I 
+
+Interlocuteur 8 (19:14)
+I can't take. There is 2 types of there is 2 types of validation. We do many types. 
+
+Interlocuteur 8 (19:20)
+I won't say even 2. There is the validation for the model itself. So we have tests set annotated by clinicians by 2 clinicians with a complete like test of their imitation, then we test the results of our model. 
+
+Interlocuteur 8 (19:38)
+We generate the result and we are able to say, okay, we skipped 10% of the data we have 110% of uncrecized data. We have 5% of data that has been clustered in a different place etc et cetera, so that's the validation of the model then, when we have as Roma has said the statement of the client, we do the chantonage. 
+
+Interlocuteur 3 (20:02)
+Sampling. 
+
+Interlocuteur 8 (20:03)
+The sampling out of from the data specifically for the client and the same job is going to be made for this specific for this specific pain or for this specific disease. So the user knows that we assess the quality of our data. And we know that For example, we know that there is 2% 10%, 5% missing information etc et ceter. 
+
+Interlocuteur 3 (20:28)
+Yeah, another thing. Just yeah, the validation of the exports of the extraction of the documents is both done against noisy data. So we know what kind of data is supposed to be identified by the model. 
+
+Interlocuteur 3 (20:41)
+Then, we have a statistical comparison against noisy data, and then there is like the market validation like whenever we have a client. He has a beneficial risk assessment on his end. We generate an output of the system. 
+
+Interlocuteur 3 (20:53)
+He knows what it's supposed to get, and then he has to validate and approve what we provide with the system in terms of comprehensiveness and a 100% of the time in these last 2 years that we have started to commercializing the solution. Not only we were able to highlight everything that the clients have had highlighted on his end. So we didn't miss anything. 
+
+Interlocuteur 3 (21:14)
+And we brought between 9 times in a 100 times more relevant insight to their lens. Because their system was able to fly similarities in terms of benefit and risk-based on the mechanism of action of the drug and their level government, not only based on the drug itself. And expression or the disease. 
+
+Interlocuteur 3 (21:33)
+So this is the market validation. And last thing is the sensitivity based on the quality of the data. So the gentrific So, the data quality is key, but we don't improve the data quality. 
+
+Interlocuteur 3 (21:52)
+Most of the time is, you know, when we talk about data quality, it's really. There's a lot of different way of addressing that, for instance, in preclinical data quality can be relying on the ability of identifying very explicit information, explicit efficacy in indicators or as safety indicators. In the practical data and sometimes most of the time for efficacy, it's not as explicit as that. 
+
+Interlocuteur 3 (22:17)
+So the information comes up not being part of the risk or a benefit. But a general understanding of the effect of the candidates on this phase. So the data is identified based on the sources, and if it's a source that is deemed as being a poor quality of not as explicit as we would like, it can be passed, it can be differentiated based on its sources, and when we move across the clinical trials, all the way down to the phase 3 most of the time with our clients, they're looking for getting rid of these information and only focusing on the highest quality quality. 
+
+Interlocuteur 3 (22:58)
+So where there is what we call the most clinical evidence, and the clinical evidence is obviously things coming from clinical trials and from the data that is the most explicit. And so that's how we do, that's how we validate it, and that's how we help and we manage the client's expectation on the data quality. Yes, Allison. 
+
+Interlocuteur 7 (23:23)
+So I am struggling to understand how we would use this in the post authorization space. I can sort of see how you might use it in that context because you've got structured data coming in from clinical trials, such as high quality and you're looking for signals which potentially have not been found, but you've got a lot of high quality data with a lot of variables around the individual. And you build bespoke models for every use case effectively. 
+
+Interlocuteur 7 (23:56)
+And bespoke data sources for every use case for you that have that in the post authorization space. We could not am really struggling to see how we could use it in our work. Because we couldn't build a bespoke model for every use case. 
+
+Interlocuteur 7 (24:15)
+We have, so let me give you an example. So say, I want to know about I want to build, I don't know benefit risk summary. On the risk of antidepressants and persistent sexual dysfunction. 
+
+Interlocuteur 7 (24:33)
+So nothing in the clinical trials, effectively because they were 12 week clinical trials. So everything is observational data, anecdotal, reports, yellow card reports, you know Things in the media discussion with patients Whole quality reports. But what I can't see working is for every specific use case. 
+
+Interlocuteur 7 (24:58)
+I have to build a bespoke model. 
+
+Interlocuteur 3 (25:02)
+Yeah, no, it's not the case. You don't have to build a best book model. The models will remain the same. 
+
+Interlocuteur 3 (25:07)
+The information that you're looking for the one you just mentioned. We do have them stratified into the database. The profiling base that we've built, and we have the capability of making them surface out of any kind of data that you would push into the system. 
+
+Interlocuteur 3 (25:20)
+But the formula that you just give us is the one that should be added into the system. As from the operator side, because then our self, we don't know what you will want, because this is the first question you'll be asking the system. But the second question that comes up after that, we don't know what you will want after it. 
+
+Interlocuteur 3 (25:42)
+So we don't do it 
+
+Interlocuteur 7 (25:44)
+Yeah, I don't understand how you would validate. Yeah, so if I asked your system that question. But could it do it today without, or would you need to build a model for it? 
+
+Interlocuteur 3 (25:56)
+It will be able to do it today. But will just be we just have to screen the part of the database that is relevant to use that we don't had the noise of any kind of other pathology that is not relevant to you. And then, you know, if you're only interested in the safety part, then we will just deactivate some of the efficacy models. 
+
+Interlocuteur 3 (26:14)
+So that it focuses and reduces some of the noise that will push toward your way. Some information that would not be as relevant as you would like it to be. But you will have all of the endpoints, all of the information, all of the data points that you're looking for are already stratified into the solution. 
+
+Interlocuteur 7 (26:31)
+But we don't do efficacy, of course, we do effectiveness so no car, necessarily take efficacy or effectiveness from our clinical trial and assume that it translates into Her performance on the market. So I guess it would be useful to work through a use case and see what you've got. By the way, because also it depends what your Datasets are. 
+
+Interlocuteur 7 (26:59)
+And how they translate into the UK system. Because, you know, usage of drugs is very different across the world, and safety events do not necessarily translate across the world, you know, we see different expressions or different safety events. Depending on how a drug is used first line, second line, third line in different scenarios. 
+
+Interlocuteur 7 (27:25)
+That's kind of something you need to build. Absolutely, because that affects the benefit risk. If there's a drug earlier, you use third line, and there's no other alternative for a patient, then a benefit risk is different to a birth line therapy. 
+
+Interlocuteur 7 (27:38)
+That they can then move on to something else. 
+
+Interlocuteur 3 (27:40)
+Absolutely, absolutely completely agree with you. And this is like, I think the aim of this conversation. Moving forward, we definitely need the step to happen at the moment when we gather together. 
+
+Interlocuteur 3 (27:54)
+We select a subject because this is how we currently working and specify the solution for this subject. And I mean, the solution, which model do we enable disable the part of the database that is going to be used and then to be perfectly clear, and to make sure that we all speak about the same thing. The solution will not provide you a generated answer. 
+
+Interlocuteur 3 (28:15)
+It's not going to be like ChatGPT stuff, it's going to be a set of templated documents that we have already worked on. And that we can go built together, because there's as you said some very specific UK kind of documents of which this questions and then the system will then push this information into these templates. And because the operator will then filter in filter out the proper information. 
+
+Interlocuteur 3 (28:43)
+Then, the benefit risk assessment, the sur psur psur for the postmarketing, then will be like prefiled and sort of part of it will be automated yes def. 
+
+Interlocuteur 1 (29:01)
+Yeah, so just looking at the, you know, mockle how I envisaged it, it would be able to, you know. Stratify the benefits and the risks is not going to give a definitive answer that, you know, the risk of you know, sexual dysfunction with antidepressants is, you know, 20% or whatever, but it does, it would draw from different sources and summarize that tell you what your benefits and your risks are and then I think it would be up to us to use that in foreign A benefit risk assessment in the same way that we would now is that exactly how intended to work exactly 
+
+Interlocuteur 3 (29:52)
+It's the ultimate, it's the ultimate solution for providing you the comprehensive source of information properly stratified properly, annotated connected and sourced, and after that, then you're absolutely sure that you haven't missed anything or at least what you missed previously. So these 1999% of information were irrelevant in the first place that were not integrated into the pipeline. Now they've been filtered. 
+
+Interlocuteur 3 (30:18)
+They've been ranked, and then you can consider them and use them very, very, very quickly to get to a final dog finalized. Document 
+
+Interlocuteur 1 (30:26)
+So, you know, for a brand new, you know. Innovative product. At the point for authorization, you would have very clear what the benefits and risks. 
+
+Interlocuteur 1 (30:39)
+And then the model would add more information to that, as there were more studies published. And you know, we could link in I wore yellow card report into the model and it could so it would be almost a repository of information for us to use in our assessment of that type of product. 
+
+Interlocuteur 3 (31:04)
+Yeah, some sort of intelligent repository. Absolutely gallery. You wanted to add with you. 
+
+Interlocuteur 3 (31:07)
+Added to add something, follow your trying to get in. But. No. 
+
+Interlocuteur 4 (31:17)
+Yeah, no I was going to say. I mean, you know, so we can customize pure needs. I mean, ideally, you tell us exactly what you're looking for and then we can actually customize a platform to give you exactly the information that you're actually looking for so that's the beauty of the platform. 
+
+Interlocuteur 4 (31:34)
+And you're right about the effectiveness issue, but we can actually source that data that data is available 
+
+Interlocuteur 7 (31:45)
+Okay from where though because okay so if I take antidepressants as in that example. I don't believe that gates Is available easily or with any confidence for drugs on the market? So we're looking across 28 different antidepressants here. 
+
+Interlocuteur 7 (32:07)
+And you can look at the I could agree. You can look at the clear original clinical trial, but most of those were 12 long. And if you look back the original clinical trials, we are dependent on market really real world database, electronic health records or observational studies, which Are not easy to derive benefits from. 
+
+Interlocuteur 7 (32:28)
+I mean benefit is the most challenging thing we have to try and get a handle on across the different populations and different ages came morbidities, ethnicities, whatever And you make it sound so easy, and it's so so hard 
+
+Interlocuteur 3 (32:48)
+It is, it sounds it sounded easy because we're not the ones that are building the benefit risk assessment. Finally, it's the smart people like you on the other end, that have the, you know, just get the material and then make the beauty with it. You know, we're not ourself building with these bricks, which is bringing these bricks like, for instance, we work on it superativa, so a rare disease and with a new medical entity innovative. 
+
+Interlocuteur 3 (33:18)
+So we are in a situation where we're not dealing with like millions, billions of data points. It's a complete other way around, you know, it's like you have to find a needle in the haystacks, the one piece of information that will make the benefit risk assessment your turnaround and this is going to still remain best in class across the clinical trial. And when we did that with sunofi, they had like 5 risks that were key risks in their clinical, their benefit risk assistance moment. 
+
+Interlocuteur 3 (33:47)
+And was suggested them 50 more, and that didn't consider in the first place. But themselves, only them could say, okay? These 5 are still very the one that are just embodying our clinical design and are on the one that we're going to be betting. 
+
+Interlocuteur 3 (34:05)
+Our whole clinical trial onto and the 50 other would be then just added to the system as a new source of information and used to create and to feed these conversation with their regulators because then the system is used by our clients to communicate with the emasinsm FDA and to work on these information commonly. 
+
+Interlocuteur 7 (34:43)
+I mean, I think that those are much easier questions than for drugs that have been on the market for a long time. And safety events emerge. You know, you call a needle in the haystack. 
+
+Interlocuteur 7 (34:55)
+When you drug, just on the market, I would say it's the 
+
+Interlocuteur 3 (35:01)
+He was a phase 2. It was a phase 2 
+
+Interlocuteur 7 (35:04)
+I but even so, you've got such different amount of data relative to, you know, most of our problems. Actually, but really take the time and drugs that have been on the market for longer. And you know, you've got a lot of people using them and you may have a rare event. 
+
+Interlocuteur 7 (35:20)
+And you're trying to understand causality of that event across a lot of different data sources 
+
+Interlocuteur 1 (35:28)
+Yeah, in reality, Allison, though, you know, no tool is going to solve Again, choose for us the best that we can do is bring together as much information as we can. But I think you know I think probably where the greatest utility and you know. You've got of course, inspired by films, 12, and I think, you know, CMS 12 is more applicable to those newer products and you know, when we're thinking about approving products for rare diseases. 
+
+Interlocuteur 1 (36:04)
+You know? I think this type of model will probably be more applicable to that than the, you know, antidepressant issue etc, which I think you know. Nobody's gonna solve for us. 
+
+Interlocuteur 1 (36:18)
+Unfortunately. 
+
+Interlocuteur 3 (36:21)
+Yeah, yeah, treaty. 
+
+Interlocuteur 7 (36:23)
+That's what I want you to solve. 
+
+Interlocuteur 3 (36:25)
+Well. 
+
+Interlocuteur 7 (36:28)
+I'm not interested you know, you're talking to a load of post authorization people here, you know, we look at the preauthorization data, but our challenge is dissecting and interrogating if you think this is messy, noisy data, you know, welcome to the world of post authorization, which is a million times worse? So how do you solve my problem rather than this problem? 
+
+Interlocuteur 3 (36:55)
+So the very first kind of information that we decided to address when we started Arka science in 2018. But before that, we worked within Rio Perry on the project before that was a scientific article, so very, very poorly structured information, no baseline, no way of reducing writing them the same way and so on. So we started on postmarketing data in the first place. 
+
+Interlocuteur 3 (37:21)
+The issue with postmarketing data is proal is the informatic form is the semantic form and it's the baseline of how do you express a measure for instance the same way? So we have to normalize this all. And so for the first 4 years of development of Arcas, we developed outside of these 24 AI models. 
+
+Interlocuteur 3 (37:41)
+Some of them just basically harvested stratifying this information, and then using them against ontologies that we have normalized ourselves, for instance, for adverse events. The medra, we couldn't take like like this. It was not as qualitative, as we were expecting it to be. 
+
+Interlocuteur 3 (38:00)
+So we had to restructure it, to have something that could take every possible assumption of one entity of one concept. And then bring it back to the same. ID, for instance. 
+
+Interlocuteur 3 (38:11)
+So there were no structure whatsoever. We brought this information toward a structure. We put them into a relational database, knowledge graphs, and this was the base of akascience, and then we integrated clinical data that was really well structured and other kind of other neurostructure data. 
+
+Interlocuteur 3 (38:28)
+And we haven't just got our ends into our mix, which could be one of the most structured data. But with a lot of very, very deep implication, in terms of calculation and modeling, but we started with this and very happy to start to investigate this first application with your main big issue, Allison. 
+
+Interlocuteur 7 (38:54)
+I mean, I need to see. I'd like to see under the hood, really because It's still a bit skeptical, and you haven't convinced me yet that this could. We could use this in our work, and I'm really keen to look for ways to create efficiency. 
+
+Interlocuteur 7 (39:18)
+Box, in order to invest our time in something like this, I need to be confident it has utility in the space that we're working at at the moment, and I probably need a deeper dive, and I can't see how we could use it in our day-to-day work. And that's probably because I'm not seeing under the hood yet. 
+
+Interlocuteur 3 (39:41)
+Yeah, fortunately for us, this was my personal objective for this meeting is to get under the rude after this on a very specific subject. And being able to come up with one thing that we will be able then to evaluate all together. So that's very happy to get to this level of precision is sharing. 
+
+Interlocuteur 2 (40:08)
+It's just for clarity in my own mind, if that's okay? In terms of the data input, you've very much reliant on us to provide you with all of the sources that we would potentially need in order to collect the information and create those test cases with I be writing. So 
+
+Interlocuteur 3 (40:27)
+Saying that partly because you said providing to us, but usually I want to preside, that this is not to us. Because the solution most of the time when there is like this kind of impersonal private data. It's on the client's side. 
+
+Interlocuteur 3 (40:43)
+So the data never live. The client-side 
+
+Interlocuteur 2 (40:48)
+Okay. So in terms of confidentiality, I'm thinking, and that's obviously where we'll be coming from in terms of protecting that information, because it would obviously be highly sensitive with regards to what we've got access to. But exactly okay? 
+
+Interlocuteur 2 (41:03)
+And then perhaps another question, and this probably relates back to some of what you talked about more on the authorisation side. But healthcare information, how are you managing that at the moment again? Is that where your clients are coming to you with a particular source for that healthcare information and you integrate it into the platform. 
+
+Interlocuteur 2 (41:27)
+I'm just trying to get a handle of where the information is coming from and what we would need to consider if we were to want to move forward with a case. 
+
+Interlocuteur 3 (41:37)
+Well, yes, most of the time is really it really depends on the client you know? We've worked with biotechs, mettex, big pharma, smaller pharma, we've worked with the research institutions like the brain institute hospitals at first. So yeah, usually because we were a small company and now we're growing with double in sizes since the last time that we spoke and you know, what happens is that, you know, client comes in with their source of information, and then we have 2 configuration, the first configuration is that we branch these data into the system. 
+
+Interlocuteur 3 (42:09)
+And then it gets ratified, gets structured, get identified. It gets normalized with the same ontologies that we are using and then just like everything's beautiful and then you can use it with a base material following your calculations on and so forth or for instance, with snowfi and others, they are their own data owners team that they are their owners of their data. That are responsible for these data. 
+
+Interlocuteur 3 (42:34)
+So we just tell them you're the branch what to do, and then just do it on their hand. 
+
+Interlocuteur 7 (42:42)
+So how would you handle a lot of the work? We look at we might use cprd, which is our real world database, but that is billions and billions of data points. 30 million patient records over 30 years. 
+
+Interlocuteur 7 (43:02)
+And we might interrogate that we can't give you that you can't keep them working on them. 
+
+Interlocuteur 3 (43:09)
+We don't want that too much trouble. 
+
+Interlocuteur 7 (43:13)
+We couldn't use that data source and yeah, that's an important one. So I think You know you could use a psur. I'm trying to think about which data sources you could use, which can't give you our yellow card data. 
+
+Interlocuteur 7 (43:27)
+Because that's far too confidential. Because it's patient level dating, we're not allowed to share that. So At this track, it's not like we have this published clinical trial report that a patient level that Here we can share with you. 
+
+Interlocuteur 7 (43:44)
+I mean, most of the data is not in a nice. You know, structured form that you can, you know, you know, you can run algorithms over a lot of it will be literature. So how do you handle sort of published studies? 
+
+Interlocuteur 7 (44:01)
+And how do you know within that published study? What my assessors would do is they would say, okay, there's this stud this observational study that seemed to show an association between the drug and the event what that ancestor then does is not just take the abstract and assume the abstract is right. They look at the methodology, they look at the confidence intervals. 
+
+Interlocuteur 7 (44:25)
+They look at the patient populations included. They look at the heterogeneity of the data. Sources, and they reach an opinion about whether that article It's valid and should be included or what are the limitations and benefits of that article and then that gets built into their assessment report. 
+
+Interlocuteur 7 (44:45)
+I'm not clear on how you would handle The published literature within your models. 
+
+Interlocuteur 3 (44:52)
+All right. So I'll do like 1 second answer. Then I'll leave it to Chavez again. 
+
+Interlocuteur 3 (44:58)
+This is published literature is our highest special team because we started with this. Because this is the most complicated form of information. So for instance, we have one model that's only specialized in layering the areas of the documents. 
+
+Interlocuteur 3 (45:12)
+This is the methodology. This is the abstract. This is this and we know, like from, in general, what we will have to find into this this and this and which models will then be relevant for each part of this document. 
+
+Interlocuteur 3 (45:24)
+And then I'll leave it to chabel. Think is the one that has worked more heavily into these Recently, that me 
+
+Interlocuteur 8 (45:34)
+So I think I will have to explain a bit. What the 24 AI models do completely. So it's clearer for you. 
+
+Interlocuteur 8 (45:42)
+If I take any literature article speaking about, it's a case report about my cardio infraction happening. For a patient that help and administrated by the adalima, I will say this is an example so we can concretize that The best object already. There is an AI motive that is able to define if it is a case word. 
+
+Interlocuteur 8 (46:07)
+If it is a clinical trial, if it is a observational study. And if it is a clinical trial, it will be able to stratify if it is a randomized and undermined blind date to answer what type of arms there is etc et cetera, so this is the first arm that so this is the first model that has like assessed the article, then there is many models that are able to extract safety information. When I speak about safety information, there is a model that is able to extract then the sentence that is saying that once administrated, two weeks after the administration of adeli map the patient had with my cardinal. 
+
+Interlocuteur 8 (46:49)
+Infection, a serious micro infection, so we have a model that extracts two weeks after which is a temporarily status. There is the micro unfortunate extracted as side effect. The amount extracted as a drug. 
+
+Interlocuteur 8 (47:04)
+There is a relation extraction model by referring that. I mean, and related the magical repaction is related to other map in the sentence. Then, there has been hospitalized, so hospitalized is extracted as anxious. 
+
+Interlocuteur 7 (47:22)
+So that's a case report. Yeah, that's a case report. I'm not talking about case reports. 
+
+Interlocuteur 7 (47:28)
+I'm talking about big observational studies or metro analyzes. All that type of thing where you don't have patient level data where you're extracting this. After this event, you're trying to understand the quality of that record. 
+
+Interlocuteur 7 (47:40)
+How does your model handle those sort of workout? 
+
+Interlocuteur 8 (47:43)
+I give another example. I would say, I mean, I mean, type of free. Any type of article will be assessed the same way. 
+
+Interlocuteur 8 (47:49)
+So there is the models that is able to extract the safety information and to assess. If there is any information about the incident, about the number of treated people. And the number of side effects that happened etc et cetera, so there is the motives that is related to the safety environment that has been processed. 
+
+Interlocuteur 8 (48:10)
+Then there is another model about the patient. So there is a model that's is For many models that are able to extract the patient information. So for example, if it's written 92% males, 8% females will extract them with target as sorry as a gender information. 
+
+Interlocuteur 8 (48:33)
+If there is in the methodology section, saying that the people that has been included in those situation study has been like from 18 years until 64 years old. We extracted, we target we target as adults. So the second part, which of the patient, then we extract the third part which is or they told you that the type of study then the sample size. 
+
+Interlocuteur 8 (49:00)
+If there is a placebo etc, if there is any specific information of the study design and then extract the drug method and formation so extract, for example, as they mentioned that the rn one has been administrated 14 mg 2 × 21 time each two weeks, for example, to extract 40 mg as a dosage to one time per two weeks as a frequency, as I mentioned that it does subcutaneous to extract that it is administration mode at the end. We have for each information of safety or efficacy. A context. 
+
+Interlocuteur 8 (49:45)
+That is related to the type of the article to the population treated in the article to how the drug has been administrative in cybertropic. 
+
+Interlocuteur 7 (50:00)
+Okay, that's extracting information into a structured form for you. To then it doesn't tell you About the quality of that study. Still. 
+
+Interlocuteur 8 (50:12)
+No, we don't assume I think this question has been asked in our first meeting. I think, and I will repeat the 
+
+Interlocuteur 7 (50:24)
+Here's your friend. I'm selecting them. Sorry, you'll have to remind them. 
+
+Interlocuteur 8 (50:27)
+For me, I do repeat the same answer every time. And it's very frequent question that we extract what we can as an information that helps the user to assess the study what we can assume. If the study is has equality or not. 
+
+Interlocuteur 8 (50:42)
+We tell you the sample site was 100. It was for 6 news at number two deciden. 
+
+Interlocuteur 3 (50:55)
+All right. So yeah, I think that we are getting our heads wrapped around some very specific examples. Starting to get deeper into just like you said, Allison, you need to get deeper starting to get deeper with multiple example. 
+
+Interlocuteur 3 (51:09)
+I think now, the most important key takeaway of this meeting is to really select one specific subject. And just get deep into this and we would be very happy to do that. Because again as I said it was my own main objective. 
+
+Interlocuteur 3 (51:25)
+There's one objective per meeting is not much. Is my New Year's resolution is to get out of this with one subject on which we would be able to iterate and show you how we are capable of bringing in unstructured relevant information into unstructured way and help you streamline on 1 case 1 pathology, we want therapeutic area. What your job is currently is. 
+
+Interlocuteur 3 (52:01)
+So yeah, that would be a first success out of this meeting. 
+
+Interlocuteur 7 (52:07)
+I think we think you're going to need to think about it. Because a most of the things that we do are actually highly confidential and I don't think we could share to be honest an ongoing safety issue with you. I don't think we could do that because I just think it would be too confidential at this stage. 
+
+Interlocuteur 3 (52:30)
+A bust one would be will do it. 
+
+Interlocuteur 7 (52:35)
+Out the room before we could do anything like that. So that's not feasible. The only thing I'm thinking about is whether we could look at a safety issue. 
+
+Interlocuteur 7 (52:47)
+That's already in the public domain that we've already reported on. Exactly. I will think of And kind of set you the challenge as to what you would find from that, because I'm still struggling to be honest, to understand what information you present, how it's presented. 
+
+Interlocuteur 7 (53:09)
+And the utility of it, because what we can't do, we'd have to have some generic Algorithms on pathways, because what we can't do is every time we have a safety issue. Because there might be 80 safety issues ongoing at any one time across medicines and medical rises, and we can't develop an AI model for every use case. That's, you know, that's clearly not possible. 
+
+Interlocuteur 7 (53:36)
+So how? Could you give out something generic? It's beyond the literature search because I can guess ChatGPT to do that potentially or copilot or something. 
+
+Interlocuteur 7 (53:51)
+You know Beyond that. That would support the assessors, but doesn't require, you know, bespoke models to be generated every time that's kind of where we would be, because otherwise our struggling to see how it could actually be put into our framework, and also really struggling with the confidentiality issue. Because It's beyond your working with the company on their drug development pathway there. 
+
+Interlocuteur 7 (54:21)
+You can have all sorts of mous in place etc et cetera, here we're working with multiple companies and multiple safety issues in different scenarios, and with very highly sensitive patient level data. And that's a challenge. We probably have to set you the challenge of a use cases already in there. 
+
+Interlocuteur 7 (54:47)
+To see what you could have delivered if we have asked you absolutely stage Or tested the model as an early stage. If you're interested in doing that absolutely, you don't have funding for this. So, you know, it's not something that we could offer funding for at the moment. 
+
+Interlocuteur 7 (55:08)
+It really would be a proof some sort of proof of concept where we were just You know, testing or challenging your system. 
+
+Interlocuteur 3 (55:16)
+Yeah, absolutely very interesting with doing this. As I saw study telling you last time, the film, I think the first time we met, that is, and there's this is a non for-profit discussion. We're really looking for having this collaboration working towards having a system that's not going to be retrained, not going to be generating any new model. 
+
+Interlocuteur 3 (55:35)
+So it's about setting up the platform setting up a pipeline. It's about selecting part of the database so that there's no noise about selecting the models that are going to be relevant for being the most useful in the most precise for the therapeutic area or part of this therapeutic area and then moving forward with including the whole oncology therapeutic area in a matter of months or 2 months, something like that. If it is only about setting up one thing I want you to be clear is I'm not seeing afkasain's providing a generic system for what we're talking about. 
+
+Interlocuteur 3 (56:14)
+I'm seeing arkas providing something that could be set up as I said, very specifically for you know, we know that there's going to be for next year like a 1000 drugs that are going to be asking for market authorization or which are already in the market for these therapeutic area. So this is going to be the pipeline that is completely fitting with your need working on this. And then, you know, a month later, we're going to be working on another one another one. 
+
+Interlocuteur 3 (56:37)
+In just very quickly we're going to be having something that is comprehensive. But because the way of we just discuss this subject when we met because of the way AI works, it doesn't work on a generic approach in science. When you get to a certain level of clinical expertise, generative doesn't work in terms of comprehensiveness and in terms of precision, it's not working. 
+
+Interlocuteur 3 (57:01)
+And there's like, 2 schools, 22 position. You may have like people that think that LLM will go and work this ultimately, 1 day by parameters, thousands and thousands we will be working. But unfortunately what we're seeing is that it's plateauing and second school, second areas that we need new kinds of models. 
+
+Interlocuteur 3 (57:20)
+And fortunately, this is the kind of model that we're developing, so yeah, working on one subject that has already been already been rendered. Public is perfect, because then we're capable of evaluating very bluntly, very directly. If we are there or if we are of target. 
+
+Interlocuteur 3 (57:39)
+If we are just as we say in French in the cabbages doesn't translate, right and then move forward with setting a pipeline that you could be useful to you for free again. 
+
+Interlocuteur 7 (57:51)
+I'm sorry. We're just out of time. I can see, so we're gonna have to drop off. 
+
+Interlocuteur 7 (57:55)
+But let us take it away, and think about it again, and we'll have another look at the platform. And then we'll have an internal conversation. Come back to you, I think that's probably the best next step forward. 
+
+Interlocuteur 7 (58:06)
+We'll try and think through working through the beta version. We've still got access to that right and then to see if we can see an actual good use case. And then we'll come back to you. 
+
+Interlocuteur 7 (58:18)
+But We're 2 minutes like, well, I'm sure people are the meetings together, so thank you for your time, and we will give it some consideration. 
+
+Interlocuteur 3 (58:27)
+Amazing. Thank you very much. Ellison. 
+
+Interlocuteur 3 (58:28)
+Have a good day. 
+
+Interlocuteur 7 (58:29)
+Okay, YouTube. 
+
+Interlocuteur 2 (58:31)
+Hi, thank you. But by 
