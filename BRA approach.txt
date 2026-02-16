@@ -1,0 +1,254 @@
+11/24/2025
+Benefits & Risks Evaluation Modeling
+Dynamic evaluation of a drug’s potential,  assisted by AI
+
+Empowering pharmaceutical professionals and regulatory authority bodies with comprehensive, reliable BRA data for better real-time decisions
+ArcaScience at a Glance
+Inspired by : 	         Working group XII	      	     Guideline E2C (R2)
+Creation date: 2018
+
+Total amount raised:
+$10M
+Last fundraising: $7M
+in September 2025
+
+Awarded best healthtech NLP 
+Startup 2023¹
+
+20+ blue chip clients running our solution
+¹ : https://www.startus-insights.com/innovators-guide/natural-language-processing-startups/
+Ajouter les partenaires, reprendre les metrics de la slides d’origine.
+
+24 small AI models
+trained by clinicians 
+Build your drugs’ BRE in seconds
+Don’t spend months looking for it
+Approval optimization
+Risk mitigation, new design amendment strategies, 
+better applications 
+Benefits & Risks
+strengths, weaknesses & opportunities
+ArcaScience Dramatically Changes the way these Evaluations are Conducted
+
+Delivered on a user-friendly & transparent solution dashboard
+…
+By far the most comprehensive BRE 
+database in the world
+Unmatched, with over 100bn data points
+Inspired by : 	         Working group XII	      	     Guideline E2C (R2)
+Reduce BRA Project Time & Study Generation by 80%¹
+¹: independent BRA experts evaluation, 2025
+
+Regulatory Framework Development: 
+CIOMS Working Group XII releases updated guidance on benefit-risk balance methodology for medicinal products
+
+AI-Powered Transformation:
+FDA publishes framework for evaluating AI model credibility and validation in drug development
+2025: A Transformative Year for Benefit-Risk Analysis
+Benefit-Risk Balance for Medicinal Products - Working Group XII
+Framework to Advance Credibility of AI Models Used for Drug Development
+Inspired by : 	         Working group XII	      	     Guideline E2C (R2)
+
+Current Obstacles in Pharmaceutical Benefit-Risk Evaluation
+Innovative Approaches are Transforming Benefit-Risk Analysis
+Inspired by : 	         Working group XII	      	     Guideline E2C (R2)
+1
+Need for comprehensive integration of medical evidence
+2
+Overly long analysis duration 
+3
+Need to increase characterisation  in risk assessment
+4
+Challenges in real-time evidence integration
+5
+Insufficient integration  of patient preferences
+
+Automated Studies Generation that Fit CIOMS Framework
+Product Opportunities
+Analysis of disease/condition
+
+Current treatment options 
+Product Optimisation
+
+Risk Management
+(in progress)
+
+Product Profile
+
+Key Benefits & Risks
+
+Uncertainties for Benefits & Risks 
+
+Benefit-Risk Conclusion
+Inspired by : 	         Working group XII	      	     Guideline E2C (R2)
+: Available studies
+Trusted by Leading Pharma Groups:
+: Partial coverage
+
+BRAD Crosswalk to External Documents
+BRAD
+eCTD / Clinical Overview
+PBRER
+Analysis of Condition
+2.5.6.1 Therapeutic Context
+-
+Current Treatment Options
+2.5.6.1 Therapeutic Context
+-
+Benefits
+2.5.6.2 Benefits
+18.2 Benefits
+Risks
+2.5.6.3 Risks
+18.2 Risks
+Risk Management
+2.5.6.3 Risks
+Add to Conclusion
+Benefit-Risk Assessment
+2.5.6.4 Benefit-Risk Assessment
+18.2
+Conclusion
+2.5.6.4 Benefit-Risk Assessment
+18.2
+Inspired by : 	         Working group XII	      	     Guideline E2C (R2)
+: Available Studies
+Standardized Studies Meet Multiple Regulatory Requirements
+: Partial coverage
+
+Clinical Landscape
++
+Efficacy Report
+Access to a global synthesis of clinical activities with sponsors, treatments…
+Choose from Six Pre-Configured Study Types
+Disease Analysis
+Discover molecular pathways and epidemiological information about your disease
+Clinical Endpoint Study
+Access to a accurate analysis of all clinical endpoint strategy for a pathology
+AdverseEvents Reports
+Get a synthesis of all adverses events related to your drug and the standard of care
+Benefit Risk insight
+Access to a summarized  BRA regarding your priorities
+Benefit Risk Summary
+Review a synthesis of your tailored benefit-risk analysis
+Analysis of condition
+Risks
+Benefit-Risk Assessment
+Benefits
+Conclusion
+Inspired by : 	         Working group XII	      	     Guideline E2C (R2)
+Each Study Delivers Full Data Transparency and FDA-Compliant Documentation
+Current Treatments
+
+Studies Alone Falls Short in Two Critical Areas
+Agility in the BRA Process (Test & Learn)
+Share Real-Time Updates with Stakeholders
+Inspired by : 	         Working group XII	      	     Guideline E2C (R2)
+
+AI-Powered BRA Automation: 
+Building Agility into Benefit-Risk Assessment 
+Inspired by : 	         Working group XII	      	     Guideline E2C (R2)
+Weighting Configuration
+Generate and  review the automated results 
+before any human adjustments
+Generate BR Analysis
+Weighting Configuration Panel
+Item Weighting Adjustment
+Report Generation Button
+Select the appropriate weighting configuration
+Decide each benefit & risk item’s weight
+Item Weighting
+
+Our platform can generate up-to-date benefits & risks evaluations to:
+Access all relative evidence
+Evaluate uncertainty in potential benchmarks
+Real-Time Update Management
+Master & Share Real-Time BRA Evolutions
+Inspired by : 	         Working group XII	      	     Guideline E2C (R2)
+
+Customize your BRA by  having our engineers : 
+Insert additional data sources
+Insert protocol design
+Select the intervention for benchmarking
+Select the appropriate outcomes
+Personalise your BR value tree and related visualisations
+Review AI general synthesis 
+Generate intermediary studies
+Our BRA Platform Manages Safety Team Priorities & Workflow
+ArcaScience offers Human Oversight for Every Report
+developed in relation with  : 	         Working group XII	      	     Guideline E2C (R2)
+Structured & proven BRAT methodology
+
+BRA Methodology Implementation by Design
+Reduce BRA Project Time by 80%¹
+¹: independent BRA experts evaluation, 2025
+Inspired by : 	         Working group XII	      	     Guideline E2C (R2)
+
+With Vs. Without BRA Platform Use
+Activities
+Manual BRA
+Assisted BRA
+Literature review
+Months
+Instant
+Benchmarking setup
+Only one (too time-consuming)
+Unlimited change
+Workflow management
+In-person & emails
+Team shares access to platform 
+BRA adjustment
+Every parameter change generate workload
+Instant impact visualisation
+Outcomes
+High standards require extensive manual effort
+Automated excellence: 
+Quality without the wait
+The First End-to-End AI Platform for Benefit-Risk Analysis
+Inspired by : 	         Working group XII	      	     Guideline E2C (R2)
+
+Which collaboration model fits with your needs?
+Benefits
+Pricing policy
+1 - Autonomous access to the platform
+Save time and CRO budget by autonomously generating the Benefit-Risk Assessment (BRA)
+Price based on the number of BRA project slots
+2 - Managing services
+Work with a single point of contact to access the platform, which includes all integrated data related to your needs
+Price based on the number of Benefit-Risk Analysis
+3 - Substudy automated reports
+Order any report and receive the analysis, along with the related dataset, within one or two days
+Price based on the number of analysis and topic
+Inspired by : 	         Working group XII	      	     Guideline E2C (R2)
+Contact us to get your tailored proposal
+
+Trusted by:
+www.arcascience.ai
+Future 4 Care, Biopark, 75013, PARIS
+Julien Dufour
+Partners
+Julien@arcascience.ai
+06.19.73.24.80
+Any Questions
+
+Unlocking Success through Collaboration
+Goals & means:
+Reveal the Risk and Benefit of a monoclonal antibody
+32 million open access datasets + 5200 pages of Sanofi internal data
+
+Output & take away:
+One predictive benefit-risk value tree & cross-comparison between 1st and 2nd gen + A benefit–risk competition analysis 27 key inflammatory adverse events revealed
+64 key biomarkers for clinical confirmation 
+
+Impact:
+Literature review time reduced from 18 months to 2 weeks
+
+Unlocking Success through Collaboration
+Goals & means:
+Out of 100 selected drugs available on the market, find the best candidates for being repurposed to glioblastoma. 
+The first key task is to prove if there is a crossing of the BBB (Blood Brain Barrier), induced by these drugs. 
+
+Output & take away:
+1 dataset showcasing the safety datapoints directly connected to the identification of the crossing of the BBB  (eye deficiency, headache, earing issue, etc.)
+
+Impact:
+3 drugs were found to be compatible with glioblastoma, 2 are now pushed in phase 2 of clinical trials
