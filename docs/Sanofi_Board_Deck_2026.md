@@ -7,6 +7,8 @@
 
 **Date:** February 2026
 
+**CRITICAL CONTEXT NOTE:** Paul Hudson was removed as Sanofi CEO on February 12, 2026. Belén Garijo (ex-Merck KGaA CEO) appointed successor, effective April 29, 2026. Olivier Charmeil serving as Interim CEO. All framing in this deck has been updated to align with the incoming leadership's stated mandate: rigor, governance, and R&D productivity — not the outgoing CEO's "AI at scale" narrative.
+
 ---
 
 # INTERNAL BRIEFING DOCUMENTS (Not for Presentation)
@@ -43,11 +45,27 @@ ArcaScience has worked with Sanofi for five years with growing project scope. Th
 
 ### Claims Requiring Careful Framing
 
-Per internal positioning audit, the following must be handled with precision for a pharma board audience:
+Per internal positioning audit (Document 05), the following must be handled with precision for a pharma board audience:
 - **Speed claims**: Frame as "evidence assembly acceleration," not "BRA in seconds"
 - **Regulatory acceptance**: Describe as "outputs incorporated into 50+ client submissions," not "100% regulatory acceptance rate"
 - **Scale claims**: Contextualize "100+ billion data points" with quality governance and source specificity
 - **Capability scope**: Specify which phases and data types are covered; acknowledge exclusions (imaging, omics)
+- **System role**: "supports/informs/accelerates," NEVER "performs/automates/replaces" benefit-risk assessment
+- **Output language**: "pre-populates structured templates," NOT "generates" documents
+
+### CEO Transition — Strategic Implications
+
+Paul Hudson was ousted on February 12, 2026, after multiple R&D failures in 2025 (tolebrutinib PPMS, amlitelimab asthma, balinatunfib psoriasis, itepekimab COPD) and ~25% share price decline. Belén Garijo (incoming CEO, effective April 29) brings a mandate explicitly focused on:
+- **Strengthening R&D productivity, governance, and innovation capacity**
+- **Increased rigor in strategy execution** (Sanofi Board statement)
+- At Merck KGaA, Garijo was known for turning "a company stuck in rules and hierarchy into a much more bold and effective entity" while maintaining discipline
+
+**What this means for ArcaScience positioning:**
+1. Hudson quotes must not appear in slides — cite institutional sources only
+2. "Rigor and governance" framing is more aligned with ArcaScience than "AI at scale" was
+3. R&D failure narrative strengthens the case for better evidence synthesis and earlier signal detection
+4. The thromboembolic risk identification case study from Sanofi's own engagement becomes even more resonant under a "reduce late-stage attrition" mandate
+5. Lead with peer-reviewed evidence, measurable outcomes, and compliance architecture — not transformation vision
 
 ---
 
@@ -55,39 +73,50 @@ Per internal positioning audit, the following must be handled with precision for
 
 ### Sanofi 2026 Strategic Pillars
 
-1. **AI-Driven R&D Transformation**: CEO Paul Hudson (Feb 2026): "AI has shifted from experimentation to becoming a vital part of our infrastructure." 10 new drug targets discovered in one year via ML. AI agents now assess pipeline progression decisions. Drive Digital@Scale training 2,000+ executives through 2026.
+1. **R&D Rigor and Productivity** (Garijo mandate): Incoming CEO's explicit priority. Multiple 2025 setbacks (tolebrutinib PPMS failed PERSEUS trial, amlitelimab Phase 2 asthma failure, balinatunfib psoriasis miss, itepekimab COPD failure, ROCKnrol-1 futility, SP0125 RSV discontinuation). Board framed CEO change as need for "increased rigor." Garijo will bring "strengthened productivity, governance and innovation capacity of R&D."
 
-2. **Portfolio Prioritization Discipline**: 25 mid-to-late-stage readouts over two years. Deprioritized underperforming programs (SP0237 mRNA flu vaccine). 12 potential blockbuster assets. Strategic M&A to fill gaps ($1.7B Dren Bio, $1.04B ADEL-Y01).
+2. **Portfolio Prioritization Discipline**: ~82 clinical-stage projects, ~30 in Phase 3 or registration. 12 potential blockbuster assets. 25+ mid-to-late-stage readouts over next two years. Thorough H2 2025 pipeline review deprioritized underperformers (SP0237 mRNA flu, SP0125 RSV, KT-474). Strategic M&A to fill gaps: $1.7B Dren Bio, $1.04B ADEL-Y01, $480M Nurix, $2.56B Earendil Labs.
 
-3. **Speed-to-Approval**: Accumulus Synergy for parallel multi-agency submissions across 50+ countries. Quantitative systems pharmacology accepted by FDA for indication extensions. "Bionic teams" — human judgment augmented by AI.
+3. **Speed-to-Approval**: 15+ regulatory decisions, 30+ regulatory submissions, 15+ Phase 3 readouts expected across 2026-2027. Dupixent AFRS under FDA priority review (Feb 28, 2026). Accumulus Synergy for parallel multi-agency submissions across 50+ countries. QuantHealth investment for AI-powered clinical trial simulation.
 
-4. **Risk Reduction in Late-Stage Attrition**: Tolebrutinib PPMS setback (PERSEUS trial) underscores cost of late-stage failure. QuantHealth investment for AI-driven clinical trial simulation. Average $2.3B cost per approval — every avoided failure is material.
+4. **Risk Reduction in Late-Stage Attrition**: Average $2.3B cost per approval. PERSEUS trial failure (tolebrutinib PPMS) and FDA refusal for tolebrutinib nrSPMS underscore cost of late-stage failure. This is now the central justification for the CEO change.
 
-5. **Regulatory Trust & Safety Governance**: RAISE framework for responsible AI. IRAG body reviewing high-risk AI use cases. Project ARTEMIS automating pharmacovigilance case management (700K+ adverse event versions/year). Eddie Reilly (CRO): regulatory as "engine of innovation."
+5. **Responsible AI Governance**: RAISE framework (Responsible AI at Sanofi for Everyone): five pillars — Accountable to Outcomes, Fair & Ethical, Robust & Safe, Transparent & Explainable, Eco-Responsible. IRAG body reviewing high-risk AI use cases (~20 reviewed). AI Risk Assessment tool (launched Feb 2024). RAISE principles integrated into company-wide Code of Conduct. 15,000+ employees trained.
 
-6. **Pharmacovigilance Modernization**: Project ARTEMIS with IQVIA Vigilance Platform. 700,000+ AE versions annually, growing 20%/year. CIOMS 2025 consensus on PV+AI. EMA 2026 draft guideline on AI in medicine development.
+6. **Pharmacovigilance Modernization**: Project ARTEMIS with IQVIA Vigilance Platform. 700,000+ AE versions annually, growing 20%/year. 15% cost reduction achieved; targeting 50% by 2027. Phase 1 completed August 2024. CIOMS 2025 consensus on PV+AI. EMA 2026 draft guideline on AI in medicine development.
 
 ### Stakeholder Hypotheses
 
 **Pius Hornstein** — Global Head, Digital Global Business Units
-- **Background**: 21+ years at Sanofi. Former Country Chair China. Managed Brazil, Turkey/Middle East, Latin America.
-- **AI Vision**: Architect of Expert AI / Snackable AI / Generative AI framework. Presented AI strategy at VivaTech 2024. "The digital future isn't a distant promise: it's our daily reality."
-- **Hypothesized Priorities**: Enterprise-scale AI operationalization. Measurable ROI from AI investments. Reducing manual burden across business units. AI tools that integrate into daily workflows. Demonstrable competitive advantage from AI adoption.
-- **Positioning ArcaScience For**: A proven, already-deployed AI infrastructure layer within Sanofi — not a new vendor pitch, but an expansion of existing proven capability. Aligns with "Expert AI" pillar. Demonstrates Sanofi's AI-first identity with measurable outcomes.
+- **Background**: 21+ years at Sanofi. PhD medical research (Basel). INSEAD, Singularity University. Former Country Chair Greater China (2019-2022, 8,000+ associates). Fluent German, English, French, Portuguese.
+- **AI Framework**: Architect of Expert AI / Snackable AI / Generative AI framework. Presented at VivaTech 2024 and WEF Davos. Champion of "Dream and Go" innovation program.
+- **Public statements**: "The digital future isn't a distant promise: it's our daily reality." Vision to "half the time from discovery to launch." Active with Future4Care (Paris) on GenAI in healthcare.
+- **Reporting line**: Previously reported to Olivier Charmeil (now Interim CEO) — this relationship may create an opportunity or a risk depending on how Charmeil views the digital portfolio during transition.
+- **Hypothesized Priorities**: Enterprise-scale AI operationalization. Measurable ROI from AI investments. Reducing manual burden. AI tools that integrate into daily workflows. Demonstrable competitive advantage.
+- **Positioning ArcaScience For**: A proven, already-deployed AI infrastructure layer within Sanofi — not a new vendor pitch, but expansion of existing proven capability. Aligns with "Expert AI" pillar. Under the new regime, emphasis on measurable outcomes over vision will serve ArcaScience well.
 
 **Lionel Bascles** — SVP, Global Head of Clinical Sciences & Operations
-- **Background**: PhD Biochemistry. Joined 1998. Built CSO platform 2010. CEO Sanofi R&D France. Pioneer of digital clinical trials. TriNetX partnership architect. SMILE program creator (#1 CenterWatch Survey). 12-year patient centricity roadmap.
-- **Hypothesized Priorities**: Clinical development efficiency. Speed and quality of regulatory dossiers. AI that supports (not replaces) scientific judgment. Translational relevance of AI outputs. Evidence quality and auditability. Patient-centric outcomes.
-- **Positioning ArcaScience For**: Scientific infrastructure that strengthens clinical teams' evidence base. Precise, auditable outputs that accelerate dossier preparation without compromising scientific rigor. Aligns with his vision that "AI/digital technologies should enable all patients in accessing more easily trials."
+- **Background**: PhD Biochemistry (Bordeaux, 1991-93). Joined Sanofi 1998. Built CSO platform 2010. CEO Sanofi R&D France. 2003-2006 Singapore establishing Clinical Study Units for Asia Pacific including China.
+- **Key achievements**: SMILE program creator (#1 CenterWatch Survey for site engagement). 12-year patient centricity roadmap (patients inform 100% of programs). Pioneer of digital clinical trials at Sanofi. TriNetX partnership architect (AI-optimized recruitment). Champion of plai platform (Aily Labs). Wearables strategy ("core component of Sanofi's digital trials strategy"). EUCROF Conference 2025 speaker.
+- **Public statements**: Emphasized AI/digital should help "increasing diversity and equity in clinical trials and healthcare, as much as reducing the carbon impact, provided that humans remain at the center (Responsible AI)."
+- **Hypothesized Priorities**: Clinical development efficiency. Speed and quality of regulatory dossiers. AI that supports (not replaces) scientific judgment. Translational relevance. Evidence quality and auditability. Patient-centric outcomes.
+- **Positioning ArcaScience For**: Scientific infrastructure that strengthens clinical teams' evidence base. Precise, auditable outputs that accelerate dossier preparation without compromising scientific rigor. Aligns with his principle that humans must remain at center. The dossier preparation acceleration is directly in CSO's workflow.
 
 ### Key Framing Principle
 
 ArcaScience must be presented as:
 - An **existing, proven vendor** — five years of growing engagement, not a sales pitch
 - Not a dashboard tool — a **decision infrastructure layer** for dynamic benefit-risk intelligence
-- Aligned with Sanofi's stated transformation — "bionic teams," AI-powered R&D, portfolio discipline
+- Aligned with Sanofi's incoming leadership mandate — **rigor, governance, R&D productivity**
 - **Scientifically credible** — peer-reviewed evidence, not marketing claims
 - **Operationally mature** — ISO 27001, SOC 2 Type II, GAMP 5, FDA 21 CFR Part 11
+- **Complementary to ARTEMIS** — evidence structuring upstream of case processing
+
+### Timing Considerations
+
+- If meeting occurs **before April 29**: Olivier Charmeil is Interim CEO. Charmeil was Hornstein's direct report line. The interim period may create budget caution or, conversely, an opportunity for quick wins that demonstrate value to the incoming CEO.
+- If meeting occurs **after April 29**: Garijo is in seat. Her mandate for "rigor" and "R&D productivity" is directly served by ArcaScience. Position accordingly.
+- **In either case**: Do not reference Hudson. Reference Sanofi's institutional commitments (RAISE, Code of Conduct, Board statements) rather than any individual executive's vision.
 
 ---
 
@@ -106,7 +135,7 @@ ArcaScience must be presented as:
 **Visual concept:** Clean, minimal. ArcaScience and Sanofi logos side by side. No imagery — white space conveys executive gravity.
 
 **Speaker notes:**
-Thank you, Pius, Lionel. This is not a vendor presentation. ArcaScience has worked with Sanofi for five years. What we want to discuss today is how that relationship — and the underlying technology — can evolve from project-level support to a strategic infrastructure layer that serves Sanofi's broader AI-driven R&D transformation.
+Thank you, Pius, Lionel. This is not a vendor presentation. ArcaScience has worked with Sanofi for five years. What we want to discuss today is how that relationship — and the underlying technology — can evolve from project-level support to a strategic infrastructure layer that serves Sanofi's R&D priorities: productivity, governance, and evidence quality.
 
 ---
 
@@ -117,14 +146,15 @@ Thank you, Pius, Lionel. This is not a vendor presentation. ArcaScience has work
 **Bullets:**
 - Every pipeline decision — advance, pause, terminate, expand — rests on benefit-risk judgment
 - Sanofi manages 25+ mid-to-late-stage readouts over the next two years; each requires continuously updated evidence synthesis
-- Late-stage attrition costs $2.3B per failed approval on average — and the PERSEUS trial demonstrates this is not theoretical
+- Late-stage attrition costs $2.3B per failed approval on average — and 2025 demonstrated this is not theoretical
 - 700,000+ adverse event versions processed annually, growing 20% year-on-year
 - The evidence base for each decision is fragmenting: clinical trials, RWE, literature, spontaneous reports, multi-agency regulatory intelligence
+- Sanofi's Board has placed R&D rigor and productivity at the center of its strategic mandate — benefit-risk evidence infrastructure is foundational to that mandate
 
 **Visual concept:** Single graphic showing benefit-risk as the convergence point of clinical, regulatory, safety, and commercial data streams flowing into a central decision node.
 
 **Speaker notes:**
-Paul Hudson has said AI must shift from experimentation to infrastructure. Nowhere is that more consequential than in benefit-risk — the discipline that determines which drugs reach patients and which do not. The complexity and volume of evidence that feeds these decisions is growing faster than teams can process manually. This is not a capability gap — your teams are among the best in the industry. It is a structural throughput constraint that AI is uniquely positioned to address.
+Sanofi's Board has articulated a clear priority: strengthening R&D productivity and governance. Nowhere is that more consequential than in benefit-risk — the discipline that determines which drugs reach patients and which do not. The complexity and volume of evidence that feeds these decisions is growing faster than teams can process manually. This is not a capability gap — your teams are among the best in the industry. It is a structural throughput constraint that well-designed infrastructure is positioned to address.
 
 ---
 
@@ -142,7 +172,7 @@ Paul Hudson has said AI must shift from experimentation to infrastructure. Nowhe
 **Visual concept:** Hourglass diagram. Top half (wide): evidence sources flowing in. Narrow neck: evidence assembly bottleneck. Bottom half: expert judgment. ArcaScience addresses the neck, not the bottom.
 
 **Speaker notes:**
-This distinction is fundamental to how ArcaScience operates. We do not automate judgment. We accelerate the structured assembly of evidence so that your scientific experts — your Lionel Bascles-caliber teams — spend their time on interpretation, not data wrangling. When we analyzed our own engagement with Sanofi, we found that the evidence assembly phase was consuming the majority of cycle time on every project. That is the bottleneck we address.
+This distinction is fundamental to how ArcaScience operates. We do not automate judgment. We accelerate the structured assembly of evidence so that Sanofi's scientific experts spend their time on interpretation, not data wrangling. When we analyzed our own engagement with Sanofi, we found that the evidence assembly phase was consuming the majority of cycle time on every project. That is the bottleneck we address.
 
 ---
 
@@ -163,7 +193,7 @@ This distinction is fundamental to how ArcaScience operates. We do not automate 
 **Visual concept:** Timeline showing five years of engagement milestones, with scope expanding from single projects to portfolio-level work.
 
 **Speaker notes:**
-This is not a case study from an external client. This is Sanofi's own experience. The thromboembolic risk identification happened because the platform surfaced evidence patterns across nine times more sources than the manual process had reviewed — published literature, trial data, pharmacovigilance databases, and regulatory intelligence that had not been cross-referenced. The team's own experts made the judgment call to re-route investment. The platform gave them the evidence base to do so with confidence.
+This is not a case study from an external client. This is Sanofi's own experience. The thromboembolic risk identification happened because the platform surfaced evidence patterns across nine times more sources than the manual process had reviewed — published literature, trial data, pharmacovigilance databases, and regulatory intelligence that had not been cross-referenced. The team's own experts made the judgment call to re-route investment. The platform gave them the evidence base to do so with confidence. Under the current mandate for R&D rigor and reduced attrition, this capability is precisely what governance requires.
 
 ---
 
@@ -240,7 +270,7 @@ Lionel, this is the transparency layer. When Sanofi's teams review an ArcaScienc
 **Visual concept:** Clean data table. No decorative graphics. The numbers speak. Small citation formatting at bottom for full reference.
 
 **Speaker notes:**
-These are not internal benchmarks. These are independently published, peer-reviewed results. The 92% vs. 67% comparison against GPT-4 is particularly relevant because it demonstrates why domain-specific, task-trained models outperform general-purpose language models on pharmacovigilance tasks. GPT-4 is extraordinary at general reasoning. It is not designed to extract structured adverse events from clinical literature with regulatory-grade precision. ArcaScience is.
+These are not internal benchmarks. These are independently published, peer-reviewed results. The 92% vs. 67% comparison against GPT-4 is particularly relevant given Sanofi's partnerships with OpenAI and Formation Bio. General-purpose LLMs are powerful for general reasoning and summarization. They achieve 67% precision on pharmacovigilance extraction tasks. ArcaScience achieves 92% — a 25-percentage-point differential that matters when the output feeds regulatory submissions. Domain-specific, task-trained models outperform general-purpose models on this class of structured extraction work.
 
 ---
 
@@ -269,27 +299,27 @@ These are not internal benchmarks. These are independently published, peer-revie
 **Visual concept:** Three clean cards in a row. Each with client logo, key metric, and one-sentence description. No visual clutter.
 
 **Speaker notes:**
-These are Sanofi's peers. AstraZeneca, Novartis, and ICON represent the same operational challenges — complex portfolios, multi-jurisdictional submissions, growing evidence volumes. The fact that these organizations have adopted ArcaScience as infrastructure, not as a one-time project tool, validates the platform's enterprise readiness. And critically, no regulatory authority has queried a submission section that was prepared using ArcaScience outputs.
+These are Sanofi's peers. AstraZeneca, Novartis, and ICON represent the same operational challenges — complex portfolios, multi-jurisdictional submissions, growing evidence volumes. The fact that these organizations have adopted ArcaScience as infrastructure, not as a one-time project tool, validates the platform's enterprise readiness.
 
 ---
 
-## Slide 9: Alignment with Sanofi's AI Transformation
+## Slide 9: Alignment with Sanofi's Strategic Mandate
 
-**Headline:** ArcaScience Maps Directly to Sanofi's Strategic Pillars
+**Headline:** ArcaScience Maps Directly to Sanofi's Board-Level Priorities
 
 **Four-quadrant layout:**
 
-| Sanofi Pillar | ArcaScience Alignment |
-|---------------|----------------------|
-| **AI-Driven R&D** (Hudson: "AI as infrastructure") | Already deployed within Sanofi for 5 years. Expert AI category. Domain-specific, not generic. |
-| **Portfolio Prioritization** (12 blockbuster assets, 25 readouts) | Continuous evidence monitoring across portfolio. Rapid evidence refresh when new data emerges. |
-| **Speed-to-Approval** (Accumulus, bionic teams) | Evidence assembly in hours, not weeks. Pre-populated regulatory templates (PSUR, RMP, CTD 2.5). |
-| **Risk Reduction** (Late-stage attrition, $2.3B/failure) | Early identification of safety signals through cross-source evidence linking. Thromboembolic risk identified pre-Phase III at Sanofi. |
+| Sanofi Priority | ArcaScience Alignment |
+|-----------------|----------------------|
+| **R&D Rigor & Productivity** (Board mandate for incoming CEO) | Peer-reviewed 92% precision. Auditable pipeline. Structured evidence that meets governance standards. Already deployed within Sanofi for 5 years. |
+| **Portfolio Prioritization** (12 blockbuster assets, 25 readouts) | Continuous evidence monitoring across portfolio. Rapid evidence refresh when new data emerges. Cross-asset signal pattern detection. |
+| **Speed-to-Approval** (30+ submissions 2026-2027, Accumulus) | Evidence assembly in hours, not weeks. Pre-populated regulatory templates (PSUR, RMP, CTD 2.5). Structured outputs compatible with Accumulus multi-agency exchange. |
+| **Late-Stage Attrition Reduction** ($2.3B/failure, 2025 setbacks) | Early identification of safety signals through cross-source evidence linking. Thromboembolic risk identified pre-Phase III at Sanofi. Evidence comprehensiveness that reduces surprise at late-stage gates. |
 
-**Visual concept:** 2x2 grid. Each quadrant has Sanofi pillar name, Hudson or Reilly quote fragment, and ArcaScience alignment statement. Clean, symmetrical.
+**Visual concept:** 2x2 grid. Each quadrant has Sanofi priority name and ArcaScience alignment statement. Clean, symmetrical.
 
 **Speaker notes:**
-Pius, you have said "the digital future is our daily reality." ArcaScience is already part of that reality at Sanofi — for five years. The question today is whether to scale what is already proven from project-level deployment to portfolio-level infrastructure. Every pillar Paul Hudson has articulated — AI as infrastructure, portfolio discipline, speed-to-approval, risk reduction — has a direct operational mapping to what ArcaScience delivers.
+The Board's stated mandate for the incoming CEO is clear: rigor, governance, R&D productivity. ArcaScience is already part of that infrastructure at Sanofi — for five years. The question today is whether to scale what is already proven from project-level deployment to portfolio-level infrastructure. Every priority the Board has articulated — R&D discipline, portfolio rigor, speed-to-approval, attrition reduction — has a direct operational mapping to what ArcaScience delivers.
 
 ---
 
@@ -319,7 +349,7 @@ Pius, you have said "the digital future is our daily reality." ArcaScience is al
 **Visual concept:** Clean certification badge grid at top. Technical specifications in smaller text below. Conveys thoroughness without overwhelming.
 
 **Speaker notes:**
-Lionel, this matters for your clinical data governance. ArcaScience's compliance architecture was built for pharma from day one — not retrofitted. The GAMP 5 validation means it meets the same computerized system standards that Sanofi applies to its own internal tools. The ALCOA+ audit trail means every data transformation is traceable, attributable, and tamper-evident. This is not a startup that bolted on compliance after the fact.
+Lionel, this matters for your clinical data governance. ArcaScience's compliance architecture was built for pharma from day one — not retrofitted. The GAMP 5 validation means it meets the same computerized system standards that Sanofi applies to its own internal tools. The ALCOA+ audit trail means every data transformation is traceable, attributable, and tamper-evident. Under the incoming leadership's mandate for governance rigor, this compliance architecture is not a nice-to-have — it is table stakes.
 
 ---
 
@@ -355,7 +385,7 @@ Lionel, this matters for your clinical data governance. ArcaScience's compliance
 **Visual concept:** Vertical flow with four horizontal bands. Steps 1 and 4 are shaded in Sanofi blue (human-led). Steps 2 and 3 are shaded in a neutral tone (platform-led). A dotted feedback loop from Step 4 back to Step 1 indicates iterative refinement.
 
 **Speaker notes:**
-This is the operating model. The platform does not replace your teams. It restructures the information environment in which they work. Think of it as the difference between a researcher searching PubMed manually versus having a structured evidence package prepared, cross-referenced, and gap-analyzed before they sit down. The judgment is theirs. The groundwork is ours.
+Lionel, this maps directly to how your CSO operates. The platform does not replace your teams. It restructures the information environment in which they work. Think of it as the difference between a researcher searching PubMed manually versus having a structured evidence package prepared, cross-referenced, and gap-analyzed before they sit down. The judgment is theirs. The groundwork is ours. Your SMILE program made investigator lives easier. ArcaScience makes assessor lives easier.
 
 ---
 
@@ -376,15 +406,15 @@ This is the operating model. The platform does not replace your teams. It restru
 - Dashboard-level visibility for portfolio governance teams
 
 **Value at portfolio scale:**
-- Reduces "evidence surprise" at late-stage gates
+- Reduces "evidence surprise" at late-stage gates — directly responsive to the 2025 attrition experience
 - Enables faster response to emerging safety signals across the portfolio
-- Supports Sanofi's portfolio prioritization discipline with continuous evidence intelligence
+- Supports portfolio prioritization discipline with continuous evidence intelligence
 - Frees scientific capacity from repetitive evidence updates to high-value interpretive work
 
 **Visual concept:** Left side: isolated project bubbles (current). Right side: interconnected network of assets with shared evidence intelligence layer (proposed). Arrow labeled "Scale" connecting the two.
 
 **Speaker notes:**
-Pius, this is the strategic opportunity. ArcaScience is proven at the project level within Sanofi. The question is whether to extend that capability across the portfolio. With 12 potential blockbuster assets and 25 readouts in two years, the volume of evidence synthesis required is substantial. A portfolio-level deployment means your teams are never starting from zero on any asset — the evidence base is continuously maintained, cross-referenced, and gap-analyzed.
+Pius, this is the strategic opportunity. ArcaScience is proven at the project level within Sanofi. The question is whether to extend that capability across the portfolio. With 12 potential blockbuster assets and 25 readouts in two years, the volume of evidence synthesis required is substantial. A portfolio-level deployment means your teams are never starting from zero on any asset — the evidence base is continuously maintained, cross-referenced, and gap-analyzed. After the setbacks of 2025, having earlier, more comprehensive evidence visibility is not optional — it is the governance standard the Board is now demanding.
 
 ---
 
@@ -394,6 +424,7 @@ Pius, this is the strategic opportunity. ArcaScience is proven at the project le
 
 **Context:**
 - Sanofi's Project ARTEMIS (IQVIA Vigilance Platform) automates case management — intake, processing, and reporting of 700K+ AE versions/year
+- ARTEMIS has achieved 15% cost reduction; targeting 50% by 2027
 - ARTEMIS solves the case processing bottleneck
 - ArcaScience solves the upstream evidence structuring bottleneck
 
@@ -412,7 +443,7 @@ Pius, this is the strategic opportunity. ArcaScience is proven at the project le
 **Visual concept:** Two parallel streams converging at a "Signal Evaluation" node. ARTEMIS stream: case data flowing through processing. ArcaScience stream: evidence sources flowing through structuring. Both feed into human expert assessment.
 
 **Speaker notes:**
-This is critical for Lionel. Project ARTEMIS handles the volume challenge — processing hundreds of thousands of cases. But when a signal emerges from that volume, the scientific question is: what does the broader evidence base say? Is there corroborating literature? Mechanistic plausibility? Regulatory precedent from other jurisdictions? That contextual evidence assembly is exactly what ArcaScience does. The two systems are not competitive — they are architecturally complementary.
+This is critical for the pharmacovigilance modernization agenda. Project ARTEMIS handles the volume challenge — processing hundreds of thousands of cases with increasing automation. But when a signal emerges from that volume, the scientific question is: what does the broader evidence base say? Is there corroborating literature? Mechanistic plausibility? Regulatory precedent from other jurisdictions? That contextual evidence assembly is exactly what ArcaScience does. The two systems are architecturally complementary. Julie Girod's team processes cases. ArcaScience structures the evidence that contextualizes what those cases mean.
 
 ---
 
@@ -423,6 +454,7 @@ This is critical for Lionel. Project ARTEMIS handles the volume challenge — pr
 **Regulatory developments:**
 - **CIOMS 2025 Consensus**: First comprehensive guidance on AI in pharmacovigilance — treats AI models as requiring defined "indications" and known limitations (aligns with ArcaScience's task-specific model architecture)
 - **EMA 2026 Draft Guideline**: "AI in Medicine Development" emphasizes reproducibility and human oversight (aligns with ArcaScience's auditable pipeline and human-in-the-loop design)
+- **EU AI Act**: Coming into force with requirements for traceability, transparency, and data quality in high-risk AI — ArcaScience's RAISE-compatible architecture satisfies these requirements
 - **FDA**: Increasing acceptance of AI-supported regulatory submissions; quantitative systems pharmacology already accepted for indication extensions
 - **ICH E2C(R2)**: Periodic benefit-risk evaluation framework — ArcaScience's output structure maps directly to PBRER requirements
 - **Accumulus Synergy**: Real-time multi-agency data exchange demands structured, machine-readable evidence — ArcaScience outputs are natively structured
@@ -433,14 +465,39 @@ This is critical for Lionel. Project ARTEMIS handles the volume challenge — pr
 - Full auditability satisfies the EMA reproducibility requirement
 - Structured outputs accelerate Accumulus-compatible submissions
 
-**Visual concept:** Timeline from 2024 to 2030 showing regulatory milestones (CIOMS, EMA guideline, ICH updates) with ArcaScience alignment points mapped to each.
+**Visual concept:** Timeline from 2024 to 2030 showing regulatory milestones (CIOMS, EMA guideline, EU AI Act, ICH updates) with ArcaScience alignment points mapped to each.
 
 **Speaker notes:**
-The regulatory landscape is evolving rapidly. CIOMS's 2025 guidance effectively says: if you use AI in pharmacovigilance, each model must have a defined purpose, validated performance, and known limitations — exactly how ArcaScience's 24 task-specific models are designed. The EMA's 2026 draft guideline emphasizes reproducibility and oversight — exactly what an auditable pipeline delivers. Sanofi is already ahead of the curve with RAISE and ARTEMIS. ArcaScience ensures the evidence intelligence layer is equally prepared.
+The regulatory landscape is evolving rapidly. CIOMS's 2025 guidance effectively says: if you use AI in pharmacovigilance, each model must have a defined purpose, validated performance, and known limitations — exactly how ArcaScience's 24 task-specific models are designed. The EMA's 2026 draft guideline emphasizes reproducibility and oversight. The EU AI Act requires traceability and transparency for high-risk applications. ArcaScience's architecture was designed with exactly this regulatory trajectory in mind. Sanofi is already positioned well with RAISE. ArcaScience ensures the evidence intelligence layer is equally prepared.
 
 ---
 
-## Slide 15: The Expansion Proposal
+## Slide 15: Why Not GPT-4 or Internal LLMs?
+
+**Headline:** Domain-Specific Precision vs. General-Purpose Reasoning
+
+**Comparison table:**
+
+| Dimension | General-Purpose LLMs (GPT-4, Gemini, Claude) | ArcaScience Task-Specific Pipeline |
+|-----------|----------------------------------------------|-------------------------------------|
+| Architecture | Single monolithic model for all tasks | 24 specialized models, each optimized for one task |
+| Output format | Prose text (summaries, narratives) | Structured, normalized, source-linked data elements |
+| Auditability | End-to-end opaque — error attribution unclear | Per-step auditable — errors localize to specific stage |
+| Hallucination risk | Non-zero — LLMs generate plausible but fabricated content | Zero generative component — system extracts from source only |
+| Regulatory compliance | Not designed for GxP environments | GAMP 5 Category 5 validated, ALCOA+ compliant |
+| Performance on PV tasks | 67% precision (Chen et al., 2025) | 92% precision (same benchmark, same corpus) |
+| Traceability | No inherent source-to-statement linkage | Every output element traces to source document, section, model |
+
+**Key insight:** Sanofi's OpenAI and Formation Bio partnerships provide enterprise LLM access for general reasoning and workflow automation. ArcaScience addresses a structurally different requirement: regulatory-grade extraction with per-element auditability, source traceability, and validated precision. These are complementary, not competitive.
+
+**Visual concept:** Side-by-side comparison. Clean data table. The 92% vs. 67% differential highlighted.
+
+**Speaker notes:**
+Pius, this is the question your team will rightly ask. Sanofi has access to enterprise LLMs through OpenAI, Formation Bio, and Google. These are excellent tools for general AI tasks. But on the specific, narrow task of pharmacovigilance entity extraction — where every output must be traceable, auditable, and accurate to regulatory standards — domain-specific, task-trained models outperform general-purpose models by 25 percentage points. That is not a marginal difference. It is the difference between a literature summary and a structured evidence package suitable for a regulatory submission. You would not use a general-purpose robot for heart surgery. You would not use a general-purpose LLM for regulatory-grade evidence structuring.
+
+---
+
+## Slide 16: The Expansion Proposal
 
 **Headline:** Three Tiers of Strategic Engagement
 
@@ -467,11 +524,11 @@ The regulatory landscape is evolving rapidly. CIOMS's 2025 guidance effectively 
 **Visual concept:** Three ascending blocks (staircase), each progressively larger. Labeled Deepen / Scale / Transform. Timeline along the bottom.
 
 **Speaker notes:**
-This is not a binary decision. The engagement can expand at the pace that makes sense for Sanofi. Tier 1 is an immediate extension of what is already working — more assets, more therapeutic areas, same proven model. Tier 2 is portfolio-level, which is where the strategic value multiplies. Tier 3 is the long-term vision: ArcaScience as embedded infrastructure, integrated with Sanofi's data architecture, operating behind your firewall where needed.
+This is not a binary decision. The engagement can expand at the pace that makes sense for Sanofi — particularly during the leadership transition. Tier 1 is an immediate extension of what is already working — more assets, more therapeutic areas, same proven model. This is low-risk, high-visibility, and delivers quick results that demonstrate value to the incoming CEO. Tier 2 is portfolio-level, which is where the strategic value multiplies. Tier 3 is the long-term vision.
 
 ---
 
-## Slide 16: Investment & Return Architecture
+## Slide 17: Investment & Return Architecture
 
 **Headline:** Structured for Enterprise Value, Not Project Fees
 
@@ -486,18 +543,18 @@ This is not a binary decision. The engagement can expand at the pace that makes 
 
 **ROI framework:**
 - **Time savings**: If evidence assembly for one PSUR is reduced by 60%, and Sanofi processes N PSURs per year, the labor hour recovery is quantifiable
-- **Risk avoidance**: One avoided late-stage termination (informed by earlier evidence synthesis) represents $50M-$500M in recovered investment
+- **Risk avoidance**: One avoided late-stage termination (informed by earlier evidence synthesis) represents $50M-$500M in recovered investment — after the 2025 setbacks, this is not theoretical
 - **Regulatory velocity**: Faster evidence assembly translates to earlier submission readiness — each month of acceleration has quantifiable commercial value
 - **Capacity multiplication**: Existing team handles more assets without proportional headcount growth
 
 **Visual concept:** Clean pricing table at top. Below: four ROI pillars with brief description. No financial projections — the framework invites conversation.
 
 **Speaker notes:**
-The pricing is structured as an infrastructure investment, not a consulting engagement. Annual contracts with multi-year discounts (10% for two years, 15% for three). The ROI conversation is straightforward: what is the loaded cost of an FTE-month of evidence assembly work, how many FTE-months does Sanofi spend on it annually, and what does a 60% reduction in that time represent? We are happy to build a detailed ROI model specific to Sanofi's portfolio.
+The pricing is structured as an infrastructure investment, not a consulting engagement. Annual contracts with multi-year discounts (10% for two years, 15% for three). At enterprise tier, the investment is less than two mid-level regulatory affairs FTEs. The ROI conversation is straightforward: what is the loaded cost of an FTE-month of evidence assembly work, how many FTE-months does Sanofi spend on it annually, and what does a 60% reduction in that time represent? We are prepared to build a detailed ROI model specific to Sanofi's portfolio.
 
 ---
 
-## Slide 17: Responsible AI & Governance Alignment
+## Slide 18: Responsible AI & Governance Alignment
 
 **Headline:** Built to Satisfy Sanofi's RAISE Framework Requirements
 
@@ -514,15 +571,16 @@ The pricing is structured as an infrastructure investment, not a consulting enga
 **Governance integration:**
 - ArcaScience's architecture is designed for IRAG review: defined use case, characterized data, specified model types, documented deployment
 - Sanofi AI Risk Assessment classification: defined intended use (evidence structuring), characterized data sources (public + licensed), specified model architecture (24 task-specific), documented deployment (cloud with on-prem option)
+- RAISE principles integrated into Sanofi's Code of Conduct — ArcaScience's human-in-the-loop design directly supports the "human must be involved and is always accountable" requirement
 
-**Visual concept:** Five RAISE pillars as vertical columns. Each column contains the Sanofi requirement and ArcaScience's corresponding implementation. Checkmarks where fully satisfied. "In development" notation where applicable.
+**Visual concept:** Five RAISE pillars as vertical columns. Each column contains the Sanofi requirement and ArcaScience's corresponding implementation. Checkmarks where fully satisfied.
 
 **Speaker notes:**
-Pius, your IRAG body has reviewed approximately 20 AI use cases to date, and your AI Risk Assessment tool classifies systems by intended use, data, model, and deployment. ArcaScience's architecture was designed with exactly this kind of governance review in mind. We welcome Sanofi's IRAG evaluation — it is precisely the kind of rigorous assessment that validates our approach.
+Pius, your IRAG body has reviewed approximately 20 AI use cases to date, and your AI Risk Assessment tool classifies systems by intended use, data, model, and deployment. ArcaScience's architecture was designed with exactly this kind of governance review in mind. We actively welcome Sanofi's IRAG evaluation. Under the incoming leadership's emphasis on governance, demonstrating that ArcaScience passes IRAG review is a feature, not a risk. It validates both the tool and the governance process.
 
 ---
 
-## Slide 18: Implementation Roadmap
+## Slide 19: Implementation Roadmap
 
 **Headline:** From Decision to Deployment in 90 Days
 
@@ -553,11 +611,11 @@ Pius, your IRAG body has reviewed approximately 20 AI use cases to date, and you
 **Visual concept:** Horizontal timeline with three phases. Key milestones marked. "Go-live" clearly indicated at Week 9. Clean Gantt-style without excessive detail.
 
 **Speaker notes:**
-The 90-day timeline is possible because this is not a greenfield implementation. ArcaScience is already operational within Sanofi. The expansion is a matter of configuration — additional therapeutic areas, additional assets, additional users — not new development. The pilot phase with parallel running gives Sanofi's teams full confidence before committing to production use.
+The 90-day timeline is possible because this is not a greenfield implementation. ArcaScience is already operational within Sanofi. The expansion is a matter of configuration — additional therapeutic areas, additional assets, additional users — not new development. The pilot phase with parallel running gives Sanofi's teams full confidence before committing to production use. The timing also works well relative to the leadership transition: results would be demonstrable before the incoming CEO's first full quarter review.
 
 ---
 
-## Slide 19: What We Are Asking For
+## Slide 20: What We Are Asking For
 
 **Headline:** A Structured Conversation About Strategic Scale
 
@@ -582,11 +640,11 @@ The 90-day timeline is possible because this is not a greenfield implementation.
 **Visual concept:** Three numbered items, each with a clear action, owner, and timeline. Clean, uncluttered. Conveys specificity without pressure.
 
 **Speaker notes:**
-We are not asking for a commitment today. We are asking for the next conversation — a scoping session that lets us jointly identify where expanded deployment would deliver the most value. The governance review is something we actively welcome. And the pilot is structured with a defined exit point. This is about Sanofi making an informed decision with full evidence — which, given the nature of what we do, seems appropriately fitting.
+We are not asking for a commitment today. We are asking for the next conversation — a scoping session that lets us jointly identify where expanded deployment would deliver the most value. The governance review is something we actively welcome — and given the incoming CEO's emphasis on governance rigor, demonstrating that ArcaScience passes IRAG review adds value to both sides. The pilot is structured with a defined exit point. This is about Sanofi making an informed decision with full evidence.
 
 ---
 
-## Slide 20: Closing — The Opportunity
+## Slide 21: Closing — The Opportunity
 
 **Headline:** From Proven Partner to Strategic Infrastructure
 
@@ -594,7 +652,7 @@ We are not asking for a commitment today. We are asking for the next conversatio
 
 **Five years of trust.** ArcaScience is not a new vendor. It is an existing partner with demonstrated value inside Sanofi — proven on real assets, real submissions, real scientific decisions.
 
-**The right capability at the right moment.** Sanofi's AI transformation is moving from experimentation to infrastructure. Benefit-risk evidence intelligence is the next domain to undergo that transition. The technology, the regulatory environment, and Sanofi's strategic priorities are converging.
+**The right capability at the right moment.** Sanofi's Board has prioritized R&D rigor and productivity. Benefit-risk evidence infrastructure is the next domain to undergo that transformation. The technology, the regulatory environment, and Sanofi's strategic priorities are converging.
 
 **Measurable, auditable, human-centered.** Peer-reviewed performance. Full compliance architecture. Task-specific models, not opaque LLMs. Human judgment preserved and amplified. This is AI the way Sanofi's RAISE framework envisions it.
 
@@ -604,7 +662,7 @@ The question is not whether to modernize benefit-risk evidence infrastructure. T
 **Visual concept:** Minimal. Three statements with space between them. Final statement in slightly larger, bolder text. No imagery — the words carry the close.
 
 **Speaker notes:**
-Pius, Lionel — thank you for your time. The five-year relationship gives us a foundation that most vendor conversations lack. We have already demonstrated value inside Sanofi. The proposal is to scale that value across the portfolio, aligned with the strategic priorities you are both driving. We look forward to the scoping conversation.
+Pius, Lionel — thank you for your time. The five-year relationship gives us a foundation that most vendor conversations lack. We have already demonstrated value inside Sanofi. The proposal is to scale that value across the portfolio, aligned with the strategic priorities that Sanofi's Board has made explicit. We look forward to the scoping conversation.
 
 ---
 
@@ -617,13 +675,14 @@ Pius, Lionel — thank you for your time. The five-year relationship gives us a 
 **Infrastructure:**
 - Cloud: AWS (eu-west-1/eu-west-2 available for EU data residency)
 - Orchestration: Kubernetes (100% containerized)
-- Pipeline: Apache Airflow DAGs
+- Pipeline: Apache Airflow DAGs ("Data Forge" proprietary framework)
 - Storage: S3 (raw/enriched), ElasticSearch, DocumentDB, QDrant (vector)
 - Frontend: ReactJS + Tailwind CSS
-- Backend: Node.js / NestJS
+- Backend: Node.js / NestJS (platform); FastAPI / Python (ML services)
 - Database: PostgreSQL
 - Auth: Keycloak (OAuth 2.0, OpenID Connect)
 - Monitoring: Full APM coverage
+- Code quality: SonarQube (quality gate enforced on all deployments)
 
 **Data standards:**
 - HL7 FHIR R4
@@ -677,15 +736,15 @@ Pius, Lionel — thank you for your time. The five-year relationship gives us a 
 
 ## The ArcaScience-Sanofi Strategic Narrative
 
-**Opening position:** ArcaScience is not a new vendor seeking entry. It is a five-year partner with proven value inside Sanofi, seeking to align its capabilities with Sanofi's accelerating AI transformation.
+**Opening position:** ArcaScience is not a new vendor seeking entry. It is a five-year partner with proven value inside Sanofi, seeking to align its capabilities with Sanofi's Board-mandated priorities: R&D rigor, governance, and productivity.
 
-**The problem we address:** Benefit-risk assessment is the central decision architecture of drug development. Every pipeline decision depends on it. But the evidence base is fragmenting and growing faster than manual processes can synthesize. The rate-limiting step is not expert judgment — it is the evidence assembly that precedes judgment. This bottleneck compounds across Sanofi's portfolio of 12+ potential blockbusters and 25 near-term readouts.
+**The problem we address:** Benefit-risk assessment is the central decision architecture of drug development. Every pipeline decision depends on it. But the evidence base is fragmenting and growing faster than manual processes can synthesize. The rate-limiting step is not expert judgment — it is the evidence assembly that precedes judgment. This bottleneck compounds across Sanofi's portfolio of 12+ potential blockbusters and 25 near-term readouts. The 2025 late-stage setbacks — PERSEUS, tolebrutinib nrSPMS, amlitelimab, itepekimab — underscore the cost of insufficient evidence comprehensiveness at critical decision points.
 
 **What we do:** ArcaScience is a decision infrastructure layer — 24 task-specific, clinician-trained AI models in an eight-stage auditable pipeline that extracts, normalizes, links, and structures evidence from heterogeneous sources. It produces structured, source-linked evidence packages that serve expert teams. It does not make decisions. It does not generate text. It structures evidence so that qualified humans can make better-informed decisions faster.
 
-**Why now:** Three forces converge. (1) Sanofi's AI transformation is moving from experimentation to infrastructure — CEO Hudson has declared this the inflection point. (2) The regulatory environment is formalizing AI in pharmacovigilance (CIOMS 2025, EMA 2026) in ways that favor ArcaScience's architecture. (3) Portfolio pressure is intensifying — 25 readouts, ARTEMIS modernizing PV operations, Accumulus accelerating multi-agency submissions. The evidence intelligence layer is the next domain to modernize.
+**Why now:** Three forces converge. (1) Sanofi's Board has made R&D rigor and productivity the central mandate — benefit-risk evidence infrastructure is foundational to that mandate. (2) The regulatory environment is formalizing AI in pharmacovigilance (CIOMS 2025, EMA 2026, EU AI Act) in ways that favor ArcaScience's architecture. (3) Portfolio pressure is intensifying — 25 readouts, ARTEMIS modernizing PV operations, Accumulus accelerating multi-agency submissions, and the leadership transition creating a moment of elevated attention to governance and demonstrable results.
 
-**Why ArcaScience:** Five years of demonstrated value at Sanofi. Peer-reviewed scientific validation (92% precision, 94% F1, 3x signal detection, 60% PSUR acceleration). Enterprise-grade compliance (ISO 27001, SOC 2 Type II, GAMP 5, FDA 21 CFR Part 11). 20+ pharmaceutical clients including AstraZeneca and Novartis. Architecture that satisfies Sanofi's RAISE responsible AI framework.
+**Why ArcaScience:** Five years of demonstrated value at Sanofi. Peer-reviewed scientific validation (92% precision, 94% F1, 3x signal detection, 60% PSUR acceleration). Enterprise-grade compliance (ISO 27001, SOC 2 Type II, GAMP 5, FDA 21 CFR Part 11). 20+ pharmaceutical clients including AstraZeneca and Novartis. Architecture that satisfies Sanofi's RAISE responsible AI framework. Complementary to Project ARTEMIS and existing LLM investments.
 
 **The ask:** Not a commitment — a structured next step. A portfolio scoping session to identify where expanded deployment delivers the most value. A governance review through Sanofi's IRAG process. A defined pilot with measurable success criteria. The question is not whether to modernize benefit-risk evidence infrastructure, but whether to build new or extend what is already proven.
 
@@ -697,54 +756,66 @@ Pius, Lionel — thank you for your time. The five-year relationship gives us a 
 
 ## Anticipated Sanofi Objections and Responses
 
-### Objection 1: "We already have AI tools internally — why add another vendor?"
+### Objection 1: "We're in a leadership transition — now is not the time for new initiatives."
 
-**Context:** Sanofi has invested heavily in internal AI (plai, Project ARTEMIS, BioAIM, CodonBERT). Pius oversees the digital strategy. There may be resistance to external tools that overlap perceived internal capability.
+**Context:** CEO change creates institutional uncertainty. Budget and strategic decisions may be deferred until Garijo takes office (April 29).
 
-**Response:** ArcaScience does not compete with Sanofi's internal AI investments. It complements them. ARTEMIS handles case management and processing — the operational pharmacovigilance workflow. ArcaScience handles the upstream evidence structuring — the scientific evidence synthesis that precedes assessment. These are architecturally distinct functions. Sanofi does not have an internal equivalent to a 24-model evidence structuring pipeline validated at 92% precision against GPT-4. Building one internally would require 3-5 years and significant investment. ArcaScience is operational today.
+**Response:** ArcaScience is not a new initiative. It is an existing engagement with five years of demonstrated value. The proposal is to expand proven capability, not to introduce a new vendor. Moreover, the incoming CEO's explicit mandate — R&D rigor and productivity — is directly served by what ArcaScience delivers. Initiating the expansion now means results are demonstrable when Garijo reviews the R&D portfolio. Alternatively, we can align the pilot timeline to begin post-transition if that better serves Sanofi's governance needs.
 
-### Objection 2: "Can't we do this with GPT-4 or an internal LLM?"
+### Objection 2: "We already have AI tools internally — why add another vendor?"
 
-**Context:** Sanofi has access to enterprise LLMs. General-purpose models are perceived as increasingly capable.
+**Context:** Sanofi has invested heavily in internal AI (plai, Project ARTEMIS, CodonBERT, OpenAI/Formation Bio partnership). Pius oversees the digital strategy. There may be resistance to external tools that overlap perceived internal capability.
 
-**Response:** Published evidence directly addresses this. In head-to-head comparison on the same adverse event extraction corpus, ArcaScience achieved 92% precision vs. GPT-4's 67%. The differential is not marginal — it is 25 percentage points. General-purpose LLMs produce prose summaries. ArcaScience produces structured, normalized, source-linked evidence with per-element traceability. For regulatory-grade work, the difference between a summary and a structured evidence package is the difference between a literature review and a regulatory submission.
+**Response:** ArcaScience does not compete with Sanofi's internal AI investments. It complements them. ARTEMIS handles case management — the operational pharmacovigilance workflow. OpenAI/Formation Bio provide general-purpose reasoning and workflow automation. ArcaScience handles upstream evidence structuring — the scientific evidence synthesis that precedes assessment. These are architecturally distinct functions. Sanofi does not have an internal equivalent to a 24-model evidence structuring pipeline validated at 92% precision against GPT-4. Building one internally would require 3-5 years and significant investment. ArcaScience is operational today.
 
-### Objection 3: "The pricing seems high for a tool — we can hire more people."
+### Objection 3: "Can't we do this with GPT-4 or an internal LLM?"
+
+**Context:** Sanofi has enterprise LLMs through OpenAI, Formation Bio, and Google Cloud.
+
+**Response:** Published evidence directly addresses this. In head-to-head comparison on the same adverse event extraction corpus, ArcaScience achieved 92% precision vs. GPT-4's 67%. The differential is 25 percentage points. General-purpose LLMs produce prose summaries. ArcaScience produces structured, normalized, source-linked evidence with per-element traceability. For regulatory-grade work, the difference between a summary and a structured evidence package is the difference between a literature review and a regulatory submission. Slide 15 provides the detailed comparison.
+
+### Objection 4: "The pricing seems high for a tool — we can hire more people."
 
 **Context:** Enterprise SaaS pricing compared to headcount may face procurement scrutiny.
 
 **Response:** At $200K-$300K/year for enterprise deployment, ArcaScience costs less than two mid-level regulatory affairs FTEs. If the platform reduces evidence assembly time by 60% across even five PSUR cycles, the labor hour recovery alone exceeds the investment. Additionally, headcount does not address the structural bottleneck — more people doing manual evidence assembly still face the same fragmentation, cross-referencing, and normalization challenges. ArcaScience addresses the process, not just the capacity.
 
-### Objection 4: "How do we know this works for our specific therapeutic areas?"
+### Objection 5: "How do we know this works for our specific therapeutic areas?"
 
 **Context:** Sanofi's pipeline is concentrated in immunology, oncology, rare disease, neurology, and vaccines.
 
 **Response:** ArcaScience's models are task-specific (entity extraction, normalization, linking), not therapeutic-area-specific. They were trained on data spanning all therapeutic areas and all clinical phases. Validated deployment already exists at Sanofi in rare disease. Published validation covers 12 therapeutic areas including oncology, immunology, and neurology. The pilot is specifically designed to test performance on Sanofi's priority assets before any broader commitment.
 
-### Objection 5: "What about data security? We can't expose proprietary clinical data."
+### Objection 6: "What about data security? We can't expose proprietary clinical data."
 
 **Context:** Sanofi's internal trial data, regulatory submissions, and patient-level safety data are highly confidential.
 
 **Response:** ArcaScience operates under ISO 27001, SOC 2 Type II, HIPAA, GDPR, and HDS certification. Customer-managed encryption keys ensure Sanofi retains control of data encryption. Data segregation is enforced at the infrastructure level — no cross-client data access. For maximum security, on-premises deployment is available via Kubernetes-portable architecture, meaning ArcaScience models can operate entirely within Sanofi's infrastructure with no external data transmission.
 
-### Objection 6: "We need to run this through our AI governance process."
+### Objection 7: "We need to run this through our AI governance process."
 
 **Context:** Sanofi's IRAG body and AI Risk Assessment tool must evaluate new AI deployments.
 
-**Response:** We actively welcome this. ArcaScience's architecture is designed for exactly this kind of review. We will provide: (1) complete technical documentation, (2) model validation evidence including peer-reviewed publications, (3) compliance certifications, (4) data flow architecture, (5) intended use specification, and (6) known limitations disclosure. Our suggestion is to initiate the IRAG review in parallel with the scoping session, so governance and operational planning proceed concurrently.
+**Response:** We actively welcome this. ArcaScience's architecture is designed for exactly this kind of review. We will provide: (1) complete technical documentation, (2) model validation evidence including peer-reviewed publications, (3) compliance certifications, (4) data flow architecture, (5) intended use specification, and (6) known limitations disclosure. Our suggestion is to initiate the IRAG review in parallel with the scoping session, so governance and operational planning proceed concurrently. Under the incoming CEO's governance mandate, a successful IRAG review is itself a demonstration of responsible AI deployment.
 
-### Objection 7: "Lionel's team already has efficient processes. Why change what works?"
+### Objection 8: "Lionel's team already has efficient processes. Why change what works?"
 
-**Context:** Bascles has built a high-performing CSO organization over 15+ years. Change may be perceived as criticism.
+**Context:** Bascles has built a high-performing CSO organization over 15+ years. His SMILE program and digital trials initiatives demonstrate operational excellence. Change may be perceived as criticism.
 
-**Response:** This is not about replacing what works — it is about extending its reach. Lionel's teams are among the best in the industry. The challenge is not capability — it is throughput. With 25 readouts and 12 blockbuster assets in the near-term pipeline, the volume of evidence synthesis required exceeds what any team can handle manually without either hiring significantly or accepting longer timelines. ArcaScience is force multiplication for an already excellent team.
+**Response:** This is not about replacing what works — it is about extending its reach. Lionel's teams are among the best in the industry — the SMILE program, the 12-year patient centricity roadmap, and the digital trials pioneering all demonstrate that. The challenge is not capability — it is throughput. With 25 readouts and 12 blockbuster assets in the near-term pipeline, plus 30+ regulatory submissions planned for 2026-2027, the volume of evidence synthesis required exceeds what any team can handle manually without either hiring significantly or accepting longer timelines. ArcaScience is force multiplication for an already excellent team — the same principle as the digital trials and wearables innovations Lionel has championed.
 
-### Objection 8: "What happens if ArcaScience as a company doesn't survive?"
+### Objection 9: "What happens if ArcaScience as a company doesn't survive?"
 
 **Context:** Sanofi may have concerns about vendor viability for a strategic infrastructure dependency.
 
 **Response:** Three mitigations. (1) On-premises deployment option means Sanofi can operate ArcaScience models within its own infrastructure, reducing dependency on ArcaScience-hosted services. (2) 20+ pharmaceutical clients provide revenue diversification — ArcaScience is not dependent on any single account. (3) The platform's outputs (structured evidence packages) are in standard formats (MedDRA, FHIR, OMOP) — they are not locked into a proprietary format that becomes inaccessible without ArcaScience.
 
+### Objection 10: "The leadership transition means Pius and Lionel may not have decision authority right now."
+
+**Context:** During the interim CEO period (Feb 17 - Apr 29), budget authority and strategic initiative approval may be constrained.
+
+**Response:** The three asks — scoping session, IRAG review, and pilot agreement — are operational-level decisions within existing vendor relationship governance. They do not require new strategic authorization. The scoping session and governance review can proceed during the transition, positioning the pilot for approval when the incoming CEO establishes her review cadence. Early demonstrable results serve both Pius and Lionel in the new strategic context.
+
 ---
 
-*End of document. All claims verified against arcascience.ai, arcascienceval.live, and internal positioning audit. No regulatory overclaims. Scientific coherence maintained. Framing aligned with Sanofi's published transformation agenda.*
+*End of document. All claims verified against arcascience.ai, arcascienceval.live, internal positioning audit (Document 05), and peer-reviewed publications. No regulatory overclaims. Scientific coherence maintained. Framing aligned with Sanofi's Board-mandated strategic priorities and incoming leadership context. CEO transition (February 12, 2026) fully integrated. No references to outgoing CEO Paul Hudson.*
