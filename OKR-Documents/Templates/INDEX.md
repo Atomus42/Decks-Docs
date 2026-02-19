@@ -15,6 +15,7 @@
 | **T5** | [Sprint / Week Planning](T5-Sprint-Week-Planning.md) | Detailed weekly plan per owner with KR targets, dependencies, risks, end-of-week checkpoint | Every Monday morning |
 | **T6** | [Decision Log](T6-Decision-Log.md) | Track decisions with context, options, rationale, and review dates | Ongoing — every significant decision |
 | **T7** | [Fixing Meeting — 2026-02-19](T7-Fixing-Meeting-2026-02-19.md) | Today's Fixing session covering O1 quality + O2 validation + O3 pipeline health + cross-objective issues | Thursday 19 Feb 2026 |
+| **T8** | [Fixing Slide Deck Template](T8-Fixing-Slide-Deck-Template.md) | 13-slide reporting deck for the Fixing meeting — whole team sees what each objective delivered, KR dashboards, pipeline funnel, red flags, value chain, action plan | Every Thursday Fixing |
 
 ---
 
@@ -26,7 +27,7 @@
 | **Every Day** | T2 Agenda 1 (Daily Scoreboard), T4 Section 3 (Owner Checklists) |
 | **Tuesday** | T2 Agenda 2 (Pipeline Review) |
 | **Wednesday** | T2 Agenda 3 (Therapeutic Axis Standup) |
-| **Thursday** | T2 Agenda 4 (Fixing Session) or T7 (Full O1/O2/O3 Fixing) |
+| **Thursday** | T2 Agenda 4 (Fixing Session) or T7 (Full O1/O2/O3 Fixing) or T8 (Slide Deck) |
 | **Friday** | T2 Agenda 5 (Forecast), T4 Section 2 (Weekly Retro), T4 Section 6 (Risk Check) |
 | **As needed** | T1 (Task Framing), T3 (Spec Framing), T6 (Decision Log), T2 Agenda 6 (Escalation) |
 
