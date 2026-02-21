@@ -2,14 +2,15 @@
 --
 --  STRATEGIE VISUELLE HEIKIN ASHI WEEKLY (12G/6R) — TOUT-EN-UN
 --  Pour FXCM Trading Station Desktop (Lua / Indicore SDK)
+--  Compatible avec TOUTES les versions de Trading Station
 --
---  CE FICHIER FAIT TOUT:
---  ✔ Affiche les bougies Heikin Ashi (vertes/rouges) sur le graphique
---  ✔ Affiche des fleches BUY / SELL avec texte sur le graphique
---  ✔ Affiche le compteur de streak (1, 2, 3... 12) sous chaque bougie
---  ✔ Colore les zones "en position" vs "hors position"
---  ✔ Simule la strategie sur TOUT l'historique visible
---  ✔ Montre les resultats (nombre de trades, P&L) dans un tableau
+--  CE FICHIER AFFICHE SUR LE GRAPHIQUE:
+--  - Les bougies Heikin Ashi (vertes/rouges)
+--  - Des fleches BUY (vertes, sous la bougie) aux signaux d'achat
+--  - Des fleches SELL (rouges, au-dessus) aux signaux de vente
+--  - Le texte "BUY" et "SELL +X%" a cote des fleches
+--  - Le compteur de streak (1, 2, 3... 12) sous chaque bougie
+--  - Des points bleus au-dessus des bougies quand "en position"
 --
 --  BACKTEST ORIGINAL (2 ans, BTC/USD 1H):
 --  +78.40% | Sharpe 1.53 | MaxDD -17.78% | 53% win rate | PF 1.94
@@ -38,24 +39,17 @@ local ha_high_out = nil;
 local ha_low_out = nil;
 local ha_close_out = nil;
 
--- Fleches et texte
-local buy_arrow = nil;       -- Fleche BUY
-local sell_arrow = nil;      -- Fleche SELL
-local streak_text = nil;     -- Compteur streak
-local pos_marker = nil;      -- Marqueur de position (dot en position)
+-- Fleches et textes (createTextOutput — compatible toutes versions)
+local buy_arrow = nil;       -- Fleche BUY (Wingdings)
+local buy_label = nil;       -- Texte "BUY" a cote de la fleche
+local sell_arrow = nil;      -- Fleche SELL (Wingdings)
+local sell_label = nil;      -- Texte "SELL +X%" a cote de la fleche
+local streak_text = nil;     -- Compteur streak (1, 2, 3...)
+local pos_marker = nil;      -- Point bleu quand en position
 
--- Suivi de position (simulation)
+-- Suivi de position (simulation sur l'historique)
 local in_position = false;
 local entry_price = 0;
-local total_trades = 0;
-local winning_trades = 0;
-local total_pnl_pct = 0;
-
--- Polices pour drawLabel1
-local font_buy = nil;
-local font_sell = nil;
-local font_info = nil;
-local label_id = 0;
 
 
 -- =============================================================================
@@ -65,8 +59,8 @@ function Init()
     indicator:name("HA 12G/6R Visual Strategy");
     indicator:description(
         "Strategie visuelle Heikin Ashi 12G/6R.\n" ..
-        "Affiche bougies HA, fleches BUY/SELL, compteur streak,\n" ..
-        "et simule la strategie sur tout l'historique.\n" ..
+        "Affiche bougies HA, fleches BUY/SELL, compteur streak.\n" ..
+        "Simule la strategie sur tout l'historique visible.\n" ..
         "Backtest: +78.40% | Sharpe 1.53 | PF 1.94"
     );
     indicator:requiredSource(core.Bar);
@@ -79,11 +73,9 @@ function Init()
 
     indicator.parameters:addInteger("green_threshold",
         "Bougies HA vertes pour BUY", "", 12, 1, 50);
-    --  CHANGEZ CE NOMBRE pour modifier le seuil d'entree (defaut: 12)
 
     indicator.parameters:addInteger("red_threshold",
         "Bougies HA rouges pour SELL", "", 6, 1, 50);
-    --  CHANGEZ CE NOMBRE pour modifier le seuil de sortie (defaut: 6)
 
     -- =====================================================================
     -- PARAMETRES: Visuel
@@ -99,7 +91,7 @@ function Init()
     indicator.parameters:addColor("clrSell",
         "Fleche et texte SELL", "", core.rgb(255, 60, 60));
     indicator.parameters:addColor("clrInPos",
-        "Marqueur 'en position'", "", core.rgb(100, 180, 255));
+        "Marqueur en position", "", core.rgb(100, 180, 255));
 
     indicator.parameters:addBoolean("showStreak",
         "Afficher compteur streak", "", true);
@@ -122,7 +114,7 @@ function Prepare(nameOnly)
     end
 
     -- =====================================================================
-    -- Bougies Heikin Ashi (4 streams regroupes en candle group)
+    -- 4 streams pour dessiner les bougies Heikin Ashi
     -- =====================================================================
     ha_open_out = instance:addStream("HA_O", core.Line, name .. ".Open",
         "HA Open", instance.parameters.clrBullCandle, 0);
@@ -133,22 +125,39 @@ function Prepare(nameOnly)
     ha_close_out = instance:addStream("HA_C", core.Line, name .. ".Close",
         "HA Close", instance.parameters.clrBullCandle, 0);
 
+    -- Regrouper en bougies visuelles
     instance:createCandleGroup("HA", "Bougies Heikin Ashi",
         ha_open_out, ha_high_out, ha_low_out, ha_close_out);
 
     -- =====================================================================
-    -- Fleches BUY / SELL (Wingdings)
-    -- \233 = grosse fleche haut, \234 = grosse fleche bas
+    -- Fleche BUY: grosse fleche verte vers le haut, sous la bougie
+    -- Wingdings char 233 = grosse fleche vers le haut
     -- =====================================================================
-    buy_arrow = instance:createTextOutput("BUY", "BUY Signal",
-        "Wingdings", 16,
+    buy_arrow = instance:createTextOutput("BuyArrow", "BUY Arrow",
+        "Wingdings", 18,
         core.H_Center, core.V_Top,
         instance.parameters.clrBuy, 0);
 
-    sell_arrow = instance:createTextOutput("SELL", "SELL Signal",
-        "Wingdings", 16,
+    -- Texte "BUY" juste en dessous de la fleche
+    buy_label = instance:createTextOutput("BuyText", "BUY Label",
+        "Arial", 10,
+        core.H_Center, core.V_Top,
+        instance.parameters.clrBuy, -15);
+
+    -- =====================================================================
+    -- Fleche SELL: grosse fleche rouge vers le bas, au-dessus de la bougie
+    -- Wingdings char 234 = grosse fleche vers le bas
+    -- =====================================================================
+    sell_arrow = instance:createTextOutput("SellArrow", "SELL Arrow",
+        "Wingdings", 18,
         core.H_Center, core.V_Bottom,
         instance.parameters.clrSell, 0);
+
+    -- Texte "SELL +X%" juste au-dessus de la fleche
+    sell_label = instance:createTextOutput("SellText", "SELL Label",
+        "Arial", 10,
+        core.H_Center, core.V_Bottom,
+        instance.parameters.clrSell, -15);
 
     -- =====================================================================
     -- Compteur streak (petit texte sous les bougies)
@@ -159,49 +168,23 @@ function Prepare(nameOnly)
         core.rgb(180, 180, 180), 0);
 
     -- =====================================================================
-    -- Marqueur de position (petit point quand en position)
+    -- Marqueur de position (petit cercle quand en position)
+    -- Wingdings char 108 = losange plein (compatible toutes versions)
     -- =====================================================================
     pos_marker = instance:createTextOutput("InPos", "In Position",
-        "Wingdings", 8,
+        "Wingdings", 6,
         core.H_Center, core.V_Bottom,
         instance.parameters.clrInPos, 0);
 
     -- Reinitialiser la simulation
     in_position = false;
     entry_price = 0;
-    total_trades = 0;
-    winning_trades = 0;
-    total_pnl_pct = 0;
-    label_id = 10000;
-
-    -- Creer les polices pour les labels texte BUY/SELL
-    font_buy = core.host:execute("createFont", "Arial", 10, true, false);
-    font_sell = core.host:execute("createFont", "Arial", 10, true, false);
-    font_info = core.host:execute("createFont", "Arial", 9, true, false);
-end
-
-
--- =============================================================================
--- FONCTION ReleaseInstance()
--- Nettoyer les polices a la fermeture (OBLIGATOIRE pour eviter les fuites)
--- =============================================================================
-function ReleaseInstance()
-    if font_buy ~= nil then
-        core.host:execute("deleteFont", font_buy);
-    end
-    if font_sell ~= nil then
-        core.host:execute("deleteFont", font_sell);
-    end
-    if font_info ~= nil then
-        core.host:execute("deleteFont", font_info);
-    end
 end
 
 
 -- =============================================================================
 -- FONCTION Update()
 -- Appelee pour CHAQUE bougie de l'historique.
--- Calcule le HA, compte le streak, simule la strategie, dessine tout.
 -- =============================================================================
 function Update(period, mode)
     if period < 1 then
@@ -216,8 +199,10 @@ function Update(period, mode)
     local c_low   = source.low[period];
     local c_close = source.close[period];
 
+    -- HA Close = moyenne des 4 prix
     local new_ha_close = (c_open + c_high + c_low + c_close) / 4.0;
 
+    -- HA Open
     local new_ha_open;
     if period <= 1 then
         new_ha_open = (c_open + c_close) / 2.0;
@@ -225,10 +210,11 @@ function Update(period, mode)
         new_ha_open = (ha_open_out[period - 1] + ha_close_out[period - 1]) / 2.0;
     end
 
+    -- HA High / Low
     local new_ha_high = math.max(c_high, new_ha_open, new_ha_close);
     local new_ha_low  = math.min(c_low, new_ha_open, new_ha_close);
 
-    -- Ecrire dans les streams (dessine les bougies HA sur le graphique)
+    -- Ecrire dans les streams (dessine les bougies HA)
     ha_open_out[period] = new_ha_open;
     ha_close_out[period] = new_ha_close;
     ha_high_out[period] = new_ha_high;
@@ -282,30 +268,23 @@ function Update(period, mode)
     end
 
     -- ==================================================================
-    -- 4. SIMULER LA STRATEGIE (sur tout l'historique)
+    -- 4. SIMULER LA STRATEGIE
     -- ==================================================================
     local green_threshold = instance.parameters.green_threshold;
     local red_threshold = instance.parameters.red_threshold;
 
-    -- ----- SIGNAL D'ACHAT -----
+    -- ---- SIGNAL BUY ----
     if consec_green >= green_threshold and not in_position then
         in_position = true;
-        entry_price = c_close;  -- prix d'entree = close de la bougie reelle
+        entry_price = c_close;
 
-        -- Fleche BUY (Wingdings \233 = grosse fleche vers le haut)
+        -- Fleche verte vers le haut sous la bougie
         buy_arrow:set(period, source.low[period], "\233");
-
-        -- Label texte "BUY" au-dessus de la fleche
-        label_id = label_id + 1;
-        core.host:execute("drawLabel1", label_id,
-            source:date(period), core.CR_CHART,
-            source.low[period], core.CR_CHART,
-            core.H_Center, core.V_Top,
-            font_buy, instance.parameters.clrBuy,
-            "BUY");
+        -- Texte "BUY" sous la fleche
+        buy_label:set(period, source.low[period], "BUY");
     end
 
-    -- ----- SIGNAL DE VENTE -----
+    -- ---- SIGNAL SELL ----
     if consec_red >= red_threshold and in_position then
         in_position = false;
 
@@ -314,71 +293,27 @@ function Update(period, mode)
         if entry_price > 0 then
             trade_pnl = ((c_close - entry_price) / entry_price) * 100;
         end
-        total_trades = total_trades + 1;
-        total_pnl_pct = total_pnl_pct + trade_pnl;
-        if trade_pnl > 0 then
-            winning_trades = winning_trades + 1;
-        end
 
-        -- Fleche SELL (Wingdings \234 = grosse fleche vers le bas)
+        -- Fleche rouge vers le bas au-dessus de la bougie
         sell_arrow:set(period, source.high[period], "\234");
 
-        -- Label texte "SELL" + P&L
-        label_id = label_id + 1;
-        local pnl_text = "SELL";
+        -- Texte "SELL +X%" au-dessus de la fleche
+        local pnl_str;
         if trade_pnl >= 0 then
-            pnl_text = "SELL +" .. string.format("%.1f", trade_pnl) .. "%";
+            pnl_str = "SELL +" .. string.format("%.1f", trade_pnl) .. "%";
         else
-            pnl_text = "SELL " .. string.format("%.1f", trade_pnl) .. "%";
+            pnl_str = "SELL " .. string.format("%.1f", trade_pnl) .. "%";
         end
-        core.host:execute("drawLabel1", label_id,
-            source:date(period), core.CR_CHART,
-            source.high[period], core.CR_CHART,
-            core.H_Center, core.V_Bottom,
-            font_sell, instance.parameters.clrSell,
-            pnl_text);
+        sell_label:set(period, source.high[period], pnl_str);
 
         entry_price = 0;
     end
 
     -- ==================================================================
-    -- 5. AFFICHER MARQUEUR "EN POSITION"
+    -- 5. MARQUEUR "EN POSITION" (point bleu)
     -- ==================================================================
     if instance.parameters.showPositionDots and in_position then
-        -- Petit point bleu au-dessus de chaque bougie quand en position
-        -- Wingdings \159 = petit cercle plein
-        pos_marker:set(period, source.high[period], "\159");
-    end
-
-    -- ==================================================================
-    -- 6. TABLEAU RECAPITULATIF (sur la derniere bougie)
-    -- ==================================================================
-    if period == source:size() - 1 then
-        -- Afficher un resume en haut a droite du graphique
-        local win_rate = 0;
-        if total_trades > 0 then
-            win_rate = (winning_trades / total_trades) * 100;
-        end
-
-        local status_text;
-        if in_position then
-            status_text = "EN POSITION";
-        else
-            status_text = "HORS POSITION";
-        end
-
-        local summary = "HA 12G/6R | "
-            .. "Trades: " .. total_trades
-            .. " | Win: " .. string.format("%.0f", win_rate) .. "%"
-            .. " | P&L: " .. string.format("%.1f", total_pnl_pct) .. "%"
-            .. " | " .. status_text;
-
-        label_id = label_id + 1;
-        core.host:execute("drawLabel1", label_id,
-            5, core.CR_RIGHT,
-            5, core.CR_TOP,
-            core.H_Right, core.V_Top,
-            font_info, core.rgb(255, 255, 255),
-            summary);
+        -- Wingdings char 108 = losange plein
+        pos_marker:set(period, source.high[period], "\108");
     end
 end
