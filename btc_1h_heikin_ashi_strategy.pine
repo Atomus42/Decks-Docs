@@ -90,8 +90,9 @@ plotshape(showSignals and longExit,
      color=color.new(#EF5350, 0), size=size.small, text="Exit")
 
 // Green/Red streak as a background intensity (optional visual)
-streakColor = isGreen ? color.new(#26A69A, 100 - math.min(consecGreen * 5, 70)) :
-                        color.new(#EF5350, 100 - math.min(consecRed * 5, 70))
+greenAlpha = 100 - math.min(consecGreen * 5, 70)
+redAlpha = 100 - math.min(consecRed * 5, 70)
+streakColor = isGreen ? color.new(#26A69A, greenAlpha) : color.new(#EF5350, redAlpha)
 bgcolor(showCounts ? streakColor : na, title="Streak Intensity")
 
 // ============================================================================
