@@ -51,17 +51,21 @@
 -- =============================================================================
 -- VARIABLES GLOBALES (ne pas modifier)
 -- =============================================================================
-local source = nil;          -- Source de donnees (bougies)
-local ha_open = 0;           -- Ouverture Heikin Ashi precedente
-local ha_close = 0;          -- Fermeture Heikin Ashi precedente
-local consec_green = 0;      -- Compteur de bougies vertes consecutives
-local consec_red = 0;        -- Compteur de bougies rouges consecutives
-local ha_initialized = false;-- Etat d'initialisation du HA
-local Account = nil;         -- Compte de trading
-local base_size = 0;         -- Taille de lot de base
-local offer_id = nil;        -- ID de l'offre
-local Amount = 0;            -- Montant a trader
-local custom_id = "";        -- ID unique de la strategie
+local Source = nil;              -- Source de donnees (bougies)
+local ha_open = 0;               -- Ouverture Heikin Ashi precedente
+local ha_close = 0;              -- Fermeture Heikin Ashi precedente
+local consec_green = 0;          -- Compteur de bougies vertes consecutives
+local consec_red = 0;            -- Compteur de bougies rouges consecutives
+local ha_initialized = false;    -- Etat d'initialisation du HA
+local Account = nil;             -- Compte de trading
+local BaseSize = 0;              -- Taille de lot de base (unites minimum)
+local Offer = nil;               -- ID de l'offre (instrument)
+local Amount = 0;                -- Montant a trader (en lots)
+local CanClose = false;          -- Si le compte supporte les ordres de fermeture
+local SetLimit = false;          -- Si on utilise un take profit
+local SetStop = false;           -- Si on utilise un stop loss
+local Limit = 0;                 -- Take profit en pips
+local Stop = 0;                  -- Stop loss en pips
 
 
 -- =============================================================================
@@ -107,30 +111,18 @@ function Init()
     -- =====================================================================
     strategy.parameters:addGroup("Parametres de Trading");
 
-    -- Type de prix (Bid ou Ask)
-    strategy.parameters:addBoolean("type", "Type de prix", "", true);
-    strategy.parameters:setFlag("type", core.FLAG_BIDASK);
-
-    -- Timeframe (periode des bougies)
-    -- Par defaut: H1 (1 heure) — c'est le timeframe optimal pour cette strategie
-    strategy.parameters:addString("timeframe", "Timeframe", "", "H1");
-    strategy.parameters:setFlag("timeframe", core.FLAG_PERIODS);
-
-    -- Autoriser le trading automatique
-    strategy.parameters:addBoolean("AllowTrade", "Autoriser le trading automatique", "", false);
-    strategy.parameters:setFlag("AllowTrade", core.FLAG_ALLOW_TRADE);
-
     -- Compte de trading
     strategy.parameters:addString("Account", "Compte de trading", "", "");
     strategy.parameters:setFlag("Account", core.FLAG_ACCOUNT);
 
     -- Taille du trade
-    strategy.parameters:addDouble("Amount", "Taille du trade (lots)", "", 1, 0.01, 10000);
-    --                                                                    ^
+    strategy.parameters:addInteger("Amount", "Taille du trade (lots)", "", 1, 1, 1000);
+    --                                                                      ^
     --                                             CHANGEZ CE NOMBRE (defaut: 1 lot)
 
-    -- ID personnalise pour identifier les trades de cette strategie
-    strategy.parameters:addString("custom_id", "ID de la strategie", "", "HA_12G6R");
+    -- Autoriser le trading automatique
+    strategy.parameters:addBoolean("AllowTrade", "Autoriser le trading automatique", "", false);
+    strategy.parameters:setFlag("AllowTrade", core.FLAG_ALLOW_TRADE);
 
     -- =====================================================================
     -- GROUPE: Gestion du Risque (Stop Loss / Take Profit)
@@ -139,29 +131,29 @@ function Init()
 
     -- Stop Loss (en pips)
     -- Par defaut: desactive. Activez si vous voulez un filet de securite.
-    strategy.parameters:addBoolean("use_stop", "Utiliser un Stop Loss", "", false);
-    strategy.parameters:addDouble("stop_pips", "Stop Loss (pips)", "", 500, 1, 100000);
-    --                                                                  ^^^
+    strategy.parameters:addBoolean("SetStop", "Utiliser un Stop Loss", "", false);
+    strategy.parameters:addInteger("Stop", "Stop Loss (pips)", "", 500, 1, 100000);
+    --                                                             ^^^
     --                                     CHANGEZ CE NOMBRE (defaut: 500 pips)
 
     -- Take Profit (en pips)
     -- Par defaut: desactive. La sortie est geree par la regle des 6 rouges.
-    strategy.parameters:addBoolean("use_limit", "Utiliser un Take Profit", "", false);
-    strategy.parameters:addDouble("limit_pips", "Take Profit (pips)", "", 1000, 1, 100000);
-    --                                                                   ^^^^
+    strategy.parameters:addBoolean("SetLimit", "Utiliser un Take Profit", "", false);
+    strategy.parameters:addInteger("Limit", "Take Profit (pips)", "", 1000, 1, 100000);
+    --                                                                ^^^^
     --                                    CHANGEZ CE NOMBRE (defaut: 1000 pips)
 
     -- =====================================================================
     -- GROUPE: Alertes
     -- =====================================================================
     strategy.parameters:addGroup("Alertes");
-    strategy.parameters:addBoolean("show_alert", "Afficher les alertes popup", "", true);
-    strategy.parameters:addBoolean("play_sound", "Jouer un son", "", false);
-    strategy.parameters:addFile("sound_file", "Fichier son", "", "");
-    strategy.parameters:setFlag("sound_file", core.FLAG_SOUND);
-    strategy.parameters:addBoolean("send_email", "Envoyer un email", "", false);
-    strategy.parameters:addString("email", "Adresse email", "", "");
-    strategy.parameters:setFlag("email", core.FLAG_EMAIL);
+    strategy.parameters:addBoolean("ShowAlert", "Afficher les alertes popup", "", true);
+    strategy.parameters:addBoolean("PlaySound", "Jouer un son", "", false);
+    strategy.parameters:addFile("SoundFile", "Fichier son", "", "");
+    strategy.parameters:setFlag("SoundFile", core.FLAG_SOUND);
+    strategy.parameters:addBoolean("SendEmail", "Envoyer un email", "", false);
+    strategy.parameters:addString("Email", "Adresse email", "", "");
+    strategy.parameters:setFlag("Email", core.FLAG_EMAIL);
 end
 
 
@@ -172,9 +164,7 @@ end
 -- =============================================================================
 function Prepare(nameOnly)
     -- Nom affiche dans Trading Station
-    local name = profile:id() .. "(" .. instance.bid:name() .. ")"
-        .. " HA " .. instance.parameters.green_threshold .. "G/"
-        .. instance.parameters.red_threshold .. "R";
+    local name = profile:id() .. "(" .. instance.bid:name() .. ")";
     instance:name(name);
     if nameOnly then
         return;
@@ -183,14 +173,19 @@ function Prepare(nameOnly)
     -- Charger les parametres
     Account = instance.parameters.Account;
     Amount = instance.parameters.Amount;
-    custom_id = instance.parameters.custom_id;
-
-    -- S'abonner aux donnees de prix (bougies)
-    source = ExtSubscribe(1, nil, instance.parameters.timeframe, instance.parameters.type, "bar");
+    SetLimit = instance.parameters.SetLimit;
+    SetStop = instance.parameters.SetStop;
+    Limit = instance.parameters.Limit;
+    Stop = instance.parameters.Stop;
 
     -- Informations sur l'instrument
-    base_size = core.host:execute("getTradingProperty", "baseUnitSize", instance.bid:instrument(), Account);
-    offer_id = core.host:findTable("offers"):find("Instrument", instance.bid:instrument()).OfferID;
+    BaseSize = core.host:execute("getTradingProperty", "baseUnitSize", instance.bid:instrument(), Account);
+    Offer = core.host:findTable("offers"):find("Instrument", instance.bid:instrument()).OfferID;
+    CanClose = core.host:execute("getTradingProperty", "canCreateMarketClose", instance.bid:instrument(), Account);
+
+    -- S'abonner aux donnees de prix (bougies)
+    -- Le 2eme parametre nil = instrument courant, "H1" = timeframe 1 heure
+    Source = ExtSubscribe(1, nil, "H1", instance.parameters.Account == "B", "bar");
 
     -- Reinitialiser l'etat Heikin Ashi
     ha_initialized = false;
@@ -270,36 +265,35 @@ function ExtUpdate(id, source, period)
 
     local green_threshold = instance.parameters.green_threshold;
     local red_threshold = instance.parameters.red_threshold;
-    local has_position = HasOpenTrade();
 
     -- -----------------------------------------------------------------
     -- CONDITION D'ACHAT:
     -- Le streak vert a atteint le seuil ET on n'a pas de position
     -- -----------------------------------------------------------------
-    if consec_green >= green_threshold and not has_position then
+    if consec_green >= green_threshold and not haveTrades("B") then
         -- ACHETER !
-        OpenBuyTrade();
+        enter("B");
 
         -- Afficher l'alerte
-        local msg = "ACHAT: " .. instance.bid:instrument()
+        local msg = ">>> ACHAT: " .. instance.bid:instrument()
             .. " | " .. consec_green .. " bougies HA vertes"
             .. " | Prix: " .. string.format("%.5f", source.close[period]);
-        SendAlert(msg);
+        Signal(msg);
     end
 
     -- -----------------------------------------------------------------
     -- CONDITION DE VENTE:
     -- Le streak rouge a atteint le seuil ET on a une position ouverte
     -- -----------------------------------------------------------------
-    if consec_red >= red_threshold and has_position then
+    if consec_red >= red_threshold and haveTrades("B") then
         -- VENDRE ! (fermer la position)
-        CloseAllTrades();
+        exit("B");
 
         -- Afficher l'alerte
-        local msg = "VENTE: " .. instance.bid:instrument()
+        local msg = ">>> VENTE: " .. instance.bid:instrument()
             .. " | " .. consec_red .. " bougies HA rouges"
             .. " | Prix: " .. string.format("%.5f", source.close[period]);
-        SendAlert(msg);
+        Signal(msg);
     end
 end
 
@@ -307,99 +301,143 @@ end
 -- =============================================================================
 -- FONCTIONS DE TRADING
 -- Ces fonctions gerent l'ouverture et la fermeture des positions.
--- Vous n'avez pas besoin de les modifier.
+-- Utilise le pattern standard FXCM avec terminal:execute.
 -- =============================================================================
 
-
--- Verifie si on a deja un trade ouvert par cette strategie
-function HasOpenTrade()
+-- Verifie si on a deja un trade ouvert dans la direction donnee
+-- BuySell = "B" pour Buy (achat) ou "S" pour Sell (vente)
+function haveTrades(BuySell)
+    local dominated = false;
     local trades = core.host:findTable("trades");
     local enum = trades:enumerator();
     while enum:next() do
         local row = enum:current();
         if row.AccountID == Account
-            and row.OfferID == offer_id
-            and row.BS == "B"  -- Buy seulement (long only)
-            and (row.QTXT == custom_id or custom_id == "") then
-            return true;
+            and row.OfferID == Offer
+            and row.BS == BuySell then
+            dominated = true;
         end
     end
-    return false;
+    return dominated;
 end
 
 
--- Ouvre un trade ACHAT (BUY)
-function OpenBuyTrade()
+-- Ouvre un trade dans la direction donnee
+-- BuySell = "B" pour acheter, "S" pour vendre
+function enter(BuySell)
     if not instance.parameters.AllowTrade then
         -- Trading automatique desactive: on affiche juste le signal
         core.host:trace("SIGNAL ACHAT (trading auto desactive)");
         return;
     end
 
-    -- Calculer la taille du trade en unites
-    local lot_size = Amount * base_size;
-
-    -- Creer l'ordre d'achat
+    -- Creer l'ordre d'achat au marche
     local valuemap = core.valuemap();
-    valuemap.Command = "CreateOrder";
-    valuemap.OrderType = "OM";       -- Ordre au Marche (Market Order)
-    valuemap.OfferID = offer_id;
+    valuemap.OrderType = "OM";           -- OM = Open Market (ordre au marche)
+    valuemap.OfferID = Offer;
     valuemap.AcctID = Account;
-    valuemap.Quantity = lot_size;
-    valuemap.BuySell = "B";          -- B = Buy (Achat)
-    valuemap.CustomID = custom_id;
+    valuemap.Quantity = Amount * BaseSize;
+    valuemap.BuySell = BuySell;
 
-    -- Ajouter un Stop Loss si active
-    if instance.parameters.use_stop then
-        valuemap.RateStop = instance.bid:tick() - (instance.parameters.stop_pips * instance.bid:pipSize());
+    -- Ajouter un Stop Loss si active (en pips, type pegged)
+    if SetStop then
+        valuemap.PegTypeStop = "O";      -- O = relatif au prix d'ouverture
+        if BuySell == "B" then
+            valuemap.PegPriceOffsetPipsStop = -Stop;   -- Stop sous le prix pour un achat
+        else
+            valuemap.PegPriceOffsetPipsStop = Stop;    -- Stop au-dessus pour une vente
+        end
     end
 
-    -- Ajouter un Take Profit si active
-    if instance.parameters.use_limit then
-        valuemap.RateLimit = instance.ask:tick() + (instance.parameters.limit_pips * instance.bid:pipSize());
+    -- Ajouter un Take Profit si active (en pips, type pegged)
+    if SetLimit then
+        valuemap.PegTypeLimit = "O";     -- O = relatif au prix d'ouverture
+        if BuySell == "B" then
+            valuemap.PegPriceOffsetPipsLimit = Limit;  -- Limit au-dessus pour un achat
+        else
+            valuemap.PegPriceOffsetPipsLimit = -Limit; -- Limit sous le prix pour une vente
+        end
     end
 
-    -- Envoyer l'ordre
-    local success, msg = terminal:execute(200, valuemap);
+    -- Envoyer l'ordre via terminal:execute
+    -- Le cookie 100 identifie cet ordre dans AsyncOperationFinished
+    local success, msg = terminal:execute(100, valuemap);
     if not success then
-        core.host:trace("ERREUR ouverture achat: " .. (msg or "inconnue"));
+        terminal:alertMessage(instance.bid:instrument(),
+            instance.bid[NOW],
+            "ERREUR ouverture: " .. (msg or "inconnue"),
+            instance.bid:date(NOW));
     else
-        core.host:trace("ACHAT ouvert: " .. Amount .. " lots");
+        core.host:trace("Ordre ACHAT envoye: " .. Amount .. " lot(s)");
     end
 end
 
 
--- Ferme tous les trades ouverts par cette strategie
-function CloseAllTrades()
+-- Ferme tous les trades ouverts dans la direction donnee
+-- BuySell = "B" pour fermer les achats
+function exit(BuySell)
     if not instance.parameters.AllowTrade then
         core.host:trace("SIGNAL VENTE (trading auto desactive)");
         return;
     end
 
-    local trades = core.host:findTable("trades");
-    local enum = trades:enumerator();
-    while enum:next() do
-        local row = enum:current();
-        if row.AccountID == Account
-            and row.OfferID == offer_id
-            and row.BS == "B"
-            and (row.QTXT == custom_id or custom_id == "") then
+    -- Determiner le cote oppose pour fermer
+    local closeSide;
+    if BuySell == "B" then
+        closeSide = "S";    -- Pour fermer un Buy, on Sell
+    else
+        closeSide = "B";    -- Pour fermer un Sell, on Buy
+    end
 
-            -- Creer l'ordre de fermeture
+    if CanClose then
+        -- Le compte supporte les ordres de fermeture directe (CM)
+        -- On utilise NetQtyFlag pour fermer toutes les positions d'un coup
+        local valuemap = core.valuemap();
+        valuemap.OrderType = "CM";           -- CM = Close Market
+        valuemap.OfferID = Offer;
+        valuemap.AcctID = Account;
+        valuemap.NetQtyFlag = "Y";           -- Fermer la position nette
+        valuemap.BuySell = closeSide;
+
+        local success, msg = terminal:execute(200, valuemap);
+        if not success then
+            terminal:alertMessage(instance.bid:instrument(),
+                instance.bid[NOW],
+                "ERREUR fermeture CM: " .. (msg or "inconnue"),
+                instance.bid:date(NOW));
+        else
+            core.host:trace("Ordre de FERMETURE (CM) envoye");
+        end
+    else
+        -- Compte FIFO ou pas de support CM: fermer avec un ordre oppose (OM)
+        local trades = core.host:findTable("trades");
+        local totalLots = 0;
+        local enum = trades:enumerator();
+        while enum:next() do
+            local row = enum:current();
+            if row.AccountID == Account
+                and row.OfferID == Offer
+                and row.BS == BuySell then
+                totalLots = totalLots + row.Lot;
+            end
+        end
+
+        if totalLots > 0 then
             local valuemap = core.valuemap();
-            valuemap.Command = "CreateOrder";
-            valuemap.OrderType = "CM";       -- Close Market (fermer au marche)
-            valuemap.OfferID = offer_id;
+            valuemap.OrderType = "OM";       -- Ordre au marche oppose
+            valuemap.OfferID = Offer;
             valuemap.AcctID = Account;
-            valuemap.Quantity = row.Lot;
-            valuemap.BuySell = "S";          -- S = Sell (pour fermer un Buy)
-            valuemap.TradeID = row.TradeID;
+            valuemap.Quantity = totalLots;
+            valuemap.BuySell = closeSide;
 
-            local success, msg = terminal:execute(201, valuemap);
+            local success, msg = terminal:execute(200, valuemap);
             if not success then
-                core.host:trace("ERREUR fermeture: " .. (msg or "inconnue"));
+                terminal:alertMessage(instance.bid:instrument(),
+                    instance.bid[NOW],
+                    "ERREUR fermeture OM: " .. (msg or "inconnue"),
+                    instance.bid:date(NOW));
             else
-                core.host:trace("Position fermee: TradeID " .. row.TradeID);
+                core.host:trace("Ordre de FERMETURE (OM oppose) envoye");
             end
         end
     end
@@ -410,96 +448,63 @@ end
 -- FONCTIONS D'ALERTE
 -- Envoie des notifications popup, son ou email selon les parametres.
 -- =============================================================================
-function SendAlert(message)
+function Signal(message)
     -- Ajouter un log dans l'onglet "Messages" de Trading Station
     core.host:trace(message);
 
     -- Popup d'alerte
-    if instance.parameters.show_alert then
-        core.host:execute("alert", message);
+    if instance.parameters.ShowAlert then
+        terminal:alertMessage(instance.bid:instrument(),
+            instance.bid[NOW],
+            message,
+            instance.bid:date(NOW));
     end
 
     -- Jouer un son
-    if instance.parameters.play_sound then
-        core.host:execute("playSound", instance.parameters.sound_file);
+    if instance.parameters.PlaySound then
+        terminal:alertSound(instance.parameters.SoundFile, false);
     end
 
     -- Envoyer un email
-    if instance.parameters.send_email then
-        core.host:execute("sendMail",
-            "HA Strategy Signal",      -- Sujet
-            message,                   -- Corps du message
-            instance.parameters.email  -- Destinataire
-        );
+    if instance.parameters.SendEmail then
+        terminal:alertEmail(instance.parameters.Email,
+            "HA Strategy Signal",
+            message);
     end
 end
 
 
 -- =============================================================================
 -- FONCTION AsyncOperationFinished()
--- Appelee quand une operation asynchrone (trade, chargement) est terminee.
--- Necessaire pour le framework Indicore.
+-- Appelee quand une operation asynchrone (trade) est terminee.
+-- Cookie 100 = ouverture, Cookie 200 = fermeture.
 -- =============================================================================
 function AsyncOperationFinished(cookie, success, message)
-    if cookie == 200 and success then
-        core.host:trace("Ordre d'achat execute avec succes");
-    elseif cookie == 200 and not success then
-        core.host:trace("Echec de l'ordre d'achat: " .. (message or ""));
-    elseif cookie == 201 and success then
-        core.host:trace("Ordre de fermeture execute avec succes");
-    elseif cookie == 201 and not success then
-        core.host:trace("Echec de la fermeture: " .. (message or ""));
-    end
-end
-
-
--- =============================================================================
--- FONCTIONS UTILITAIRES INDICORE
--- Necessaires pour le framework. Ne pas modifier.
--- =============================================================================
-
--- Souscription aux donnees de prix
-local sources = {};
-function ExtSubscribe(id, instrument, timeframe, isBid, style)
-    local source_id = id;
-    local instrument_str = instrument;
-    if instrument_str == nil then
-        instrument_str = instance.bid:instrument();
-    end
-
-    local s1, ticks;
-    if isBid then
-        s1 = core.host:execute("subscribeBid", instrument_str, nil);
-    else
-        s1 = core.host:execute("subscribeAsk", instrument_str, nil);
-    end
-
-    local from, to;
-    if timeframe == "t1" then
-        ticks = s1;
-    else
-        from = s1:date(0);
-        ticks = core.host:execute("getHistory", source_id, s1, timeframe, from, 0, 300);
-    end
-
-    sources[source_id] = ticks;
-    return ticks;
-end
-
--- Mise a jour des sources de donnees
-function ExtAsyncOperationFinished(cookie, success, message, message1, message2)
-    -- Routage vers AsyncOperationFinished pour les trades
-    if cookie >= 200 then
-        AsyncOperationFinished(cookie, success, message);
-        return;
-    end
-
-    -- Mise a jour des sources
-    local src = sources[cookie];
-    if src ~= nil then
-        local period = src:size() - 1;
-        if period >= 0 then
-            ExtUpdate(cookie, src, period);
+    if cookie == 100 then
+        if success then
+            core.host:trace(">>> Ordre d'achat EXECUTE avec succes");
+        else
+            core.host:trace(">>> ECHEC de l'ordre d'achat: " .. (message or ""));
+        end
+    elseif cookie == 200 then
+        if success then
+            core.host:trace(">>> Ordre de fermeture EXECUTE avec succes");
+        else
+            core.host:trace(">>> ECHEC de la fermeture: " .. (message or ""));
         end
     end
 end
+
+
+-- =============================================================================
+-- CHARGEMENT DE LA BIBLIOTHEQUE STANDARD (helper.lua)
+--
+-- IMPORTANT: Cette ligne charge les fonctions utilitaires fournies par
+-- Trading Station (ExtSubscribe, ExtUpdate, ExtAsyncOperationFinished, etc.)
+-- Elle DOIT etre a la fin du fichier.
+--
+-- Si Trading Station affiche une erreur "helper.lua not found", verifiez
+-- que ce dossier existe:
+-- C:\Program Files (x86)\Candleworks\FXTS2\strategies\standard\include\
+-- =============================================================================
+dofile(core.app_path() .. "\\strategies\\standard\\include\\helper.lua");
