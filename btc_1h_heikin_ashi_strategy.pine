@@ -75,10 +75,16 @@ if longExit
 // ============================================================================
 
 // Color bars based on HA candle color when in position
-barcolor(showHA and inPosition and isGreen ? color.new(#26A69A, 30) :
-         showHA and inPosition and isRed ? color.new(#EF5350, 30) :
-         showHA and not inPosition and isGreen ? color.new(#26A69A, 75) :
-         showHA and not inPosition and isRed ? color.new(#EF5350, 75) : na)
+color barCol = na
+if showHA and inPosition and isGreen
+    barCol := color.new(#26A69A, 30)
+else if showHA and inPosition and isRed
+    barCol := color.new(#EF5350, 30)
+else if showHA and not inPosition and isGreen
+    barCol := color.new(#26A69A, 75)
+else if showHA and not inPosition and isRed
+    barCol := color.new(#EF5350, 75)
+barcolor(barCol)
 
 // Entry/exit markers
 plotshape(showSignals and longEntry,
@@ -107,19 +113,21 @@ if barstate.islast
     table.cell(infoTable, 1, 0, "Value",             text_color=color.white, text_size=size.small, text_halign=text.align_right)
 
     table.cell(infoTable, 0, 1, "Entry Threshold",   text_color=color.white, text_size=size.small, text_halign=text.align_left)
-    table.cell(infoTable, 1, 1, str.tostring(greenEntry) + " green HA bars", text_color=#26A69A, text_size=size.small, text_halign=text.align_right)
+    table.cell(infoTable, 1, 1, str.tostring(greenEntry) + " green HA bars", text_color=color.new(#26A69A, 0), text_size=size.small, text_halign=text.align_right)
 
     table.cell(infoTable, 0, 2, "Exit Threshold",    text_color=color.white, text_size=size.small, text_halign=text.align_left)
-    table.cell(infoTable, 1, 2, str.tostring(redExit) + " red HA bars", text_color=#EF5350, text_size=size.small, text_halign=text.align_right)
+    table.cell(infoTable, 1, 2, str.tostring(redExit) + " red HA bars", text_color=color.new(#EF5350, 0), text_size=size.small, text_halign=text.align_right)
 
     table.cell(infoTable, 0, 3, "Timeframe",         text_color=color.white, text_size=size.small, text_halign=text.align_left)
     table.cell(infoTable, 1, 3, "1H (recommended)",   text_color=color.white, text_size=size.small, text_halign=text.align_right)
 
     table.cell(infoTable, 0, 4, "In Position",       text_color=color.white, text_size=size.small, text_halign=text.align_left)
-    table.cell(infoTable, 1, 4, inPosition ? "YES" : "NO", text_color=inPosition ? #26A69A : color.red, text_size=size.small, text_halign=text.align_right)
+    posText = inPosition ? "YES" : "NO"
+    posColor = inPosition ? color.new(#26A69A, 0) : color.red
+    table.cell(infoTable, 1, 4, posText, text_color=posColor, text_size=size.small, text_halign=text.align_right)
 
     table.cell(infoTable, 0, 5, "Green Streak",      text_color=color.white, text_size=size.small, text_halign=text.align_left)
-    table.cell(infoTable, 1, 5, str.tostring(consecGreen), text_color=#26A69A, text_size=size.small, text_halign=text.align_right)
+    table.cell(infoTable, 1, 5, str.tostring(consecGreen), text_color=color.new(#26A69A, 0), text_size=size.small, text_halign=text.align_right)
 
     table.cell(infoTable, 0, 6, "Red Streak",        text_color=color.white, text_size=size.small, text_halign=text.align_left)
-    table.cell(infoTable, 1, 6, str.tostring(consecRed), text_color=#EF5350, text_size=size.small, text_halign=text.align_right)
+    table.cell(infoTable, 1, 6, str.tostring(consecRed), text_color=color.new(#EF5350, 0), text_size=size.small, text_halign=text.align_right)
