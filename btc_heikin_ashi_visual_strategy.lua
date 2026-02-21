@@ -4,13 +4,15 @@
 --  Pour FXCM Trading Station Desktop (Lua / Indicore SDK)
 --  Compatible avec TOUTES les versions de Trading Station
 --
---  CE FICHIER AFFICHE SUR LE GRAPHIQUE:
---  - Les bougies Heikin Ashi (vertes/rouges)
+--  CE FICHIER AFFICHE SUR LE GRAPHIQUE (sans modifier les chandeliers):
 --  - Des fleches BUY (vertes, sous la bougie) aux signaux d'achat
 --  - Des fleches SELL (rouges, au-dessus) aux signaux de vente
 --  - Le texte "BUY" et "SELL +X%" a cote des fleches
 --  - Le compteur de streak (1, 2, 3... 12) sous chaque bougie
 --  - Des points bleus au-dessus des bougies quand "en position"
+--
+--  VOS CHANDELIERS ROUGE/NOIR RESTENT TELS QUELS.
+--  Le calcul Heikin Ashi se fait en arriere-plan (invisible).
 --
 --  BACKTEST ORIGINAL (2 ans, BTC/USD 1H):
 --  +78.40% | Sharpe 1.53 | MaxDD -17.78% | 53% win rate | PF 1.94
@@ -22,8 +24,7 @@
 --     *** ATTENTION: dossier "indicators", PAS "strategies" ***
 --  3. Relancez Trading Station, ouvrez un graphique BTC/USD H1
 --  4. Clic droit > Ajouter un indicateur > "HA 12G/6R Visual Strategy"
---  5. Vous verrez immediatement les bougies HA + fleches BUY/SELL
---     sur tout l'historique
+--  5. Vous verrez les fleches BUY/SELL sur vos chandeliers normaux
 --
 -- =============================================================================
 
@@ -33,17 +34,15 @@
 -- =============================================================================
 local source = nil;
 
--- Sorties visuelles (bougies HA)
-local ha_open_out = nil;
-local ha_high_out = nil;
-local ha_low_out = nil;
-local ha_close_out = nil;
+-- Calcul Heikin Ashi interne (pas affiche, juste pour les signaux)
+local ha_open_arr = {};      -- Tableau des HA Open par periode
+local ha_close_arr = {};     -- Tableau des HA Close par periode
 
 -- Fleches et textes (createTextOutput — compatible toutes versions)
 local buy_arrow = nil;       -- Fleche BUY (Wingdings)
-local buy_label = nil;       -- Texte "BUY" a cote de la fleche
+local buy_label = nil;       -- Texte "BUY"
 local sell_arrow = nil;      -- Fleche SELL (Wingdings)
-local sell_label = nil;      -- Texte "SELL +X%" a cote de la fleche
+local sell_label = nil;      -- Texte "SELL +X%"
 local streak_text = nil;     -- Compteur streak (1, 2, 3...)
 local pos_marker = nil;      -- Point bleu quand en position
 
@@ -59,8 +58,8 @@ function Init()
     indicator:name("HA 12G/6R Visual Strategy");
     indicator:description(
         "Strategie visuelle Heikin Ashi 12G/6R.\n" ..
-        "Affiche bougies HA, fleches BUY/SELL, compteur streak.\n" ..
-        "Simule la strategie sur tout l'historique visible.\n" ..
+        "Fleches BUY/SELL + compteur streak sur vos chandeliers normaux.\n" ..
+        "Le calcul HA est invisible, seuls les signaux s'affichent.\n" ..
         "Backtest: +78.40% | Sharpe 1.53 | PF 1.94"
     );
     indicator:requiredSource(core.Bar);
@@ -82,14 +81,14 @@ function Init()
     -- =====================================================================
     indicator.parameters:addGroup("Couleurs et Affichage");
 
-    indicator.parameters:addColor("clrBullCandle",
-        "Bougie HA haussiere (verte)", "", core.rgb(38, 166, 154));
-    indicator.parameters:addColor("clrBearCandle",
-        "Bougie HA baissiere (rouge)", "", core.rgb(239, 83, 80));
     indicator.parameters:addColor("clrBuy",
         "Fleche et texte BUY", "", core.rgb(0, 220, 100));
     indicator.parameters:addColor("clrSell",
         "Fleche et texte SELL", "", core.rgb(255, 60, 60));
+    indicator.parameters:addColor("clrStreakGreen",
+        "Compteur streak haussier", "", core.rgb(38, 166, 154));
+    indicator.parameters:addColor("clrStreakRed",
+        "Compteur streak baissier", "", core.rgb(239, 83, 80));
     indicator.parameters:addColor("clrInPos",
         "Marqueur en position", "", core.rgb(100, 180, 255));
 
@@ -113,32 +112,16 @@ function Prepare(nameOnly)
         return;
     end
 
-    -- =====================================================================
-    -- 4 streams pour dessiner les bougies Heikin Ashi
-    -- =====================================================================
-    ha_open_out = instance:addStream("HA_O", core.Line, name .. ".Open",
-        "HA Open", instance.parameters.clrBullCandle, 0);
-    ha_high_out = instance:addStream("HA_H", core.Line, name .. ".High",
-        "HA High", instance.parameters.clrBullCandle, 0);
-    ha_low_out = instance:addStream("HA_L", core.Line, name .. ".Low",
-        "HA Low", instance.parameters.clrBullCandle, 0);
-    ha_close_out = instance:addStream("HA_C", core.Line, name .. ".Close",
-        "HA Close", instance.parameters.clrBullCandle, 0);
-
-    -- Regrouper en bougies visuelles
-    instance:createCandleGroup("HA", "Bougies Heikin Ashi",
-        ha_open_out, ha_high_out, ha_low_out, ha_close_out);
+    -- PAS de bougies HA dessinees — on garde les chandeliers normaux
 
     -- =====================================================================
     -- Fleche BUY: grosse fleche verte vers le haut, sous la bougie
-    -- Wingdings char 233 = grosse fleche vers le haut
     -- =====================================================================
     buy_arrow = instance:createTextOutput("BuyArrow", "BUY Arrow",
         "Wingdings", 18,
         core.H_Center, core.V_Top,
         instance.parameters.clrBuy, 0);
 
-    -- Texte "BUY" juste en dessous de la fleche
     buy_label = instance:createTextOutput("BuyText", "BUY Label",
         "Arial", 10,
         core.H_Center, core.V_Top,
@@ -146,21 +129,19 @@ function Prepare(nameOnly)
 
     -- =====================================================================
     -- Fleche SELL: grosse fleche rouge vers le bas, au-dessus de la bougie
-    -- Wingdings char 234 = grosse fleche vers le bas
     -- =====================================================================
     sell_arrow = instance:createTextOutput("SellArrow", "SELL Arrow",
         "Wingdings", 18,
         core.H_Center, core.V_Bottom,
         instance.parameters.clrSell, 0);
 
-    -- Texte "SELL +X%" juste au-dessus de la fleche
     sell_label = instance:createTextOutput("SellText", "SELL Label",
         "Arial", 10,
         core.H_Center, core.V_Bottom,
         instance.parameters.clrSell, -15);
 
     -- =====================================================================
-    -- Compteur streak (petit texte sous les bougies)
+    -- Compteur streak
     -- =====================================================================
     streak_text = instance:createTextOutput("Streak", "Streak Count",
         "Arial", 7,
@@ -168,23 +149,23 @@ function Prepare(nameOnly)
         core.rgb(180, 180, 180), 0);
 
     -- =====================================================================
-    -- Marqueur de position (petit cercle quand en position)
-    -- Wingdings char 108 = losange plein (compatible toutes versions)
+    -- Marqueur de position (losange bleu)
     -- =====================================================================
     pos_marker = instance:createTextOutput("InPos", "In Position",
         "Wingdings", 6,
         core.H_Center, core.V_Bottom,
         instance.parameters.clrInPos, 0);
 
-    -- Reinitialiser la simulation
+    -- Reinitialiser
     in_position = false;
     entry_price = 0;
+    ha_open_arr = {};
+    ha_close_arr = {};
 end
 
 
 -- =============================================================================
 -- FONCTION Update()
--- Appelee pour CHAQUE bougie de l'historique.
 -- =============================================================================
 function Update(period, mode)
     if period < 1 then
@@ -192,46 +173,27 @@ function Update(period, mode)
     end
 
     -- ==================================================================
-    -- 1. CALCULER LA BOUGIE HEIKIN ASHI
+    -- 1. CALCULER LA BOUGIE HEIKIN ASHI (en arriere-plan, invisible)
     -- ==================================================================
     local c_open  = source.open[period];
     local c_high  = source.high[period];
     local c_low   = source.low[period];
     local c_close = source.close[period];
 
-    -- HA Close = moyenne des 4 prix
     local new_ha_close = (c_open + c_high + c_low + c_close) / 4.0;
 
-    -- HA Open
     local new_ha_open;
-    if period <= 1 then
+    if period <= 1 or ha_open_arr[period - 1] == nil then
         new_ha_open = (c_open + c_close) / 2.0;
     else
-        new_ha_open = (ha_open_out[period - 1] + ha_close_out[period - 1]) / 2.0;
+        new_ha_open = (ha_open_arr[period - 1] + ha_close_arr[period - 1]) / 2.0;
     end
 
-    -- HA High / Low
-    local new_ha_high = math.max(c_high, new_ha_open, new_ha_close);
-    local new_ha_low  = math.min(c_low, new_ha_open, new_ha_close);
+    -- Stocker dans les tableaux internes (pas affiche)
+    ha_open_arr[period] = new_ha_open;
+    ha_close_arr[period] = new_ha_close;
 
-    -- Ecrire dans les streams (dessine les bougies HA)
-    ha_open_out[period] = new_ha_open;
-    ha_close_out[period] = new_ha_close;
-    ha_high_out[period] = new_ha_high;
-    ha_low_out[period] = new_ha_low;
-
-    -- Colorer vert ou rouge
     local isGreen = (new_ha_close > new_ha_open);
-    local candle_color;
-    if isGreen then
-        candle_color = instance.parameters.clrBullCandle;
-    else
-        candle_color = instance.parameters.clrBearCandle;
-    end
-    ha_open_out:setColor(period, candle_color);
-    ha_close_out:setColor(period, candle_color);
-    ha_high_out:setColor(period, candle_color);
-    ha_low_out:setColor(period, candle_color);
 
     -- ==================================================================
     -- 2. COMPTER LES STREAKS
@@ -241,12 +203,14 @@ function Update(period, mode)
 
     local p = period;
     if isGreen then
-        while p >= 1 and ha_close_out[p] > ha_open_out[p] do
+        while p >= 1 and ha_close_arr[p] ~= nil and ha_open_arr[p] ~= nil
+              and ha_close_arr[p] > ha_open_arr[p] do
             consec_green = consec_green + 1;
             p = p - 1;
         end
     else
-        while p >= 1 and ha_close_out[p] <= ha_open_out[p] do
+        while p >= 1 and ha_close_arr[p] ~= nil and ha_open_arr[p] ~= nil
+              and ha_close_arr[p] <= ha_open_arr[p] do
             consec_red = consec_red + 1;
             p = p - 1;
         end
@@ -259,11 +223,11 @@ function Update(period, mode)
         if consec_green > 0 then
             streak_text:set(period, source.low[period],
                 tostring(consec_green),
-                instance.parameters.clrBullCandle);
+                instance.parameters.clrStreakGreen);
         elseif consec_red > 0 then
             streak_text:set(period, source.low[period],
                 tostring(consec_red),
-                instance.parameters.clrBearCandle);
+                instance.parameters.clrStreakRed);
         end
     end
 
@@ -278,9 +242,7 @@ function Update(period, mode)
         in_position = true;
         entry_price = c_close;
 
-        -- Fleche verte vers le haut sous la bougie
         buy_arrow:set(period, source.low[period], "\233");
-        -- Texte "BUY" sous la fleche
         buy_label:set(period, source.low[period], "BUY");
     end
 
@@ -288,16 +250,13 @@ function Update(period, mode)
     if consec_red >= red_threshold and in_position then
         in_position = false;
 
-        -- Calculer le P&L de ce trade
         local trade_pnl = 0;
         if entry_price > 0 then
             trade_pnl = ((c_close - entry_price) / entry_price) * 100;
         end
 
-        -- Fleche rouge vers le bas au-dessus de la bougie
         sell_arrow:set(period, source.high[period], "\234");
 
-        -- Texte "SELL +X%" au-dessus de la fleche
         local pnl_str;
         if trade_pnl >= 0 then
             pnl_str = "SELL +" .. string.format("%.1f", trade_pnl) .. "%";
@@ -310,10 +269,9 @@ function Update(period, mode)
     end
 
     -- ==================================================================
-    -- 5. MARQUEUR "EN POSITION" (point bleu)
+    -- 5. MARQUEUR "EN POSITION"
     -- ==================================================================
     if instance.parameters.showPositionDots and in_position then
-        -- Wingdings char 108 = losange plein
         pos_marker:set(period, source.high[period], "\108");
     end
 end
