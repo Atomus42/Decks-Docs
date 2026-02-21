@@ -1,0 +1,585 @@
+// =============================================================================
+//
+//  BTC TRADING TOOLKIT — ALL MAIN INDICATORS (Customizable)
+//
+//  This is NOT a strategy (it won't auto-trade). It's an INDICATOR script
+//  that draws all the key technical indicators on your chart so you can
+//  visually analyze the market yourself.
+//
+//  HOW TO CUSTOMIZE:
+//  -----------------
+//  Every indicator has a toggle (ON/OFF) and adjustable parameters.
+//  You can change values in TWO ways:
+//
+//    1. IN THE TRADINGVIEW GUI:
+//       Click the gear icon (⚙️) on the indicator name → "Inputs" tab.
+//       All values below appear as sliders/checkboxes you can change live.
+//
+//    2. IN THIS CODE:
+//       Find the input.int() or input.float() line for the value you want.
+//       Change the FIRST number — that's the default value.
+//       Example:  input.int(50, ...)  →  change 50 to whatever you want.
+//
+//  Each section below is clearly labeled. Scroll to the indicator you want
+//  to modify and follow the comments.
+//
+// =============================================================================
+
+//@version=6
+indicator("BTC Trading Toolkit — All Indicators", overlay=true, max_lines_count=500, max_labels_count=500)
+
+
+// █████████████████████████████████████████████████████████████████████████████
+//
+//  SECTION 1: EMA (Exponential Moving Averages)
+//
+//  What it does: Smooths price to show the trend direction.
+//  - Price ABOVE the EMA = bullish trend
+//  - Price BELOW the EMA = bearish trend
+//  - Fast EMA crossing above Slow EMA = "Golden Cross" (buy signal)
+//  - Fast EMA crossing below Slow EMA = "Death Cross" (sell signal)
+//
+//  TO CHANGE: Modify the period numbers below.
+//  Common values: 9, 21, 50, 100, 200, 300
+//  Shorter period = more responsive but more noise
+//  Longer period  = smoother but slower to react
+//
+// █████████████████████████████████████████████████████████████████████████████
+
+// --- Toggle: set to false to hide all EMAs ---
+showEMA = input.bool(true, "Show EMAs", group="1. EMA (Moving Averages)")
+
+// --- EMA periods: CHANGE THESE NUMBERS to adjust ---
+// The first number is the default. Change it to whatever period you want.
+emaFastLen   = input.int(21,  "EMA Fast Period",   minval=1, maxval=500, group="1. EMA (Moving Averages)")
+//                       ^^-- CHANGE THIS (default: 21 bars)
+
+emaMidLen    = input.int(55,  "EMA Mid Period",    minval=1, maxval=500, group="1. EMA (Moving Averages)")
+//                       ^^-- CHANGE THIS (default: 55 bars)
+
+emaSlowLen   = input.int(200, "EMA Slow Period",   minval=1, maxval=500, group="1. EMA (Moving Averages)")
+//                       ^^^-- CHANGE THIS (default: 200 bars)
+
+emaUltraLen  = input.int(300, "EMA Ultra-Slow Period", minval=1, maxval=1000, group="1. EMA (Moving Averages)")
+//                       ^^^-- CHANGE THIS (default: 300 bars, our best backtest used 100/300)
+
+// --- EMA Calculation (no need to change this) ---
+emaFast  = ta.ema(close, emaFastLen)
+emaMid   = ta.ema(close, emaMidLen)
+emaSlow  = ta.ema(close, emaSlowLen)
+emaUltra = ta.ema(close, emaUltraLen)
+
+// --- EMA Plots: change the colors if you want ---
+// color.new(#color, transparency)  →  0 = fully visible, 100 = invisible
+plot(showEMA ? emaFast  : na, "EMA Fast",       color=color.new(#00BCD4, 0), linewidth=1)
+plot(showEMA ? emaMid   : na, "EMA Mid",        color=color.new(#FF9800, 0), linewidth=1)
+plot(showEMA ? emaSlow  : na, "EMA Slow",       color=color.new(#E91E63, 0), linewidth=2)
+plot(showEMA ? emaUltra : na, "EMA Ultra-Slow", color=color.new(#9C27B0, 0), linewidth=2)
+
+// --- EMA Cross Signals ---
+// These arrows show when the Fast EMA crosses the Slow EMA
+showEMACross = input.bool(true, "Show EMA Cross Signals", group="1. EMA (Moving Averages)")
+emaGoldenCross = ta.crossover(emaFast, emaSlow)
+emaDeathCross  = ta.crossunder(emaFast, emaSlow)
+plotshape(showEMA and showEMACross and emaGoldenCross, "Golden Cross", shape.diamond, location.belowbar, color.new(#00BCD4, 0), size=size.tiny)
+plotshape(showEMA and showEMACross and emaDeathCross, "Death Cross", shape.diamond, location.abovebar, color.new(#E91E63, 0), size=size.tiny)
+
+
+// █████████████████████████████████████████████████████████████████████████████
+//
+//  SECTION 2: BOLLINGER BANDS
+//
+//  What it does: Shows a "channel" around price based on volatility.
+//  - Upper band = price is expensive (overbought zone)
+//  - Lower band = price is cheap (oversold zone)
+//  - Middle band = the moving average (trend center)
+//  - Bands WIDEN  = high volatility (big moves happening)
+//  - Bands NARROW = low volatility (breakout coming soon)
+//
+//  TO CHANGE:
+//  - Period: how many bars for the average (default 200, our best backtest)
+//  - StdDev: how wide the bands are (default 1.5)
+//    Higher StdDev = wider bands = fewer signals
+//    Lower StdDev  = tighter bands = more signals
+//
+// █████████████████████████████████████████████████████████████████████████████
+
+showBB = input.bool(true, "Show Bollinger Bands", group="2. Bollinger Bands")
+
+bbLength = input.int(200,    "BB Period",              minval=1,   maxval=500,  group="2. Bollinger Bands")
+//                   ^^^-- CHANGE THIS (how many bars to average, default: 200)
+
+bbStdDev = input.float(1.5,  "BB Standard Deviation",  minval=0.1, maxval=5.0, step=0.1, group="2. Bollinger Bands")
+//                     ^^^-- CHANGE THIS (band width, default: 1.5)
+
+// --- BB Calculation ---
+bbMiddle = ta.sma(close, bbLength)
+bbDev    = ta.stdev(close, bbLength) * bbStdDev
+bbUpper  = bbMiddle + bbDev
+bbLower  = bbMiddle - bbDev
+
+// --- BB Plots ---
+plot(showBB ? bbUpper  : na, "BB Upper",  color=color.new(#2196F3, 30), linewidth=1)
+plot(showBB ? bbMiddle : na, "BB Middle", color=color.new(#2196F3, 60), linewidth=1, style=plot.style_circles)
+plot(showBB ? bbLower  : na, "BB Lower",  color=color.new(#2196F3, 30), linewidth=1)
+// Fill between upper and lower bands for visual clarity
+fill(plot(showBB ? bbUpper : na, display=display.none), plot(showBB ? bbLower : na, display=display.none), color=color.new(#2196F3, 92), title="BB Fill")
+
+
+// █████████████████████████████████████████████████████████████████████████████
+//
+//  SECTION 3: DONCHIAN CHANNEL (Breakout Channel)
+//
+//  What it does: Shows the highest high and lowest low over N bars.
+//  - Price breaking ABOVE the upper channel = breakout (buy signal)
+//  - Price breaking BELOW the lower channel = breakdown (sell signal)
+//  - Used by the famous "Turtle Traders" strategy
+//
+//  TO CHANGE:
+//  - Entry Period: lookback for the upper channel (default 168 = 7 days on 1H)
+//  - Exit Period:  lookback for the lower channel (default 72 = 3 days on 1H)
+//
+// █████████████████████████████████████████████████████████████████████████████
+
+showDonchian = input.bool(false, "Show Donchian Channel", group="3. Donchian Channel")
+
+donchianEntry = input.int(168, "Donchian Entry Period (upper)", minval=1, maxval=1000, group="3. Donchian Channel")
+//                        ^^^-- CHANGE THIS (default: 168 bars = 7 days on 1H)
+
+donchianExit  = input.int(72,  "Donchian Exit Period (lower)",  minval=1, maxval=1000, group="3. Donchian Channel")
+//                        ^^-- CHANGE THIS (default: 72 bars = 3 days on 1H)
+
+// --- Donchian Calculation ---
+donchianUpper = ta.highest(high, donchianEntry)
+donchianLower = ta.lowest(low, donchianExit)
+donchianMid   = (donchianUpper + donchianLower) / 2
+
+// --- Donchian Plots ---
+plot(showDonchian ? donchianUpper : na, "Donchian Upper", color=color.new(#4CAF50, 20), linewidth=1)
+plot(showDonchian ? donchianMid   : na, "Donchian Mid",   color=color.new(#4CAF50, 60), linewidth=1, style=plot.style_circles)
+plot(showDonchian ? donchianLower : na, "Donchian Lower", color=color.new(#4CAF50, 20), linewidth=1)
+
+
+// █████████████████████████████████████████████████████████████████████████████
+//
+//  SECTION 4: SUPERTREND
+//
+//  What it does: A trend-following indicator that flips between
+//  bullish (green line below price) and bearish (red line above price).
+//  - Green = uptrend, stay long
+//  - Red   = downtrend, stay out
+//  Very clean signals, but can lag in choppy markets.
+//
+//  TO CHANGE:
+//  - ATR Period: how many bars for the ATR (default 50)
+//  - Multiplier: how far the band is from price (default 3.0)
+//    Higher multiplier = fewer signals, wider stops
+//    Lower multiplier  = more signals, tighter stops
+//
+// █████████████████████████████████████████████████████████████████████████████
+
+showSupertrend = input.bool(true, "Show Supertrend", group="4. Supertrend")
+
+stAtrPeriod = input.int(50,    "Supertrend ATR Period",  minval=1,   maxval=200,  group="4. Supertrend")
+//                      ^^-- CHANGE THIS (default: 50 bars)
+
+stMultiplier = input.float(3.0, "Supertrend Multiplier", minval=0.1, maxval=10.0, step=0.1, group="4. Supertrend")
+//                        ^^^-- CHANGE THIS (default: 3.0)
+
+// --- Supertrend Calculation (built-in Pine function) ---
+[stValue, stDirection] = ta.supertrend(stMultiplier, stAtrPeriod)
+// stDirection: +1 = bearish (price below), -1 = bullish (price above)
+stBullish = stDirection < 0
+
+// --- Supertrend Plot ---
+// Shows as a line that hugs price — green when bullish, red when bearish
+stColor = stBullish ? color.new(#26A69A, 0) : color.new(#EF5350, 0)
+plot(showSupertrend ? stValue : na, "Supertrend", color=stColor, linewidth=2, style=plot.style_linebr)
+
+
+// █████████████████████████████████████████████████████████████████████████████
+//
+//  SECTION 5: RSI (Relative Strength Index)
+//  *** This plots in a SEPARATE PANE below the chart ***
+//
+//  What it does: Measures how overbought or oversold price is (0 to 100).
+//  - Above 70 = overbought (price may drop)
+//  - Below 30 = oversold (price may bounce)
+//  - Above 50 = bullish momentum
+//  - Below 50 = bearish momentum
+//
+//  NOTE: RSI plots in the DATA WINDOW only (hover over a bar to see it)
+//  because this is an overlay indicator. To see RSI as a separate panel,
+//  add TradingView's built-in RSI indicator separately.
+//
+//  TO CHANGE:
+//  - Period: how many bars (default 14, the standard)
+//    Shorter = more sensitive (try 7 or 9)
+//    Longer  = smoother (try 21 or 24)
+//
+// █████████████████████████████████████████████████████████████████████████████
+
+showRSI = input.bool(true, "Show RSI in Data Window", group="5. RSI")
+
+rsiLength = input.int(14, "RSI Period", minval=1, maxval=100, group="5. RSI")
+//                    ^^-- CHANGE THIS (default: 14 bars, the classic setting)
+
+// --- RSI Calculation ---
+rsiValue = ta.rsi(close, rsiLength)
+
+// --- RSI Plot (data window only since we're overlay=true) ---
+plot(showRSI ? rsiValue : na, "RSI", color=color.new(#FF9800, 0), display=display.data_window)
+
+
+// █████████████████████████████████████████████████████████████████████████████
+//
+//  SECTION 6: MACD (Moving Average Convergence Divergence)
+//  *** Shows in DATA WINDOW only (overlay chart) ***
+//
+//  What it does: Measures momentum by comparing two EMAs.
+//  - MACD line above Signal line = bullish momentum
+//  - MACD line below Signal line = bearish momentum
+//  - MACD line above zero = overall bullish
+//  - MACD line below zero = overall bearish
+//
+//  TO CHANGE:
+//  - Fast EMA: the responsive EMA (default 48, our best backtest)
+//  - Slow EMA: the slower EMA (default 104)
+//  - Signal:   smoothing of the MACD line (default 36)
+//
+//  CLASSIC VALUES: 12, 26, 9 (default in most charting software)
+//  OUR OPTIMIZED:  48, 104, 36 (slower, fewer false signals)
+//
+// █████████████████████████████████████████████████████████████████████████████
+
+showMACD = input.bool(true, "Show MACD in Data Window", group="6. MACD")
+
+macdFast   = input.int(48,  "MACD Fast EMA",    minval=1, maxval=200, group="6. MACD")
+//                     ^^-- CHANGE THIS (default: 48. Classic is 12)
+
+macdSlow   = input.int(104, "MACD Slow EMA",    minval=1, maxval=500, group="6. MACD")
+//                     ^^^-- CHANGE THIS (default: 104. Classic is 26)
+
+macdSignal = input.int(36,  "MACD Signal Line", minval=1, maxval=100, group="6. MACD")
+//                     ^^-- CHANGE THIS (default: 36. Classic is 9)
+
+// --- MACD Calculation ---
+[macdLine, signalLine, histLine] = ta.macd(close, macdFast, macdSlow, macdSignal)
+
+// --- MACD Plots (data window only) ---
+plot(showMACD ? macdLine   : na, "MACD Line",   color=color.new(#2196F3, 0), display=display.data_window)
+plot(showMACD ? signalLine : na, "MACD Signal", color=color.new(#FF9800, 0), display=display.data_window)
+plot(showMACD ? histLine   : na, "MACD Hist",   color=color.new(#9C27B0, 0), display=display.data_window)
+
+
+// █████████████████████████████████████████████████████████████████████████████
+//
+//  SECTION 7: HEIKIN ASHI CANDLE STREAK COUNTER
+//
+//  What it does: Counts consecutive green/red Heikin Ashi candles.
+//  This is the core of our winning strategy:
+//  - 12+ green HA candles = strong bullish momentum (entry signal)
+//  -  6+ red HA candles   = momentum reversal (exit signal)
+//
+//  The streak count appears in the DATA WINDOW.
+//  Entry/exit markers appear on the chart.
+//
+//  TO CHANGE:
+//  - Green threshold: how many green HA bars for entry (default 12)
+//  - Red threshold:   how many red HA bars for exit (default 6)
+//
+// █████████████████████████████████████████████████████████████████████████████
+
+showHA = input.bool(true, "Show Heikin Ashi Signals", group="7. Heikin Ashi Streak")
+
+haGreenThreshold = input.int(12, "HA Green Bars for Entry Signal", minval=1, maxval=50, group="7. Heikin Ashi Streak")
+//                           ^^-- CHANGE THIS (default: 12 consecutive green bars)
+
+haRedThreshold   = input.int(6,  "HA Red Bars for Exit Signal",   minval=1, maxval=50, group="7. Heikin Ashi Streak")
+//                           ^-- CHANGE THIS (default: 6 consecutive red bars)
+
+// --- Heikin Ashi Calculation ---
+// HA candles are computed from regular OHLC to smooth the noise.
+// You do NOT need to switch your chart to Heikin Ashi mode — this calculates it internally.
+haClose = (open + high + low + close) / 4.0
+
+var float haOpen = na
+if na(haOpen[1])
+    haOpen := (open + close) / 2.0
+else
+    haOpen := (nz(haOpen[1]) + nz(haClose[1])) / 2.0
+
+haIsGreen = haClose > haOpen
+
+// --- Count consecutive green/red streaks ---
+var int haConsecGreen = 0
+var int haConsecRed   = 0
+
+if haIsGreen
+    haConsecGreen := haConsecGreen + 1
+    haConsecRed   := 0
+else
+    haConsecRed   := haConsecRed + 1
+    haConsecGreen := 0
+
+// --- Signal detection ---
+haEntrySignal = haConsecGreen >= haGreenThreshold
+haExitSignal  = haConsecRed >= haRedThreshold
+
+// --- Heikin Ashi Plots ---
+plot(showHA ? haConsecGreen : na, "HA Green Streak", color=color.new(#26A69A, 0), display=display.data_window)
+plot(showHA ? haConsecRed   : na, "HA Red Streak",   color=color.new(#EF5350, 0), display=display.data_window)
+
+// Show entry/exit markers on chart
+// Green triangle = HA says buy, Red triangle = HA says sell
+plotshape(showHA and haEntrySignal and not haEntrySignal[1], "HA Entry", shape.triangleup, location.belowbar, color.new(#26A69A, 0), size=size.small, text="HA Buy")
+plotshape(showHA and haExitSignal and not haExitSignal[1], "HA Exit", shape.triangledown, location.abovebar, color.new(#EF5350, 0), size=size.small, text="HA Sell")
+
+
+// █████████████████████████████████████████████████████████████████████████████
+//
+//  SECTION 8: ATR (Average True Range)
+//  *** Shows in DATA WINDOW ***
+//
+//  What it does: Measures volatility — how much price moves per bar.
+//  - High ATR = volatile market, big candles, wider stops needed
+//  - Low ATR  = quiet market, small candles, tighter stops possible
+//  - NOT a direction indicator — just tells you HOW MUCH price is moving
+//
+//  Useful for:
+//  - Setting stop-loss distances (e.g., stop at 2x ATR below entry)
+//  - Sizing positions (smaller size when ATR is high)
+//  - Detecting volatility squeezes (low ATR = breakout coming)
+//
+//  TO CHANGE:
+//  - Period: how many bars (default 14)
+//
+// █████████████████████████████████████████████████████████████████████████████
+
+showATR = input.bool(true, "Show ATR in Data Window", group="8. ATR (Volatility)")
+
+atrLength = input.int(14, "ATR Period", minval=1, maxval=200, group="8. ATR (Volatility)")
+//                    ^^-- CHANGE THIS (default: 14 bars)
+
+// --- ATR Calculation ---
+atrValue = ta.atr(atrLength)
+
+// --- ATR Plot (data window only) ---
+plot(showATR ? atrValue : na, "ATR", color=color.new(#FF5722, 0), display=display.data_window)
+
+
+// █████████████████████████████████████████████████████████████████████████████
+//
+//  SECTION 9: ICHIMOKU CLOUD
+//
+//  What it does: A complete trend system from Japan. Shows:
+//  - Conversion line (Tenkan):  short-term trend (like a fast MA)
+//  - Base line (Kijun):         medium-term trend (like a slow MA)
+//  - Cloud (Kumo):              support/resistance zone
+//    - Price ABOVE cloud = bullish
+//    - Price BELOW cloud = bearish
+//    - Price INSIDE cloud = no clear trend
+//
+//  TO CHANGE:
+//  - Tenkan period:  short-term lookback (default 9)
+//  - Kijun period:   medium-term lookback (default 26)
+//  - Senkou B period: long-term lookback (default 52)
+//  - Displacement:   how far the cloud is shifted forward (default 26)
+//
+// █████████████████████████████████████████████████████████████████████████████
+
+showIchimoku = input.bool(false, "Show Ichimoku Cloud", group="9. Ichimoku Cloud")
+
+ichiTenkan  = input.int(9,  "Tenkan (Conversion) Period", minval=1, maxval=100, group="9. Ichimoku Cloud")
+//                      ^-- CHANGE THIS (default: 9)
+
+ichiKijun   = input.int(26, "Kijun (Base) Period",        minval=1, maxval=100, group="9. Ichimoku Cloud")
+//                      ^^-- CHANGE THIS (default: 26)
+
+ichiSenkouB = input.int(52, "Senkou Span B Period",       minval=1, maxval=200, group="9. Ichimoku Cloud")
+//                      ^^-- CHANGE THIS (default: 52)
+
+ichiDisp    = input.int(26, "Cloud Displacement",         minval=1, maxval=100, group="9. Ichimoku Cloud")
+//                      ^^-- CHANGE THIS (default: 26, shifts the cloud forward)
+
+// --- Ichimoku Calculation ---
+tenkan  = (ta.highest(high, ichiTenkan) + ta.lowest(low, ichiTenkan)) / 2
+kijun   = (ta.highest(high, ichiKijun) + ta.lowest(low, ichiKijun)) / 2
+senkouA = (tenkan + kijun) / 2
+senkouB = (ta.highest(high, ichiSenkouB) + ta.lowest(low, ichiSenkouB)) / 2
+
+// --- Ichimoku Plots ---
+plot(showIchimoku ? tenkan  : na, "Tenkan",   color=color.new(#0095FF, 0), linewidth=1)
+plot(showIchimoku ? kijun   : na, "Kijun",    color=color.new(#FF6D00, 0), linewidth=1)
+// Cloud is plotted shifted forward by the displacement
+p1 = plot(showIchimoku ? senkouA : na, "Senkou A", color=color.new(#26A69A, 40), offset=ichiDisp, linewidth=1)
+p2 = plot(showIchimoku ? senkouB : na, "Senkou B", color=color.new(#EF5350, 40), offset=ichiDisp, linewidth=1)
+// Fill the cloud: green when A > B (bullish), red when B > A (bearish)
+cloudColor = senkouA >= senkouB ? color.new(#26A69A, 85) : color.new(#EF5350, 85)
+fill(p1, p2, color=cloudColor, title="Ichimoku Cloud")
+
+
+// █████████████████████████████████████████████████████████████████████████████
+//
+//  SECTION 10: KELTNER CHANNEL
+//
+//  What it does: Similar to Bollinger Bands but uses ATR instead of StdDev.
+//  - Upper channel = EMA + multiplier * ATR
+//  - Lower channel = EMA - multiplier * ATR
+//  - Price breaking above upper channel = strong momentum breakout
+//  - More stable than Bollinger Bands in trending markets
+//
+//  TO CHANGE:
+//  - EMA Period:  center line period (default 200)
+//  - ATR Period:  volatility measurement period (default 168)
+//  - Multiplier:  how wide the channel is (default 2.0)
+//
+// █████████████████████████████████████████████████████████████████████████████
+
+showKeltner = input.bool(false, "Show Keltner Channel", group="10. Keltner Channel")
+
+keltnerEmaLen  = input.int(200,    "Keltner EMA Period",   minval=1,   maxval=500,  group="10. Keltner Channel")
+//                         ^^^-- CHANGE THIS (default: 200)
+
+keltnerAtrLen  = input.int(168,    "Keltner ATR Period",   minval=1,   maxval=500,  group="10. Keltner Channel")
+//                         ^^^-- CHANGE THIS (default: 168 = 7 days on 1H)
+
+keltnerMult    = input.float(2.0,  "Keltner Multiplier",   minval=0.1, maxval=10.0, step=0.1, group="10. Keltner Channel")
+//                           ^^^-- CHANGE THIS (default: 2.0)
+
+// --- Keltner Calculation ---
+keltnerMid   = ta.ema(close, keltnerEmaLen)
+keltnerAtr   = ta.atr(keltnerAtrLen)
+keltnerUpper = keltnerMid + keltnerMult * keltnerAtr
+keltnerLower = keltnerMid - keltnerMult * keltnerAtr
+
+// --- Keltner Plots ---
+plot(showKeltner ? keltnerUpper : na, "Keltner Upper", color=color.new(#FF6F00, 30), linewidth=1)
+plot(showKeltner ? keltnerMid   : na, "Keltner Mid",   color=color.new(#FF6F00, 60), linewidth=1, style=plot.style_circles)
+plot(showKeltner ? keltnerLower : na, "Keltner Lower", color=color.new(#FF6F00, 30), linewidth=1)
+
+
+// █████████████████████████████████████████████████████████████████████████████
+//
+//  SECTION 11: VOLUME SMA
+//
+//  What it does: Shows whether current volume is above or below average.
+//  - Volume above average = strong conviction in the move
+//  - Volume below average = weak move, possible fakeout
+//  - Volume spikes often mark reversals or breakouts
+//
+//  NOTE: Shows as colored bars at the bottom (via data window).
+//  For full volume bars, use TradingView's built-in volume indicator.
+//
+//  TO CHANGE:
+//  - Period: how many bars to average (default 200)
+//
+// █████████████████████████████████████████████████████████████████████████████
+
+showVolSMA = input.bool(true, "Show Volume SMA in Data Window", group="11. Volume")
+
+volSmaLen = input.int(200, "Volume SMA Period", minval=1, maxval=500, group="11. Volume")
+//                    ^^^-- CHANGE THIS (default: 200)
+
+// --- Volume Calculation ---
+volSma = ta.sma(volume, volSmaLen)
+volAboveAvg = volume > volSma
+
+// --- Volume Plots (data window) ---
+plot(showVolSMA ? volume : na, "Volume",     color=color.new(#78909C, 0), display=display.data_window)
+plot(showVolSMA ? volSma : na, "Volume SMA", color=color.new(#FFC107, 0), display=display.data_window)
+
+
+// █████████████████████████████████████████████████████████████████████████████
+//
+//  SECTION 12: SUPPORT / RESISTANCE LEVELS (Pivot Points)
+//
+//  What it does: Automatically detects recent swing highs and lows.
+//  - Swing highs = resistance levels (price struggles to go above)
+//  - Swing lows  = support levels (price struggles to go below)
+//
+//  TO CHANGE:
+//  - Pivot lookback: how many bars left/right to confirm a pivot (default 20)
+//    Higher = fewer, more significant levels
+//    Lower  = more levels, more sensitive
+//
+// █████████████████████████████████████████████████████████████████████████████
+
+showPivots = input.bool(true, "Show Support/Resistance Pivots", group="12. Support/Resistance")
+
+pivotLookback = input.int(20, "Pivot Lookback Bars", minval=2, maxval=100, group="12. Support/Resistance")
+//                        ^^-- CHANGE THIS (default: 20 bars each side)
+
+// --- Pivot Calculation ---
+pivotHigh = ta.pivothigh(high, pivotLookback, pivotLookback)
+pivotLow  = ta.pivotlow(low, pivotLookback, pivotLookback)
+
+// --- Pivot Plots ---
+// Draw small labels at swing highs and lows
+// These appear with a delay of pivotLookback bars (because we need bars to the right to confirm)
+plotshape(showPivots and not na(pivotHigh), "Resistance", shape.xcross, location.abovebar, color.new(#EF5350, 0), offset=-pivotLookback, size=size.auto)
+plotshape(showPivots and not na(pivotLow), "Support", shape.xcross, location.belowbar, color.new(#26A69A, 0), offset=-pivotLookback, size=size.auto)
+
+
+// █████████████████████████████████████████████████████████████████████████████
+//
+//  INFO TABLE — Shows current indicator values at a glance
+//
+// █████████████████████████████████████████████████████████████████████████████
+
+showTable = input.bool(true, "Show Info Table", group="Display")
+
+var table dash = table.new(position.top_right, 2, 12, bgcolor=color.new(color.black, 80), border_width=1, border_color=color.gray)
+
+if barstate.islast and showTable
+    // Header
+    table.cell(dash, 0, 0, "Indicator", text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(dash, 1, 0, "Value", text_color=color.white, text_size=size.small, text_halign=text.align_right)
+
+    // RSI
+    rsiColor = rsiValue > 70 ? color.red : rsiValue < 30 ? color.green : color.white
+    table.cell(dash, 0, 1, "RSI(" + str.tostring(rsiLength) + ")", text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(dash, 1, 1, str.tostring(rsiValue, "#.0"), text_color=rsiColor, text_size=size.small, text_halign=text.align_right)
+
+    // MACD
+    macdColor = macdLine > 0 ? color.new(#26A69A, 0) : color.new(#EF5350, 0)
+    table.cell(dash, 0, 2, "MACD", text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(dash, 1, 2, str.tostring(macdLine, "#.0"), text_color=macdColor, text_size=size.small, text_halign=text.align_right)
+
+    // Supertrend
+    stText = stBullish ? "BULLISH" : "BEARISH"
+    stTColor = stBullish ? color.new(#26A69A, 0) : color.new(#EF5350, 0)
+    table.cell(dash, 0, 3, "Supertrend", text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(dash, 1, 3, stText, text_color=stTColor, text_size=size.small, text_halign=text.align_right)
+
+    // ATR
+    table.cell(dash, 0, 4, "ATR(" + str.tostring(atrLength) + ")", text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(dash, 1, 4, "$" + str.tostring(atrValue, "#.0"), text_color=color.new(#FF5722, 0), text_size=size.small, text_halign=text.align_right)
+
+    // HA Green Streak
+    haGColor = haConsecGreen >= haGreenThreshold ? color.new(#26A69A, 0) : color.white
+    table.cell(dash, 0, 5, "HA Green Streak", text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(dash, 1, 5, str.tostring(haConsecGreen), text_color=haGColor, text_size=size.small, text_halign=text.align_right)
+
+    // HA Red Streak
+    haRColor = haConsecRed >= haRedThreshold ? color.new(#EF5350, 0) : color.white
+    table.cell(dash, 0, 6, "HA Red Streak", text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(dash, 1, 6, str.tostring(haConsecRed), text_color=haRColor, text_size=size.small, text_halign=text.align_right)
+
+    // EMA Trend
+    emaTrend = emaFast > emaSlow ? "BULLISH" : "BEARISH"
+    emaTColor = emaFast > emaSlow ? color.new(#26A69A, 0) : color.new(#EF5350, 0)
+    table.cell(dash, 0, 7, "EMA Trend", text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(dash, 1, 7, emaTrend, text_color=emaTColor, text_size=size.small, text_halign=text.align_right)
+
+    // Volume
+    volText = volAboveAvg ? "ABOVE AVG" : "BELOW AVG"
+    volColor = volAboveAvg ? color.new(#26A69A, 0) : color.gray
+    table.cell(dash, 0, 8, "Volume", text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(dash, 1, 8, volText, text_color=volColor, text_size=size.small, text_halign=text.align_right)
+
+    // Price vs BB
+    bbPos = close > bbUpper ? "ABOVE UPPER" : close < bbLower ? "BELOW LOWER" : "INSIDE"
+    bbPColor = close > bbUpper ? color.new(#26A69A, 0) : close < bbLower ? color.new(#EF5350, 0) : color.gray
+    table.cell(dash, 0, 9, "BB Position", text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(dash, 1, 9, bbPos, text_color=bbPColor, text_size=size.small, text_halign=text.align_right)
