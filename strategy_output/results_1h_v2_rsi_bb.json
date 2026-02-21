@@ -1,0 +1,167 @@
+[
+  {
+    "strategy": "RSI(24) Trend",
+    "params": {
+      "period": 24,
+      "threshold": 50
+    },
+    "total_return_pct": -41.09,
+    "annualized_return_pct": -23.49,
+    "sharpe_ratio": -0.65,
+    "max_drawdown_pct": -58.15,
+    "num_trades": 691,
+    "win_rate_pct": 18.96,
+    "profit_factor": 1.03,
+    "avg_win_pct": 2.57,
+    "avg_loss_pct": -0.49,
+    "final_equity": 58910.86,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -71.94
+  },
+  {
+    "strategy": "RSI(48) Trend",
+    "params": {
+      "period": 48,
+      "threshold": 50
+    },
+    "total_return_pct": -29.88,
+    "annualized_return_pct": -16.45,
+    "sharpe_ratio": -0.39,
+    "max_drawdown_pct": -60.57,
+    "num_trades": 445,
+    "win_rate_pct": 17.53,
+    "profit_factor": 1.03,
+    "avg_win_pct": 3.29,
+    "avg_loss_pct": -0.58,
+    "final_equity": 70117.96,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -60.74
+  },
+  {
+    "strategy": "RSI(24) + EMA(200) Filter",
+    "params": {
+      "rsi_period": 24,
+      "ema_span": 200,
+      "enter": "RSI>50 & close>EMA200",
+      "exit": "RSI<50 & close<EMA200"
+    },
+    "total_return_pct": -9.75,
+    "annualized_return_pct": -5.06,
+    "sharpe_ratio": -0.01,
+    "max_drawdown_pct": -47.7,
+    "num_trades": 189,
+    "win_rate_pct": 21.16,
+    "profit_factor": 1.03,
+    "avg_win_pct": 4.69,
+    "avg_loss_pct": -1.05,
+    "final_equity": 90254.6,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -40.6
+  },
+  {
+    "strategy": "RSI(14) Momentum Band",
+    "params": {
+      "period": 14,
+      "entry_threshold": 55,
+      "exit_threshold": 40
+    },
+    "total_return_pct": -15.32,
+    "annualized_return_pct": -8.07,
+    "sharpe_ratio": -0.06,
+    "max_drawdown_pct": -50.51,
+    "num_trades": 249,
+    "win_rate_pct": 30.12,
+    "profit_factor": 1.02,
+    "avg_win_pct": 3.91,
+    "avg_loss_pct": -1.48,
+    "final_equity": 84680.95,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -46.17
+  },
+  {
+    "strategy": "RSI(14) Momentum + EMA(200)",
+    "params": {
+      "rsi_period": 14,
+      "entry_threshold": 55,
+      "exit_threshold": 40,
+      "ema_span": 200
+    },
+    "total_return_pct": -17.58,
+    "annualized_return_pct": -9.32,
+    "sharpe_ratio": -0.17,
+    "max_drawdown_pct": -52.78,
+    "num_trades": 182,
+    "win_rate_pct": 28.57,
+    "profit_factor": 1.0,
+    "avg_win_pct": 4.43,
+    "avg_loss_pct": -1.61,
+    "final_equity": 82416.4,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -48.44
+  },
+  {
+    "strategy": "BB(100,2) Slow Breakout",
+    "params": {
+      "bb_period": 100,
+      "bb_std": 2.0,
+      "enter": "close > upper",
+      "exit": "close < middle"
+    },
+    "total_return_pct": 10.85,
+    "annualized_return_pct": 5.35,
+    "sharpe_ratio": 0.34,
+    "max_drawdown_pct": -23.92,
+    "num_trades": 77,
+    "win_rate_pct": 36.36,
+    "profit_factor": 1.15,
+    "avg_win_pct": 4.45,
+    "avg_loss_pct": -1.97,
+    "final_equity": 110845.66,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -20.01
+  },
+  {
+    "strategy": "BB(200,1.5) Ultra-Slow + Trend",
+    "params": {
+      "bb_period": 200,
+      "bb_std": 1.5,
+      "ema_span": 200,
+      "enter": "close > BB_upper & close > EMA200",
+      "exit": "close < BB_middle"
+    },
+    "total_return_pct": 25.4,
+    "annualized_return_pct": 12.14,
+    "sharpe_ratio": 0.58,
+    "max_drawdown_pct": -20.61,
+    "num_trades": 51,
+    "win_rate_pct": 35.29,
+    "profit_factor": 1.39,
+    "avg_win_pct": 5.53,
+    "avg_loss_pct": -1.89,
+    "final_equity": 125399.38,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -5.45
+  },
+  {
+    "strategy": "RSI(24) + BB(100,2) Combo",
+    "params": {
+      "rsi_period": 24,
+      "bb_period": 100,
+      "bb_std": 2.0,
+      "enter": "RSI>50 & close>BB_mid",
+      "exit": "RSI<45 | close<BB_lower"
+    },
+    "total_return_pct": -14.32,
+    "annualized_return_pct": -7.53,
+    "sharpe_ratio": -0.08,
+    "max_drawdown_pct": -50.91,
+    "num_trades": 205,
+    "win_rate_pct": 30.24,
+    "profit_factor": 1.02,
+    "avg_win_pct": 3.84,
+    "avg_loss_pct": -1.47,
+    "final_equity": 85676.4,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -45.18
+  }
+]

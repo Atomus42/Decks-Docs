@@ -1,0 +1,176 @@
+[
+  {
+    "strategy": "A) MACD(24,52,18) Slow Signal Crossover",
+    "params": {
+      "fast": 24,
+      "slow": 52,
+      "signal": 18,
+      "type": "slow_signal_crossover"
+    },
+    "total_return_pct": -19.81,
+    "annualized_return_pct": -10.57,
+    "sharpe_ratio": -0.16,
+    "max_drawdown_pct": -45.01,
+    "num_trades": 325,
+    "win_rate_pct": 36.92,
+    "profit_factor": 1.02,
+    "avg_win_pct": 2.68,
+    "avg_loss_pct": -1.39,
+    "final_equity": 80189.92,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -50.66
+  },
+  {
+    "strategy": "B) MACD(48,104,36) Ultra-Slow Signal Crossover",
+    "params": {
+      "fast": 48,
+      "slow": 104,
+      "signal": 36,
+      "type": "ultraslow_signal_crossover"
+    },
+    "total_return_pct": -23.98,
+    "annualized_return_pct": -12.96,
+    "sharpe_ratio": -0.24,
+    "max_drawdown_pct": -45.4,
+    "num_trades": 171,
+    "win_rate_pct": 33.33,
+    "profit_factor": 0.95,
+    "avg_win_pct": 4.16,
+    "avg_loss_pct": -1.99,
+    "final_equity": 76020.42,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -54.83
+  },
+  {
+    "strategy": "C) MACD(24,52,18) Zero-Line Only",
+    "params": {
+      "fast": 24,
+      "slow": 52,
+      "signal": 18,
+      "type": "slow_zero_line"
+    },
+    "total_return_pct": -17.29,
+    "annualized_return_pct": -9.16,
+    "sharpe_ratio": -0.14,
+    "max_drawdown_pct": -50.81,
+    "num_trades": 149,
+    "win_rate_pct": 28.19,
+    "profit_factor": 0.98,
+    "avg_win_pct": 4.43,
+    "avg_loss_pct": -1.61,
+    "final_equity": 82714.15,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -48.14
+  },
+  {
+    "strategy": "D) MACD(48,104,36) Zero-Line",
+    "params": {
+      "fast": 48,
+      "slow": 104,
+      "signal": 36,
+      "type": "ultraslow_zero_line"
+    },
+    "total_return_pct": 9.4,
+    "annualized_return_pct": 4.65,
+    "sharpe_ratio": 0.3,
+    "max_drawdown_pct": -44.58,
+    "num_trades": 76,
+    "win_rate_pct": 28.95,
+    "profit_factor": 1.1,
+    "avg_win_pct": 7.11,
+    "avg_loss_pct": -2.27,
+    "final_equity": 109402.98,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -21.45
+  },
+  {
+    "strategy": "E) MACD(12,26,9) + EMA200 Double Confirm",
+    "params": {
+      "fast": 12,
+      "slow": 26,
+      "signal": 9,
+      "trend_filter": "EMA200",
+      "type": "double_confirm_entry_exit"
+    },
+    "total_return_pct": -16.22,
+    "annualized_return_pct": -8.57,
+    "sharpe_ratio": -0.12,
+    "max_drawdown_pct": -47.92,
+    "num_trades": 181,
+    "win_rate_pct": 22.65,
+    "profit_factor": 1.0,
+    "avg_win_pct": 4.51,
+    "avg_loss_pct": -1.17,
+    "final_equity": 83776.24,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -47.08
+  },
+  {
+    "strategy": "F) MACD(24,52,18) + 6-Bar Confirmation",
+    "params": {
+      "fast": 24,
+      "slow": 52,
+      "signal": 18,
+      "confirm_bars": 6,
+      "type": "bar_confirmation"
+    },
+    "total_return_pct": -32.74,
+    "annualized_return_pct": -18.19,
+    "sharpe_ratio": -0.44,
+    "max_drawdown_pct": -50.01,
+    "num_trades": 245,
+    "win_rate_pct": 39.59,
+    "profit_factor": 0.94,
+    "avg_win_pct": 2.67,
+    "avg_loss_pct": -1.69,
+    "final_equity": 67257.76,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -63.6
+  },
+  {
+    "strategy": "G) MACD(12,26,9) Histogram Trend",
+    "params": {
+      "fast": 12,
+      "slow": 26,
+      "signal": 9,
+      "hist_ema": 24,
+      "type": "histogram_trend"
+    },
+    "total_return_pct": -46.86,
+    "annualized_return_pct": -27.39,
+    "sharpe_ratio": -0.75,
+    "max_drawdown_pct": -57.49,
+    "num_trades": 603,
+    "win_rate_pct": 36.32,
+    "profit_factor": 0.99,
+    "avg_win_pct": 1.94,
+    "avg_loss_pct": -1.01,
+    "final_equity": 53137.31,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -77.72
+  },
+  {
+    "strategy": "H) MACD(24,52,18) + RSI(14) Filter",
+    "params": {
+      "fast": 24,
+      "slow": 52,
+      "signal": 18,
+      "rsi_period": 14,
+      "rsi_low": 45,
+      "rsi_high": 75,
+      "type": "macd_rsi_filter"
+    },
+    "total_return_pct": -18.48,
+    "annualized_return_pct": -9.83,
+    "sharpe_ratio": -0.13,
+    "max_drawdown_pct": -44.37,
+    "num_trades": 320,
+    "win_rate_pct": 37.19,
+    "profit_factor": 1.03,
+    "avg_win_pct": 2.69,
+    "avg_loss_pct": -1.4,
+    "final_equity": 81518.34,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -49.34
+  }
+]

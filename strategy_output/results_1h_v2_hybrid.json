@@ -1,0 +1,167 @@
+[
+  {
+    "strategy": "F) Heikin Ashi(12G) + EMA(200)",
+    "params": {
+      "ha_green_entry": 12,
+      "ha_red_exit": 6,
+      "ema": 200
+    },
+    "total_return_pct": 49.47,
+    "annualized_return_pct": 22.56,
+    "sharpe_ratio": 1.39,
+    "max_drawdown_pct": -11.8,
+    "num_trades": 62,
+    "win_rate_pct": 50.0,
+    "profit_factor": 2.21,
+    "avg_win_pct": 2.78,
+    "avg_loss_pct": -1.08,
+    "final_equity": 149470.6,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": 18.62
+  },
+  {
+    "strategy": "H) Multi-TF: Weekly EMA + Daily RSI pullback",
+    "params": {
+      "weekly_ema_fast": 168,
+      "weekly_ema_slow": 504,
+      "daily_rsi_period": 24,
+      "rsi_dip_threshold": 55
+    },
+    "total_return_pct": 33.41,
+    "annualized_return_pct": 15.71,
+    "sharpe_ratio": 0.62,
+    "max_drawdown_pct": -26.85,
+    "num_trades": 16,
+    "win_rate_pct": 37.5,
+    "profit_factor": 1.63,
+    "avg_win_pct": 14.21,
+    "avg_loss_pct": -4.14,
+    "final_equity": 133408.62,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": 2.55
+  },
+  {
+    "strategy": "G) BB(200,1.5) + MACD(48/104/36)",
+    "params": {
+      "bb_period": 200,
+      "bb_std": 1.5,
+      "macd_fast": 48,
+      "macd_slow": 104,
+      "macd_signal": 36
+    },
+    "total_return_pct": 16.63,
+    "annualized_return_pct": 8.1,
+    "sharpe_ratio": 0.44,
+    "max_drawdown_pct": -20.96,
+    "num_trades": 51,
+    "win_rate_pct": 35.29,
+    "profit_factor": 1.28,
+    "avg_win_pct": 5.28,
+    "avg_loss_pct": -1.97,
+    "final_equity": 116628.86,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -14.23
+  },
+  {
+    "strategy": "D) MACD(48/104/36) + EMA(200)",
+    "params": {
+      "macd_fast": 48,
+      "macd_slow": 104,
+      "macd_signal": 36,
+      "ema": 200
+    },
+    "total_return_pct": -3.55,
+    "annualized_return_pct": -1.81,
+    "sharpe_ratio": 0.09,
+    "max_drawdown_pct": -45.97,
+    "num_trades": 202,
+    "win_rate_pct": 17.82,
+    "profit_factor": 1.08,
+    "avg_win_pct": 4.87,
+    "avg_loss_pct": -0.83,
+    "final_equity": 96446.25,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -34.41
+  },
+  {
+    "strategy": "B) EMA(50/200) + Donchian(168)",
+    "params": {
+      "ema_fast": 50,
+      "ema_slow": 200,
+      "donchian_period": 168
+    },
+    "total_return_pct": -19.68,
+    "annualized_return_pct": -10.5,
+    "sharpe_ratio": -1.44,
+    "max_drawdown_pct": -25.37,
+    "num_trades": 196,
+    "win_rate_pct": 35.2,
+    "profit_factor": 0.89,
+    "avg_win_pct": 0.76,
+    "avg_loss_pct": -0.35,
+    "final_equity": 80320.3,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -50.53
+  },
+  {
+    "strategy": "E) Supertrend(50,3) + EMA(200)",
+    "params": {
+      "supertrend_period": 50,
+      "supertrend_mult": 3.0,
+      "ema": 200
+    },
+    "total_return_pct": -19.94,
+    "annualized_return_pct": -10.64,
+    "sharpe_ratio": -0.19,
+    "max_drawdown_pct": -52.48,
+    "num_trades": 323,
+    "win_rate_pct": 14.55,
+    "profit_factor": 1.04,
+    "avg_win_pct": 4.24,
+    "avg_loss_pct": -0.58,
+    "final_equity": 80064.89,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -50.79
+  },
+  {
+    "strategy": "C) Ichimoku Cloud Mega (9/26/52)",
+    "params": {
+      "tenkan": 9,
+      "kijun": 26,
+      "senkou_b_period": 52
+    },
+    "total_return_pct": -39.83,
+    "annualized_return_pct": -22.67,
+    "sharpe_ratio": -0.8,
+    "max_drawdown_pct": -53.69,
+    "num_trades": 410,
+    "win_rate_pct": 29.27,
+    "profit_factor": 0.95,
+    "avg_win_pct": 2.07,
+    "avg_loss_pct": -0.79,
+    "final_equity": 60169.34,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -70.68
+  },
+  {
+    "strategy": "A) EMA(50/200) + RSI(14)>50",
+    "params": {
+      "ema_fast": 50,
+      "ema_slow": 200,
+      "rsi_period": 14,
+      "rsi_threshold": 50
+    },
+    "total_return_pct": -45.43,
+    "annualized_return_pct": -26.4,
+    "sharpe_ratio": -1.11,
+    "max_drawdown_pct": -57.03,
+    "num_trades": 542,
+    "win_rate_pct": 19.56,
+    "profit_factor": 0.95,
+    "avg_win_pct": 2.18,
+    "avg_loss_pct": -0.47,
+    "final_equity": 54571.5,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -76.28
+  }
+]

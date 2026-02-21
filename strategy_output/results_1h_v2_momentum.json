@@ -1,0 +1,153 @@
+[
+  {
+    "strategy": "Donchian Breakout",
+    "params": {
+      "entry_period": 168,
+      "exit_period": 72
+    },
+    "total_return_pct": 7.05,
+    "annualized_return_pct": 3.51,
+    "sharpe_ratio": 0.26,
+    "max_drawdown_pct": -25.77,
+    "num_trades": 41,
+    "win_rate_pct": 36.59,
+    "profit_factor": 1.13,
+    "avg_win_pct": 6.28,
+    "avg_loss_pct": -2.83,
+    "final_equity": 107048.83,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -23.81
+  },
+  {
+    "strategy": "Donchian Breakout Slow",
+    "params": {
+      "entry_period": 336,
+      "exit_period": 168
+    },
+    "total_return_pct": -19.92,
+    "annualized_return_pct": -10.63,
+    "sharpe_ratio": -0.31,
+    "max_drawdown_pct": -31.02,
+    "num_trades": 22,
+    "win_rate_pct": 36.36,
+    "profit_factor": 0.7,
+    "avg_win_pct": 7.11,
+    "avg_loss_pct": -4.93,
+    "final_equity": 80084.8,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -50.77
+  },
+  {
+    "strategy": "Supertrend",
+    "params": {
+      "atr_period": 50,
+      "multiplier": 3.0
+    },
+    "total_return_pct": 30.37,
+    "annualized_return_pct": 14.37,
+    "sharpe_ratio": 0.52,
+    "max_drawdown_pct": -49.89,
+    "num_trades": 1,
+    "win_rate_pct": 100.0,
+    "profit_factor": 999.99,
+    "avg_win_pct": 30.85,
+    "avg_loss_pct": 0,
+    "final_equity": 130373.96,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -0.48
+  },
+  {
+    "strategy": "Supertrend Slow",
+    "params": {
+      "atr_period": 100,
+      "multiplier": 2.5
+    },
+    "total_return_pct": 30.37,
+    "annualized_return_pct": 14.37,
+    "sharpe_ratio": 0.52,
+    "max_drawdown_pct": -49.89,
+    "num_trades": 1,
+    "win_rate_pct": 100.0,
+    "profit_factor": 999.99,
+    "avg_win_pct": 30.85,
+    "avg_loss_pct": 0,
+    "final_equity": 130373.96,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -0.48
+  },
+  {
+    "strategy": "SMA Trend",
+    "params": {
+      "sma_period": 200
+    },
+    "total_return_pct": -31.1,
+    "annualized_return_pct": -17.19,
+    "sharpe_ratio": -0.44,
+    "max_drawdown_pct": -50.62,
+    "num_trades": 305,
+    "win_rate_pct": 13.44,
+    "profit_factor": 0.95,
+    "avg_win_pct": 4.27,
+    "avg_loss_pct": -0.59,
+    "final_equity": 68896.37,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -61.96
+  },
+  {
+    "strategy": "SMA Trend Slow",
+    "params": {
+      "sma_period": 500
+    },
+    "total_return_pct": -10.62,
+    "annualized_return_pct": -5.53,
+    "sharpe_ratio": -0.05,
+    "max_drawdown_pct": -30.76,
+    "num_trades": 155,
+    "win_rate_pct": 10.32,
+    "profit_factor": 1.0,
+    "avg_win_pct": 7.19,
+    "avg_loss_pct": -0.66,
+    "final_equity": 89377.29,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -41.48
+  },
+  {
+    "strategy": "Momentum ROC",
+    "params": {
+      "lookback": 168,
+      "entry_pct": 2.0,
+      "exit_pct": -2.0
+    },
+    "total_return_pct": 7.64,
+    "annualized_return_pct": 3.79,
+    "sharpe_ratio": 0.28,
+    "max_drawdown_pct": -30.07,
+    "num_trades": 54,
+    "win_rate_pct": 31.48,
+    "profit_factor": 1.11,
+    "avg_win_pct": 7.52,
+    "avg_loss_pct": -2.76,
+    "final_equity": 107636.21,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -23.22
+  },
+  {
+    "strategy": "Dual Momentum",
+    "params": {
+      "short_lookback": 168,
+      "long_lookback": 504
+    },
+    "total_return_pct": -22.2,
+    "annualized_return_pct": -11.93,
+    "sharpe_ratio": -0.36,
+    "max_drawdown_pct": -33.62,
+    "num_trades": 157,
+    "win_rate_pct": 28.66,
+    "profit_factor": 0.86,
+    "avg_win_pct": 2.46,
+    "avg_loss_pct": -0.95,
+    "final_equity": 77800.96,
+    "buy_hold_return_pct": 30.85,
+    "excess_vs_buyhold_pct": -53.05
+  }
+]
