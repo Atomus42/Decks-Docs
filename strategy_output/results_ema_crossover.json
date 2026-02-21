@@ -1,0 +1,117 @@
+[
+  {
+    "strategy": "EMA 9/21 (Fast Scalp)",
+    "params": {
+      "fast": 9,
+      "slow": 21
+    },
+    "total_return_pct": 179.23,
+    "annualized_return_pct": 40.85,
+    "sharpe_ratio": 1.21,
+    "max_drawdown_pct": -26.6,
+    "num_trades": 23,
+    "win_rate_pct": 39.13,
+    "profit_factor": 2.35,
+    "avg_win_pct": 22.74,
+    "avg_loss_pct": -3.98,
+    "final_equity": 279225.7,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": 0.93
+  },
+  {
+    "strategy": "EMA 12/26 (MACD-like)",
+    "params": {
+      "fast": 12,
+      "slow": 26
+    },
+    "total_return_pct": 137.59,
+    "annualized_return_pct": 33.46,
+    "sharpe_ratio": 1.05,
+    "max_drawdown_pct": -29.29,
+    "num_trades": 16,
+    "win_rate_pct": 31.25,
+    "profit_factor": 2.31,
+    "avg_win_pct": 35.84,
+    "avg_loss_pct": -4.71,
+    "final_equity": 237586.24,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": -40.71
+  },
+  {
+    "strategy": "EMA 21/55 (Medium Trend)",
+    "params": {
+      "fast": 21,
+      "slow": 55
+    },
+    "total_return_pct": 90.99,
+    "annualized_return_pct": 24.09,
+    "sharpe_ratio": 0.82,
+    "max_drawdown_pct": -35.53,
+    "num_trades": 10,
+    "win_rate_pct": 30.0,
+    "profit_factor": 2.18,
+    "avg_win_pct": 57.99,
+    "avg_loss_pct": -8.05,
+    "final_equity": 190992.41,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": -87.3
+  },
+  {
+    "strategy": "EMA 50/200 (Golden/Death Cross)",
+    "params": {
+      "fast": 50,
+      "slow": 200
+    },
+    "total_return_pct": 199.16,
+    "annualized_return_pct": 44.13,
+    "sharpe_ratio": 1.12,
+    "max_drawdown_pct": -27.75,
+    "num_trades": 1,
+    "win_rate_pct": 100.0,
+    "profit_factor": 999.99,
+    "avg_win_pct": 210.26,
+    "avg_loss_pct": 0,
+    "final_equity": 299160.96,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": 20.86
+  },
+  {
+    "strategy": "EMA 20/50 (Swing)",
+    "params": {
+      "fast": 20,
+      "slow": 50
+    },
+    "total_return_pct": 70.08,
+    "annualized_return_pct": 19.38,
+    "sharpe_ratio": 0.7,
+    "max_drawdown_pct": -41.35,
+    "num_trades": 10,
+    "win_rate_pct": 30.0,
+    "profit_factor": 1.73,
+    "avg_win_pct": 58.11,
+    "avg_loss_pct": -9.57,
+    "final_equity": 170081.27,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": -108.21
+  },
+  {
+    "strategy": "Triple EMA 8/21/55",
+    "params": {
+      "fast": 8,
+      "mid": 21,
+      "slow": 55
+    },
+    "total_return_pct": 114.18,
+    "annualized_return_pct": 28.93,
+    "sharpe_ratio": 1.0,
+    "max_drawdown_pct": -24.7,
+    "num_trades": 18,
+    "win_rate_pct": 27.78,
+    "profit_factor": 2.54,
+    "avg_win_pct": 31.9,
+    "avg_loss_pct": -3.55,
+    "final_equity": 214183.84,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": -64.11
+  }
+]

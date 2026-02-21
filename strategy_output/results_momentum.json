@@ -1,0 +1,116 @@
+[
+  {
+    "strategy": "Donchian Channel (20/10) - Turtle",
+    "params": {
+      "entry_period": 20,
+      "exit_period": 10
+    },
+    "total_return_pct": 107.79,
+    "annualized_return_pct": 27.63,
+    "sharpe_ratio": 0.95,
+    "max_drawdown_pct": -30.63,
+    "num_trades": 16,
+    "win_rate_pct": 43.75,
+    "profit_factor": 1.99,
+    "avg_win_pct": 22.61,
+    "avg_loss_pct": -5.71,
+    "final_equity": 207791.01,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": -70.51
+  },
+  {
+    "strategy": "Donchian Channel (55/20)",
+    "params": {
+      "entry_period": 55,
+      "exit_period": 20
+    },
+    "total_return_pct": 86.14,
+    "annualized_return_pct": 23.03,
+    "sharpe_ratio": 0.88,
+    "max_drawdown_pct": -28.06,
+    "num_trades": 8,
+    "win_rate_pct": 50.0,
+    "profit_factor": 2.77,
+    "avg_win_pct": 26.98,
+    "avg_loss_pct": -6.26,
+    "final_equity": 186139.15,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": -92.16
+  },
+  {
+    "strategy": "Rate of Change (20)",
+    "params": {
+      "period": 20
+    },
+    "total_return_pct": 113.76,
+    "annualized_return_pct": 28.84,
+    "sharpe_ratio": 0.95,
+    "max_drawdown_pct": -34.62,
+    "num_trades": 55,
+    "win_rate_pct": 32.73,
+    "profit_factor": 1.64,
+    "avg_win_pct": 12.35,
+    "avg_loss_pct": -2.5,
+    "final_equity": 213758.54,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": -64.54
+  },
+  {
+    "strategy": "ADX (14) Trend",
+    "params": {
+      "period": 14,
+      "adx_entry": 25,
+      "adx_exit": 20
+    },
+    "total_return_pct": 27.99,
+    "annualized_return_pct": 8.58,
+    "sharpe_ratio": 0.44,
+    "max_drawdown_pct": -26.5,
+    "num_trades": 43,
+    "win_rate_pct": 30.23,
+    "profit_factor": 1.3,
+    "avg_win_pct": 11.5,
+    "avg_loss_pct": -3.13,
+    "final_equity": 127988.0,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": -150.31
+  },
+  {
+    "strategy": "Keltner Channel (20, 2xATR)",
+    "params": {
+      "ema_period": 20,
+      "atr_mult": 2.0
+    },
+    "total_return_pct": 98.96,
+    "annualized_return_pct": 25.79,
+    "sharpe_ratio": 1.05,
+    "max_drawdown_pct": -21.88,
+    "num_trades": 16,
+    "win_rate_pct": 50.0,
+    "profit_factor": 2.39,
+    "avg_win_pct": 16.69,
+    "avg_loss_pct": -5.08,
+    "final_equity": 198956.34,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": -79.34
+  },
+  {
+    "strategy": "Simple Momentum (30/60)",
+    "params": {
+      "short_lookback": 30,
+      "long_lookback": 60
+    },
+    "total_return_pct": 79.28,
+    "annualized_return_pct": 21.5,
+    "sharpe_ratio": 0.8,
+    "max_drawdown_pct": -34.37,
+    "num_trades": 29,
+    "win_rate_pct": 41.38,
+    "profit_factor": 1.63,
+    "avg_win_pct": 14.76,
+    "avg_loss_pct": -4.53,
+    "final_equity": 179277.22,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": -99.02
+  }
+]

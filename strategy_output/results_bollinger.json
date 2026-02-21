@@ -1,0 +1,123 @@
+[
+  {
+    "strategy": "BB(20,2) Mean Reversion",
+    "params": {
+      "period": 20,
+      "mult": 2.0,
+      "type": "mean_reversion"
+    },
+    "total_return_pct": 38.45,
+    "annualized_return_pct": 11.46,
+    "sharpe_ratio": 0.52,
+    "max_drawdown_pct": -31.11,
+    "num_trades": 13,
+    "win_rate_pct": 69.23,
+    "profit_factor": 1.79,
+    "avg_win_pct": 8.75,
+    "avg_loss_pct": -8.75,
+    "final_equity": 138450.41,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": -139.85
+  },
+  {
+    "strategy": "BB(20,2) Breakout",
+    "params": {
+      "period": 20,
+      "mult": 2.0,
+      "type": "breakout"
+    },
+    "total_return_pct": 20.63,
+    "annualized_return_pct": 6.46,
+    "sharpe_ratio": 0.37,
+    "max_drawdown_pct": -24.7,
+    "num_trades": 27,
+    "win_rate_pct": 33.33,
+    "profit_factor": 1.25,
+    "avg_win_pct": 14.11,
+    "avg_loss_pct": -4.6,
+    "final_equity": 120633.66,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": -157.66
+  },
+  {
+    "strategy": "BB(20,1.5) Tight Mean Reversion",
+    "params": {
+      "period": 20,
+      "mult": 1.5,
+      "type": "mean_reversion"
+    },
+    "total_return_pct": -3.53,
+    "annualized_return_pct": -1.19,
+    "sharpe_ratio": 0.11,
+    "max_drawdown_pct": -42.55,
+    "num_trades": 16,
+    "win_rate_pct": 68.75,
+    "profit_factor": 0.99,
+    "avg_win_pct": 6.44,
+    "avg_loss_pct": -12.39,
+    "final_equity": 96471.36,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": -181.82
+  },
+  {
+    "strategy": "BB(50,2) Slow Mean Reversion",
+    "params": {
+      "period": 50,
+      "mult": 2.0,
+      "type": "mean_reversion"
+    },
+    "total_return_pct": 68.6,
+    "annualized_return_pct": 19.03,
+    "sharpe_ratio": 0.75,
+    "max_drawdown_pct": -28.26,
+    "num_trades": 9,
+    "win_rate_pct": 77.78,
+    "profit_factor": 2.74,
+    "avg_win_pct": 12.22,
+    "avg_loss_pct": -10.54,
+    "final_equity": 168601.49,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": -109.69
+  },
+  {
+    "strategy": "BB(20,2) Squeeze Breakout",
+    "params": {
+      "period": 20,
+      "mult": 2.0,
+      "type": "squeeze_breakout"
+    },
+    "total_return_pct": -25.79,
+    "annualized_return_pct": -9.47,
+    "sharpe_ratio": -1.17,
+    "max_drawdown_pct": -27.62,
+    "num_trades": 7,
+    "win_rate_pct": 0.0,
+    "profit_factor": 0.0,
+    "avg_win_pct": 0,
+    "avg_loss_pct": -4.08,
+    "final_equity": 74212.49,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": -204.08
+  },
+  {
+    "strategy": "BB(20,2) + RSI(14) Filter",
+    "params": {
+      "period": 20,
+      "mult": 2.0,
+      "rsi_period": 14,
+      "type": "mean_reversion_rsi"
+    },
+    "total_return_pct": 32.5,
+    "annualized_return_pct": 9.84,
+    "sharpe_ratio": 0.58,
+    "max_drawdown_pct": -22.86,
+    "num_trades": 10,
+    "win_rate_pct": 80.0,
+    "profit_factor": 2.38,
+    "avg_win_pct": 6.56,
+    "avg_loss_pct": -8.37,
+    "final_equity": 132498.87,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": -145.8
+  }
+]

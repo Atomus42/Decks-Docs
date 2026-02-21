@@ -1,0 +1,134 @@
+[
+  {
+    "strategy": "EMA(21/55) + RSI(14) Filter",
+    "params": {
+      "ema_fast": 21,
+      "ema_slow": 55,
+      "rsi_period": 14,
+      "rsi_entry_max": 70,
+      "rsi_exit": 80
+    },
+    "total_return_pct": 10.15,
+    "annualized_return_pct": 3.28,
+    "sharpe_ratio": 0.26,
+    "max_drawdown_pct": -25.28,
+    "num_trades": 9,
+    "win_rate_pct": 33.33,
+    "profit_factor": 1.24,
+    "avg_win_pct": 23.65,
+    "avg_loss_pct": -7.94,
+    "final_equity": 110152.77,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": -168.14
+  },
+  {
+    "strategy": "MACD(12,26,9) + BB(20,2)",
+    "params": {
+      "macd_fast": 12,
+      "macd_slow": 26,
+      "macd_signal": 9,
+      "bb_window": 20,
+      "bb_std": 2.0
+    },
+    "total_return_pct": -0.63,
+    "annualized_return_pct": -0.21,
+    "sharpe_ratio": 0.1,
+    "max_drawdown_pct": -29.38,
+    "num_trades": 33,
+    "win_rate_pct": 30.3,
+    "profit_factor": 1.05,
+    "avg_win_pct": 9.5,
+    "avg_loss_pct": -3.39,
+    "final_equity": 99365.23,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": -178.93
+  },
+  {
+    "strategy": "Triple Confirmation (EMA+RSI+MACD)",
+    "params": {
+      "ema_fast": 21,
+      "ema_slow": 55,
+      "rsi_period": 14,
+      "macd": "12/26/9"
+    },
+    "total_return_pct": 134.46,
+    "annualized_return_pct": 32.87,
+    "sharpe_ratio": 1.19,
+    "max_drawdown_pct": -20.17,
+    "num_trades": 18,
+    "win_rate_pct": 38.89,
+    "profit_factor": 2.85,
+    "avg_win_pct": 22.42,
+    "avg_loss_pct": -3.29,
+    "final_equity": 234456.26,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": -43.84
+  },
+  {
+    "strategy": "Volatility Regime Switch",
+    "params": {
+      "vol_window": 20,
+      "rsi_period": 14,
+      "ema_fast": 21,
+      "ema_slow": 55,
+      "low_vol_rsi_buy": 30,
+      "low_vol_rsi_sell": 70
+    },
+    "total_return_pct": 22.91,
+    "annualized_return_pct": 7.12,
+    "sharpe_ratio": 0.41,
+    "max_drawdown_pct": -20.15,
+    "num_trades": 5,
+    "win_rate_pct": 60.0,
+    "profit_factor": 2.47,
+    "avg_win_pct": 14.44,
+    "avg_loss_pct": -8.32,
+    "final_equity": 122914.77,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": -155.38
+  },
+  {
+    "strategy": "Weekly Momentum + Daily Pullback",
+    "params": {
+      "momentum_lookback": 5,
+      "sma_period": 20,
+      "rsi_period": 7,
+      "rsi_entry": 55,
+      "rsi_exit": 75,
+      "note": "RSI<55 = pullback within uptrend"
+    },
+    "total_return_pct": -6.49,
+    "annualized_return_pct": -2.21,
+    "sharpe_ratio": -0.16,
+    "max_drawdown_pct": -18.49,
+    "num_trades": 31,
+    "win_rate_pct": 35.48,
+    "profit_factor": 0.94,
+    "avg_win_pct": 3.79,
+    "avg_loss_pct": -1.89,
+    "final_equity": 93512.13,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": -184.78
+  },
+  {
+    "strategy": "CB Avoidance + EMA(21/55)",
+    "params": {
+      "ema_fast": 21,
+      "ema_slow": 55,
+      "cb_window": "T-1 to T+1",
+      "cb_dates": "FOMC 2023-2025"
+    },
+    "total_return_pct": 104.87,
+    "annualized_return_pct": 27.03,
+    "sharpe_ratio": 0.93,
+    "max_drawdown_pct": -30.16,
+    "num_trades": 24,
+    "win_rate_pct": 54.17,
+    "profit_factor": 2.09,
+    "avg_win_pct": 12.92,
+    "avg_loss_pct": -5.85,
+    "final_equity": 204867.46,
+    "buy_hold_return_pct": 178.3,
+    "excess_vs_buyhold_pct": -73.43
+  }
+]
