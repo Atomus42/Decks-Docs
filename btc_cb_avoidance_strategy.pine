@@ -1,0 +1,235 @@
+// This Pine Script™ source code is subject to the terms of the Mozilla Public License 2.0
+// https://mozilla.org/MPL/2.0/
+// © BTC Central Bank Avoidance Strategy
+
+//@version=6
+strategy("BTC CB Avoidance Strategy", overlay=true, default_qty_type=strategy.percent_of_equity,
+     default_qty_value=100, initial_capital=100000, commission_type=strategy.commission.percent,
+     commission_value=0.1, slippage=1, calc_on_every_tick=false)
+
+// ============================================================================
+// INPUTS
+// ============================================================================
+
+// --- Trend Signal ---
+fastLen       = input.int(21,    "Fast EMA Period",         minval=2,  group="Trend Signal")
+slowLen       = input.int(55,    "Slow EMA Period",         minval=2,  group="Trend Signal")
+
+// --- Risk Management ---
+atrLen        = input.int(14,    "ATR Period",              minval=1,  group="Risk Management")
+atrStopMult   = input.float(2.5, "ATR Stop Multiplier",    minval=0.5, step=0.1, group="Risk Management")
+useTrailing   = input.bool(true, "Use Trailing Stop",       group="Risk Management")
+maxDDPct      = input.float(20,  "Max Drawdown % (Circuit Breaker)", minval=1, maxval=50, group="Risk Management")
+
+// --- Central Bank Filter ---
+cbEnabled     = input.bool(true, "Enable CB Exclusion Filter", group="Central Bank Filter")
+cbBefore      = input.int(1,     "Days Before Event",       minval=0, maxval=5, group="Central Bank Filter")
+cbAfter       = input.int(1,     "Days After Event",        minval=0, maxval=5, group="Central Bank Filter")
+
+// --- Visual ---
+showExclusion = input.bool(true, "Show CB Exclusion Zones", group="Visuals")
+showEMA       = input.bool(true, "Show EMAs",               group="Visuals")
+showStopLine  = input.bool(true, "Show Stop-Loss Level",    group="Visuals")
+
+// ============================================================================
+// INDICATORS
+// ============================================================================
+
+emaFast = ta.ema(close, fastLen)
+emaSlow = ta.ema(close, slowLen)
+atrVal  = ta.atr(atrLen)
+
+bullish = emaFast > emaSlow
+bearish = emaFast < emaSlow
+
+// ============================================================================
+// CENTRAL BANK CALENDAR — FOMC, ECB, BOE, BOJ (2022-2025)
+// ============================================================================
+// Pine Script cannot store arrays of dates natively, so we encode each
+// CB event date as an integer YYYYMMDD and check the current bar's date
+// against a rolling exclusion window. We use dayofmonth/month/year built-ins.
+
+barDate = year * 10000 + month * 100 + dayofmonth
+
+// Helper: convert a YYYYMMDD integer to unix timestamp for comparison
+unixFromYMD(y, m, d) =>
+    timestamp(y, m, d, 0, 0, 0)
+
+// We check if the current bar falls within [event - cbBefore, event + cbAfter]
+// for ANY central bank event. Since Pine doesn't support large arrays,
+// we check each event inline. We group by quarter to keep it manageable.
+
+isNearEvent(eventY, eventM, eventD) =>
+    eventUnix = unixFromYMD(eventY, eventM, eventD)
+    barUnix   = unixFromYMD(year, month, dayofmonth)
+    msPerDay  = 86400000
+    barUnix >= eventUnix - cbBefore * msPerDay and barUnix <= eventUnix + cbAfter * msPerDay
+
+// --- FOMC dates ---
+isFOMC =
+     isNearEvent(2022,01,26) or isNearEvent(2022,03,16) or isNearEvent(2022,05,04) or isNearEvent(2022,06,15) or
+     isNearEvent(2022,07,27) or isNearEvent(2022,09,21) or isNearEvent(2022,11,02) or isNearEvent(2022,12,14) or
+     isNearEvent(2023,02,01) or isNearEvent(2023,03,22) or isNearEvent(2023,05,03) or isNearEvent(2023,06,14) or
+     isNearEvent(2023,07,26) or isNearEvent(2023,09,20) or isNearEvent(2023,11,01) or isNearEvent(2023,12,13) or
+     isNearEvent(2024,01,31) or isNearEvent(2024,03,20) or isNearEvent(2024,05,01) or isNearEvent(2024,06,12) or
+     isNearEvent(2024,07,31) or isNearEvent(2024,09,18) or isNearEvent(2024,11,07) or isNearEvent(2024,12,18) or
+     isNearEvent(2025,01,29) or isNearEvent(2025,03,19) or isNearEvent(2025,05,07) or isNearEvent(2025,06,18) or
+     isNearEvent(2025,07,30) or isNearEvent(2025,09,17) or isNearEvent(2025,10,29) or isNearEvent(2025,12,17)
+
+// --- ECB dates ---
+isECB =
+     isNearEvent(2022,02,03) or isNearEvent(2022,03,10) or isNearEvent(2022,04,14) or isNearEvent(2022,06,09) or
+     isNearEvent(2022,07,21) or isNearEvent(2022,09,08) or isNearEvent(2022,10,27) or isNearEvent(2022,12,15) or
+     isNearEvent(2023,02,02) or isNearEvent(2023,03,16) or isNearEvent(2023,05,04) or isNearEvent(2023,06,15) or
+     isNearEvent(2023,07,27) or isNearEvent(2023,09,14) or isNearEvent(2023,10,26) or isNearEvent(2023,12,14) or
+     isNearEvent(2024,01,25) or isNearEvent(2024,03,07) or isNearEvent(2024,04,11) or isNearEvent(2024,06,06) or
+     isNearEvent(2024,07,18) or isNearEvent(2024,09,12) or isNearEvent(2024,10,17) or isNearEvent(2024,12,12) or
+     isNearEvent(2025,01,30) or isNearEvent(2025,03,06) or isNearEvent(2025,04,17) or isNearEvent(2025,06,05) or
+     isNearEvent(2025,07,24) or isNearEvent(2025,09,11) or isNearEvent(2025,10,30) or isNearEvent(2025,12,18)
+
+// --- BOE dates ---
+isBOE =
+     isNearEvent(2022,02,03) or isNearEvent(2022,03,17) or isNearEvent(2022,05,05) or isNearEvent(2022,06,16) or
+     isNearEvent(2022,08,04) or isNearEvent(2022,09,22) or isNearEvent(2022,11,03) or isNearEvent(2022,12,15) or
+     isNearEvent(2023,02,02) or isNearEvent(2023,03,23) or isNearEvent(2023,05,11) or isNearEvent(2023,06,22) or
+     isNearEvent(2023,08,03) or isNearEvent(2023,09,21) or isNearEvent(2023,11,02) or isNearEvent(2023,12,14) or
+     isNearEvent(2024,02,01) or isNearEvent(2024,03,21) or isNearEvent(2024,05,09) or isNearEvent(2024,06,20) or
+     isNearEvent(2024,08,01) or isNearEvent(2024,09,19) or isNearEvent(2024,11,07) or isNearEvent(2024,12,19) or
+     isNearEvent(2025,02,06) or isNearEvent(2025,03,20) or isNearEvent(2025,05,08) or isNearEvent(2025,06,19) or
+     isNearEvent(2025,08,07) or isNearEvent(2025,09,18) or isNearEvent(2025,11,06) or isNearEvent(2025,12,18)
+
+// --- BOJ dates ---
+isBOJ =
+     isNearEvent(2022,01,18) or isNearEvent(2022,03,18) or isNearEvent(2022,04,28) or isNearEvent(2022,06,17) or
+     isNearEvent(2022,07,21) or isNearEvent(2022,09,22) or isNearEvent(2022,10,28) or isNearEvent(2022,12,20) or
+     isNearEvent(2023,01,18) or isNearEvent(2023,03,10) or isNearEvent(2023,04,28) or isNearEvent(2023,06,16) or
+     isNearEvent(2023,07,28) or isNearEvent(2023,09,22) or isNearEvent(2023,10,31) or isNearEvent(2023,12,19) or
+     isNearEvent(2024,01,23) or isNearEvent(2024,03,19) or isNearEvent(2024,04,26) or isNearEvent(2024,06,14) or
+     isNearEvent(2024,07,31) or isNearEvent(2024,09,20) or isNearEvent(2024,10,31) or isNearEvent(2024,12,19) or
+     isNearEvent(2025,01,24) or isNearEvent(2025,03,14) or isNearEvent(2025,05,01) or isNearEvent(2025,06,17) or
+     isNearEvent(2025,07,31) or isNearEvent(2025,09,19) or isNearEvent(2025,10,30) or isNearEvent(2025,12,19)
+
+isExcluded = cbEnabled and (isFOMC or isECB or isBOE or isBOJ)
+
+// ============================================================================
+// STRATEGY LOGIC
+// ============================================================================
+
+var float stopLevel       = na
+var float highestSinceEntry = na
+var bool  circuitBreaker  = false
+
+// Track peak equity and drawdown for circuit breaker
+peakEquity = ta.highest(strategy.equity, bar_index + 1 > 0 ? bar_index + 1 : 1)
+currentDD  = (strategy.equity - peakEquity) / peakEquity * 100
+
+// Circuit breaker trigger
+if currentDD <= -maxDDPct and not circuitBreaker
+    circuitBreaker := true
+
+// --- Entry conditions ---
+goLong      = ta.crossover(emaFast, emaSlow)
+goFlat      = ta.crossunder(emaFast, emaSlow)
+inPosition  = strategy.position_size > 0
+
+// --- Entry ---
+if goLong and not inPosition and not isExcluded and not circuitBreaker
+    stopDist         = atrVal * atrStopMult
+    stopLevel       := close - stopDist
+    highestSinceEntry := close
+    strategy.entry("Long", strategy.long)
+
+// --- Trailing stop update ---
+if inPosition and useTrailing
+    if high > highestSinceEntry
+        highestSinceEntry := high
+        newStop = highestSinceEntry - atrVal * atrStopMult
+        if newStop > stopLevel
+            stopLevel := newStop
+
+// --- Stop-loss exit ---
+if inPosition and low <= stopLevel
+    strategy.close("Long", comment="Stop Loss")
+    stopLevel       := na
+    highestSinceEntry := na
+
+// --- Signal exit (trend reversal) ---
+if inPosition and goFlat
+    strategy.close("Long", comment="Signal Exit")
+    stopLevel       := na
+    highestSinceEntry := na
+
+// --- CB exclusion exit ---
+if inPosition and isExcluded
+    strategy.close("Long", comment="CB Exclusion")
+    stopLevel       := na
+    highestSinceEntry := na
+
+// --- Circuit breaker exit ---
+if inPosition and circuitBreaker
+    strategy.close("Long", comment="Circuit Breaker")
+    stopLevel       := na
+    highestSinceEntry := na
+
+// ============================================================================
+// PLOTS
+// ============================================================================
+
+// EMAs
+plot(showEMA ? emaFast : na, "Fast EMA", color=color.new(#2196F3, 20), linewidth=2)
+plot(showEMA ? emaSlow : na, "Slow EMA", color=color.new(#FF9800, 20), linewidth=2)
+
+// Stop-loss level
+plot(showStopLine and inPosition ? stopLevel : na, "Stop Level",
+     color=color.new(color.red, 40), style=plot.style_stepline_diamond, linewidth=1)
+
+// CB exclusion zone background
+bgcolor(showExclusion and isExcluded ? color.new(#FF9800, 88) : na, title="CB Exclusion Zone")
+
+// Circuit breaker background
+bgcolor(circuitBreaker ? color.new(color.red, 90) : na, title="Circuit Breaker Active")
+
+// Entry/exit markers
+plotshape(goLong and not inPosition and not isExcluded and not circuitBreaker,
+     title="Entry Signal", style=shape.triangleup, location=location.belowbar,
+     color=color.new(#4CAF50, 0), size=size.small, text="Long")
+
+plotshape(inPosition and goFlat,
+     title="Signal Exit", style=shape.triangledown, location=location.abovebar,
+     color=color.new(#F44336, 0), size=size.small, text="Exit")
+
+plotshape(inPosition and isExcluded,
+     title="CB Exit", style=shape.xcross, location=location.abovebar,
+     color=color.new(#FF9800, 0), size=size.small, text="CB")
+
+// ============================================================================
+// INFO TABLE
+// ============================================================================
+
+var table infoTable = table.new(position.top_right, 2, 8, bgcolor=color.new(color.black, 80),
+     border_width=1, border_color=color.gray)
+
+if barstate.islast
+    table.cell(infoTable, 0, 0, "Metric",         text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(infoTable, 1, 0, "Value",           text_color=color.white, text_size=size.small, text_halign=text.align_right)
+
+    table.cell(infoTable, 0, 1, "Fast EMA",        text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(infoTable, 1, 1, str.tostring(fastLen), text_color=#2196F3, text_size=size.small, text_halign=text.align_right)
+
+    table.cell(infoTable, 0, 2, "Slow EMA",        text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(infoTable, 1, 2, str.tostring(slowLen), text_color=#FF9800, text_size=size.small, text_halign=text.align_right)
+
+    table.cell(infoTable, 0, 3, "ATR Stop",        text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(infoTable, 1, 3, str.tostring(atrStopMult, "#.#") + "x ATR", text_color=color.white, text_size=size.small, text_halign=text.align_right)
+
+    table.cell(infoTable, 0, 4, "CB Filter",       text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(infoTable, 1, 4, cbEnabled ? "ON" : "OFF", text_color=cbEnabled ? color.green : color.red, text_size=size.small, text_halign=text.align_right)
+
+    table.cell(infoTable, 0, 5, "CB Window",       text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(infoTable, 1, 5, "T-" + str.tostring(cbBefore) + " / T+" + str.tostring(cbAfter), text_color=color.white, text_size=size.small, text_halign=text.align_right)
+
+    table.cell(infoTable, 0, 6, "Excluded Now",    text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(infoTable, 1, 6, isExcluded ? "YES" : "NO", text_color=isExcluded ? #FF9800 : color.green, text_size=size.small, text_halign=text.align_right)
+
+    table.cell(infoTable, 0, 7, "Circuit Breaker", text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(infoTable, 1, 7, circuitBreaker ? "ACTIVE" : "OFF", text_color=circuitBreaker ? color.red : color.green, text_size=size.small, text_halign=text.align_right)
