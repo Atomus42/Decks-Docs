@@ -1,0 +1,104 @@
+// This Pine Script™ source code is subject to the terms of the Mozilla Public License 2.0
+// https://mozilla.org/MPL/2.0/
+// BTC/USD 1H Donchian Channel Strategy — Winner of 48-strategy backtest
+
+//@version=6
+strategy("BTC 1H Donchian Channel (48/24)", overlay=true, default_qty_type=strategy.percent_of_equity,
+     default_qty_value=95, initial_capital=100000, commission_type=strategy.commission.percent,
+     commission_value=0.1, slippage=1, calc_on_every_tick=false)
+
+// ============================================================================
+// INPUTS
+// ============================================================================
+
+entryLen   = input.int(48,  "Entry Channel (Highest High)",  minval=5,  group="Donchian Channel")
+exitLen    = input.int(24,  "Exit Channel (Lowest Low)",     minval=5,  group="Donchian Channel")
+
+showChannel = input.bool(true,  "Show Channel Lines",   group="Visuals")
+showFill    = input.bool(true,  "Show Channel Fill",    group="Visuals")
+showSignals = input.bool(true,  "Show Entry/Exit Markers", group="Visuals")
+
+// ============================================================================
+// DONCHIAN CHANNEL
+// ============================================================================
+
+// Entry channel: highest high of last N bars (shifted by 1 to avoid lookahead)
+upperChannel = ta.highest(high, entryLen)[1]
+
+// Exit channel: lowest low of last N bars (shifted by 1)
+lowerChannel = ta.lowest(low, exitLen)[1]
+
+// Midline for reference
+midChannel = (upperChannel + lowerChannel) / 2
+
+// ============================================================================
+// STRATEGY LOGIC
+// ============================================================================
+
+// Entry: close breaks above the upper channel
+longEntry = close > upperChannel
+
+// Exit: close breaks below the lower channel
+longExit  = close < lowerChannel
+
+inPosition = strategy.position_size > 0
+
+if longEntry and not inPosition
+    strategy.entry("Long", strategy.long)
+
+if longExit and inPosition
+    strategy.close("Long", comment="Donchian Exit")
+
+// ============================================================================
+// PLOTS
+// ============================================================================
+
+// Channel lines
+pUpper = plot(showChannel ? upperChannel : na, "Upper Channel (Entry)",
+     color=color.new(#26A69A, 30), linewidth=2)
+pLower = plot(showChannel ? lowerChannel : na, "Lower Channel (Exit)",
+     color=color.new(#EF5350, 30), linewidth=2)
+pMid   = plot(showChannel ? midChannel : na, "Mid Channel",
+     color=color.new(color.gray, 60), linewidth=1, style=plot.style_circles)
+
+// Channel fill
+fill(pUpper, pLower, color=showFill ? color.new(#26A69A, 92) : na, title="Channel Fill")
+
+// Entry/exit markers
+plotshape(showSignals and longEntry and not inPosition,
+     title="Entry Signal", style=shape.triangleup, location=location.belowbar,
+     color=color.new(#26A69A, 0), size=size.small, text="Long")
+
+plotshape(showSignals and longExit and inPosition,
+     title="Exit Signal", style=shape.triangledown, location=location.abovebar,
+     color=color.new(#EF5350, 0), size=size.small, text="Exit")
+
+// Color bars when in position
+barcolor(inPosition ? color.new(#26A69A, 60) : na)
+
+// ============================================================================
+// INFO TABLE
+// ============================================================================
+
+var table infoTable = table.new(position.top_right, 2, 6, bgcolor=color.new(color.black, 80),
+     border_width=1, border_color=color.gray)
+
+if barstate.islast
+    table.cell(infoTable, 0, 0, "Metric",           text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(infoTable, 1, 0, "Value",             text_color=color.white, text_size=size.small, text_halign=text.align_right)
+
+    table.cell(infoTable, 0, 1, "Entry Channel",     text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(infoTable, 1, 1, str.tostring(entryLen) + " bars HH", text_color=#26A69A, text_size=size.small, text_halign=text.align_right)
+
+    table.cell(infoTable, 0, 2, "Exit Channel",      text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(infoTable, 1, 2, str.tostring(exitLen) + " bars LL", text_color=#EF5350, text_size=size.small, text_halign=text.align_right)
+
+    table.cell(infoTable, 0, 3, "Timeframe",         text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(infoTable, 1, 3, "1H (recommended)",   text_color=color.white, text_size=size.small, text_halign=text.align_right)
+
+    table.cell(infoTable, 0, 4, "In Position",       text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(infoTable, 1, 4, inPosition ? "YES" : "NO", text_color=inPosition ? #26A69A : color.red, text_size=size.small, text_halign=text.align_right)
+
+    table.cell(infoTable, 0, 5, "Upper / Lower",     text_color=color.white, text_size=size.small, text_halign=text.align_left)
+    table.cell(infoTable, 1, 5, str.tostring(upperChannel, "#.0") + " / " + str.tostring(lowerChannel, "#.0"),
+         text_color=color.white, text_size=size.small, text_halign=text.align_right)
