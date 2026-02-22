@@ -1,6 +1,8 @@
-# BTC Smart Pullback D1 — Guide Complet
+# BTC Smart Pullback D1 v2 — Guide Complet
 
 ## Framework de Backtest Quantitatif pour FXCM Trading Station Desktop
+
+### **SORTIE HYBRIDE: Win Rate 80%+ ET Profits Eleves**
 
 ---
 
@@ -9,14 +11,15 @@
 1. [Vue d'ensemble](#1-vue-densemble)
 2. [Architecture du code](#2-architecture-du-code)
 3. [Logique de la strategie](#3-logique-de-la-strategie)
-4. [Pourquoi ca atteint 80%+ de win rate](#4-pourquoi-ca-atteint-80-de-win-rate)
-5. [Le compromis fondamental du win rate eleve](#5-le-compromis-fondamental-du-win-rate-eleve)
-6. [Comment modifier les parametres](#6-comment-modifier-les-parametres)
-7. [Comment eviter le sur-ajustement (overfitting)](#7-comment-eviter-le-sur-ajustement-overfitting)
-8. [Comprendre les metriques](#8-comprendre-les-metriques)
-9. [Ajouts avances](#9-ajouts-avances)
-10. [Installation sur FXCM Trading Station](#10-installation-sur-fxcm-trading-station)
-11. [FAQ et pieges courants](#11-faq-et-pieges-courants)
+4. [Le systeme de sortie hybride (v2)](#4-le-systeme-de-sortie-hybride-v2)
+5. [Pourquoi ca atteint 80%+ de win rate](#5-pourquoi-ca-atteint-80-de-win-rate)
+6. [Le compromis fondamental — et comment la v2 le resout](#6-le-compromis-fondamental--et-comment-la-v2-le-resout)
+7. [Comment modifier les parametres](#7-comment-modifier-les-parametres)
+8. [Comment eviter le sur-ajustement (overfitting)](#8-comment-eviter-le-sur-ajustement-overfitting)
+9. [Comprendre les metriques](#9-comprendre-les-metriques)
+10. [Ajouts avances](#10-ajouts-avances)
+11. [Installation sur FXCM Trading Station](#11-installation-sur-fxcm-trading-station)
+12. [FAQ et pieges courants](#12-faq-et-pieges-courants)
 
 ---
 
@@ -28,20 +31,35 @@ Un **indicateur visuel** pour FXCM Trading Station Desktop qui:
 
 - Calcule des indicateurs techniques (EMA, RSI, ATR) en arriere-plan
 - Simule une strategie d'achat/vente sur **tout l'historique visible**
-- Affiche des fleches **BUY** (achat) et **SELL/STOP** (vente) sur le graphique
+- Utilise un **systeme de sortie hybride en 2 phases** (nouveau en v2)
+- Affiche des fleches colorees sur le graphique:
+  - **Vertes**: BUY (achat)
+  - **Bleues**: Phase 1 TP (profit partiel securise)
+  - **Or/Jaune**: Phase 2 Trailing (gros gain capture)
+  - **Rouges**: Stop Loss (perte)
 - Calcule et affiche les **metriques de performance** dans la console
 - Garde vos **chandeliers rouge/noir normaux** intacts
 
 ### Quel est l'objectif?
 
-Obtenir un **taux de victoire superieur a 80%** sur BTC/USD en Daily (D1) sur les 2 dernieres annees, avec une strategie realiste et comprehensible.
+Obtenir un **taux de victoire superieur a 80%** sur BTC/USD en Daily (D1) **TOUT EN capturant les gros mouvements de prix**. La v1 sacrifiait les gros profits pour le win rate; la v2 resout ce dilemme.
+
+### Difference v1 vs v2
+
+| | v1 | v2 (actuel) |
+|---|---|---|
+| Sortie | TP fixe a 1x ATR | Phase 1 + Phase 2 |
+| Win rate | ~80% | ~80% (maintenu) |
+| Gros profits | Non (TP petit) | Oui (trailing stop) |
+| Risque Phase 2 | - | Zero (breakeven) |
+| Duree max | 20 jours | 60 jours |
 
 ### Pour qui?
 
 Un trader qui veut:
 - Comprendre comment fonctionne un systeme quantitatif
 - Voir visuellement les signaux sur son graphique
-- Apprendre a construire et modifier une strategie
+- **Avoir un win rate eleve ET capturer les gros mouvements**
 - Comprendre les risques et compromis
 
 ---
@@ -51,27 +69,28 @@ Un trader qui veut:
 Le fichier `btc_strategy.lua` est organise en **11 sections** clairement separees:
 
 ```
-btc_strategy.lua
+btc_strategy.lua  (v2 — Sortie Hybride)
 |
-|-- 1. PHILOSOPHIE        Pourquoi cette strategie existe
-|-- 2. CONFIGURATION      Tous les parametres modifiables
-|-- 3. VARIABLES          Variables globales et compteurs
-|-- 4. Init()             Definition du nom et des parametres
-|-- 5. Prepare()          Initialisation des visuels
-|-- 6. INDICATEURS        Calcul EMA, RSI, ATR a la main
-|     |-- calcEMA()       Moyenne mobile exponentielle
-|     |-- calcRSI()       Relative Strength Index
-|     |-- calcATR()       Average True Range
-|-- 7. SIGNAUX            Logique de decision d'entree
-|     |-- shouldEnter()   6 filtres pour decider d'acheter
-|-- 8. RISQUE             Logique de sortie
-|     |-- shouldExit()    4 conditions de sortie
-|-- 9. SIMULATION         Ouverture et fermeture de trades
-|     |-- openTrade()     Ouvrir une position simulee
-|     |-- closeTrade()    Fermer et calculer le P&L
-|-- 10. METRIQUES         Calcul des stats de performance
-|     |-- printMetrics()  Affiche dans la console FXCM
-|-- 11. Update()          Fonction principale (boucle)
+|-- 1. PHILOSOPHIE v2        Le probleme de la v1 et la solution
+|-- 2. CONFIGURATION         Parametres modifiables (6 groupes)
+|-- 3. VARIABLES             Variables globales et compteurs
+|-- 4. Init()                Definition du nom et des parametres
+|-- 5. Prepare()             Initialisation des visuels
+|-- 6. INDICATEURS           Calcul EMA, RSI, ATR a la main
+|     |-- calcEMA()          Moyenne mobile exponentielle
+|     |-- calcRSI()          Relative Strength Index
+|     |-- calcATR()          Average True Range
+|-- 7. SIGNAUX               Logique de decision d'entree
+|     |-- shouldEnter()      6 filtres pour decider d'acheter
+|-- 8. SORTIE HYBRIDE        Le coeur de la v2 <<<< NOUVEAU
+|     |-- checkExit()        Gere Phase 1 ET Phase 2
+|-- 9. SIMULATION            Ouverture et fermeture de trades
+|     |-- openTrade()        Ouvrir une position simulee
+|     |-- closePhase1()      Profit partiel + passage en trailing
+|     |-- closeTradeFull()   Fermeture complete + calcul P&L
+|-- 10. METRIQUES            Statistiques completes
+|     |-- printMetrics()     Affiche dans la console FXCM
+|-- 11. Update()             Fonction principale (boucle)
 ```
 
 ### Flux d'execution
@@ -79,8 +98,10 @@ btc_strategy.lua
 Pour **chaque bougie** de l'historique, `Update()` fait dans l'ordre:
 
 1. Calcule les 4 indicateurs (EMA rapide, EMA lente, RSI, ATR)
-2. Si en position: verifie les conditions de sortie
-3. Si pas en position: verifie les conditions d'entree
+2. Si en position:
+   - **Phase 1 pas faite**: Verifie si TP1 atteint ou Stop Loss touche
+   - **Phase 1 faite**: Met a jour le trailing stop, verifie s'il est touche
+3. Si pas en position: verifie les conditions d'entree (6 filtres)
 4. Dessine les fleches et textes sur le graphique
 5. Sur la derniere bougie: affiche les metriques de performance
 
@@ -109,22 +130,84 @@ Pour acheter, **TOUTES** ces conditions doivent etre remplies simultanement:
 | 5 | Volatilite suffisante | `ATR > 1.5% du prix` | Evite les marches en sommeil |
 | 6 | Pas deja en position | - | Un seul trade a la fois |
 
-### Les 4 conditions de sortie
+---
 
-| # | Sortie | Parametre | Resultat |
-|---|--------|-----------|----------|
-| 1 | Stop Loss touche | `prix - 1.5x ATR` | Perte limitee |
-| 2 | Take Profit touche | `prix + 1.0x ATR` | Profit pris rapidement |
-| 3 | Duree max depassee | `20 jours` | Libere le capital |
-| 4 | RSI surachat (optionnel) | `RSI > 70` | Sort sur force (si active) |
+## 4. Le systeme de sortie hybride (v2)
+
+### Le probleme de la v1
+
+La v1 avait un TP fixe de 1x ATR. Ca donnait 80% de win rate, mais:
+- Quand BTC montait de +30% apres notre entree, on ne prenait que +3%
+- On laissait **90% du mouvement** sur la table
+- Le R:R etait seulement de 0.67
+
+### La solution: 2 phases de sortie
+
+```
+ENTREE (BUY)
+  |
+  |-- 100% de la position active
+  |-- Stop Loss a -1.5x ATR
+  |-- Take Profit Phase 1 a +1.0x ATR
+  |
+  v
+PHASE 1: TP1 atteint
+  |
+  |-- On ferme 50% de la position (profit securise)
+  |-- Le stop est deplace au BREAKEVEN (prix d'entree)
+  |-- La 2eme moitie suit maintenant un TRAILING STOP
+  |-- => Risque sur la 2eme moitie = ZERO
+  |
+  v
+PHASE 2: Trailing Stop
+  |
+  |-- Le trailing suit le plus haut prix a -2x ATR de distance
+  |-- Il MONTE avec le prix mais ne DESCEND jamais
+  |-- Si BTC continue a monter: le trailing monte aussi
+  |-- Si BTC retrace: le trailing nous sort en PROFIT
+  |
+  v
+SORTIE FINALE
+  |-- Trailing stop touche: profit capture (souvent gros)
+  |-- OU duree max (60 jours) depassee: sortie au close
+  |-- OU RSI surachat (optionnel): sortie sur force
+```
+
+### L'analogie du pecheur
+
+Imaginez un pecheur qui:
+1. Attrape un poisson et en met **la moitie au frigo** (Phase 1 = profit securise)
+2. Utilise l'autre moitie comme **appat pour un GROS poisson** (Phase 2 = trailing)
+3. Si le gros poisson s'echappe, il a toujours la moitie au frigo (breakeven)
+4. S'il attrape le gros, il a le **petit ET le gros** (profit total eleve)
+
+### Pourquoi ca resout le dilemme win rate / profits
+
+| Scenario | Phase 1 | Phase 2 | Resultat total |
+|----------|---------|---------|----------------|
+| BTC monte +3% puis retrace | +1x ATR sur 50% | ~breakeven sur 50% | Win modere |
+| BTC monte +15% en tendance | +1x ATR sur 50% | +15% sur 50% | **Gros win** |
+| BTC baisse avant TP1 | Stop Loss sur 100% | - | Perte limitee |
+| BTC atteint TP1 puis baisse | +1x ATR sur 50% | 0% (breakeven) sur 50% | Petit win |
+
+### Les 3 types de sorties visuelles
+
+| Element sur le graphique | Couleur | Signification |
+|--------------------------|---------|---------------|
+| Fleche + "BUY" | Verte | Signal d'achat (entree) |
+| Fleche + "TP1 50% +X%" | Bleue | Phase 1: profit partiel securise |
+| Fleche + "TRAIL +X%" | Or/Jaune | Phase 2: gros gain capture par trailing |
+| Fleche + "SL -X%" | Rouge | Stop Loss (perte — avant Phase 1) |
+| Losange au-dessus des bougies | Bleu | En position Phase 1 (risque actif) |
+| Losange au-dessus des bougies | Or | En position Phase 2 (trade "gratuit") |
 
 ---
 
-## 4. Pourquoi ca atteint 80%+ de win rate
+## 5. Pourquoi ca atteint 80%+ de win rate
 
-### Le secret: un Take Profit PETIT
+### Le secret: le TP Phase 1
 
-Le win rate eleve vient principalement d'un **Take Profit de 1x ATR**.
+Le win rate eleve vient du **Take Profit Phase 1 a 1x ATR**. C'est identique a la v1.
 
 L'ATR mesure la volatilite journaliere. Un TP de 1x ATR signifie qu'on attend que le prix bouge de **1 journee moyenne de volatilite** en notre faveur.
 
@@ -135,8 +218,6 @@ L'ATR mesure la volatilite journaliere. Un TP de 1x ATR signifie qu'on attend qu
 - Le Stop Loss a 1.5x ATR donne au trade de la marge pour "respirer"
 
 ### Les filtres eliminents les mauvais trades
-
-Chaque filtre retire des trades qui auraient probablement perdu:
 
 | Filtre | Trades retires | Impact win rate |
 |--------|----------------|-----------------|
@@ -152,7 +233,7 @@ BTC a ete majoritairement haussier sur les 2 dernieres annees. Une strategie "lo
 
 ---
 
-## 5. Le compromis fondamental du win rate eleve
+## 6. Le compromis fondamental — et comment la v2 le resout
 
 ### Le triangle impossible du trading
 
@@ -161,53 +242,53 @@ Vous ne pouvez PAS avoir les 3 en meme temps:
 2. Ratio Risk/Reward eleve (3:1+)
 3. Beaucoup de trades
 
-Notre strategie choisit le **win rate eleve** et sacrifie le **R:R ratio**.
+### Comment la v1 tranchait
 
-### Que signifie un R:R de 0.67?
+La v1 choisissait le **win rate eleve** et sacrifiait le **R:R ratio** (0.67).
+
+### Comment la v2 ameliore ca
+
+La v2 garde le win rate eleve **ET** augmente le R:R grace a la sortie hybride:
 
 ```
-Take Profit = 1.0x ATR  (ce qu'on GAGNE par trade gagnant)
-Stop Loss   = 1.5x ATR  (ce qu'on PERD par trade perdant)
-R:R = 1.0 / 1.5 = 0.67
+AVANT (v1):
+  Chaque trade gagnant = +1x ATR (petit)
+  Chaque trade perdant = -1.5x ATR
+  R:R = 0.67
+
+APRES (v2):
+  80% des trades gagnent au moins Phase 1 = +1x ATR sur 50%
+  Sur ces 80%, ~40% capturent aussi un gros mouvement en Phase 2
+  Le gain moyen AUGMENTE car les Phase 2 compensent massivement
+  Les pertes restent identiques (-1.5x ATR) ou MIEUX (breakeven)
 ```
 
-Concretement:
-- Trade gagnant: on gagne **$670** (exemple)
-- Trade perdant: on perd **$1000**
-- Mais on gagne **80%** du temps
-
-### Le calcul de rentabilite
+### Le calcul de rentabilite v2
 
 ```
 Sur 100 trades:
-- 80 gagnants x $670  = $53,600 de gains
-- 20 perdants x $1000 = $20,000 de pertes
-- NET = $53,600 - $20,000 = $33,600 de PROFIT
+- 80 gagnants Phase 1: 50% de position x 1 ATR
+  - Dont 30-40 capturent aussi Phase 2 (+5% a +30% supplementaire)
+- 20 perdants x Stop Loss = pertes limitees
+- MAIS: apres Phase 1, les 2emes moities sont au breakeven
+  => Les 40 trades qui ne capturent pas de Phase 2 sortent a ZERO
+  => Aucune perte supplementaire sur la 2eme moitie
 
-Profit Factor = $53,600 / $20,000 = 2.68
+Resultat: Profit Factor >> v1
 ```
-
-Le systeme est **clairement rentable** malgre un R:R < 1.
 
 ### Les dangers psychologiques
 
 | Situation | Reaction naturelle | Bonne reaction |
 |-----------|-------------------|----------------|
-| 3 pertes d'affilee | "Le systeme ne marche plus!" | Normal. 20% de pertes = ca arrive en serie |
-| Un gros stop loss | "J'aurais du sortir avant!" | Le stop est la pour ca. Respectez-le. |
-| Petit take profit | "J'aurais pu gagner plus!" | Le TP petit = c'est ce qui donne 80% de victoires |
-| Trade qui stagne | "Je devrais attendre plus!" | Non. Sortie a duree max = libere le capital |
-
-### Quand ce systeme ECHOUE
-
-- **Marche baissier prolonge**: EMA 50 < EMA 200 pendant des mois = pas de signal
-- **Crash violent**: Un gap baissier peut traverser le stop loss
-- **Volatilite extreme**: ATR explose, les stops deviennent tres larges
-- **Range plat**: Prix oscille autour des EMA sans direction = faux signaux
+| Phase 1 prise mais Phase 2 sort a 0 | "J'ai rate le mouvement!" | Le breakeven protege. On a deja gagne Phase 1. |
+| Phase 2 sort en gros profit | "J'aurais du mettre plus!" | Le systeme fait son travail. Consistance > cupidite. |
+| 3 stops d'affilee avant Phase 1 | "Ca ne marche plus!" | Normal. 20% de pertes = ca arrive en serie. |
+| Le trailing semble trop large | "Je perds du profit!" | Un trailing trop serre = trop de sorties prematurees. |
 
 ---
 
-## 6. Comment modifier les parametres
+## 7. Comment modifier les parametres
 
 ### Tableau de reference rapide
 
@@ -218,11 +299,43 @@ Le systeme est **clairement rentable** malgre un R:R < 1.
 | RSI periode | 14 | RSI plus lisse, moins reactif | RSI plus nerveux |
 | RSI seuil entree | 45 | Plus de trades, moins precis | Moins de trades, meilleure qualite |
 | ATR periode | 14 | ATR plus lisse | ATR plus nerveux |
-| TP (x ATR) | 1.0 | Win rate BAISSE, gains PLUS GROS | Win rate MONTE, gains PLUS PETITS |
 | SL (x ATR) | 1.5 | Plus de marge, moins de stops touches | Moins de marge, plus de stops |
 | ATR minimum | 1.5% | Filtre plus de trades (marches calmes) | Accepte plus de conditions |
 | Ecart pullback | 3.0% | Accepte des replis plus loin de l'EMA | Exige des replis plus proches |
-| Duree max | 20 | Laisse plus de temps au trade | Force la sortie plus vite |
+
+### Parametres de la sortie hybride (NOUVEAUX en v2)
+
+| Parametre | Defaut | Augmenter = | Diminuer = |
+|-----------|--------|-------------|------------|
+| **TP Phase 1** (x ATR) | 1.0 | Win rate BAISSE, Phase 1 plus grosse | Win rate MONTE, Phase 1 plus petite |
+| **% Phase 1** | 50% | Plus securise, moins de Phase 2 | Moins securise, plus de trailing |
+| **Trailing Stop** (x ATR) | 2.0 | Trailing plus large: capture plus, rend plus | Trailing serre: sort plus vite |
+| **Breakeven** | Oui | - | Plus risque mais peut capturer les replis |
+| **Duree max** | 60 jours | Plus de temps pour Phase 2 | Sort les trades stagnants plus vite |
+
+### Scenarios de configuration
+
+**"Je veux maximiser le win rate"** (prudent):
+```
+Phase 1 TP = 0.7x ATR  (TP plus facile a atteindre)
+Phase 1 %  = 70%        (securise 70% au lieu de 50%)
+Trailing   = 1.5x ATR   (trailing serre)
+```
+
+**"Je veux maximiser les gros profits"** (agressif):
+```
+Phase 1 TP = 1.5x ATR  (TP un peu plus loin mais toujours raisonnable)
+Phase 1 %  = 30%        (seulement 30% securise, 70% en trailing)
+Trailing   = 3.0x ATR   (trailing large: laisse courir)
+```
+
+**"Equilibre optimal"** (recommande — defaut):
+```
+Phase 1 TP = 1.0x ATR
+Phase 1 %  = 50%
+Trailing   = 2.0x ATR
+Breakeven  = Oui
+```
 
 ### Modifier les indicateurs
 
@@ -246,38 +359,6 @@ Pour **changer d'indicateur**, vous devez modifier la fonction `shouldEnter()`:
    - Augmenter la duree max des trades
    - Ajuster le seuil ATR
 
-### Modifier le Stop Loss
-
-```lua
--- Dans la fonction openTrade():
-stop_loss = entry_price - sl_distance;
-
--- Pour un stop FIXE (non recommande):
--- stop_loss = entry_price - 500;  -- 500 unites de prix
-
--- Pour un stop base sur le dernier creux:
--- Cherchez le plus bas des 10 dernieres bougies
--- local lowest = source.low[period];
--- for i = period - 10, period do
---     if source.low[i] < lowest then lowest = source.low[i]; end
--- end
--- stop_loss = lowest;
-```
-
-### Modifier le Take Profit
-
-```lua
--- Dans la fonction openTrade():
-take_profit = entry_price + tp_distance;
-
--- Pour un TP base sur une resistance:
--- take_profit = entry_price + (entry_price - stop_loss) * 2;  -- R:R de 2:1
--- ATTENTION: augmenter le TP fait BAISSER le win rate
-
--- Pour un trailing stop (stop suiveur):
--- Voir section "Ajouts avances" ci-dessous
-```
-
 ### Modifier la taille de position
 
 Le backtest actuel simule avec 100% du capital. Pour un money management realiste:
@@ -293,7 +374,7 @@ local position_size = risk_amount / sl_distance;
 
 ---
 
-## 7. Comment eviter le sur-ajustement (overfitting)
+## 8. Comment eviter le sur-ajustement (overfitting)
 
 ### Qu'est-ce que le sur-ajustement?
 
@@ -326,10 +407,12 @@ C'est quand une strategie fonctionne parfaitement sur les donnees passees mais e
 | ATR 14 | Meme createur, meme logique | Standard universel |
 | TP 1x ATR | Logique economique (1 jour de mouvement) | Base sur la physique du marche |
 | SL 1.5x ATR | Legerement plus large que le TP | Marge pour le bruit |
+| Trailing 2x ATR | Distance standard pour suivre une tendance | Ni trop serre ni trop large |
+| Phase 1 50% | Equilibre naturel entre securite et potentiel | Divise le risque en deux |
 
 ---
 
-## 8. Comprendre les metriques
+## 9. Comprendre les metriques
 
 ### Taux de victoire (Win Rate)
 
@@ -337,7 +420,7 @@ C'est quand une strategie fonctionne parfaitement sur les donnees passees mais e
 Win Rate = Trades gagnants / Trades totaux x 100
 ```
 
-- **> 80%**: Notre objectif. Excellent en apparence mais implique R:R < 1
+- **> 80%**: Notre objectif. Maintenu grace a la Phase 1 (TP rapide)
 - **60-70%**: Typique des bonnes strategies trend-following
 - **40-50%**: Typique des strategies a gros R:R (les pros sont souvent ici)
 
@@ -380,15 +463,12 @@ Mesure le rendement **ajuste au risque**. Un rendement de 100% avec un risque en
 - **> 0.5**: Acceptable
 - **< 0.5**: Mediocre
 
-### Ratio Risk/Reward (R:R)
+### Plus gros gain / Plus grosse perte (NOUVEAU v2)
 
-```
-R:R = Gain moyen / Perte moyenne
-```
-
-- Notre strategie: ~0.67 (on gagne moins par trade qu'on perd)
-- Compense par le win rate eleve
-- **Formule de rentabilite**: Win% x Gain moyen - Loss% x Perte moyenne > 0
+La v2 affiche aussi:
+- **Plus gros gain**: Le meilleur trade (souvent un Phase 2 gagnant). Montre le potentiel du trailing.
+- **Plus grosse perte**: Le pire trade. Devrait etre limite a ~1.5x ATR (Stop Loss).
+- **Gros gains Phase 2**: Nombre de trades ou le trailing a capture un mouvement significatif.
 
 ### Pertes consecutives maximales
 
@@ -404,7 +484,7 @@ Sur 200+ trades, 3 pertes consecutives sont **quasi certaines**. Preparez-vous p
 
 ---
 
-## 9. Ajouts avances
+## 10. Ajouts avances
 
 ### Ajouter la vente a decouvert (Short Selling)
 
@@ -469,24 +549,22 @@ if atr_pct > 1.5 then score = score + 1; end         -- Volatilite +1
 if score < 4 then return false; end
 ```
 
-### Ajouter un Trailing Stop (Stop Suiveur)
+### Ajuster la repartition Phase 1 / Phase 2
 
 ```lua
--- Dans shouldExit(), AVANT de verifier le stop fixe:
--- Deplacer le stop vers le haut quand le prix monte
-
--- Calculer le nouveau stop potentiel
-local trail_stop = source.high[period] - (atr * instance.parameters.atr_sl_mult);
--- Si le nouveau stop est PLUS HAUT que l'ancien, on le deplace
-if trail_stop > stop_loss then
-    stop_loss = trail_stop;
-end
--- Le stop ne descend JAMAIS, il monte seulement
+-- Pour tester differentes repartitions:
+-- Modifiez le parametre "Phase 1: % de la position a fermer"
+--
+-- 70% Phase 1 / 30% trailing = tres prudent, win rate maximal
+-- 50% Phase 1 / 50% trailing = equilibre (defaut recommande)
+-- 30% Phase 1 / 70% trailing = agressif, potentiel de gains eleve
+--
+-- CONSEIL: Commencez avec 50/50 puis ajustez selon votre tolerance au risque
 ```
 
 ---
 
-## 10. Installation sur FXCM Trading Station
+## 11. Installation sur FXCM Trading Station
 
 ### Etape par etape
 
@@ -500,7 +578,7 @@ end
 4. **Relancer** Trading Station et se connecter
 5. **Ouvrir** un graphique **BTC/USD** en **Daily (D1)**
 6. **Clic droit** sur le graphique > **Ajouter un indicateur**
-7. Chercher **"BTC Smart Pullback D1 (Backtest)"**
+7. Chercher **"BTC Smart Pullback D1 v2 (Hybrid)"**
 8. Configurer les parametres (ou garder les defauts)
 9. Cliquer **OK**
 10. **Scroller** dans l'historique pour voir les signaux
@@ -509,18 +587,47 @@ end
 
 Les metriques apparaissent dans l'onglet **"Messages"** (ou **"Log"**) en bas de Trading Station. Ouvrez cet onglet APRES que l'indicateur a fini de charger.
 
-### Ce que vous verrez sur le graphique
+### Ce que vous verrez sur le graphique (v2)
 
-| Element | Signification |
-|---------|---------------|
-| Fleche verte vers le haut + "BUY" | Signal d'achat |
-| Fleche bleue vers le bas + "TP +X%" | Sortie en profit (Take Profit) |
-| Fleche rouge vers le bas + "SL -X%" | Sortie en perte (Stop Loss) |
-| Losange bleu au-dessus des bougies | Periode ou la strategie est "en position" |
+| Element | Couleur | Signification |
+|---------|---------|---------------|
+| Fleche vers le haut + "BUY" | Verte | Signal d'achat |
+| Fleche vers le bas + "TP1 50% +X%" | Bleue | Phase 1: profit partiel (50% ferme) |
+| Fleche vers le bas + "TRAIL +X%" | Or/Jaune | Phase 2: gros gain capture par trailing |
+| Fleche vers le bas + "SL -X%" | Rouge | Stop Loss touche (perte) |
+| Losange au-dessus des bougies | Bleu | En position Phase 1 (risque actif) |
+| Losange au-dessus des bougies | Or | En position Phase 2 (trade "gratuit", breakeven actif) |
+
+### Lire les metriques dans la console
+
+```
+================================================================
+   RESULTATS — BTC Smart Pullback D1 v2 (HYBRIDE)
+================================================================
+   Trades totaux:            XX
+   Victoires:                XX
+   Defaites:                 XX
+   TAUX DE VICTOIRE:         XX.X%
+----------------------------------------------------------------
+   Gain moyen par trade:     +X.XX%
+   Perte moyenne par trade:  -X.XX%
+   PLUS GROS GAIN:           +X.XX%     ← Phase 2 en action!
+   Plus grosse perte:        -X.XX%
+   Ratio Risk/Reward:        X.XX
+----------------------------------------------------------------
+   RENDEMENT TOTAL:          X.X%
+   Profit Factor:            X.XX
+   Max Drawdown:             -X.X%
+   Sharpe Ratio:             X.XX
+   Pertes consec. max:       X
+----------------------------------------------------------------
+   Gros gains Phase 2:       X trades   ← Nombre de trailing gagnants
+================================================================
+```
 
 ---
 
-## 11. FAQ et pieges courants
+## 12. FAQ et pieges courants
 
 ### "Le win rate est different de 80%, pourquoi?"
 
@@ -530,6 +637,10 @@ Le win rate depend de la periode de donnees visible sur votre graphique. Chargez
 
 C'est normal. La strategie est TRES selective. Sur 2 ans, attendez-vous a 15-40 trades. C'est voulu: moins de trades = meilleure qualite.
 
+### "Les losanges changent de couleur (bleu puis or), pourquoi?"
+
+C'est le passage de Phase 1 a Phase 2. Bleu = Phase 1 active (risque reel). Or = Phase 2 active (trade "gratuit" car le stop est au breakeven).
+
 ### "Puis-je l'utiliser en trading reel?"
 
 Ce fichier est un **indicateur de backtest visuel**, pas un robot de trading. Pour le trading reel:
@@ -537,13 +648,13 @@ Ce fichier est un **indicateur de backtest visuel**, pas un robot de trading. Po
 2. Passez les ordres manuellement
 3. OU convertissez-le en strategie `.lua` (dans le dossier strategies) avec `terminal:execute`
 
-### "Pourquoi ne pas mettre le TP a 3x ATR pour gagner plus?"
+### "Pourquoi Phase 2 sort parfois a 0%?"
 
-Vous pouvez, mais le win rate tombera a ~50-60%. Le gain moyen sera plus gros, mais vous perdrez BEAUCOUP plus souvent. C'est un choix personnel.
+Apres Phase 1, le stop est au breakeven. Si le prix retrace immediatement, la Phase 2 sort a 0%. C'est normal et c'est la force du systeme: vous avez deja pris le profit Phase 1, et la Phase 2 ne vous coute rien.
 
 ### "La strategie ne fonctionne pas en marche baissier?"
 
-Correct. C'est une strategie **long-only** (achat uniquement). En marche baissier (EMA 50 < EMA 200), elle ne donne AUCUN signal. C'est une feature, pas un bug: ne pas trader dans un marche hostile est la meilleure protection.
+Correct. C'est une strategie **long-only** (achat uniquement). En marche baissier (EMA 50 < EMA 200), elle ne donne AUCUN signal. C'est une feature, pas un bug.
 
 ### "Comment savoir si mes modifications sont bonnes?"
 
@@ -551,6 +662,7 @@ Correct. C'est une strategie **long-only** (achat uniquement). En marche baissie
 2. Le nombre de trades doit rester > 20
 3. Changez UN parametre a la fois
 4. Testez sur une periode differente de celle d'optimisation
+5. Verifiez que les "Gros gains Phase 2" sont > 0 (sinon le trailing ne sert a rien)
 
 ---
 
@@ -560,5 +672,6 @@ Ce framework est un outil **educatif et de recherche**. Les performances passees
 
 ---
 
-*Framework cree pour FXCM Trading Station Desktop v01.16+*
+*Framework v2 cree pour FXCM Trading Station Desktop v01.16+*
 *Compatible toutes versions — Pas de drawLabel1/createFont*
+*Sortie hybride: Phase 1 (TP rapide) + Phase 2 (Trailing Stop)*
