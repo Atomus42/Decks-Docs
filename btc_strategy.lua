@@ -167,7 +167,7 @@ function Init()
     -- POURQUOI? EMA 50/200 = detection de tendance institutionnelle
     -- EMA 50 > EMA 200 = tendance haussiere = on achete
     --
-    indicator.parameters:addGroup("Moyennes Mobiles (Tendance)");
+    -- === MOYENNES MOBILES (Tendance) ===
 
     indicator.parameters:addInteger("ema_fast_period",
         "Periode EMA Rapide", "", 50, 5, 200);
@@ -183,7 +183,7 @@ function Init()
     -- POURQUOI? Detecte les replis dans la tendance
     -- RSI < 45 en tendance haussiere = repli = opportunite d'achat
     --
-    indicator.parameters:addGroup("RSI (Detection de Repli)");
+    -- === RSI (Detection de Repli) ===
 
     indicator.parameters:addInteger("rsi_period",
         "Periode RSI", "", 14, 5, 50);
@@ -201,7 +201,7 @@ function Init()
     -- POURQUOI? Adapte le stop/TP a la volatilite reelle
     -- Stop et TP en multiple d'ATR = s'adapte automatiquement
     --
-    indicator.parameters:addGroup("ATR (Volatilite et Risque)");
+    -- === ATR (Volatilite et Risque) ===
 
     indicator.parameters:addInteger("atr_period",
         "Periode ATR", "", 14, 5, 50);
@@ -225,7 +225,7 @@ function Init()
     -- Le win rate vient de la Phase 1 (TP rapide)
     -- Les gros profits viennent de la Phase 2 (trailing)
     --
-    indicator.parameters:addGroup("Sortie Hybride (Phase 1 + Phase 2)");
+    -- === SORTIE HYBRIDE (Phase 1 + Phase 2) ===
 
     indicator.parameters:addDouble("tp1_atr_mult",
         "Phase 1: Take Profit = X fois ATR", "", 1.0, 0.3, 3.0);
@@ -271,7 +271,7 @@ function Init()
     -- =====================================================================
     -- GROUPE 5: FILTRES
     -- =====================================================================
-    indicator.parameters:addGroup("Filtres Supplementaires");
+    -- === FILTRES SUPPLEMENTAIRES ===
 
     indicator.parameters:addBoolean("use_trend_filter",
         "Exiger tendance haussiere (EMA50 > EMA200)", "", true);
@@ -293,7 +293,7 @@ function Init()
     -- =====================================================================
     -- GROUPE 6: AFFICHAGE
     -- =====================================================================
-    indicator.parameters:addGroup("Affichage");
+    -- === AFFICHAGE ===
 
     indicator.parameters:addColor("clrBuy",
         "Couleur BUY", "", core.rgb(0, 200, 80));

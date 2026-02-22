@@ -63,7 +63,7 @@ function Init()
     -- =====================================================================
     -- PARAMETRES MODIFIABLES
     -- =====================================================================
-    indicator.parameters:addGroup("Seuils de Signal");
+    -- === Seuils de Signal ===
 
     -- Nombre de bougies HA vertes pour signal ACHAT
     indicator.parameters:addInteger("green_threshold", "Bougies vertes pour signal ACHAT", "", 12, 1, 50);
@@ -74,7 +74,7 @@ function Init()
     -- =====================================================================
     -- COULEURS DES BOUGIES HEIKIN ASHI
     -- =====================================================================
-    indicator.parameters:addGroup("Couleurs");
+    -- === Couleurs ===
 
     indicator.parameters:addColor("clrGreen", "Couleur bougie HA verte (haussiere)", "", core.rgb(38, 166, 154));
     indicator.parameters:addColor("clrRed", "Couleur bougie HA rouge (baissiere)", "", core.rgb(239, 83, 80));

@@ -68,7 +68,7 @@ function Init()
     -- =====================================================================
     -- PARAMETRES: Seuils
     -- =====================================================================
-    indicator.parameters:addGroup("Seuils de Signal");
+    -- === Seuils de Signal ===
 
     indicator.parameters:addInteger("green_threshold",
         "Bougies HA vertes pour BUY", "", 12, 1, 50);
@@ -79,7 +79,7 @@ function Init()
     -- =====================================================================
     -- PARAMETRES: Visuel
     -- =====================================================================
-    indicator.parameters:addGroup("Couleurs et Affichage");
+    -- === Couleurs et Affichage ===
 
     indicator.parameters:addColor("clrBuy",
         "Fleche et texte BUY", "", core.rgb(0, 220, 100));

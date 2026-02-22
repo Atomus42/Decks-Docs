@@ -87,7 +87,7 @@ function Init()
     -- GROUPE: Parametres de la Strategie
     -- C'est ici que vous definissez les seuils d'entree et de sortie.
     -- =====================================================================
-    strategy.parameters:addGroup("Parametres Heikin Ashi");
+    -- === Parametres Heikin Ashi ===
 
     -- SEUIL D'ENTREE: Nombre de bougies HA vertes pour acheter
     -- Par defaut: 12 (valeur optimale du backtest)
@@ -109,7 +109,7 @@ function Init()
     -- GROUPE: Parametres de Trading
     -- Configuration du compte, de la taille des trades, etc.
     -- =====================================================================
-    strategy.parameters:addGroup("Parametres de Trading");
+    -- === Parametres de Trading ===
 
     -- Compte de trading
     strategy.parameters:addString("Account", "Compte de trading", "", "");
@@ -127,7 +127,7 @@ function Init()
     -- =====================================================================
     -- GROUPE: Gestion du Risque (Stop Loss / Take Profit)
     -- =====================================================================
-    strategy.parameters:addGroup("Gestion du Risque");
+    -- === Gestion du Risque ===
 
     -- Stop Loss (en pips)
     -- Par defaut: desactive. Activez si vous voulez un filet de securite.
@@ -146,7 +146,7 @@ function Init()
     -- =====================================================================
     -- GROUPE: Alertes
     -- =====================================================================
-    strategy.parameters:addGroup("Alertes");
+    -- === Alertes ===
     strategy.parameters:addBoolean("ShowAlert", "Afficher les alertes popup", "", true);
     strategy.parameters:addBoolean("PlaySound", "Jouer un son", "", false);
     strategy.parameters:addFile("SoundFile", "Fichier son", "", "");
