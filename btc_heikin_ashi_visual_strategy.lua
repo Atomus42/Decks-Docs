@@ -125,7 +125,7 @@ function Prepare(nameOnly)
     buy_label = instance:createTextOutput("BuyText", "BUY Label",
         "Arial", 10,
         core.H_Center, core.V_Top,
-        instance.parameters.clrBuy, -15);
+        instance.parameters.clrBuy, 0);
 
     -- =====================================================================
     -- Fleche SELL: grosse fleche rouge vers le bas, au-dessus de la bougie
@@ -138,7 +138,7 @@ function Prepare(nameOnly)
     sell_label = instance:createTextOutput("SellText", "SELL Label",
         "Arial", 10,
         core.H_Center, core.V_Bottom,
-        instance.parameters.clrSell, -15);
+        instance.parameters.clrSell, 0);
 
     -- =====================================================================
     -- Compteur streak

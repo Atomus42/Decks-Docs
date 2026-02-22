@@ -331,7 +331,7 @@ function Prepare(nameOnly)
         instance.parameters.clrBuy, 0);
     buy_label = instance:createTextOutput("BuyText", "BUY Label",
         "Arial", 9, core.H_Center, core.V_Top,
-        instance.parameters.clrBuy, -15);
+        instance.parameters.clrBuy, 0);
 
     -- Fleches Phase 1 TP (bleu)
     sell_arrow = instance:createTextOutput("TP1Arrow", "Phase 1 TP",
@@ -339,7 +339,7 @@ function Prepare(nameOnly)
         instance.parameters.clrTP1, 0);
     sell_label = instance:createTextOutput("TP1Text", "TP1 Label",
         "Arial", 8, core.H_Center, core.V_Bottom,
-        instance.parameters.clrTP1, -12);
+        instance.parameters.clrTP1, 0);
 
     -- Fleches Phase 2 Trailing exit (or/jaune)
     trail_arrow = instance:createTextOutput("TrailArrow", "Phase 2 Trail",
@@ -347,7 +347,7 @@ function Prepare(nameOnly)
         instance.parameters.clrTrail, 0);
     trail_label = instance:createTextOutput("TrailText", "Trail Label",
         "Arial", 9, core.H_Center, core.V_Bottom,
-        instance.parameters.clrTrail, -15);
+        instance.parameters.clrTrail, 0);
 
     -- Fleches STOP LOSS (rouge)
     stop_arrow = instance:createTextOutput("StopArrow", "STOP Loss",
@@ -355,7 +355,7 @@ function Prepare(nameOnly)
         instance.parameters.clrSellLoss, 0);
     stop_label = instance:createTextOutput("StopText", "STOP Label",
         "Arial", 9, core.H_Center, core.V_Bottom,
-        instance.parameters.clrSellLoss, -15);
+        instance.parameters.clrSellLoss, 0);
 
     -- Marqueur en position Phase 1 (bleu)
     pos_marker = instance:createTextOutput("InPos1", "In Position P1",

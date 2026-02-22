@@ -201,21 +201,21 @@ function Prepare(nameOnly)
         instance.parameters.clrBuy, 0);
     buy_label = instance:createTextOutput("BuyText", "BUY Label",
         "Arial", 9, core.H_Center, core.V_Top,
-        instance.parameters.clrBuy, -15);
+        instance.parameters.clrBuy, 0);
 
     sell_arrow = instance:createTextOutput("SellArrow", "SELL Win",
         "Wingdings", 16, core.H_Center, core.V_Bottom,
         instance.parameters.clrSellWin, 0);
     sell_label = instance:createTextOutput("SellText", "SELL Label",
         "Arial", 9, core.H_Center, core.V_Bottom,
-        instance.parameters.clrSellWin, -15);
+        instance.parameters.clrSellWin, 0);
 
     stop_arrow = instance:createTextOutput("StopArrow", "STOP",
         "Wingdings", 16, core.H_Center, core.V_Bottom,
         instance.parameters.clrSellLoss, 0);
     stop_label = instance:createTextOutput("StopText", "STOP Label",
         "Arial", 9, core.H_Center, core.V_Bottom,
-        instance.parameters.clrSellLoss, -15);
+        instance.parameters.clrSellLoss, 0);
 
     pos_marker = instance:createTextOutput("InPos", "In Position",
         "Wingdings", 6, core.H_Center, core.V_Bottom,
