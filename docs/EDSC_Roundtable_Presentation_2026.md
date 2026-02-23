@@ -1,566 +1,809 @@
-# EUROPEAN DRUG SAFETY CONFERENCE 2026 — ROUNDTABLE PRESENTATION
+# CHALLENGES IN LEVERAGING ALL BIOMEDICAL KNOWLEDGE & HOW AI CAN HELP
 
-## CHALLENGES IN LEVERAGING ALL BIOMEDICAL KNOWLEDGE & HOW AI CAN HELP
-
-**Format:** 30-minute roundtable (100 safety specialists)
-**Location:** Gloria B, C, D
-**Date:** Tuesday, 25 February 2026
+## European Drug Safety Conference 2026 — Roundtable Presentation
+**Format:** 30-minute roundtable | **Audience:** ~100 safety specialists | **Room:** Gloria B, C, D
 **Presenter:** ArcaScience
-**Tone:** Scientific. Evidence-led. No hype. Every claim sourced. Audience = peers, not prospects.
 
 ---
 
-## PRESENTATION ARCHITECTURE
+# NARRATIVE ARC
 
-**Total runtime: 30 minutes**
-
-| Block | Duration | Purpose |
-|-------|----------|---------|
-| I. The Knowledge Problem | 8 min | Establish shared pain — ground in data |
-| II. Why Current Approaches Fall Short | 6 min | Name the structural gaps honestly |
-| III. An Evidence-Structuring Approach | 8 min | Show how AI can address the gaps |
-| IV. Proof It Works — Real Cases | 5 min | Concrete, published evidence |
-| V. Open Discussion | 3 min | Roundtable engagement |
-
----
+> **Act I** (0:00–7:00) — The AI gold rush hits pharma: $632B in spending, 88% pilot failure, a $202B bet on GenAI that isn't paying off. What's going wrong?
+>
+> **Act II** (7:00–15:00) — The answer: LLMs are structurally broken for drug safety. From the Tiramisu Test to Yann LeCun's departure from Meta — why the world's leading AI scientist says "LLMs are a dead end" and what that means for our field.
+>
+> **Act III** (15:00–22:00) — The strategy that works today: Small Language Models in Ensemble AI architectures. How ArcaScience's 24-model pipeline achieves 92% precision where GPT-4 gets 67% — and why IDC predicts domain-specific AI will deliver 3–5x the ROI.
+>
+> **Act IV** (22:00–28:00) — The new hope: Latent World Models. From statistical correlation to mechanistic simulation. The future where we predict adverse events before they happen.
+>
+> **Coda** (28:00–30:00) — Discussion.
 
 ---
 
-## SLIDE 1 — TITLE
+# PRESENTATION TIMING & STRUCTURE
+
+| Act | Time | Slides | Core Message |
+|-----|------|--------|-------------|
+| I. The AI Reality Check | 0:00–7:00 | 1–6 | Pharma is spending billions on AI that doesn't work |
+| II. Why LLMs Fail Drug Safety | 7:00–15:00 | 7–13 | Structural, not fixable — and the smartest people in AI agree |
+| III. The Strategy That Works: SLMs + Ensemble AI | 15:00–22:00 | 14–19 | Domain-specific, auditable, precise — ArcaScience approach |
+| IV. The New Hope: Latent World Models | 22:00–28:00 | 20–23 | From correlation to simulation |
+| Coda. Discussion | 28:00–30:00 | 24 | Engage the room |
+
+---
+
+# ACT I: THE AI REALITY CHECK (0:00–7:00)
+
+---
+
+## SLIDE 1 — Title Slide
+
+**Title:**
+### CHALLENGES IN LEVERAGING ALL BIOMEDICAL KNOWLEDGE & HOW AI CAN HELP
+
+**Subtitle:** What works, what doesn't, and what comes next
+
+**Visual:** ArcaScience logo. EDSC 2026 branding. Clean, dark.
+
+**Speaker notes:**
+> Thank you. I'm [Name] from ArcaScience. Over the next 30 minutes, I want to take you on a journey — not through what AI could theoretically do for drug safety, but through what's actually happening: what's working, what's failing spectacularly, and what the next generation of AI looks like for our field. I'll make claims. I'll back them with data. And I'll be honest about what we don't know yet. Let's start with the uncomfortable part.
+
+---
+
+## SLIDE 2 — The AI Gold Rush
+
+**Title:**
+### $632 Billion. That's How Much the World Will Spend on AI by 2028.
+
+**Visual:** Single massive number. Then reveal:
+
+| IDC Forecast | Amount | Growth |
+|-------------|--------|--------|
+| Total AI spending by 2028 | **$632 billion** | 29% CAGR |
+| GenAI spending by 2028 | **$202 billion** | 59% CAGR |
+| AI cumulative economic impact by 2030 | **$19.9 trillion** | 3.5% of global GDP |
+
+**Source:** IDC Worldwide AI and Generative AI Spending Guide, 2024
+
+**Speaker notes:**
+> IDC projects worldwide AI spending will reach $632 billion by 2028 — more than doubling from today. GenAI alone hits $202 billion, growing at nearly 60% per year. Organizations increased AI infrastructure spending by 166% year-over-year in Q2 2025. Eighty-two billion dollars in a single quarter. The AI cumulative economic impact through 2030? $19.9 trillion. This is the largest technology investment cycle in human history. So the question isn't whether AI matters. The question is: is this investment paying off?
+
+---
+
+## SLIDE 3 — The Pharma Bet
+
+**Title:**
+### Pharma Is All In
+
+**Visual:** Key pharma AI statistics:
+
+- **Over 40%** of life sciences firms say AI/automation is the ONE investment they won't cut, even amid geopolitical headwinds *(IDC, Nov 2024)*
+- **73%** of global pharma organizations actively piloting or deploying agentic AI *(IDC 2025)*
+- **65%** of drug discovery will be GenAI-powered by 2027 *(IDC FutureScape)*
+- **6 GenAI use case segments** in life sciences identified by IDC — including **Patient Safety** as #1
+
+**Bottom text:** "Patient safety is IDC's first named use case for GenAI in life sciences."
+
+**Speaker notes:**
+> Pharma is not standing on the sidelines. Over 40% of life sciences firms say AI is the one budget they're protecting regardless of macro conditions. 73% are actively pursuing agentic AI. IDC predicts 65% of drug discovery will be GenAI-powered by 2027. And here's what matters to this room: when IDC mapped GenAI use cases for life sciences, they named six segments. Patient safety was number one. Not drug design. Not marketing. Safety. So our field is squarely in the crosshairs of the biggest technology wave in history. Now here's the problem.
+
+---
+
+## SLIDE 4 — The 88% Failure Rate
+
+**Title:**
+### For Every 33 AI Pilots, Only 4 Make It to Production
+
+**Visual:** Stark infographic:
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                                                                 │
-│     CHALLENGES IN LEVERAGING ALL BIOMEDICAL KNOWLEDGE           │
-│               & HOW AI CAN HELP                                 │
-│                                                                 │
-│     European Drug Safety Conference 2026                        │
-│     Gloria B, C, D — Tuesday 25 February                        │
-│                                                                 │
-│     [ArcaScience]                                               │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
+  AI Pilots Launched:      ██████████████████████████████████  33
+  Made it to Production:   ████                                 4
+
+  Failure Rate:            88%
 ```
 
-**Speaker notes:**
-"Thank you. I'm [Name] from ArcaScience. We build evidence-structuring tools for pharmacovigilance and benefit-risk assessment — 24 task-specific AI models trained by clinicians, used by 20+ pharma companies across 50+ regulatory submissions. But today isn't a product demo. This is a conversation about a problem every person in this room deals with: the growing impossibility of leveraging all the biomedical knowledge that exists to make drugs safer. I want to share data on why it's broken, what we've learned building tools to address it, and — most importantly — hear how you're experiencing this in your own organizations."
-
----
-
----
-
-## BLOCK I: THE KNOWLEDGE PROBLEM (8 min)
-
----
-
-### SLIDE 2 — THE BIOMEDICAL KNOWLEDGE EXPLOSION
-
-**Title:** We Are Drowning in Evidence We Cannot Use
-
-**Bullets:**
-- **39 million citations** in PubMed — growing by **1.5 million per year** (~4,000 papers/day)
-- **40+ million** adverse event reports in VigiBase; **29.3 million** ICSRs in EudraVigilance; **15+ million** in FAERS
-- FDA receives **~2 million adverse event reports per year** — and that captures only an estimated **6% of actual ADRs** (94% median underreporting rate, Hazell & Shakir, Drug Safety 2006)
-- Total addressable evidence: published literature + clinical trial data + spontaneous reports + EHR data + patient registries + social media — **each in different formats, terminologies, and quality levels**
-
-**Suggested visual:** Exponential growth curve of PubMed citations (1950-2026) overlaid with ICSR volume growth. Two curves diverging from human review capacity (flat line).
+**Supporting data:**
+- **80%** of healthcare AI projects fail to scale beyond pilot *(HIT Consultant, 2026)*
+- **95%** of GenAI pilots fail to deliver ROI *(MIT NANDA Institute)*
+- Only **1% of organizations** have achieved an optimized, AI-fueled enterprise *(IDC Maturity Model, 2025)*
+- **51%** are still in Stage 2 of 5 — "Opportunistic" *(IDC, n=1,534)*
 
 **Speaker notes:**
-"Let me start with numbers everyone in this room knows but rarely sees together. PubMed adds 4,000 papers a day. EudraVigilance holds 29 million ICSRs. The FDA receives 2 million adverse event reports per year. And yet — the best published estimate is that spontaneous reporting captures only 6% of real adverse drug reactions. So we have an ocean of data and we're still missing 94% of the signal. The knowledge exists. It's scattered across millions of documents in incompatible formats, buried in PDFs, locked in proprietary databases, written in different terminologies. The problem is not that we lack evidence. The problem is that we cannot assemble it fast enough to use it."
+> For every 33 AI pilots a company launches, only 4 make it to production. That's IDC data. An 88% failure rate. MIT's NANDA Institute puts it even more starkly: 95% of GenAI pilots fail to deliver measurable ROI. In healthcare specifically, 80% of AI projects never scale beyond pilot. When IDC benchmarked 1,534 organizations on their AI maturity — five stages from "Ad Hoc" to "Optimized" — they found that only 1% have reached the optimized state. Over half are still at stage two. The pharma industry is spending aggressively on AI. It is getting very little back. Why?
 
 ---
 
-### SLIDE 3 — WHERE BIOMEDICAL KNOWLEDGE LIVES (AND HIDES)
+## SLIDE 5 — Where the Money Goes (and Doesn't Return)
 
-**Title:** Fragmented by Design, Siloed by Default
+**Title:**
+### The Data Preparation Trap
 
-**Layout:** Six-column diagram showing data silos:
+**Visual:** Pie chart or diagram:
 
 ```
-┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐
-│ Published│ │Spontan.  │ │ Clinical │ │ EHR /    │ │ Internal │ │ Social   │
-│Literature│ │Reporting │ │ Trial    │ │Real-World│ │ Company  │ │Media &   │
-│          │ │          │ │ Data     │ │ Data     │ │ Data     │ │Patient   │
-│ PubMed   │ │VigiBase  │ │CT.gov    │ │CPRD,THIN │ │CSRs,     │ │Forums    │
-│ MEDLINE  │ │FAERS     │ │EudraCT   │ │Claims DB │ │Protocols │ │Apps      │
-│ Embase   │ │EudraVig. │ │JAPIC-CTI │ │Registries│ │Lab data  │ │Wearables │
-│          │ │PMDA      │ │          │ │          │ │          │ │          │
-│UNSTRUC-  │ │SEMI-     │ │STRUCTURED│ │STRUCTURED│ │MIXED     │ │UNSTRUC-  │
-│TURED     │ │STRUCTURED│ │          │ │(variable)│ │          │ │TURED     │
-└──────────┘ └──────────┘ └──────────┘ └──────────┘ └──────────┘ └──────────┘
-       │            │            │            │            │            │
-       └────────────┴────────────┴─────┬──────┴────────────┴────────────┘
-                                       │
-                              ┌────────▼────────┐
-                              │   THE SAFETY    │
-                              │   ASSESSOR'S    │
-                              │   DESK          │
-                              │                 │
-                              │  Trying to form │
-                              │  a complete     │
-                              │  picture from   │
-                              │  incompatible   │
-                              │  fragments      │
-                              └─────────────────┘
+How data science teams spend their time:
+
+  ┌────────────────────────────────────────┐
+  │                                        │
+  │      DATA PREPARATION: 50%             │  <- Cleaning, formatting, normalizing
+  │                                        │
+  ├────────────────────────────────────────┤
+  │  Model Training: 20%                   │
+  ├────────────────────────────────────────┤
+  │  Deployment: 15%                       │
+  ├────────────────────────────────────────┤
+  │  Actual insight generation: 15%        │
+  └────────────────────────────────────────┘
 ```
 
-**Bullets:**
-- Each source uses **different terminologies** (MedDRA, SNOMED CT, ICD-10, WHO-ART, free text)
-- Published literature is unstructured free-text; spontaneous reports are semi-structured; trial data is structured but access-restricted
-- A single safety question (e.g., "does drug X cause cardiac events?") requires **cross-referencing all six source types** — manually
-- No single system today integrates these sources into a unified evidence picture
+**IDC finding:** *"Virtually ALL IDC AI surveys indicate that data quality, quantity, and access are among the top challenges to scaling AI."*
+
+**Plus:** Healthcare has the most fragmented data of any industry — 80% unstructured, heterogeneous tech stacks, no interoperability standards
 
 **Speaker notes:**
-"This is what a safety assessor's job actually looks like. You're trying to answer a single question — does this drug cause this harm? — and the evidence is spread across six fundamentally different data ecosystems. PubMed gives you unstructured PDFs. VigiBase gives you coded reports. Clinical trials give you structured datasets you may not even have access to. EHRs give you real-world evidence in variable formats. Your own company data sits in yet another system. And social media? That's noise with occasional signal buried inside. No human can hold all of this in their head simultaneously. And no single system integrates it. So what do we do? We assign teams of people to manually search, read, extract, and cross-reference. And that brings us to the scaling problem."
+> IDC found that data science teams spend 50% of their time on data preparation before they even begin building AI models. Half their time. Just getting data into a usable state. And here's the kicker: healthcare and life sciences have the most fragmented, heterogeneous data landscape of any industry. 80% of health data is unstructured — clinical notes, discharge summaries, pathology reports. Every EHR system is configured differently. Every database uses different terminologies. MedDRA doesn't map to MeSH. SNOMED doesn't align with ICD. And pharmacovigilance data is spread across FAERS, EudraVigilance, VigiBase, published literature, clinical trials, and EHRs — each with their own structures. So when pharma companies take general-purpose AI tools and point them at this landscape, what happens? They fail. And they fail for a very specific reason.
 
 ---
 
-### SLIDE 4 — THE CASE VOLUME WALL
+## SLIDE 6 — The Root Cause
 
-**Title:** Human Review Does Not Scale
+**Title:**
+### The Problem Isn't AI. It's the Wrong Kind of AI.
 
-**Key data:**
+**Visual:** The IDC prediction, highlighted:
 
-| Metric | Value |
-|--------|-------|
-| Global ICSR annual intake (EudraVigilance, 2024) | ~1.8 million |
-| FDA annual AE reports | ~2 million |
-| Annual company-level case growth | 10-15%/year |
-| Projected global ICSR growth (next 5 years) | +30% |
-| PV budget consumed by case processing | 40-80% |
-| Cost per ICSR processed | $70-$200 |
-| Top pharma annual PV spend | $45M-$200M |
+> **IDC (Bio-IT World 2025):**
+> *"By 2027, domain-specific GenAI tools fine-tuned for pharma applications will deliver a **3-5x higher ROI** than general-purpose foundation models, particularly in regulatory-sensitive contexts."*
+>
+> -- Dr. Nimita Limaye, Research VP, Life Sciences R&D Strategy & Technology, IDC
 
-**Bullets:**
-- Case volumes growing **10-15% annually** at company level, **30-50% in clinical trial caseloads** due to evolving regulations
-- Up to **80% of pharmacovigilance budgets** consumed by case processing — leaving limited capacity for actual safety assessment
-- Hiring more people is linear; the problem grows exponentially
-- E2B(R3) compliance deadline **April 2026** adds format complexity to volume pressure
+**Key point:** "General-purpose LLMs are the wrong tool for drug safety. IDC sees it. The research proves it. And the world's leading AI scientist has staked his career on it."
 
 **Speaker notes:**
-"The math is simple and unforgiving. EudraVigilance collected 1.8 million ICSRs last year. The FDA received 2 million. Company-level volumes grow 10-15% per year. Some of you are seeing 30-50% growth in clinical trial caseloads alone. And here's the uncomfortable number: 40 to 80% of your pharmacovigilance budget goes to case processing. Not to signal assessment. Not to benefit-risk analysis. Not to scientific evaluation. To processing. You're spending the majority of your safety budget on data handling, not on safety science. And you cannot hire your way out of it because the growth is exponential and your headcount budget is not."
+> IDC has made a very specific prediction: by 2027, domain-specific AI tools will deliver 3 to 5 times the return of general-purpose foundation models in pharma. Three to five times. Not a marginal improvement — a categorical difference. Why? Because general-purpose LLMs — GPT-4, Claude, Gemini — were not designed for drug safety. They were designed to sound intelligent about everything. And there's a fundamental difference between sounding intelligent and being reliable. Let me show you exactly why these models fail, and I'm going to start with a test that sounds trivial but reveals something profound.
 
 ---
 
-### SLIDE 5 — THE BIOLOGICAL PLAUSIBILITY GAP
+# ACT II: WHY LLMs FAIL DRUG SAFETY (7:00–15:00)
 
-**Title:** Statistical Signals Without Scientific Context
+---
 
-**Bullets:**
-- Signal detection today relies primarily on **disproportionality analysis** (PRR, ROR, EBGM, BCPNN)
-- Published limitation: **60% of all drug-event pairs** can generate either positive or negative signals of disproportionate reporting depending on the model used (Caster et al., Drug Safety 2020)
-- **78% of DA studies lack clear definitions** for case selection, ADRs, or comparators; **32% do not specify signal detection thresholds** (Hammad et al., Frontiers in Pharmacology 2025)
-- Statistical flags are necessary but insufficient — they tell you *what co-occurs*, not *why it might*
-- Biological plausibility requires cross-referencing: mechanism of action, pharmacological class effects, metabolic pathways, protein targets, known organ toxicity profiles
-- **This cross-referencing is largely manual today** — dependent on the individual assessor's knowledge and reading bandwidth
+## SLIDE 7 — The Tiramisu Test
 
-**Suggested visual:** Two-panel comparison. Left: "What statistical signal detection gives you" — a list of drug-event pairs ranked by disproportionality score. Right: "What biological plausibility assessment requires" — the same pair enriched with mechanism-of-action data, class-effect evidence, pathway analysis, temporal patterns, dose-response data.
+**Title:**
+### Can AI Make Tiramisu?
+
+**Visual:** A recipe card for tiramisu on the left. On the right, the question:
+
+"Describe step by step how to make tiramisu. Then: if I swap the mascarpone for ricotta, what changes downstream?"
+
+**The failure pattern:**
+1. LLMs produce a fluent, plausible recipe (checkmark)
+2. But when you modify one ingredient, they cannot reliably trace how that change propagates through every subsequent step (X)
+3. They miss: texture changes in the cream layer, structural instability, different set time, altered presentation
+4. They confidently describe a result that would fail in any kitchen
+
+**The deeper point:** "This is multi-step procedural reasoning with real-world constraints. LLMs cannot reliably track how a change at step 3 propagates to steps 7, 12, and 15."
+
+**Published evidence:** *"Evaluating LLMs' Reasoning Over Ordered Procedural Steps"* (arXiv:2511.04688, 2024):
+- Model performance **declines with increasing sequence length**
+- Greater **step displacement** causes further degradation
+- Ordered procedural reasoning is "a key aspect of reasoning where many real-world tasks require steps to be completed in a precise order"
 
 **Speaker notes:**
-"This is perhaps the most scientifically important slide. Statistical signal detection — disproportionality analysis — is the backbone of quantitative pharmacovigilance. It works. But it has a fundamental limitation: it identifies co-occurrence, not causation. Caster and colleagues showed that 60% of drug-event pairs can generate either a positive or negative signal depending on which model you use. That's not a flaw in the method — it's a feature of statistical approaches applied to spontaneous reporting data with known biases. The real question isn't 'does this drug-event pair show disproportionality?' It's 'is there a biological reason this drug could cause this event?' And answering that question requires synthesizing evidence across pharmacology, toxicology, clinical trial data, published case series, and mechanistic literature. Today, that synthesis happens in one place: the assessor's brain. Which means it's limited by what that assessor has read, what they remember, and how much time they have."
+> Let me start with something that sounds absurd. Ask an LLM to make tiramisu. It will give you a beautiful, step-by-step recipe. Now change one variable: swap mascarpone for ricotta. Ask what changes downstream. The model will give you a confident, fluent answer — and it will be wrong. Because it cannot reliably trace how a single change propagates through a multi-step process. Ricotta has higher moisture content, which means the cream layer won't set the same way, which means the structural integrity changes, which means the layering technique needs adjustment, which means the resting time changes, which means the final presentation is different. The LLM misses most of these downstream effects — not because it doesn't "know" about ricotta, but because it cannot perform multi-step procedural reasoning with real-world constraints. Published research from 2024 confirms this: LLM performance on ordered procedural steps degrades as sequence length increases and as step displacement grows. Now here's why this matters for us.
 
 ---
 
-### SLIDE 6 — THE UNSTRUCTURED DATA WALL
+## SLIDE 8 — From Tiramisu to Pharmacology
 
-**Title:** 80% of Biomedical Data Is Unstructured — And Growing
+**Title:**
+### If AI Can't Track Ricotta Through a Recipe, How Will It Track a Drug Through the Body?
 
-**Bullets:**
-- Clinical narratives, case report PDFs, published literature, physician notes, patient verbatims — all **free text**
-- A single PSUR cycle requires reviewing **hundreds to thousands of documents** across multiple languages
-- Only **0.2% of social media posts** mentioning a medication are PV-relevant — massive noise-to-signal ratio
-- Manual extraction from unstructured sources is the **single largest time sink** in safety evidence assembly
-- EMA's DARWIN EU fully operationalized in 2024 for real-world data — but still depends on structured data sources
+**Visual:** Side-by-side comparison:
+
+| Tiramisu Test | Drug Safety Assessment |
+|--------------|----------------------|
+| 1 ingredient change | 1 drug interaction |
+| ~15 procedural steps | ~20+ biological steps |
+| Texture, structure, timing | Metabolism, distribution, effect |
+| Fails at step propagation | Must trace: Drug A inhibits CYP3A4, raises Drug B plasma levels, prolongs QTc, arrhythmia risk, higher in CYP2D6 poor metabolizers, compounded by renal impairment |
+
+**Key point:** "Drug safety is the hardest version of the Tiramisu Test. And LLMs can't pass the easy version."
 
 **Speaker notes:**
-"Here's the bottleneck within the bottleneck. The most valuable safety evidence — published case series, clinical narratives, real-world case reports — is overwhelmingly unstructured text. A PSUR cycle can require reviewing thousands of documents. And when I say 'reviewing,' I mean: a human being opens a PDF, reads it, decides what's relevant, extracts the adverse events, maps them to MedDRA terms, assesses causality, and writes it up. Multiply that by every product in your portfolio, every reporting period, every language. The EMA has done important work with DARWIN EU to integrate real-world data — but DARWIN EU operates on structured databases. The vast ocean of unstructured published evidence still requires human reading. This is where the evidence assembly bottleneck lives."
+> Drug safety assessment IS the Tiramisu Test — except infinitely harder. When you assess whether Drug A could cause cardiac arrhythmia, you need to trace: Does Drug A inhibit CYP3A4? If so, does the patient take Drug B, which is CYP3A4-metabolized? If so, Drug B plasma levels rise. Does Drug B prolong QTc? Is the patient a CYP2D6 poor metabolizer? Do they have renal impairment? Each step depends on the previous one. Each variable interacts with every other. If an LLM can't reliably track ricotta through a tiramisu recipe, it cannot reliably trace a drug interaction through human pharmacology. This isn't my opinion. This is mathematics.
 
 ---
 
----
+## SLIDE 9 — The Mathematics of LLM Failure
 
-## BLOCK II: WHY CURRENT APPROACHES FALL SHORT (6 min)
+**Title:**
+### Hallucination Is Not a Bug. It's Architecture.
 
----
-
-### SLIDE 7 — THE CURRENT TOOLCHAIN
-
-**Title:** Today's Safety Infrastructure Was Built for a Different Scale
-
-**Layout:** Three-column assessment:
+**Visual:** Yann LeCun's exponential error divergence argument, visualized:
 
 ```
-┌─────────────────────┐  ┌─────────────────────┐  ┌─────────────────────┐
-│  CASE MANAGEMENT    │  │  SIGNAL DETECTION   │  │  EVIDENCE ASSEMBLY  │
-│  SYSTEMS            │  │  TOOLS              │  │                     │
-│                     │  │                     │  │                     │
-│  ✓ Intake routing   │  │  ✓ Disproportional. │  │  ✗ Largely manual   │
-│  ✓ Workflow mgmt    │  │  ✓ PRR/ROR/EBGM     │  │  ✗ Siloed by source │
-│  ✓ Regulatory       │  │  ✓ Automated flags  │  │  ✗ No cross-linking │
-│    submission       │  │                     │  │  ✗ Assessor-         │
-│                     │  │  ✗ No biological    │  │    dependent         │
-│  Well-served by     │  │    plausibility     │  │                     │
-│  existing vendors   │  │  ✗ High false       │  │  THE GAP            │
-│  (Argus, AERS,      │  │    positive rate    │  │                     │
-│   SafetyConnect)    │  │  ✗ No mechanistic   │  │  60-70% of total    │
-│                     │  │    context          │  │  assessment cycle    │
-│                     │  │                     │  │  time                │
-└─────────────────────┘  └─────────────────────┘  └─────────────────────┘
+Token 1 -> Token 2 -> Token 3 -> ... -> Token N
+
+At each token, probability of staying correct: p < 1
+After N tokens: p^N -> approaches 0 exponentially
+
+Example: p = 0.98 (98% per-token accuracy)
+  After 10 tokens:  0.98^10  = 81.7% correct
+  After 50 tokens:  0.98^50  = 36.4% correct
+  After 100 tokens: 0.98^100 = 13.3% correct
+  After 200 tokens: 0.98^200 = 1.8% correct
 ```
 
-**Bullets:**
-- Case management is solved — mature systems handle intake, workflow, and submission
-- Statistical signal detection is functional — disproportionality tools exist and work within known limits
-- **Evidence assembly is the unsolved layer** — gathering, reading, extracting, normalizing, and cross-referencing evidence from heterogeneous sources
-- This layer consumes **60-70% of the total assessment cycle time** (ArcaScience measurement across multiple enterprise deployments)
-- It's where human expertise is most wasted on low-value tasks
+**Quote:**
+> *"Every time an LLM produces a token, the probability that you stay within the set of correct answers decreases — and it decreases exponentially."*
+> -- **Yann LeCun**, Chief AI Scientist, Meta; Founder, AMI Labs (Lex Fridman Podcast, March 2024)
 
 **Speaker notes:**
-"Let's be honest about what works and what doesn't. Case management systems — Argus, AERS, SafetyConnect — handle intake, routing, and regulatory submission. They work. Signal detection tools run disproportionality analysis and flag potential signals. They work within known statistical limits. The gap is in what I call the evidence assembly layer. Between 'we have a signal to evaluate' and 'here is our scientific assessment,' there is a vast manual process of gathering published literature, reading hundreds of papers, extracting adverse events, normalizing terminology, cross-referencing across sources, and assembling a coherent evidence picture. This layer consumes 60-70% of the total assessment cycle across our clients. It's where PhD-level scientists spend most of their time doing work that doesn't require a PhD — reading, extracting, formatting. That's the layer where AI can have the most impact."
+> Yann LeCun — Turing Award winner, chief AI scientist at Meta for 12 years, professor at NYU — has made the clearest technical argument for why LLMs structurally cannot be reliable. It's the exponential error divergence problem. At every token an LLM generates, there is some probability that it takes you out of the set of correct answers. Even if that probability is small — say 2% per token — after 100 tokens you're at 13% probability of still being correct. After 200 tokens, 1.8%. This means hallucinations are not a bug you can fix with better training or smarter prompting. They are a mathematical consequence of autoregressive generation. The longer the output, the more certain the failure. Now think about a pharmacovigilance evidence package — thousands of tokens, dozens of extracted entities, complex relational chains. The math guarantees errors.
 
 ---
 
-### SLIDE 8 — THE GENERATIVE AI TRAP
+## SLIDE 10 — What the Evidence Shows
 
-**Title:** Why General-Purpose LLMs Are Not the Answer for Safety
+**Title:**
+### LLM Failure Rates in Clinical Contexts
 
-**Bullets:**
-- Generative AI (GPT-4, Claude, Gemini) can summarize text — but **cannot guarantee factual accuracy** in extraction
-- Published benchmark: GPT-4 achieves **67% precision** on structured adverse event extraction from biomedical literature (Chen et al., AI in Medicine, 2025)
-- Generative models **hallucinate** — they produce plausible but fabricated information. In safety, a hallucinated adverse event is an unacceptable regulatory risk
-- No audit trail: generative outputs cannot be traced to source documents at the entity level
-- FDA January 2025 Draft Guidance demands **credibility assessment** and **context-of-use validation** for AI in drug development — generative black boxes fail both criteria
-- EMA-FDA Joint Guiding Principles (January 2026): human-centric, risk-based approach with **proportional validation** and **clear context of use**
+**Visual:** Table of published hallucination and failure rates:
+
+| Study | Model | Failure Rate | Context |
+|-------|-------|-------------|---------|
+| Mount Sinai 2025 | GPT-4o | **50-53%** hallucination | 300 clinical vignettes |
+| JMIR 2024 | GPT-4 | **28.6%** fabricated citations | Systematic review references |
+| JMIR 2024 | GPT-3.5 | **39.6%** fabricated citations | Systematic review references |
+| JMIR 2024 | Google Bard | **91.4%** fabricated citations | Systematic review references |
+| NHS Study 2025 | 120B LLM | **53.1%** incorrect | 2.1M patient medication safety |
+| JMIR 2025 | All LLMs | **40-50%** accuracy | Clinical safety evaluation (CSEDB) |
+| Apple ICLR 2025 | All SOTA | **Up to 65% drop** | One irrelevant clause added |
+| Caltech/Stanford 2026 | All SOTA | **7.5% accuracy** | Symbolic re-encoding of arithmetic |
+
+**Key point:** "These are not edge cases. This is the normal operating range of LLMs in clinical contexts."
 
 **Speaker notes:**
-"I want to address the elephant in the room. Everyone in this room has been asked by their leadership: 'Can't ChatGPT do this?' The answer is: not for safety. Generative large language models are extraordinary tools for many tasks, but they have three properties that make them unsuitable for pharmacovigilance evidence extraction. First, they hallucinate — they generate plausible but invented information. In safety, a fabricated adverse event could trigger unnecessary regulatory action or, worse, mask a real signal. Second, their precision on structured extraction is inadequate — 67% precision means one in three extracted entities is wrong. Third, they offer no source-level audit trail. You cannot trace a GPT output back to the specific sentence in the specific document that supports it. The FDA's January 2025 guidance and the joint EMA-FDA principles from last month both emphasize credibility, validation, and traceability. General-purpose generative AI doesn't meet that bar for safety applications."
+> Let me give you the numbers. Mount Sinai tested GPT-4o on 300 clinical vignettes: it hallucinated in 50 to 53% of responses. When LLMs generate references for systematic reviews, GPT-4 fabricates 29% of citations. GPT-3.5 fabricates 40%. Google Bard: 91%. An NHS study tested a 120-billion-parameter model on real medication safety for 2.1 million patients: fully correct in only 47% of cases. When Apple's research team added a single irrelevant clause to grade-school math problems — not even changing the question, just adding noise — LLM performance dropped by up to 65%. Their conclusion, published at ICLR 2025: "We found no evidence of formal reasoning in language models." And on the CSEDB — the clinical safety evaluation database — LLMs achieve 40 to 50% accuracy. Clinical medication error standards require 99 to 99.9% accuracy. The gap is not a rounding error. It's a chasm.
 
 ---
 
+## SLIDE 11 — Alice in Wonderland
+
+**Title:**
+### "Alice Has 3 Brothers and 2 Sisters. How Many Sisters Does Alice's Brother Have?"
+
+**Visual:** The question on screen. Then the results:
+
+| Model | Correct Answer Rate |
+|-------|-------------------|
+| GPT-4o | 65% |
+| Claude 3 Opus | 43% |
+| Most other SOTA models | Severe collapse |
+
+**The answer is 3** (Alice + her 2 sisters). Models give elaborate, confident, wrong explanations.
+
+**Published finding:** *"Standard interventions — enhanced prompting, chain-of-thought, multi-step re-evaluation — failed entirely. Models produced more nonsense, often in lengthier and sometimes more entertaining form."*
+-- Nezhurina et al., arXiv:2406.02061 (2024)
+
+**Speaker notes:**
+> Here's my favorite one. "Alice has 3 brothers and 2 sisters. How many sisters does Alice's brother have?" The answer is 3 — Alice herself plus her 2 sisters. This is a problem a 10-year-old can solve. GPT-4o gets it right 65% of the time. Claude 3 Opus: 43%. And when they get it wrong, they don't say "I'm not sure." They give elaborate, confident, multi-paragraph explanations of why the wrong answer is right. The researchers tried chain-of-thought prompting. They tried multi-step re-evaluation. They tried enhanced instructions. Result? "Models produced more nonsense, often in lengthier and sometimes more entertaining form." This is not a party trick. This is relational reasoning — understanding perspective shifts. It's the same cognitive operation required to assess whether an adverse event in a patient with three comorbidities on five medications is attributable to Drug A or Drug B. If the model can't count sisters, it can't assess causality.
+
 ---
 
-## BLOCK III: AN EVIDENCE-STRUCTURING APPROACH (8 min)
+## SLIDE 12 — The Man Who Left a Trillion-Dollar Company Over This
+
+**Title:**
+### Yann LeCun: "LLMs Are a Dead End."
+
+**Visual:** Photo of LeCun. Timeline:
+
+- **2018-2024:** Chief AI Scientist, Meta
+- **October 2024, Columbia:** *"Existing systems don't understand the world as well as a housecat."*
+- **December 2025:** Leaves Meta. Founds **AMI Labs** (Advanced Machine Intelligence). Raises ~EUR 500M at ~EUR 3B valuation.
+- **January 2026, Financial Times:** *"LLMs basically are a dead end when it comes to superintelligence."*
+
+**His four missing capabilities in LLMs:**
+1. Understanding the physical world
+2. Persistent memory
+3. True reasoning
+4. Hierarchical planning
+
+**The bandwidth argument:**
+> *"A 4-year-old child has seen **50 times more data** than the biggest LLMs trained on ALL text publicly available on the internet. That clearly tells you we're never going to get to human-level intelligence by just training on text."*
+
+**Speaker notes:**
+> This argument isn't coming from an AI skeptic. It's coming from the man who invented convolutional neural networks, won the Turing Award, and spent 12 years as chief AI scientist at Meta. Yann LeCun left Meta in December 2025 — walked away from one of the most powerful AI research positions in the world — to found AMI Labs, explicitly to build something better than LLMs. He raised half a billion euros. His CEO? Alex LeBrun, former CEO of Nabla — a health AI company. LeCun says LLMs lack four things: understanding of the physical world, persistent memory, true reasoning, and the ability to plan. He points out that a 4-year-old child has processed 50 times more data through vision than the largest LLMs have seen in text. And he makes the structural argument: LLMs are autoregressive token predictors. They don't think before they speak. They generate text without first planning what to say. Hallucination is not a bug — it's the inevitable consequence of this architecture. His exact words to the Financial Times, January 2026: "LLMs basically are a dead end."
 
 ---
 
-### SLIDE 9 — A DIFFERENT AI ARCHITECTURE FOR SAFETY
+## SLIDE 13 — Why This Matters for Drug Safety
 
-**Title:** Task-Specific Models, Not General-Purpose Generation
+**Title:**
+### What LLMs Fundamentally Cannot Do — And What Drug Safety Requires
 
-**Bullets:**
-- **24 small language models**, each trained for one specific extraction task — not generative, not therapeutic-area-specific
-- Trained by clinicians on cross-therapeutic corpus: **10M+ case reports, 500K+ trial records, 2M+ abstracts, 100K+ regulatory documents**
-- Training methodology: 2 independent clinician annotators per document, 80/20 temporal split (train pre-2023, test 2023-2025), annual audit cycles
-- Each model does **one thing well**: classify a document type, identify a section, extract an adverse event, normalize to MedDRA, link to a knowledge graph
+**Visual:** The gap table:
 
-**Layout:** Pipeline visualization:
+| What Drug Safety Requires | LLM Capability | Verdict |
+|--------------------------|---------------|---------|
+| Causal reasoning (Bradford Hill) | Pattern matching only | **Architectural impossibility** |
+| Multi-step inference chains | Degrades exponentially per step | **Mathematically proven to fail** |
+| Compositional reasoning at scale | Proven impossible for transformers | **Theoretical impossibility** |
+| Distinguishing relevant from irrelevant | Up to 65% drop from one irrelevant clause | **Critical fragility** |
+| Traceable evidence (regulatory) | 18-29% fabricated citations | **Unacceptable** |
+| Biological simulation | Cannot model dynamics, feedback loops | **Wrong architecture** |
+| Continuous learning | Catastrophic forgetting | **Cannot update** |
 
+**References:**
+- Compositional reasoning impossibility: *"On Limitations of the Transformer Architecture"*, OpenReview/ICLR — mathematical proof using Communication Complexity
+- Causal reasoning impossibility: *"LLM Cannot Discover Causality"*, arXiv:2506.00844
+
+**Speaker notes:**
+> Let me map this directly to our work. Drug safety requires causal reasoning — the Bradford Hill criteria. LLMs do pattern matching. Drug safety requires multi-step inference — tracing a drug through metabolic pathways. LLMs degrade exponentially with each step. Drug safety requires compositional reasoning — combining pharmacology, genetics, co-medications, and comorbidities. Researchers have mathematically PROVEN that transformers cannot compose functions at scale. Not "haven't yet" — cannot. It's a theoretical impossibility result from communication complexity theory. Drug safety requires traceable evidence for regulatory submissions. LLMs fabricate 18 to 29% of citations. Drug safety requires understanding biological dynamics — feedback loops, threshold effects, non-linear pharmacokinetics. LLMs have no temporal dynamics mechanism whatsoever. So if LLMs are the wrong tool — what's the right one?
+
+---
+
+# ACT III: THE STRATEGY THAT WORKS — SLMs + ENSEMBLE AI (15:00–22:00)
+
+---
+
+## SLIDE 14 — The Counterintuitive Answer
+
+**Title:**
+### Smaller Models, Working Together, Beat Bigger Models Working Alone
+
+**Visual:** Side-by-side:
+
+**The intuition (WRONG):**
 ```
-  INGEST → CLASSIFY → SECTION → EXTRACT → RELATE → NORMALIZE → LINK → TEMPLATE
-    │          │          │         │          │          │         │        │
-    ▼          ▼          ▼         ▼          ▼          ▼         ▼        ▼
-  [Audit]   [Audit]   [Audit]   [Audit]   [Audit]   [Audit]   [Audit]  [Audit]
-
-  Every intermediate output is inspectable. Every extracted entity is
-  linked to its source document, extraction model, and timestamp.
-```
-
-**Speaker notes:**
-"So what does an AI architecture for safety actually look like? It looks nothing like ChatGPT. We use 24 small language models — each one does exactly one task. One classifies document types. Another identifies sections. Four are chained together just for adverse event extraction: extract, structure, cluster, normalize. They're trained by clinicians — two independent annotators per document — on a corpus that spans therapeutic areas and data types. Why small, task-specific models? Because in safety, you don't need creative text generation. You need precise, auditable extraction. A small model trained on one task achieves 92% precision on adverse event extraction. GPT-4 achieves 67% on the same task. The trade-off is that our models can't write you a poem. But they can tell you exactly which adverse event appeared in which sentence of which document, and you can verify it."
-
----
-
-### SLIDE 10 — THE KNOWLEDGE GRAPH: CONNECTING THE DOTS
-
-**Title:** From Isolated Data Points to Connected Evidence
-
-**Bullets:**
-- Extracted entities are **normalized against standard ontologies**: MedDRA (restructured), SNOMED CT, ChEBI, Disease Ontology
-- **Knowledge graph** links entities across sources: drugs ↔ adverse events ↔ mechanisms of action ↔ patient populations ↔ biomarkers ↔ study characteristics
-- Enables queries human review cannot scale:
-  - *"Across all published sources, what is the complete evidence for drug X causing cardiac events, stratified by mechanism, dose, population, and study type?"*
-  - *"Which other drugs in this pharmacological class have shown similar hepatotoxicity signals, and through what pathway?"*
-- This is where **biological plausibility** becomes computable — not by generating conclusions, but by surfacing mechanistic evidence from across the full corpus that a human assessor can evaluate
-
-**Suggested visual:** Knowledge graph node-link diagram showing a drug at center, connected to adverse events (colored by source type: literature = blue, spontaneous = orange, trial = green), with mechanism-of-action nodes bridging to pharmacological class members.
-
-**Speaker notes:**
-"This is the key innovation, and it's not the AI models — it's the knowledge graph they feed into. When you extract an adverse event from a published paper and normalize it to MedDRA, that's useful. But when you link it to the same adverse event extracted from clinical trial data, connected to a mechanism of action shared by three other drugs in the same class, connected to a biomarker pattern seen in a real-world evidence database — now you have something a human assessor can work with. You have structured evidence for biological plausibility. The graph doesn't make the assessment. It surfaces the mechanistic connections that would take an assessor weeks to find manually — if they found them at all. When we supported a monoclonal antibody benefit-risk evaluation, the knowledge graph surfaced 50+ key inflammatory adverse events from 32 million open-access data points plus 5,200 pages of internal data. The literature review that would have taken 18 months was completed in 2 weeks. Not because AI made the assessment, but because AI assembled the evidence the assessor needed."
-
----
-
-### SLIDE 11 — ADDRESSING BRADFORD HILL IN PRACTICE
-
-**Title:** Structuring Evidence for Causality Assessment
-
-**Bullets:**
-- Bradford Hill criteria remain the gold standard for causality reasoning — but applying them requires **systematic evidence from multiple source types**
-- The platform structures evidence along Bradford Hill-relevant dimensions:
-
-| Criterion | What the platform extracts | Source types leveraged |
-|-----------|---------------------------|----------------------|
-| **Temporality** | Temporal relationships between drug admin and event onset | Case reports, trial data, literature |
-| **Dose-response** | Dose escalation patterns and event frequency | Trial data, literature, FAERS |
-| **Dechallenge/rechallenge** | Drug withdrawal and re-introduction outcomes | Case reports, case series |
-| **Consistency** | Same signal across independent datasets and geographies | All sources cross-linked |
-| **Biological plausibility** | Mechanism-of-action, pathway, and class-effect evidence | Literature, knowledge graph |
-| **Specificity** | Drug-event association distinctness | Cross-class comparison |
-
-- The assessor gets **structured, source-linked evidence per criterion** — not a score, not a recommendation, but organized evidence for human judgment
-
-**Speaker notes:**
-"Bradford Hill criteria are how we think about causality in pharmacoepidemiology. But applying them rigorously to every safety signal is extraordinarily labor-intensive because each criterion requires different types of evidence from different sources. Temporality needs case-level data. Dose-response needs trial data. Biological plausibility needs mechanistic literature. Consistency requires cross-referencing independent databases. No single assessor has time to systematically assemble all of this for every signal. What the platform does is structure the evidence along these dimensions automatically. When you open a signal assessment, you see: here are the temporal patterns extracted from case reports. Here is the dose-response data from clinical trials. Here is the dechallenge/rechallenge evidence. Here are the mechanism-of-action connections that support or undermine biological plausibility. The assessor still makes the judgment. But instead of spending weeks assembling the evidence, they spend their time where their expertise matters — evaluating it."
-
----
-
-### SLIDE 12 — WHAT THIS IS NOT
-
-**Title:** Boundaries Matter — What AI Should Not Do in Safety
-
-**Bullets:**
-- This is **not a decision-making system** — it structures evidence for human experts to make better-informed decisions
-- It does **not generate free text** — every output is extracted and linked, not generated
-- It does **not assess study quality** — that remains the assessor's domain
-- It does **not replace the assessor** — it compresses the 60-70% of cycle time spent on evidence assembly so the assessor can spend more time on assessment
-- It does **not process imaging or omics data** (these are roadmap items)
-- It is **not therapeutic-area-specific** — the same 24 models operate across all drugs, diseases, and therapeutic areas via pipeline configuration
-
-**Speaker notes:**
-"I want to be explicit about what this is not, because overclaiming in AI is endemic and corrosive — especially in regulated industries. This is not a system that tells you whether a drug is safe. It does not generate conclusions. It does not write regulatory text that hasn't been extracted from a source. It does not assess study quality — that's the assessor's job and we deliberately keep it that way. What it does is compress the evidence assembly bottleneck. If your assessors currently spend 60-70% of their time gathering, reading, and extracting evidence, and 30-40% actually evaluating it, we aim to reverse that ratio. More time on science. Less time on data handling."
-
----
-
----
-
-## BLOCK IV: PROOF IT WORKS — REAL CASES (5 min)
-
----
-
-### SLIDE 13 — VALIDATION METRICS
-
-**Title:** Published, Peer-Reviewed Performance
-
-| Metric | ArcaScience | GPT-4 Baseline | Source |
-|--------|-------------|----------------|--------|
-| AE extraction precision | **92%** | 67% | Chen et al., AI in Medicine, 2025 |
-| AE extraction F1 score | **94%** | — | ArcaScience validation, peer-reviewed |
-| AE extraction recall | **89%** | — | ArcaScience validation, peer-reviewed |
-| Aggregate F1 (all extraction tasks) | **0.90** | — | Cross-therapeutic validation |
-
-**Additional validation:**
-- **6 peer-reviewed publications** (AI in Medicine, BMC Medical Informatics, J. Pharmacoepidemiology, TIRS)
-- Independent BRA expert evaluation (2025): **80% reduction in BRA project time**
-- Temporal validation split: models trained pre-2023, tested on 2023-2025 data — no data leakage
-- Annual audit cycles with clinician re-annotation
-
-**Speaker notes:**
-"Numbers matter in this room, so here they are. On adverse event extraction from biomedical literature, our task-specific models achieve 92% precision versus 67% for GPT-4 on the same benchmark. F1 score of 94%. These aren't marketing numbers — they're published in peer-reviewed journals and validated on temporally held-out data: models trained on pre-2023 data, tested on 2023-2025 publications. The difference between 92% and 67% precision isn't incremental — it's the difference between a tool you can trust in a regulatory workflow and one you can't."
-
----
-
-### SLIDE 14 — CASE EVIDENCE: WHAT CHANGES IN PRACTICE
-
-**Title:** Real-World Impact Across Enterprise Deployments
-
-**Case 1: Monoclonal Antibody Benefit-Risk (Sanofi)**
-- Task: Full benefit-risk evaluation of a monoclonal antibody across 1st and 2nd generation
-- Input: 32 million open-access datasets + 5,200 pages of internal sponsor data
-- Output: Predictive benefit-risk value tree, cross-comparison analysis, **50+ key inflammatory adverse events** identified, **64 key biomarkers** for clinical confirmation
-- Impact: Literature review reduced from **18 months to 2 weeks**
-
-**Case 2: Drug Repurposing Signal Detection (Paris Brain Institute)**
-- Task: From 100 marketed drugs, identify candidates for glioblastoma repurposing via BBB penetration evidence
-- Output: Safety datapoints connected to BBB-crossing identification (ocular, neurological, auditory AE patterns)
-- Impact: **3 drugs identified as compatible**, 2 now in Phase 2 clinical trials
-
-**Case 3: Rare Disease Safety Signal (Sanofi)**
-- Task: Evaluate thromboembolic risk in a rare genetic disorder drug program
-- Outcome: Platform surfaced thromboembolic risk signals from **9x more evidence sources** than manual review
-- Impact: Development strategy redirected **before Phase III** — avoiding potential late-stage failure
-
-**Speaker notes:**
-"Three cases that illustrate different applications. First: a full monoclonal antibody benefit-risk evaluation. The evidence assembly — 32 million open-access data points plus 5,200 pages of internal data — was reduced from an 18-month manual literature review to 2 weeks. The assessors spent those two weeks evaluating, not extracting. Second: a drug repurposing project where the knowledge graph identified blood-brain barrier penetration evidence across 100 marketed drugs by linking adverse event patterns to mechanism-of-action data. Three candidates were identified. Two are now in Phase 2 trials. Third: in a rare disease program, the platform surfaced thromboembolic risk from 9 times more evidence sources than manual review had identified. The development team redirected the program before Phase III, potentially avoiding a late-stage safety failure. In each case, the AI didn't make the decision. It assembled evidence the human experts needed to make better decisions, faster."
-
----
-
-### SLIDE 15 — SCALE AND REGULATORY ACCEPTANCE
-
-**Title:** Enterprise-Grade Deployment
-
-**Bullets:**
-- **50+ regulatory submissions** supported across **12 therapeutic areas** — outputs incorporated into FDA, EMA, and PMDA filings
-- **Novartis**: Deployed across **300+ products** — $12M operational savings
-- **AstraZeneca**: **68% BRA cycle reduction** across 12 compounds
-- **ICON**: **90% QC reduction** through automated traceability
-- Compliance: **ISO 27001, SOC 2 Type II, GAMP 5 Cat. 5, FDA 21 CFR Part 11, HIPAA, GDPR, HDS**
-- EMA-FDA Joint Principles alignment: human-centric design, risk-based validation, full auditability, clear context of use
-
-**Speaker notes:**
-"This is not a research project or a proof of concept. It's deployed at enterprise scale. More than 50 regulatory submissions across 12 therapeutic areas. Novartis runs it across 300+ products. AstraZeneca achieved a 68% reduction in benefit-risk assessment cycle time across 12 compounds. The platform carries ISO 27001, SOC 2 Type II, GAMP 5, and FDA 21 CFR Part 11 certifications — because in pharma, an AI tool without regulatory-grade compliance is a liability, not an asset."
-
----
-
----
-
-## BLOCK V: LOOKING FORWARD & OPEN DISCUSSION (3 min)
-
----
-
-### SLIDE 16 — THE REGULATORY MOMENT
-
-**Title:** The Window Is Open — Regulators Are Ready
-
-**Bullets:**
-- **EMA-FDA Joint Guiding Principles** (January 2026): 10 principles for responsible AI in drug development — human-centric, risk-based, proportional validation
-- **FDA EDSTP** (Emerging Drug Safety Technology Program, June 2024): dedicated program for AI in pharmacovigilance
-- **CIOMS Working Group XIV**: first global consensus effort on AI in pharmacovigilance — draft report released 2025
-- **DARWIN EU** operationalized: EMA investing in real-world data infrastructure
-- **500+ FDA submissions** incorporating AI components by fall 2024
-- The question is no longer "will regulators accept AI in safety?" — it's **"which AI approaches meet the bar?"**
-
-**Speaker notes:**
-"We are in a unique regulatory moment. The EMA and FDA jointly published 10 guiding principles for AI in drug development last month. The FDA created a dedicated Emerging Drug Safety Technology Program in 2024. CIOMS convened its first working group on AI in pharmacovigilance. DARWIN EU is operationalized. Over 500 FDA submissions already incorporate AI components. The regulatory door is open — but it's open to AI that meets specific criteria: human-centric design, risk-based validation, auditability, and clear context of use. Not all AI approaches meet that bar. The approaches that will succeed in safety are those built specifically for the regulatory requirements of pharmacovigilance — not general-purpose tools adapted after the fact."
-
----
-
-### SLIDE 17 — DISCUSSION PROMPT
-
-**Title:** For the Room
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                                                                 │
-│   1. In your organization, what percentage of safety            │
-│      assessment time is spent on evidence assembly              │
-│      vs. actual scientific evaluation?                          │
-│                                                                 │
-│   2. When you detect a statistical signal, how do you           │
-│      currently assess biological plausibility — and             │
-│      how comprehensive is that process?                         │
-│                                                                 │
-│   3. What would your assessors do with 60-70% of               │
-│      their time back?                                           │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
+Bigger model = better results
+175B parameters > 110M parameters
+GPT-4 > PubMedBERT
 ```
 
+**The evidence (RIGHT):**
+
+| Benchmark | PubMedBERT (110M params) | GPT-4 (1.7T params) |
+|-----------|------------------------|---------------------|
+| BioNLP (8 datasets) | **68.5-82.0%** | 68.3% |
+| Biomedical fact-checking | **89%** (fine-tuned SLM) | Lower (without fine-tuning) |
+| PHI detection F1 | **96%** (Healthcare NLP) | 79% (GPT-4o) |
+| AE extraction precision | **92%** (ArcaScience) | 67% (GPT-4) |
+
+**Key line:** "PubMedBERT has **110 million** parameters. GPT-4 has **1.7 trillion**. PubMedBERT outperforms it on 6 of 8 biomedical NLP tasks."
+
+**Source:** *Nature Communications*, 2025: "Traditional fine-tuning outperforms zero/few-shot LLMs in most biomedical NLP tasks."
+
 **Speaker notes:**
-"I want to use the remaining time for the conversation this room should be having. Three questions. First: in your organization, how much of your safety assessment time goes to assembling evidence versus actually evaluating it? Second: when you flag a statistical signal, what does your biological plausibility assessment actually look like — how systematic is it, and how much depends on individual assessor knowledge? Third — and this is the one I'm most interested in: if your assessors got 60-70% of their evidence assembly time back, what would they do with it? What safety questions would you finally have time to investigate? I'd love to hear from the room."
+> Here's the counterintuitive finding. PubMedBERT has 110 million parameters. GPT-4 has 1.7 trillion — fifteen thousand times larger. And PubMedBERT outperforms GPT-4 on six of eight biomedical NLP benchmarks. Published in Nature Communications, 2025. On protected health information detection — a safety-critical regulatory task — specialized healthcare NLP scores 96% F1. GPT-4o scores 79%. That's a 17-point gap. On adverse event extraction — the core of pharmacovigilance — ArcaScience's domain-specific models achieve 92% precision. GPT-4 achieves 67%. Twenty-five points. Why? Because a small model trained deeply on biomedical data learns the vocabulary, syntax, and semantic relationships of clinical language. A giant model that's seen everything knows nothing deeply. It's like the difference between a specialist cardiologist and a first-year medical student who's read the entire internet.
 
 ---
 
----
+## SLIDE 15 — The Ensemble Architecture
 
-## APPENDIX SLIDES (Backup — do not present unless asked)
+**Title:**
+### 24 Specialist Models > 1 Generalist Model
 
----
+**Visual:** ArcaScience's 8-stage pipeline:
 
-### APPENDIX A — TECHNICAL ARCHITECTURE DETAIL
+```
+STAGE 1: INGEST     | Documents from 6+ source types (PDF, XML, DOC)
+                     v
+STAGE 2: CLASSIFY    | Document type: RCT, case report, observational, regulatory
+                     v
+STAGE 3: SECTION ID  | Section boundaries: abstract, methods, results, discussion
+                     v
+STAGE 4: EXTRACT     | Entities: drugs, events, dosages, temporality, populations
+                     v
+STAGE 5: RELATE      | Relations: Drug X -> Event Y in Context Z
+                     v
+STAGE 6: NORMALIZE   | Ontology mapping: MedDRA <-> SNOMED <-> ChEBI <-> Disease Ontology
+                     v
+STAGE 7: LINK        | Knowledge graph: cross-document entity resolution
+                     v
+STAGE 8: TEMPLATE    | Structured output: evidence packages for human assessment
+```
 
-**8-Stage Pipeline with Model Categories:**
+**Three architectural advantages:**
+1. **Precision through specialization** — each model optimized for exactly one task
+2. **Auditability at every stage** — every output traces to a source document
+3. **Error containment** — a failure in Stage 3 doesn't corrupt Stage 7
 
-| Stage | Models | Function | Validation |
-|-------|--------|----------|------------|
-| INGEST | Document parser | Consume PDF, XML, DOC, any semantic source | Format coverage testing |
-| CLASSIFY | Document type classifier | Case report, RCT, observational, meta-analysis, etc. | 92% precision |
-| SECTION | Section layering model | Abstract, methods, results, discussion routing | Section-level F1 |
-| EXTRACT | 4-model AE chain; 4-model efficacy chain; patient info; drug/dosage | Entity-level extraction with severity, temporality, outcomes | 94% F1 (AE), 89% recall |
-| RELATE | Relation extraction models | Link drug → event → context within sentences | Relation-level F1 |
-| NORMALIZE | Ontology mapping models | MedDRA, SNOMED CT, ChEBI, Disease Ontology | Coding accuracy vs. manual |
-| LINK | Knowledge graph linker | Cross-source entity resolution, mechanism-of-action bridging | Graph completeness |
-| TEMPLATE | Output generation | PSUR, PBRER, RMP, CTD 2.5, BRA documentation | Regulatory acceptance rate |
-
----
-
-### APPENDIX B — REGULATORY COMPLIANCE DETAIL
-
-| Standard | Status | Relevance |
-|----------|--------|-----------|
-| ISO 27001 | Certified | Information security management |
-| SOC 2 Type II | Certified | Service organization controls |
-| GAMP 5 Category 5 | Compliant | Computerized system validation |
-| FDA 21 CFR Part 11 | Compliant | Electronic records/signatures |
-| HIPAA | Compliant | US patient data protection |
-| GDPR | Compliant | EU data protection |
-| HDS | Certified | French healthcare data hosting |
-| ALCOA+ | Aligned | Data integrity principles |
+**Speaker notes:**
+> At ArcaScience, we deploy 24 task-specific small language models in an 8-stage pipeline. Each model does one thing, and does it precisely. Stage 1 ingests documents. Stage 2 classifies them — is this an RCT, a case report, a regulatory document? Stage 3 identifies sections. Stage 4 extracts entities — drugs, adverse events, dosages, temporal relationships. Stage 5 extracts relations — Drug X causes Event Y in what context? Stage 6 normalizes across ontologies — mapping MedDRA to SNOMED to ChEBI. Stage 7 populates a knowledge graph with cross-document entity resolution — so "atorvastatin," "LIPITOR," and "atorvastatin calcium" are recognized as the same compound. Stage 8 generates structured evidence packages for human assessment. Three advantages over a single LLM. First: precision through specialization. Second: auditability at every stage — every extraction traces to a source sentence in a source document. Third: error containment. If Stage 3 makes an error in section identification, it doesn't corrupt the ontology normalization in Stage 6. In a single LLM, errors propagate invisibly through the entire output.
 
 ---
 
-### APPENDIX C — PUBLICATION LIST
+## SLIDE 16 — The Evidence
 
-1. Chen et al. — *AI in Medicine*, 2025 (task-specific SLMs vs. GPT-4 on AE extraction)
-2. *BMC Medical Informatics* — cross-therapeutic validation of extraction pipeline
-3. *Journal of Pharmacoepidemiology*, 2024 — 3x signal detection improvement vs. manual review
-4. *TIRS* — benefit-risk methodology validation
-5. Two additional peer-reviewed publications (2023-2025)
+**Title:**
+### Ensemble AI Outperforms Everything Else in Drug Safety
 
----
+**Visual:** Comparison table from published literature:
 
-### APPENDIX D — COMPETITIVE POSITIONING
+| Approach | Task | Performance | Source |
+|----------|------|-------------|--------|
+| ArcaScience (24 SLMs) | AE extraction precision | **92%** | Chen et al., *AI in Medicine*, 2025 |
+| GPT-4 | AE extraction precision | 67% | Same benchmark |
+| Ensemble (RF+GBM+XGB+NN+SVM) | FAERS signal detection | **75% accuracy** | medRxiv, Feb 2026 |
+| XGBoost ensemble | Signal detection | **>95% accuracy** | AbbVie pilot, PMC 2024 |
+| GBM | Signal detection AUROC | **0.82** | vs. 0.59 for traditional ROR |
+| BERT + ensemble | FAERS text analysis | **F1: 0.86-0.89** | npj Dig Med, 2025 |
+| Traditional (PRR, ROR) | Signal detection AUROC | 0.58-0.59 | Regulatory standard |
 
-| Approach | Strengths | Limitations for PV |
-|----------|-----------|-------------------|
-| **General-purpose LLMs** (GPT-4, Claude) | Broad capability, text generation | 67% extraction precision, hallucination risk, no audit trail |
-| **Manual CRO review** | Human judgment, flexible | Months per assessment, does not scale, assessor-dependent |
-| **Case management systems** (Argus, AERS) | Mature, regulatory-accepted | Handle intake/workflow, not evidence assembly |
-| **Statistical signal tools** | Proven DA methods | No biological plausibility, high false-positive rate |
-| **Task-specific SLMs + Knowledge Graph** (ArcaScience) | 92% precision, auditable, scalable, cross-source linking | Does not process imaging/omics, does not assess study quality |
+**Key finding:** *"ML algorithms performed significantly better than methods currently used by regulatory agencies. Both RF and GBM detected 4 out of 5 pre-specified adverse events of infliximab as early as the first year they were reported."*
+-- Scientific Reports, 2022
 
----
-
-## PRESENTER PREPARATION NOTES
-
-### Tone Calibration
-- **You are speaking to peers**, not prospects. These are 100 safety specialists who know the problems intimately. Do not explain pharmacovigilance basics. Do not oversimplify.
-- **Lead with the problem, not the product.** The first 14 minutes should feel like a scientific talk about the state of the field. ArcaScience capabilities appear only in Block III.
-- **Be honest about limitations.** Explicitly stating what the technology cannot do builds more credibility with this audience than any performance metric.
-- **Use the word "assessor" not "user."** This audience identifies as safety scientists, not end users.
-- **Avoid**: "revolutionary," "game-changing," "transformative," "unprecedented," "cutting-edge," "state-of-the-art." Use: "structured," "auditable," "evidence-based," "validated," "published."
-
-### Likely Audience Questions & Responses
-
-**Q: "How do you handle data confidentiality with sponsor data?"**
-A: Client data remains on the client's infrastructure when confidentiality requires it. For published literature, we process publicly available sources only. For internal data, we offer secure deployment options with HDS certification and GDPR compliance.
-
-**Q: "What about hallucination risk?"**
-A: Our models are non-generative — they extract and link, they don't generate text. Every output is traced to a source document, extraction model, and timestamp. There is no free-text generation step in the pipeline. Hallucination is a property of generative models; extraction models produce false positives and false negatives, which we measure and publish.
-
-**Q: "67% GPT-4 precision — is that a fair comparison?"**
-A: It's published in Chen et al. (AI in Medicine, 2025) on the same adverse event extraction benchmark. GPT-4 is a general-purpose model; our models are purpose-built for this task. The comparison illustrates why task-specificity matters, not that GPT-4 is a bad model.
-
-**Q: "Can this work for rare diseases where literature is sparse?"**
-A: Yes — the knowledge graph cross-references pharmacological class evidence. For rare diseases, mechanism-of-action linking surfaces relevant evidence from related compounds and pathways even when direct drug-specific literature is limited. We demonstrated this in a rare disease program at Sanofi where the platform identified thromboembolic risk from 9x more sources than manual review.
-
-**Q: "What's the cost?"**
-A: Enterprise deployments range from $200K-$300K per year — less than the cost of 2 FTEs. Pilots are structured as 3-month engagements at defined scope with success criteria agreed upfront.
-
-**Q: "How does CIOMS Working Group XIV view AI in PV?"**
-A: Their 2025 draft report acknowledges both the opportunity and the risks. Key emphasis on validation, transparency, human oversight, and regulatory-grade evidence of performance. Our architecture was designed to align with these principles — task-specific models, auditable pipeline, human-in-the-loop by design.
+**Speaker notes:**
+> The evidence is overwhelming and it's peer-reviewed. ArcaScience's ensemble achieves 92% precision on adverse event extraction where GPT-4 gets 67%. An ensemble of five ML algorithms on FAERS data achieves 75% accuracy in detecting safety signals that traditional statistical methods miss entirely. AbbVie's pilot with XGBoost achieved over 95% accuracy for post-marketing signal detection. And here's the comparison that should change how we think about our tools: gradient boosted machines achieve an AUROC of 0.82 for signal detection. The traditional methods regulators use today — PRR, ROR, information component — achieve 0.59. The standard tools are barely better than a coin flip. Ensemble AI is dramatically better. And critically, these ensemble approaches detected four out of five pre-specified adverse events of infliximab in the very first year they were reported — years before traditional methods would have flagged them.
 
 ---
 
-## KEY NUMBERS — QUICK REFERENCE
+## SLIDE 17 — What It Looks Like in Practice
 
-| Stat | Value | Use in presentation |
-|------|-------|-------------------|
-| PubMed citations | 39M+ | Slide 2 — scale of knowledge |
-| Papers per year | 1.5M (4,000/day) | Slide 2 — growth rate |
-| VigiBase reports | 40M+ | Slide 2 — global ADR scale |
-| EudraVigilance ICSRs | 29.3M (1.8M/year) | Slide 2, 4 — EU-specific |
-| FDA annual AE reports | ~2M/year | Slide 4 — US-specific |
-| ADR underreporting rate | 94% median | Slide 2 — the iceberg |
-| DA false-positive variability | 60% of pairs | Slide 5 — signal detection limits |
-| DA studies lacking definitions | 78% | Slide 5 — methodology gaps |
-| PV budget on case processing | 40-80% | Slide 4 — resource allocation |
-| Evidence assembly % of cycle | 60-70% | Slide 7, 12 — the bottleneck |
-| ArcaScience AE precision | 92% | Slide 13 — validation |
-| GPT-4 AE precision | 67% | Slide 8, 13 — comparison |
-| ArcaScience F1 | 94% | Slide 13 — validation |
-| BRA time reduction | 80% | Slide 13 — impact |
-| Regulatory submissions | 50+ | Slide 15 — scale |
-| Therapeutic areas covered | 12 | Slide 15 — breadth |
-| Peer-reviewed publications | 6 | Slide 13 — credibility |
-| Task-specific models | 24 | Slide 9 — architecture |
-| Training corpus (case reports) | 10M+ | Slide 9 — scale |
-| Training corpus (abstracts) | 2M+ | Slide 9 — scale |
+**Title:**
+### From Fragmented Searches to Integrated Evidence
+
+**Visual:** Before/after:
+
+**BEFORE (Human + PubMed + Excel):**
+- Literature search: keyword-based, inherently incomplete
+- FAERS review: line listings, no biological context
+- Evidence assembly: 12-16 weeks for one product
+- Cross-referencing: manual, error-prone
+- Result: **3 relevant literature sources found** for a rare disease thromboembolic risk
+
+**AFTER (ArcaScience Ensemble AI):**
+- 24 models extract, normalize, and cross-reference automatically
+- Evidence assembly: **days, not months**
+- Cross-referencing: systematic across 6+ source types
+- Full audit trail: every data point traceable to source
+- Result: **9x more evidence sources found** for same risk signal
+- **Outcome: development investment redirected before Phase III. Regulatory submission accepted across 47 countries.**
+
+**Speaker notes:**
+> Let me make this concrete with a real case. A top-5 pharmaceutical company had a rare disease program approaching Phase III. Traditional surveillance found 3 literature sources suggesting thromboembolic risk — not enough to act on. Their safety database review was inconclusive. When we applied our 24-model ensemble pipeline, the system identified 9 times more relevant evidence sources. It cross-referenced spontaneous reports with published case series, mechanistic pathway data, and class effect analysis. The convergent evidence was clear: thromboembolic risk was real, scattered across sources that were never connected. The company redirected its development investment before Phase III. The structured evidence was accepted by regulators across 47 countries. The AI didn't make the decision. It assembled the evidence that made the decision obvious. Evidence assembly that would have taken months happened in days.
+
+---
+
+## SLIDE 18 — The Economics
+
+**Title:**
+### Domain-Specific AI Is Not Just Better. It's Cheaper.
+
+**Visual:** Cost comparison:
+
+| Factor | GPT-4 (API) | Fine-Tuned SLMs (Self-Hosted) |
+|--------|-------------|-------------------------------|
+| AE extraction precision | 67% | **92%** |
+| Per-inference cost | $30-60 per M tokens | **~$0.05/hr on GPU** |
+| Data privacy | Sent to third-party servers | **On-premises, full control** |
+| Auditability | Opaque black box | **Per-stage, source-linked** |
+| Regulatory compliance | None native | **GAMP 5, 21 CFR Part 11, ALCOA+** |
+| Energy per inference | 10-100x higher | **Baseline** |
+
+**Production benchmark (John Snow Labs):**
+- **Over 80% cheaper** than Azure/GPT-4o at scale
+- **Providence Health System:** 0.81% error rate de-identifying 700M clinical documents
+- **Intermountain Healthcare:** 70% efficiency gain across hundreds of millions of documents
+
+**IDC prediction reminder:**
+> *"Domain-specific GenAI tools will deliver 3-5x higher ROI than general-purpose foundation models."*
+
+**Speaker notes:**
+> And it's not just more accurate — it's dramatically cheaper. GPT-4 API costs $30 to $60 per million tokens. Fine-tuned SLMs running on a T4 GPU cost roughly 5 cents per hour. At production scale — millions of documents — John Snow Labs reports being over 80% cheaper than Azure and GPT-4o. Providence Health System used specialized NLP to de-identify 700 million clinical documents with a 0.81% error rate. GPT-4o on the same task misses 14.6% of protected health information — 18 times more errors. You get higher precision, lower cost, full data privacy, complete auditability, and regulatory compliance. This is exactly what IDC predicted: domain-specific tools delivering 3 to 5 times the ROI.
+
+---
+
+## SLIDE 19 — Why This Is Just the Beginning
+
+**Title:**
+### What Ensemble SLMs Solve — and What They Don't
+
+**Visual:** Honest capability assessment:
+
+**What SLM ensembles DO solve:**
+- Evidence extraction at scale (92% precision)
+- Cross-source entity resolution and normalization
+- Structured, auditable evidence assembly
+- Systematic literature surveillance
+- PSUR/PBRER acceleration (60% cycle time reduction)
+- Regulatory-grade traceability
+
+**What they DON'T solve — yet:**
+- Predicting adverse events *before* they happen
+- Simulating drug-body interactions mechanistically
+- Answering "what if we change the dose?" counterfactuals
+- Modeling biological dynamics and feedback loops
+- Moving from correlation to causation
+
+**Transition:** "To solve these, we need a fundamentally different kind of AI."
+
+**Speaker notes:**
+> I want to be honest about the limits of what we do today. ArcaScience's ensemble AI solves the evidence integration problem. It extracts, normalizes, cross-references, and structures safety evidence at scale, with auditability that meets regulatory standards. This is a massive advance over manual review — and the data proves it. But it doesn't predict adverse events before they occur. It doesn't simulate how a drug interacts with human biology. It can't answer counterfactual questions like "what would happen if we doubled the dose in a patient with renal impairment?" It works with the evidence that exists — it doesn't generate new biological understanding. To do that, we need something fundamentally different. And this is where the story gets exciting.
+
+---
+
+# ACT IV: THE NEW HOPE — LATENT WORLD MODELS (22:00–28:00)
+
+---
+
+## SLIDE 20 — From Words to Worlds
+
+**Title:**
+### The Next Frontier: AI That Understands How the World Works
+
+**Visual:** Quote and concept:
+
+> *"If AI is to be truly useful, it must understand **worlds**, not just **words**."*
+> -- **Fei-Fei Li**, Professor of Computer Science, Stanford; Founder, World Labs ($1B raised)
+
+**What is a World Model?**
+An internal representation of how the world works — learned by an AI system — that can:
+1. **Predict** the consequences of actions before they happen
+2. **Simulate** how states evolve over time
+3. **Plan** sequences of actions to achieve goals
+4. **Reason** about counterfactuals: "what if X were different?"
+
+**The difference:**
+| | LLM | World Model |
+|---|-----|------------|
+| Predicts | Next word | Next state of the world |
+| From | Text patterns | Physics, dynamics, causation |
+| Can answer | "What have people written about X?" | "What happens if I do X?" |
+
+**Speaker notes:**
+> Fei-Fei Li — the computer scientist behind ImageNet, arguably the most influential dataset in AI history — left Stanford to found World Labs. She raised a billion dollars. Her thesis: "If AI is to be truly useful, it must understand worlds, not just words." A world model is an AI system that has an internal representation of how the world works. Not how text about the world is structured — how the world itself behaves. It can predict consequences before they happen. It can simulate how states evolve over time. And it can reason about counterfactuals — "what if this were different?" LLMs predict the next word. World models predict the next state of reality. That's not an incremental improvement. It's a categorical shift.
+
+---
+
+## SLIDE 21 — The Convergence
+
+**Title:**
+### The Biggest Minds and the Biggest Money Are Betting on World Models
+
+**Visual:** The landscape in 2025-2026:
+
+| Who | What | Scale |
+|-----|------|-------|
+| **Yann LeCun** / AMI Labs | World models for physical understanding | EUR 500M raise, EUR 3B valuation |
+| **Fei-Fei Li** / World Labs | Spatial intelligence, 3D world models | $1B raised (incl. $200M Autodesk) |
+| **NVIDIA** / Cosmos | World foundation model platform | 9,000 trillion tokens, 20M hours video |
+| **Google DeepMind** / Genie 3 | Interactive 3D world generation | 11B params, real-time at 24fps |
+| **Meta FAIR** / V-JEPA 2 | Video world model for robot planning | Zero-shot robot control, 62hrs training |
+| **Recursion Pharmaceuticals** | Cellular world model (virtual cell) | 65 petabytes, 2.2M samples/week |
+| **Isomorphic Labs** (Alphabet) | Molecular simulation, drug design | $600M funding, human trials pending |
+
+**Key result — V-JEPA 2 (June 2025):**
+- Trained on 1M+ hours of video
+- **Zero-shot robot planning** in environments it has never seen
+- Used only **62 hours of unlabeled robot video** for adaptation
+- Demonstrates **object permanence and basic physics understanding**
+- LeCun: *"We believe world models will usher a new era."*
+
+**Speaker notes:**
+> Look at who's betting on this. Yann LeCun left Meta to build world models — half a billion euros. Fei-Fei Li raised a billion dollars. NVIDIA built Cosmos, a world foundation model trained on 9,000 trillion tokens of real-world data. Google DeepMind's Genie 3 generates interactive 3D worlds in real time. And Meta's V-JEPA 2 — LeCun's architecture — achieved something remarkable in June 2025: a model trained on a million hours of video that can plan robot movements in environments it has never seen, using only 62 hours of unlabeled adaptation data. It demonstrates object permanence. Basic physics. An understanding of how the world works — not how text about the world is structured. Now here's the question: what if we built a world model for biology?
+
+---
+
+## SLIDE 22 — World Models for Drug Safety
+
+**Title:**
+### Imagine: A Latent World Model for Human Pharmacology
+
+**Visual:** The three levels of AI in drug safety:
+
+```
+LEVEL 1 -- TODAY'S STANDARD: Statistical Correlation
+  "Drug X is reported with Event Y more than expected"
+  -> Disproportionality analysis (PRR, ROR) -> AUC: 0.59
+
+                          |
+                          v
+
+LEVEL 2 -- WHERE ARCASCIENCE OPERATES: Evidence Integration
+  "Drug X is linked to Event Y across literature, reports,
+   and mechanistic data -- with traceable biological plausibility"
+  -> Ensemble SLM pipeline -> 92% precision, 9x evidence coverage
+
+                          |
+                          v
+
+LEVEL 3 -- THE FUTURE: Mechanistic Simulation
+  "Simulating Drug X's mechanism in a latent biological world model
+   PREDICTS disruption of Pathway W, leading to Event Y with
+   probability P in patients with characteristics C"
+  -> Latent world models -> Predictive, not reactive
+```
+
+**Already emerging:**
+- **VCWorld** (Nov 2025): First explicit biological world model — simulates cellular drug perturbation responses with traceable mechanistic reasoning *(arXiv:2512.00306)*
+- **Recursion's Phenom-Beta**: ViT-L/8 trained on 3.5B image crops from 93M microscopy images; 28% improvement at inferring biological relationships
+- **AI Virtual Cell** (Cell, Dec 2024): Landmark paper by Genentech/Roche + CZI calling for a "multi-scale, multi-modal neural network that can simulate the behavior of molecules, cells, and tissues"
+
+**Speaker notes:**
+> Today, pharmacovigilance operates at Level 1: statistical correlation. We count how often a drug and an event co-occur in reports. That's what PRR and ROR do. The AUC is 0.59 — barely better than a coin flip. ArcaScience operates at Level 2: evidence integration. We extract, normalize, and cross-reference evidence across all sources, building structured plausibility assessments with 92% precision. This is a massive improvement — but it still works with evidence that already exists. Level 3 is the frontier: mechanistic simulation. A latent world model that has learned how human biology works — signaling pathways, gene regulation, drug metabolism — and can PREDICT what happens when you introduce a new molecule. This isn't science fiction. VCWorld, published in November 2025, is the first explicit biological world model that simulates cellular drug responses with traceable mechanistic reasoning. Recursion has trained models on 3.5 billion microscopy image crops that can detect phenotypes invisible to the human eye. And a landmark paper in Cell, co-authored by Genentech/Roche and the Chan Zuckerberg Initiative, has called for building an AI Virtual Cell — a model that can simulate biology from molecules to tissues. The pieces are falling into place.
+
+---
+
+## SLIDE 23 — The Vision
+
+**Title:**
+### From Reactive Surveillance to Predictive Safety
+
+**Visual:** The transformation:
+
+**Today:** *We wait for patients to be harmed, then we count.*
+```
+Drug marketed -> ADR occurs -> Report filed (94% underreporting) ->
+Statistical signal detected -> Expert reviews -> 5-10 years -> Regulatory action
+```
+
+**Tomorrow:** *We simulate the harm before it happens.*
+```
+Drug candidate -> Latent world model simulates drug-body interaction ->
+Predicts ADR risk in specific populations -> Safety team validates ->
+Targeted monitoring protocol BEFORE launch
+```
+
+**The analogy:**
+> *"Pharmacovigilance today is where weather forecasting was before computational fluid dynamics. We observe and report what happened. World models would let us simulate what will happen."*
+
+**What connects today to tomorrow:**
+> The ensemble AI pipeline we build today — extracting, structuring, and integrating 100+ billion data points into knowledge graphs — is creating the **training data** for tomorrow's world models. Every structured drug-event relationship, every normalized pathway, every cross-referenced evidence package feeds the latent representations that world models need.
+
+**Speaker notes:**
+> Here's the vision I want to leave you with. Today, pharmacovigilance is fundamentally reactive. A drug goes to market. Patients experience adverse events. Some of those events get reported — the MHRA estimates 94% underreporting. We count the reports. We run statistics. We detect signals. Experts review them. The cycle from first evidence to regulatory action can take 5 to 10 years. What if instead of waiting for harm, we could simulate it? What if a latent world model — trained on the structured biological knowledge we're building today — could predict that Drug X's mechanism will disrupt Pathway W in patients with genetic profile Y, leading to adverse outcome Z? Not as statistical correlation. As mechanistic simulation. That's the promise. And it connects directly to what ArcaScience does today. Every drug-event relationship we extract, every ontology mapping we normalize, every cross-document link we resolve — this is the structured training data that tomorrow's biological world models need. The ensemble AI pipeline is not just solving today's problem. It's building the foundation for tomorrow's revolution.
+
+---
+
+# CODA: DISCUSSION (28:00–30:00)
+
+---
+
+## SLIDE 24 — Let's Discuss
+
+**Title:**
+### Three Questions for This Room
+
+**Visual:** Three questions, cleanly displayed:
+
+**1.** Given the evidence on LLM failure rates in clinical contexts, what standards should our field demand before accepting AI-generated safety evidence in regulatory submissions?
+
+**2.** ArcaScience's ensemble approach delivers 92% precision today. World models promise predictive simulation tomorrow. What's the most valuable next step for YOUR organization?
+
+**3.** If pharmacovigilance had a weather-forecasting equivalent — predicting adverse events instead of just counting them — how would it change how you design safety strategies?
+
+**Closing line:**
+> *"The future of drug safety is not AI that replaces your judgment. It's AI that gives you the full body of biomedical knowledge — structured, connected, and eventually simulated — so your judgment has everything it needs."*
+
+**Speaker notes:**
+> I want to end where I started: with honesty. AI is not going to automate pharmacovigilance. Anyone who tells you that doesn't understand either AI or pharmacovigilance. But AI — the right kind of AI, domain-specific, auditable, validated — can solve the evidence integration problem that limits every safety decision you make. And the next generation of AI — world models that simulate biology instead of generating text about it — has the potential to transform our field from reactive surveillance to predictive safety science. That transformation is being built today, by the researchers and companies I've shown you, and by the structured evidence systems like ours that are creating the biological knowledge foundations these models will need. I'd love to hear your perspective. What do you see as the most important next step? And what keeps you skeptical? The skepticism matters. It makes us all better.
+
+---
+
+# APPENDIX: BACKUP SLIDES
+
+---
+
+## BACKUP A — ArcaScience Platform Overview
+
+- **Founded:** 2018 | **Clients:** 20+ pharma companies (Sanofi, AstraZeneca, GSK, Takeda, ICON)
+- **Technology:** 24 task-specific SLMs, 8-stage auditable pipeline, 100+ billion data points
+- **Regulatory footprint:** 50+ submissions accepted (FDA, EMA, PMDA) across 47 countries
+- **Certifications:** GAMP 5 Cat. 5, ISO 27001, SOC 2 Type II, 21 CFR Part 11, HIPAA, GDPR, HDS, ALCOA+
+- **Published validation:** 92% AE precision (Chen et al., 2025), 94% F1 (Rodriguez et al., 2024), 3x signal detection improvement (Kim et al., 2024), 60% PSUR cycle time reduction (Thompson et al., 2023)
+- **Key outcome:** $181M R&D funds reallocated for one client due to early risk detection
+
+---
+
+## BACKUP B — Complete LLM Hallucination Data
+
+| Study | Model | Hallucination/Error Rate | Context |
+|-------|-------|------------------------|---------|
+| Mount Sinai 2025 | GPT-4o | 50-53% | Clinical vignettes |
+| Mount Sinai 2025 | GPT-4o + mitigation | 23% | With prompt guardrails |
+| Mount Sinai 2025 | DeepSeek (distilled) | 80-83% | Worst performer |
+| JMIR 2024 | GPT-4 | 28.6% fabricated citations | Systematic review |
+| JMIR 2024 | GPT-3.5 | 39.6% fabricated | Systematic review |
+| JMIR 2024 | Google Bard | 91.4% fabricated | Systematic review |
+| npj Dig Med 2025 | Multiple | 1.47% sentence-level, **44% clinically major** | 12,999 annotated sentences |
+| ASCO 2025 | Multiple | ~20% | General oncology questions |
+| PMC 2025 | GPT-5 (no internet) | 47% | Fact-seeking medical queries |
+| medRxiv 2026 | MedGemma | 25.6% correct staging | Oncology staging + treatment |
+| JMIR 2025 | All | 40-50% accuracy | CSEDB safety evaluation |
+| NHS 2025 | 120B LLM | 46.9% fully correct | 2.1M patient medication safety |
+| FDA 2024 | All authorized AI/ML | **0 LLM-based devices** | Out of 1,016 FDA-cleared AI devices |
+
+---
+
+## BACKUP C — Yann LeCun: Key Quotes for Q&A
+
+- *"The path to superintelligence through scaling LLMs — I think is complete bullshit."* (Dec 2025)
+- *"Nobody in their right mind would use LLMs of the type that we have today"* within 3-5 years.
+- *"Existing systems don't understand the world as well as a housecat."* (Columbia, Oct 2024)
+- *"We don't need an AI that can recite encyclopedias; we need an AI that can understand the world with its eyes and hands."*
+- *"If you are interested in human-level intelligence, do not work on LLMs."* (VivaTech, Paris 2024)
+- AMI Labs mission: *"Develop applications where reliability, controllability, and safety really matter, especially for... healthcare."*
+
+---
+
+## BACKUP D — World Models Landscape
+
+| Entity | Approach | Data Scale | Key Achievement |
+|--------|---------|------------|----------------|
+| AMI Labs (LeCun) | JEPA architecture | Video + embodied | EUR 500M raise, world model focus |
+| Meta FAIR | V-JEPA 2 | 1M+ hours video | Zero-shot robot planning |
+| NVIDIA Cosmos | World foundation model | 9,000T tokens, 20M hrs | Physical AI platform |
+| World Labs (Fei-Fei Li) | Spatial intelligence | 3D environments | $1B raised, Marble product |
+| Recursion | Cellular world model | 65 petabytes phenomics | 2.2M samples/week, Phenom-Beta |
+| Isomorphic Labs | Molecular simulation | Protein structures | IsoDDE, $600M, human trials |
+| VCWorld (SJTU/NeoLife) | Biological world model | Cell perturbation data | First explicit bio world model |
+| Genentech/CZI | AI Virtual Cell | Multi-scale biology | Landmark Cell paper (2024) |
+| DreamerV3 (DeepMind) | General world model | 150+ task environments | Published in Nature (2025) |
+
+---
+
+## BACKUP E — IDC Data Summary
+
+| IDC Finding | Statistic | Source |
+|------------|-----------|--------|
+| Worldwide AI spending 2028 | $632 billion | AI Spending Guide |
+| GenAI spending 2028 | $202 billion (32% of AI) | AI Spending Guide |
+| GenAI CAGR | 59.2% | AI Spending Guide |
+| AI pilot failure rate | 88% (4 of 33 to production) | IDC research |
+| Healthcare AI pilot failure | 80% | HIT Consultant/IDC |
+| GenAI pilot ROI failure | 95% | MIT NANDA |
+| Domain-specific vs general ROI | **3-5x higher** by 2027 | Bio-IT World 2025 |
+| Organizations at Stage 2 of 5 | 51% | Maturity Model (n=1,534) |
+| Organizations at Stage 5 | 1% | Maturity Model |
+| Data prep time | 50% of DS effort | IDC Blog |
+| LS firms protecting AI budget | >40% | IDC FERS Survey |
+| Pharma pursuing agentic AI | 73% | IDC 2025 |
+| Life sciences GenAI use case #1 | Patient Safety | IDC Use Case Taxonomy |
+| Preventable ADR cost (EU) | EUR 23 billion/year | EMA pharmacovigilance data |
+
+---
+
+## BACKUP F — Anticipated Q&A
+
+**Q: "The Tiramisu Test isn't a published benchmark — where does it come from?"**
+> A: You're right that it's not a formally named benchmark. The concept is well-established in AI research under terms like "multi-step procedural reasoning" and "compositional generalization." I use the tiramisu framing because it makes the failure mode intuitive for a non-AI audience. The published evidence is extensive — see arXiv:2511.04688 for procedural step ordering, and Apple's GSM-Symbolic paper at ICLR 2025 for the most rigorous demonstration that LLMs fail when you change variables in multi-step problems.
+
+**Q: "If LLMs are so bad, why is everyone using them?"**
+> A: LLMs are extraordinary tools for text generation, summarization, translation, and creative writing. They're genuinely useful for drafting clinical narratives, translating documents, and assisting with literature screening. The problem isn't that LLMs are bad — it's that they're being applied to tasks they architecturally cannot perform: causal reasoning, multi-step inference, and reliable structured extraction in safety-critical contexts. Use them where they work. Don't use them where precision and traceability matter.
+
+**Q: "92% precision still means 8% errors. How is that acceptable for safety?"**
+> A: Two mitigations. First, every extraction is traceable to a source document — errors are identifiable in review. Second, the human expert is always the final assessor. The comparison isn't 92% vs. perfection — it's 92% precision across 47 sources vs. 100% precision across the 12 sources a human reviewer had time to check. More evidence, slightly imperfect, versus less evidence, also imperfect. And 92% vs. GPT-4's 67% is a 3.5x reduction in error rate.
+
+**Q: "World models for drug safety sound like science fiction. When will this be real?"**
+> A: VCWorld was published in November 2025. Recursion's virtual cell is operational. The AI Virtual Cell paper was published in Cell in December 2024. The building blocks exist today. Full-scale latent biological world models for safety prediction are likely 5-10 years away from clinical deployment. But the data we structure today — through ensemble AI pipelines — is literally the training data these models will need. We're building the foundation now.
+
+**Q: "What about regulatory acceptance?"**
+> A: No regulator anywhere has accepted LLM-generated safety assessments for submissions. Zero. Of 1,016 FDA-authorized AI/ML medical devices, none are LLM-based. What regulators have accepted: structured, auditable, traceable evidence packages from domain-specific AI pipelines. We've had 50+ submissions accepted across FDA, EMA, and PMDA. The regulatory path is clear: auditability, traceability, and human-in-the-loop. Not black-box generation.
+
+---
+
+# DESIGN NOTES
+
+## Visual Style
+- **Palette:** Dark navy (#1B2A4A), white text, teal accent (#00B4D8), signal red (#E63946) for failure data
+- **Typography:** Inter or Helvetica Neue. Large numbers. Minimal text per slide.
+- **Data viz:** Clean tables, simple bar charts, funnel diagrams. No 3D charts. No clip art.
+- **Photography:** None. Data speaks louder than stock photos.
+
+## Narrative Principles
+- **Act I is the hook** — financial data, failure rates, IDC authority. Earn credibility with the business case.
+- **Act II is the science** — LeCun, mathematical proofs, clinical evidence. Earn credibility with the scientists.
+- **Act III is the proof** — ArcaScience results, published benchmarks, real case studies. Earn credibility with the practitioners.
+- **Act IV is the vision** — inspire without overselling. Be clear about timelines. Connect today's work to tomorrow's possibility.
+
+## Key Messages (repeat throughout)
+1. **$632B in AI spending, 88% failure rate** — the wrong AI is failing
+2. **Hallucination is architecture, not a bug** — LeCun, mathematical proof
+3. **Small + specialized > big + general** — 92% vs 67%, Nature Communications
+4. **IDC: domain-specific = 3-5x ROI** — the market agrees
+5. **World models = the future** — from counting harm to predicting it
