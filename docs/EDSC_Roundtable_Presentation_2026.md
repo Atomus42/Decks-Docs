@@ -8,13 +8,13 @@
 
 # NARRATIVE ARC
 
-> **Act I** (0:00–7:00) — The AI gold rush hits pharma: $632B in spending, 88% pilot failure, a $202B bet on GenAI that isn't paying off. What's going wrong?
+> **Act I** (0:00–8:00) — The AI gold rush hits pharma: $632B in spending, 88% pilot failure. But first — let's give AI its due. Then: why is so much of it failing?
 >
-> **Act II** (7:00–15:00) — The answer: LLMs are structurally broken for drug safety. From the Tiramisu Test to Yann LeCun's departure from Meta — why the world's leading AI scientist says "LLMs are a dead end" and what that means for our field.
+> **Act II** (8:00–15:00) — The answer: LLMs are structurally broken for drug safety. From the Tiramisu Test to Yann LeCun's departure from Meta — why the world's leading AI scientist says "LLMs are a dead end" and what that means for our field.
 >
-> **Act III** (15:00–22:00) — The strategy that works today: Small Language Models in Ensemble AI architectures. How ArcaScience's 24-model pipeline achieves 92% precision where GPT-4 gets 67% — and why IDC predicts domain-specific AI will deliver 3–5x the ROI.
+> **Act III** (15:00–23:00) — Who we are at ArcaScience. Our BRA platform. And the strategy that works: Small Language Models in Ensemble AI architectures — 92% precision where GPT-4 gets 67%.
 >
-> **Act IV** (22:00–28:00) — The new hope: Latent World Models. From statistical correlation to mechanistic simulation. The future where we predict adverse events before they happen.
+> **Act IV** (23:00–28:00) — The new hope: Latent World Models. From statistical correlation to mechanistic simulation. The future where we predict adverse events before they happen.
 >
 > **Coda** (28:00–30:00) — Discussion.
 
@@ -24,15 +24,15 @@
 
 | Act | Time | Slides | Core Message |
 |-----|------|--------|-------------|
-| I. The AI Reality Check | 0:00–7:00 | 1–6 | Pharma is spending billions on AI that doesn't work |
-| II. Why LLMs Fail Drug Safety | 7:00–15:00 | 7–13 | Structural, not fixable — and the smartest people in AI agree |
-| III. The Strategy That Works: SLMs + Ensemble AI | 15:00–22:00 | 14–19 | Domain-specific, auditable, precise — ArcaScience approach |
-| IV. The New Hope: Latent World Models | 22:00–28:00 | 20–23 | From correlation to simulation |
-| Coda. Discussion | 28:00–30:00 | 24 | Engage the room |
+| I. The AI Reality Check | 0:00–8:00 | 1–7 | AI is transforming medicine — but pharma is spending billions on the wrong kind |
+| II. Why LLMs Fail Drug Safety | 8:00–15:00 | 8–14 | Structural, not fixable — and the smartest people in AI agree |
+| III. ArcaScience + The Strategy That Works | 15:00–23:00 | 15–22 | Who we are, our BRA platform, and why SLMs + Ensemble AI deliver |
+| IV. The New Hope: Latent World Models | 23:00–28:00 | 23–26 | From correlation to simulation |
+| Coda. Discussion | 28:00–30:00 | 27 | Engage the room |
 
 ---
 
-# ACT I: THE AI REALITY CHECK (0:00–7:00)
+# ACT I: THE AI REALITY CHECK (0:00–8:00)
 
 ---
 
@@ -161,15 +161,38 @@ How data science teams spend their time:
 **Key point:** "General-purpose LLMs are the wrong tool for drug safety. IDC sees it. The research proves it. And the world's leading AI scientist has staked his career on it."
 
 **Speaker notes:**
-> IDC has made a very specific prediction: by 2027, domain-specific AI tools will deliver 3 to 5 times the return of general-purpose foundation models in pharma. Three to five times. Not a marginal improvement — a categorical difference. Why? Because general-purpose LLMs — GPT-4, Claude, Gemini — were not designed for drug safety. They were designed to sound intelligent about everything. And there's a fundamental difference between sounding intelligent and being reliable. Let me show you exactly why these models fail, and I'm going to start with a test that sounds trivial but reveals something profound.
+> IDC has made a very specific prediction: by 2027, domain-specific AI tools will deliver 3 to 5 times the return of general-purpose foundation models in pharma. Three to five times. Not a marginal improvement — a categorical difference. Why? Because general-purpose LLMs — GPT-4, Claude, Gemini — were not designed for drug safety. They were designed to sound intelligent about everything. And there's a fundamental difference between sounding intelligent and being reliable. But before I go further into the critique, let me be fair. AI has earned extraordinary wins in medicine. Let's give it its due.
 
 ---
 
-# ACT II: WHY LLMs FAIL DRUG SAFETY (7:00–15:00)
+## SLIDE 7 — Let's Give AI Its Due
+
+**Title:**
+### AI Is Already Transforming Medicine — And Rightly So
+
+**Visual:** Grid of real, validated AI wins in pharma/healthcare:
+
+| Achievement | Impact | Source |
+|------------|--------|--------|
+| AlphaFold 2/3 | Predicted structure of **200M+ proteins** — solved a 50-year biology grand challenge | DeepMind / Nature, 2024 Nobel Prize |
+| AI-guided drug candidates | **~80 AI-originated molecules** now in clinical trials, up from 0 in 2020 | BCG, 2025 |
+| Radiology AI (FDA-cleared) | **950+ FDA-authorized AI/ML devices** — majority in radiology and cardiology | FDA AI/ML Device Registry, 2024 |
+| Clinical trial optimization | **30% faster** patient enrollment using ML-driven site selection | McKinsey, 2024 |
+| Adverse event detection (NLP) | **3x improvement** in signal-to-noise ratio using ensemble NLP vs. manual | Scientific Reports, 2022 |
+| De-identification at scale | **700M clinical documents** processed at 0.81% error rate | Providence Health / John Snow Labs |
+
+**Key point:** "AI works brilliantly when it's built for a well-defined task, validated rigorously, and kept within its competence boundary."
+
+**Speaker notes:**
+> Before I critique anything, let's be fair. AI has produced genuine, peer-reviewed, Nobel-Prize-winning results. AlphaFold solved protein structure prediction — a problem that eluded biology for 50 years. There are now over 80 AI-originated molecules in human clinical trials. The FDA has authorized more than 950 AI/ML medical devices. In our own field, specialized NLP has tripled signal-to-noise ratios in pharmacovigilance. Providence Health used domain-specific AI to de-identify 700 million clinical documents with a sub-1% error rate. This is real. This works. But notice the pattern: every one of these wins shares three properties. First, the AI was purpose-built for a specific, well-defined task — not a general chatbot repurposed for safety. Second, it was rigorously validated against clinical ground truth. Third, it operates within clear competence boundaries. The problem isn't AI itself. The problem is what happens when we take the wrong KIND of AI — general-purpose language models — and point them at the hardest problems in medicine. Let me show you exactly what goes wrong.
 
 ---
 
-## SLIDE 7 — The Tiramisu Test
+# ACT II: WHY LLMs FAIL DRUG SAFETY (8:00–15:00)
+
+---
+
+## SLIDE 8 — The Tiramisu Test
 
 **Title:**
 ### Can AI Make Tiramisu?
@@ -196,7 +219,7 @@ How data science teams spend their time:
 
 ---
 
-## SLIDE 8 — From Tiramisu to Pharmacology
+## SLIDE 9 — From Tiramisu to Pharmacology
 
 **Title:**
 ### If AI Can't Track Ricotta Through a Recipe, How Will It Track a Drug Through the Body?
@@ -217,7 +240,7 @@ How data science teams spend their time:
 
 ---
 
-## SLIDE 9 — The Mathematics of LLM Failure
+## SLIDE 10 — The Mathematics of LLM Failure
 
 **Title:**
 ### Hallucination Is Not a Bug. It's Architecture.
@@ -246,7 +269,7 @@ Example: p = 0.98 (98% per-token accuracy)
 
 ---
 
-## SLIDE 10 — What the Evidence Shows
+## SLIDE 11 — What the Evidence Shows
 
 **Title:**
 ### LLM Failure Rates in Clinical Contexts
@@ -271,7 +294,7 @@ Example: p = 0.98 (98% per-token accuracy)
 
 ---
 
-## SLIDE 11 — Alice in Wonderland
+## SLIDE 12 — Alice in Wonderland
 
 **Title:**
 ### "Alice Has 3 Brothers and 2 Sisters. How Many Sisters Does Alice's Brother Have?"
@@ -294,7 +317,7 @@ Example: p = 0.98 (98% per-token accuracy)
 
 ---
 
-## SLIDE 12 — The Man Who Left a Trillion-Dollar Company Over This
+## SLIDE 13 — The Man Who Left a Trillion-Dollar Company Over This
 
 **Title:**
 ### Yann LeCun: "LLMs Are a Dead End."
@@ -320,7 +343,7 @@ Example: p = 0.98 (98% per-token accuracy)
 
 ---
 
-## SLIDE 13 — Why This Matters for Drug Safety
+## SLIDE 14 — Why This Matters for Drug Safety
 
 **Title:**
 ### What LLMs Fundamentally Cannot Do — And What Drug Safety Requires
@@ -346,11 +369,107 @@ Example: p = 0.98 (98% per-token accuracy)
 
 ---
 
-# ACT III: THE STRATEGY THAT WORKS — SLMs + ENSEMBLE AI (15:00–22:00)
+# ACT III: ARCASCIENCE & THE STRATEGY THAT WORKS (15:00–23:00)
 
 ---
 
-## SLIDE 14 — The Counterintuitive Answer
+## SLIDE 15 — Who We Are: ArcaScience
+
+**Title:**
+### ArcaScience — AI-Powered Evidence Structuring for Drug Safety
+
+**Visual:** Company identity card, clean layout:
+
+```
+ArcaScience at a Glance
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  FOUNDED         2018, Paris (Biopark, 13th arrondissement)
+  RAISED          $10M total ($7M Series A, September 2025)
+  TEAM            Clinicians, NLP engineers, regulatory experts
+  CLIENTS         20+ pharma companies — Sanofi, AstraZeneca,
+                  GSK, Takeda, Novartis, ICON
+  RECOGNITION     Best HealthTech NLP Startup 2023
+                  (StartUs Insights, global ranking)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  CORE APPROACH:
+  ┌────────────────────────────────────────────┐
+  │  24 Small AI Models Trained by Clinicians  │
+  │  → Not one giant model that does everything│
+  │  → 24 specialist models, each doing one    │
+  │    task with clinical-grade precision       │
+  └────────────────────────────────────────────┘
+
+  DATA FOUNDATION:  100+ billion structured data points
+  REGULATORY:       50+ submissions accepted
+                    across FDA, EMA, PMDA (47 countries)
+  CERTIFICATIONS:   GAMP 5 | ISO 27001 | SOC 2 Type II
+                    21 CFR Part 11 | HIPAA | GDPR | ALCOA+
+```
+
+**Key line:** "We don't build chatbots. We build evidence machines."
+
+**Speaker notes:**
+> So who's actually doing this the right way? Let me introduce ArcaScience. We're a Paris-based AI company founded in 2018 — before the LLM hype cycle. We raised $10 million, including a $7 million round in September 2025. We serve over 20 pharmaceutical companies, including Sanofi, AstraZeneca, GSK, Takeda, and Novartis. Our core approach is fundamentally different from what you've been hearing about in the AI press. We don't use one giant language model. We deploy 24 small, task-specific AI models — each one trained and validated by clinicians on biomedical data. Each model does exactly one thing: one classifies documents, another extracts adverse events, another normalizes terminology across MedDRA and SNOMED. Together, they form a pipeline that assembles structured evidence from fragmented biomedical data. Over 50 regulatory submissions built on our structured evidence have been accepted across FDA, EMA, and PMDA — across 47 countries. We're GAMP 5 validated, ISO 27001 certified, SOC 2 Type II audited. We don't build chatbots. We build evidence machines.
+
+---
+
+## SLIDE 16 — Our BRA Platform: Benefit-Risk Assessment Reimagined
+
+**Title:**
+### Build Your Drug's Benefit-Risk Evaluation in Days, Not Months
+
+**Visual:** Left side — the CIOMS framework mapping. Right side — the transformation metrics.
+
+```
+THE PROBLEM WE SOLVE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ "Need for comprehensive integration of medical evidence"
+ "Overly long analysis duration"
+ "Need to increase characterisation in risk assessment"
+ "Challenges in real-time evidence integration"
+                                — CIOMS Working Group XII
+
+OUR SOLUTION: The BRA Platform
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  6 automated study types, aligned to CIOMS framework:
+
+  ┌──────────────────┬──────────────────┬──────────────────┐
+  │ Disease Analysis │ Clinical Endpoint│ Adverse Events   │
+  │ Molecular        │ Comprehensive    │ Full synthesis    │
+  │ pathways &       │ endpoint strategy│ of AEs for drug   │
+  │ epidemiology     │ analysis         │ and standard of   │
+  │                  │                  │ care              │
+  ├──────────────────┼──────────────────┼──────────────────┤
+  │ Benefit-Risk     │ Benefit-Risk     │ Analysis of      │
+  │ Insight          │ Summary          │ Condition        │
+  │ Summarized BRA   │ Full tailored    │ Including current│
+  │ on your          │ benefit-risk     │ treatment        │
+  │ priorities       │ synthesis        │ landscape        │
+  └──────────────────┴──────────────────┴──────────────────┘
+
+  BRAD crosswalk: Maps directly to eCTD (2.5.6) and PBRER (18.2)
+```
+
+**The proof — two real cases:**
+
+| Case | Challenge | ArcaScience Result | Impact |
+|------|-----------|-------------------|--------|
+| **Sanofi — monoclonal antibody** | Reveal benefit-risk profile across 32M datasets + 5,200 pages internal data | 27 key inflammatory AEs revealed, 64 biomarkers for clinical confirmation, cross-comparison of 1st vs 2nd gen | Literature review: **18 months → 2 weeks** |
+| **Paris Brain Institute — glioblastoma** | From 100 marketed drugs, find candidates for repurposing to glioblastoma (must prove BBB crossing) | Safety dataset linking AEs to blood-brain barrier crossing signals (eye deficiency, headache, hearing issues) | **3 drugs identified**, 2 now in Phase 2 clinical trials |
+
+**Bottom line:** *"Reduce BRA Project Time by 80%"* — independent BRA experts evaluation, 2025
+
+**Speaker notes:**
+> Our flagship product is the BRA Platform — Benefit-Risk Assessment. It's inspired by CIOMS Working Group XII and ICH Guideline E2C(R2). Here's what it does: you define your drug and its therapeutic context, and the platform generates six types of automated studies — disease analysis, clinical endpoint study, adverse event reports, benefit-risk insight, benefit-risk summary, and analysis of condition. Each study type maps directly to regulatory documents: eCTD clinical overview section 2.5.6 and PBRER section 18.2. The platform enables real-time weighting configuration — you adjust the importance of each benefit and risk item, and the evaluation updates instantly. Let me give you two real examples. For Sanofi, we analyzed a monoclonal antibody across 32 million open-access datasets plus 5,200 pages of internal clinical data. The result: 27 key inflammatory adverse events revealed, 64 biomarkers identified for clinical confirmation, and a full benefit-risk comparison between first and second generation. Literature review that would have taken 18 months was completed in 2 weeks. For the Paris Brain Institute, we screened 100 marketed drugs for glioblastoma repurposing. The critical question: could these drugs cross the blood-brain barrier? Our pipeline identified safety data points directly connected to BBB crossing — adverse events like eye deficiency, headache, and hearing issues that signal central nervous system penetration. Result: 3 candidate drugs identified, 2 are now in Phase 2 clinical trials. An independent evaluation in 2025 confirmed: our platform reduces BRA project time by 80%.
+
+---
+
+## SLIDE 17 — The Counterintuitive Answer
 
 **Title:**
 ### Smaller Models, Working Together, Beat Bigger Models Working Alone
@@ -382,7 +501,7 @@ GPT-4 > PubMedBERT
 
 ---
 
-## SLIDE 15 — The Ensemble Architecture
+## SLIDE 18 — The Ensemble Architecture
 
 **Title:**
 ### 24 Specialist Models > 1 Generalist Model
@@ -417,7 +536,7 @@ STAGE 8: TEMPLATE    | Structured output: evidence packages for human assessment
 
 ---
 
-## SLIDE 16 — The Evidence
+## SLIDE 19 — The Evidence
 
 **Title:**
 ### Ensemble AI Outperforms Everything Else in Drug Safety
@@ -442,7 +561,7 @@ STAGE 8: TEMPLATE    | Structured output: evidence packages for human assessment
 
 ---
 
-## SLIDE 17 — What It Looks Like in Practice
+## SLIDE 20 — What It Looks Like in Practice
 
 **Title:**
 ### From Fragmented Searches to Integrated Evidence
@@ -469,7 +588,7 @@ STAGE 8: TEMPLATE    | Structured output: evidence packages for human assessment
 
 ---
 
-## SLIDE 18 — The Economics
+## SLIDE 21 — The Economics
 
 **Title:**
 ### Domain-Specific AI Is Not Just Better. It's Cheaper.
@@ -498,7 +617,7 @@ STAGE 8: TEMPLATE    | Structured output: evidence packages for human assessment
 
 ---
 
-## SLIDE 19 — Why This Is Just the Beginning
+## SLIDE 22 — Why This Is Just the Beginning
 
 **Title:**
 ### What Ensemble SLMs Solve — and What They Don't
@@ -527,11 +646,11 @@ STAGE 8: TEMPLATE    | Structured output: evidence packages for human assessment
 
 ---
 
-# ACT IV: THE NEW HOPE — LATENT WORLD MODELS (22:00–28:00)
+# ACT IV: THE NEW HOPE — LATENT WORLD MODELS (23:00–28:00)
 
 ---
 
-## SLIDE 20 — From Words to Worlds
+## SLIDE 23 — From Words to Worlds
 
 **Title:**
 ### The Next Frontier: AI That Understands How the World Works
@@ -560,7 +679,7 @@ An internal representation of how the world works — learned by an AI system �
 
 ---
 
-## SLIDE 21 — The Convergence
+## SLIDE 24 — The Convergence
 
 **Title:**
 ### The Biggest Minds and the Biggest Money Are Betting on World Models
@@ -589,7 +708,7 @@ An internal representation of how the world works — learned by an AI system �
 
 ---
 
-## SLIDE 22 — World Models for Drug Safety
+## SLIDE 25 — World Models for Drug Safety
 
 **Title:**
 ### Imagine: A Latent World Model for Human Pharmacology
@@ -629,7 +748,7 @@ LEVEL 3 -- THE FUTURE: Mechanistic Simulation
 
 ---
 
-## SLIDE 23 — The Vision
+## SLIDE 26 — The Vision
 
 **Title:**
 ### From Reactive Surveillance to Predictive Safety
@@ -664,7 +783,7 @@ Targeted monitoring protocol BEFORE launch
 
 ---
 
-## SLIDE 24 — Let's Discuss
+## SLIDE 27 — Let's Discuss
 
 **Title:**
 ### Three Questions for This Room
@@ -796,14 +915,16 @@ Targeted monitoring protocol BEFORE launch
 - **Photography:** None. Data speaks louder than stock photos.
 
 ## Narrative Principles
-- **Act I is the hook** — financial data, failure rates, IDC authority. Earn credibility with the business case.
+- **Act I is the hook** — financial data, failure rates, IDC authority. But first: acknowledge AI's genuine wins to build credibility and fairness before the critique.
 - **Act II is the science** — LeCun, mathematical proofs, clinical evidence. Earn credibility with the scientists.
-- **Act III is the proof** — ArcaScience results, published benchmarks, real case studies. Earn credibility with the practitioners.
+- **Act III is the proof** — introduce ArcaScience's identity and BRA platform, then show the ensemble SLM architecture and published results. Earn credibility with the practitioners.
 - **Act IV is the vision** — inspire without overselling. Be clear about timelines. Connect today's work to tomorrow's possibility.
 
 ## Key Messages (repeat throughout)
-1. **$632B in AI spending, 88% failure rate** — the wrong AI is failing
-2. **Hallucination is architecture, not a bug** — LeCun, mathematical proof
-3. **Small + specialized > big + general** — 92% vs 67%, Nature Communications
-4. **IDC: domain-specific = 3-5x ROI** — the market agrees
-5. **World models = the future** — from counting harm to predicting it
+1. **AI works — when purpose-built** — AlphaFold, 950 FDA-cleared devices, NLP in PV
+2. **$632B in AI spending, 88% failure rate** — the wrong AI is failing
+3. **Hallucination is architecture, not a bug** — LeCun, mathematical proof
+4. **ArcaScience: 24 clinician-trained SLMs, BRA in days not months** — 80% time reduction
+5. **Small + specialized > big + general** — 92% vs 67%, Nature Communications
+6. **IDC: domain-specific = 3-5x ROI** — the market agrees
+7. **World models = the future** — from counting harm to predicting it
