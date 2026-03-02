@@ -14,7 +14,9 @@
 >
 > **Act III** (15:00–23:00) — Who we are at ArcaScience. Our BRA platform. And the strategy that works: Small Language Models in Ensemble AI architectures — 92% precision where GPT-4 gets 67%.
 >
-> **Act IV** (23:00–28:00) — The new hope: Latent World Models. From statistical correlation to mechanistic simulation. The future where we predict adverse events before they happen.
+> **Act IV** (23:00–27:00) — The new hope: Latent World Models. From statistical correlation to mechanistic simulation. The future where we predict adverse events before they happen.
+>
+> **Act V** (27:00–28:00) — Three Takeaways. The three things to remember from this room.
 >
 > **Coda** (28:00–30:00) — Discussion.
 
@@ -27,8 +29,9 @@
 | I. The AI Reality Check | 0:00–8:00 | 1–7 | AI is transforming medicine — but pharma is spending billions on the wrong kind |
 | II. Why LLMs Fail Drug Safety | 8:00–15:00 | 8–14 | Structural, not fixable — and the smartest people in AI agree |
 | III. ArcaScience + The Strategy That Works | 15:00–23:00 | 15–22 | Who we are, our BRA platform, and why SLMs + Ensemble AI deliver |
-| IV. The New Hope: Latent World Models | 23:00–28:00 | 23–26 | From correlation to simulation |
-| Coda. Discussion | 28:00–30:00 | 27 | Engage the room |
+| IV. The New Hope: Latent World Models | 23:00–27:00 | 23–26 | From correlation to simulation |
+| V. Three Takeaways | 27:00–28:00 | 27 | The three things to remember |
+| Coda. Discussion | 28:00–30:00 | 28 | Engage the room |
 
 ---
 
@@ -646,7 +649,7 @@ STAGE 8: TEMPLATE    | Structured output: evidence packages for human assessment
 
 ---
 
-# ACT IV: THE NEW HOPE — LATENT WORLD MODELS (23:00–28:00)
+# ACT IV: THE NEW HOPE — LATENT WORLD MODELS (23:00–27:00)
 
 ---
 
@@ -779,11 +782,48 @@ Targeted monitoring protocol BEFORE launch
 
 ---
 
+## SLIDE 27 — Three Takeaways
+
+**Title:**
+### If You Remember Three Things From This Room
+
+**Visual:** Three numbered statements, large type, one per visual block:
+
+```
+ ┌─────────────────────────────────────────────────────────────────┐
+ │                                                                 │
+ │  1   NOT ALL AI IS EQUAL                                        │
+ │      General-purpose LLMs hallucinate 50%+ in clinical          │
+ │      contexts. Purpose-built, domain-specific AI delivers       │
+ │      92% precision. The architecture you choose IS the outcome. │
+ │                                                                 │
+ ├─────────────────────────────────────────────────────────────────┤
+ │                                                                 │
+ │  2   STRUCTURED EVIDENCE IS THE BOTTLENECK — AND THE KEY        │
+ │      The problem isn't too little data. It's 100 billion data   │
+ │      points no one can connect. Ensemble SLMs solve evidence    │
+ │      assembly today — 80% faster, regulator-accepted, auditable.│
+ │                                                                 │
+ ├─────────────────────────────────────────────────────────────────┤
+ │                                                                 │
+ │  3   THE FUTURE IS SIMULATION, NOT GENERATION                   │
+ │      World models will move pharmacovigilance from counting     │
+ │      harm to predicting it. The structured knowledge we build   │
+ │      today is the foundation they'll need tomorrow.             │
+ │                                                                 │
+ └─────────────────────────────────────────────────────────────────┘
+```
+
+**Speaker notes:**
+> Before we open the discussion, let me leave you with three things. One: not all AI is equal. The architecture you choose determines the outcome. General-purpose LLMs hallucinate in over half of clinical cases. Domain-specific small language models achieve 92% precision on the same tasks. This is not a marginal difference — it's the difference between a tool you can trust and one you cannot. Two: the bottleneck in drug safety is not data — it's evidence assembly. We have over 100 billion data points scattered across FAERS, EudraVigilance, published literature, clinical trials, and internal safety databases. No human team can connect them all. Ensemble AI pipelines do — 80% faster, with full auditability, accepted by FDA, EMA, and PMDA. Three: the future of our field is not text generation — it's biological simulation. Latent world models that understand how drugs interact with human biology will transform pharmacovigilance from reactive counting to predictive science. And the structured, normalized, cross-referenced evidence we're building today — that's exactly the training data those models will need. The work starts now.
+
+---
+
 # CODA: DISCUSSION (28:00–30:00)
 
 ---
 
-## SLIDE 27 — Let's Discuss
+## SLIDE 28 — Let's Discuss
 
 **Title:**
 ### Three Questions for This Room
