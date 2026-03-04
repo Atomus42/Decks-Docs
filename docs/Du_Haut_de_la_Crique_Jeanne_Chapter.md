@@ -44,7 +44,7 @@ Je pris le pot. La poudre pesait, dense, serrée, et quand j'y plongeai l'index,
 
 Jeanne me laissa faire. J'effleurai la poudre du bout de la langue. Goût de fer, de sang, de rouille, de terre crue. La sanguine avait le goût du monde avant le monde. D'un sol travaillé par le feu et par la pluie pendant des millénaires, concentré en quelques grammes de poussière.
 
-« Le regard commence par la matière. Si tu ne sais pas de quoi une chose est faite, tu ne la vois pas. Tu la survoles. Tu la devines. Tu ne la touches pas. »
+« Le regard commence par la matière. Si tu ne sais pas de quoi une chose est faite, tu la survoles, tu la devines, tu ne la touches jamais. »
 
 Elle paya le marchand d'un geste discret, un échange de monnaie que je ne vis pas, et nous sortîmes avec le pot de sanguine et trois bâtonnets taillés dans du bois dur, pareils à des crayons grossiers dont la mine aurait été remplacée par un noyau compact de pigment mêlé à de la gomme arabique.
 
@@ -124,7 +124,7 @@ J'ouvris la bouche pour protester. Elle leva la main.
 
 « Vous avez beaucoup à vous dire. »
 
-L'irritation monta. Brûlante. Acide. Tout le travail de ces semaines, les exercices, les marches, les nuits devant le dôme, tout ce que j'avais reconstruit pierre à pierre dans la rigueur de son enseignement, tout cela me parut soudain fragile, menacé par cette annonce qui ressemblait à un transfert. Je la sentais m'échapper. Le mécanisme que j'avais mis tant de temps à comprendre se désajustait sous mes yeux. Les rouages que j'avais appris à identifier, les rapports de force entre Jeanne, la maison, la mère, les Alters, le dôme, la bibliothèque, les fleurs de thé, les bâtonnets de sanguine, tout cela formait un système dont j'étais devenu un engrenage. Me retirer du système, c'était risquer l'effondrement.
+L'irritation monta. Brûlante. Acide. Tout le travail de ces semaines, les exercices, les marches, les nuits devant le dôme, tout ce que j'avais reconstruit pierre à pierre dans la rigueur de son enseignement, tout cela me parut soudain fragile, menacé par cette annonce qui ressemblait à un transfert. Je la sentais m'échapper. Le mécanisme que j'avais mis tant de temps à comprendre se désajustait sous mes yeux. Les rouages que j'avais appris à identifier, les rapports de force entre Jeanne, la maison, la mère, les Alters, tout cela formait un système dont j'étais devenu un engrenage. Me retirer du système, c'était risquer l'effondrement.
 
 « Pourquoi tu ne le fais pas toi-même ? »
 
@@ -144,7 +144,7 @@ Je venais de faire quelque chose. J'avais agi sur l'espace. Brièvement, maladro
 
 Quand le jour se leva et que la lumière de zinc entra par la fenêtre, je me levai avec une certitude nouvelle. Mon corps l'avait comprise avant mon esprit, mes mains, mes pieds, mon ventre, toute la charpente intérieure que Jeanne avait passé des semaines à reconstruire en moi. Le premier geste volontaire d'un apprenti qui découvre que l'outil est en lui.
 
-Je descendis les marches. Le thé fumait sur la table. Le dôme doré tournait. Et la porte d'entrée s'ouvrit sur un courant d'air froid, charbon, pierre gelée, et la silhouette haute, la mâchoire carrée, le manteau noir, la mèche sur le front.
+Je descendis les marches. Le thé fumait sur la table. Le dôme doré tournait sur le guéridon. Et la porte d'entrée s'ouvrit sur un courant d'air froid, charbon, pierre gelée, et la silhouette haute, la mâchoire carrée, le manteau noir, la mèche sur le front.
 
 Tobias entra. Son regard frappa le mien. Et dans ce regard, je reconnus la fracture. La même que la mienne. Un bois fendu par le même coup de hache. Nous étions faits de la même essence. Et l'essence fendue, mon père le savait, prend le feu mieux que l'essence intacte.
 
