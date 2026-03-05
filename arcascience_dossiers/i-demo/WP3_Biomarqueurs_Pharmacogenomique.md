@@ -1,10 +1,5 @@
 ## WP3 -- Prédiction du rapport bénéfice-risque par biomarqueurs, cibles moléculaires et polymorphismes génétiques
 
-**Responsable** : ArcaScience | **Partenaires** : Sanofi, Cedars Sinai, Mayo Clinic, Institut du Cerveau (ICM)
-**Période** : Q2 2026 -- Q3 2027 | **Jalon principal** : EC2 (mi-2027)
-
----
-
 ### Intitulé & Objectif
 
 **WP3 : Modèles prédictifs pharmaco-génomiques pour l'estimation du rapport bénéfice-risque par intégration des biomarqueurs, cibles thérapeutiques et variants génétiques.**
@@ -54,3 +49,4 @@ La précision de prédiction est mesurée sur les molécules commercialisées di
 ### Contribution à la répétabilité multi-pathologies & à l'industrialisation
 
 Le WP3 est, parmi les lots de données, celui dont la portabilité multi-pathologies est la plus intrinsèque : les relations entre polymorphismes génétiques et réponse thérapeutique sont, par nature, indépendantes de la pathologie d'ancrage. Les architectures de graphes relationnels {Molécule -> Cible -> Variants -> Impacts} sont identiques quelle que soit l'aire thérapeutique. La calibration pathologie-spécifique porte uniquement sur la sélection des biomarqueurs pertinents et des cohortes de validation, soit un effort estimé à moins de 10 % du travail total de déploiement. Ce lot constitue ainsi le socle de la stratégie de médecine personnalisée prédictive de BR-PREDICT, directement extensible à la neurologie (via l'ICM), à la cardiologie, et à l'immunologie dans les phases ultérieures de commercialisation.
+

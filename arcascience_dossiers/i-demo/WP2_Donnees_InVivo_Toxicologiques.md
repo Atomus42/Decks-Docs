@@ -1,10 +1,5 @@
 ## WP2 -- Prédiction du rapport bénéfice-risque à partir des données in vivo et toxicologiques
 
-**Responsable** : ArcaScience | **Partenaires** : Sanofi, Cedars Sinai, Mayo Clinic
-**Période** : Q1 2026 -- Q3 2027 | **Jalon principal** : EC1 (fin 2026)
-
----
-
 ### Intitulé & Objectif
 
 **WP2 : Modèles prédictifs de transposition préclinique-clinique pour l'estimation du rapport bénéfice-risque à partir des données in vivo.**
@@ -56,3 +51,4 @@ L'objectif cible est une précision de prédiction sur les molécules commercial
 ### Contribution à la répétabilité multi-pathologies & à l'industrialisation
 
 Le score de fiabilité par modèle préclinique et par pathologie est, par conception, extensible à d'autres aires thérapeutiques : il suffit de calculer la concordance historique {modèle animal x pathologie} sur les données disponibles pour chaque nouvelle indication. L'architecture NLP d'extraction est entraînée sur des structures textuelles génériques (protocoles d'études, résultats d'efficacité et de toxicité) et ne nécessite qu'une calibration terminologique mineure (~10 %) pour s'adapter à une nouvelle pathologie. Ce design assure la portabilité de la couche WP2 vers les futures extensions de BR-PREDICT au-delà de l'oncologie pulmonaire.
+

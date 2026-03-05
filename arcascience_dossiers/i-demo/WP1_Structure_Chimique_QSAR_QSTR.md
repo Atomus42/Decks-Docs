@@ -1,10 +1,5 @@
 ## WP1 -- Prédiction du rapport bénéfice-risque à partir de la structure chimique
 
-**Responsable** : ArcaScience | **Partenaires** : Sanofi, Cedars Sinai, Mayo Clinic, Institut du Cerveau (ICM)
-**Période** : Q1 2026 -- Q1 2027 | **Jalon principal** : EC1 (fin 2026)
-
----
-
 ### Intitulé & Objectif
 
 **WP1 : Modèles prédictifs QSAR/QSTR pour l'estimation du rapport bénéfice-risque à partir de la structure moléculaire seule.**
@@ -54,3 +49,4 @@ L'objectif cible est une AUC > 0,65 sur le jeu de validation externe, seuil coh�
 ### Contribution à la répétabilité multi-pathologies & à l'industrialisation
 
 Les modèles QSAR/QSTR développés dans le WP1 sont, par construction, indépendants de la pathologie : ils s'appuient sur la structure chimique et des endpoints biologiques/toxicologiques génériques. La calibration sur l'oncologie pulmonaire porte uniquement sur le choix des cibles d'intérêt et des seuils de pertinence clinique, soit environ 10 % de la configuration. Le passage à une autre pathologie (neurologie, immunologie, cardiologie) nécessite uniquement la redéfinition du panel de cibles et du jeu de validation, sans réentraînement de l'architecture. Ce design modulaire contribue directement à l'objectif d'industrialisation de BR-PREDICT comme plateforme générique de prédiction B-R.
+
