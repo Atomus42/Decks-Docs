@@ -1,9 +1,9 @@
-# Standard Operating Procedure — Sanofi Demo Instance Setup & Configuration
+# Standard Operating Procedure  -  Sanofi Demo Instance Setup & Configuration
 
 **Document ID:** SOP-SANOFI-DEMO-2026-001
 **Version:** 1.0
 **Date:** 2026-03-25
-**Classification:** Confidential — Internal Use Only
+**Classification:** Confidential  -  Internal Use Only
 **Owner:** ArcaScience Operations
 **Applicable To:** All team members involved in Sanofi demo preparation (including Maria-Lola post-1code.dev training)
 
@@ -13,14 +13,14 @@
 
 This SOP defines the step-by-step process for setting up, configuring, validating, and delivering five proposed demo instances of the ArcaScience Benefit-Risk Assessment (BRA) platform for Sanofi. It serves as both a **quality gate** (no demo opens to Sanofi without passing every checkpoint) and a **configuration guide** (any trained team member can execute it).
 
-**Context:** On March 11, 2026, ArcaScience presented its Benefit-Risk Intelligence platform to Sanofi's cross-functional team (Claire Brulle-Wohlhueter, Brandon Rufino — Director of AI for Development, Andreas Hohlbaum, Ford Parker, Hervé Béjoint, Sapna Elzer, William Hurst, Karissa Adkins, Stéphanie Tcherny-Lessenot, Sylvain Nicolas). Brandon Rufino called the meeting "very productive and insightful" and requested additional understanding of platform capabilities, including publication links backing validated results. This SOP ensures each demo instance is properly configured before Sanofi access.
+**Context:** On March 11, 2026, ArcaScience presented its Benefit-Risk Intelligence platform to Sanofi's cross-functional team (Claire Brulle-Wohlhueter, Brandon Rufino  -  Director of AI for Development, Andreas Hohlbaum, Ford Parker, Hervé Béjoint, Sapna Elzer, William Hurst, Karissa Adkins, Stéphanie Tcherny-Lessenot, Sylvain Nicolas). Brandon Rufino called the meeting "very productive and insightful" and requested additional understanding of platform capabilities, including publication links backing validated results. This SOP ensures each demo instance is properly configured before Sanofi access.
 
 **RAISE Framework Alignment:** Every step in this SOP is designed to demonstrate compliance with Sanofi's RAISE (Responsible AI at Sanofi for Everyone) framework across all five pillars:
-1. **Accountable to Outcomes** — Every output traceable to source data; no hallucination
-2. **Fair & Ethical** — No bias in subpopulation analyses; transparent methodology
-3. **Robust & Safe** — GAMP 5 Category 5 validation; F1 thresholds enforced
-4. **Transparent & Explainable** — Full ALCOA+ audit trail; per-step intermediate outputs inspectable
-5. **Eco-Responsible** — SLM-based architecture (24 task-specific models, not monolithic LLMs) with lower compute footprint
+1. **Accountable to Outcomes**  -  Every output traceable to source data; no hallucination
+2. **Fair & Ethical**  -  No bias in subpopulation analyses; transparent methodology
+3. **Robust & Safe**  -  GAMP 5 Category 5 validation; F1 thresholds enforced
+4. **Transparent & Explainable**  -  Full ALCOA+ audit trail; per-step intermediate outputs inspectable
+5. **Eco-Responsible**  -  SLM-based architecture (24 task-specific models, not monolithic LLMs) with lower compute footprint
 
 ---
 
@@ -30,10 +30,10 @@ Five proposed demo instances, presented to Sanofi for prioritization:
 
 | # | Asset | Mechanism | Demo Type | Priority Signal |
 |---|-------|-----------|-----------|-----------------|
-| 1 | **Tolebrutinib** | BTK inhibitor | Post-CRL BRA Rebuild | High — active regulatory crisis |
-| 2 | **Dupixent** (dupilumab) | Anti-IL-4Rα | Multi-Indication B/R Monitoring | High — operational urgency (COPD expansion) |
-| 3 | **Amlitelimab** | Anti-OX40L mAb | Phase 3 Competitive B/R Positioning | Medium-High — Phase 3 data expected |
-| 4 | **Rilzabrutinib** | BTK inhibitor | Cross-Indication Hematology B/R | Medium — concurrent submissions |
+| 1 | **Tolebrutinib** | BTK inhibitor | Post-CRL BRA Rebuild | High  -  active regulatory crisis |
+| 2 | **Dupixent** (dupilumab) | Anti-IL-4Rα | Multi-Indication B/R Monitoring | High  -  operational urgency (COPD expansion) |
+| 3 | **Amlitelimab** | Anti-OX40L mAb | Phase 3 Competitive B/R Positioning | Medium-High  -  Phase 3 data expected |
+| 4 | **Rilzabrutinib** | BTK inhibitor | Cross-Indication Hematology B/R | Medium  -  concurrent submissions |
 | 5 | **Duvakitug** | TL1A/IL-23 bispecific | Dual-Mechanism IBD B/R | Lighter demo |
 
 ---
@@ -51,7 +51,7 @@ Before beginning any instance-specific configuration, complete the following:
 
 ### Step G2: Ontology Baseline Configuration
 
-- [ ] Load MedDRA v27.0 (latest version) — restructured ArcaScience format
+- [ ] Load MedDRA v27.0 (latest version)  -  restructured ArcaScience format
 - [ ] Load SNOMED CT (latest international release)
 - [ ] Load ChEBI ontology (latest release)
 - [ ] Load Disease Ontology (latest release)
@@ -76,7 +76,7 @@ Before beginning any instance-specific configuration, complete the following:
 
 ### Step G5: HS Baseline Reference Load
 
-- [ ] Load the validated HS (Hidradenitis Suppurativa) BRA as the reference baseline — PROJECT-08B | PRJ-SEC-HS
+- [ ] Load the validated HS (Hidradenitis Suppurativa) BRA as the reference baseline  -  PROJECT-08B | PRJ-SEC-HS
 - [ ] Confirm all HS extraction metrics are accessible for comparison:
   - Biomarker extraction: F1 = 90.05%, 92% coverage of top 30 biomarkers
   - Risk extraction: F1 = 88.1%, 96% data coverage
@@ -85,7 +85,7 @@ Before beginning any instance-specific configuration, complete the following:
 
 ---
 
-## DEMO INSTANCE 1: Tolebrutinib — Post-CRL BRA Rebuild
+## DEMO INSTANCE 1: Tolebrutinib  -  Post-CRL BRA Rebuild
 
 ### Context
 
@@ -102,16 +102,16 @@ FDA issued a Complete Response Letter (CRL) in December 2025 for tolebrutinib du
 | FDA Briefing Documents (AADAC/ODAC if available) | Regulatory | ✅ Public (FDA.gov) | Ingest |
 | DILI-related safety databases (LiverTox, FAERS) | Safety DB | ✅ Public | Configure FAERS query for tolebrutinib + BTK inhibitor class |
 | MedDRA-coded AE reports from publications | Clinical safety | ✅ Extractable from publications | Extract via SLM pipeline |
-| Sanofi internal clinical data | Proprietary | ⚠️ NOT AVAILABLE for demo — requires Sanofi data sharing agreement | **Use public data only; flag limitation to Sanofi** |
+| Sanofi internal clinical data | Proprietary | ⚠️ NOT AVAILABLE for demo  -  requires Sanofi data sharing agreement | **Use public data only; flag limitation to Sanofi** |
 | BTK inhibitor class safety comparator data (ibrutinib, acalabrutinib, zanubrutinib, evobrutinib, fenebrutinib) | Published literature | ✅ Public | Ingest for comparative context |
 
 **⚠️ DATA FLAG:** This demo will operate on publicly available data only. The CRL-specific clinical datasets are Sanofi proprietary. The demo will demonstrate the *methodology and workflow* for evidence reframing using public data, with the understanding that a PoC engagement would incorporate Sanofi's full dataset.
 
 #### Ontology Configuration
 
-- [ ] MedDRA v27.0: Activate SOCs relevant to hepatotoxicity — Hepatobiliary disorders, Investigations (liver function tests), General disorders (fatigue, malaise as DILI prodrome)
+- [ ] MedDRA v27.0: Activate SOCs relevant to hepatotoxicity  -  Hepatobiliary disorders, Investigations (liver function tests), General disorders (fatigue, malaise as DILI prodrome)
 - [ ] ChEBI: Map tolebrutinib (ChEBI ID to be confirmed), BTK inhibitor class
-- [ ] Configure DILI-specific MedDRA SMQ (Standardised MedDRA Query): "Drug-related hepatic disorders — comprehensive"
+- [ ] Configure DILI-specific MedDRA SMQ (Standardised MedDRA Query): "Drug-related hepatic disorders  -  comprehensive"
 - [ ] Activate Hy's Law calculation template (ALT >3× ULN + bilirubin >2× ULN)
 
 #### SLM Pipeline Modules to Activate
@@ -120,7 +120,7 @@ FDA issued a Complete Response Letter (CRL) in December 2025 for tolebrutinib du
 |--------|----------|-----------|
 | Document type classifier | ✅ | Classify CRL, publications, safety reports |
 | Section identification | ✅ | Route to safety/efficacy sections |
-| Safety event extractor | ✅ | Primary — DILI signal extraction |
+| Safety event extractor | ✅ | Primary  -  DILI signal extraction |
 | Relation extraction | ✅ | Link DILI events to tolebrutinib, dose, timing |
 | Patient information extraction | ✅ | Subpopulation analysis (age, sex, comorbidities) |
 | Study design extraction | ✅ | Characterize trial designs for evidence weighting |
@@ -129,11 +129,11 @@ FDA issued a Complete Response Letter (CRL) in December 2025 for tolebrutinib du
 | Ontology normalization | ✅ | MedDRA/ChEBI mapping |
 | Knowledge graph linking | ✅ | Cross-source entity resolution |
 
-**Modules NOT needed:** None — full pipeline required for comprehensive BRA rebuild.
+**Modules NOT needed:** None  -  full pipeline required for comprehensive BRA rebuild.
 
 #### Therapeutic Area Vertical
 
-- [ ] No pre-existing vertical for neurology/MS — configure from scratch
+- [ ] No pre-existing vertical for neurology/MS  -  configure from scratch
 - [ ] Reference HS vertical for pipeline configuration patterns
 
 ### 1.2 Data Ingestion & Harmonization
@@ -153,7 +153,7 @@ FDA issued a Complete Response Letter (CRL) in December 2025 for tolebrutinib du
 1. Upload all collected documents to S3 raw bucket under path: `sanofi-demo/tolebrutinib/raw/`
 2. Trigger Data Forge ingestion DAG: `sanofi_tolebrutinib_ingest`
 3. Verify document count post-ingestion matches expected count
-4. Check ingestion log for parsing errors — resolve any PDF extraction failures
+4. Check ingestion log for parsing errors  -  resolve any PDF extraction failures
 
 #### Step 1.2.3: Normalization Parameters
 
@@ -184,14 +184,14 @@ After extraction pipeline completes, verify:
 |-------------|--------|-------------------|
 | Disease Analysis | ✅ | MS disease landscape with DILI risk overlay |
 | Clinical Landscape | ✅ | BTK inhibitor competitive landscape |
-| AE Report | ✅ | **Primary output** — DILI-focused structured AE report |
-| BRA (Benefit-Risk Assessment) | ✅ | **Primary output** — Full tolebrutinib B/R with subpopulation stratification |
+| AE Report | ✅ | **Primary output**  -  DILI-focused structured AE report |
+| BRA (Benefit-Risk Assessment) | ✅ | **Primary output**  -  Full tolebrutinib B/R with subpopulation stratification |
 | BRA Summary | ✅ | Executive summary for regulatory resubmission framing |
 
 #### Regulatory Alignment
 
 - [ ] Configure eCTD Module 2.5 (Clinical Overview) section mapping for BRA outputs
-- [ ] Align BRA structure to PBRER (Periodic Benefit-Risk Evaluation Report) Section 16 — Benefit-Risk Analysis
+- [ ] Align BRA structure to PBRER (Periodic Benefit-Risk Evaluation Report) Section 16  -  Benefit-Risk Analysis
 - [ ] Pre-load FDA CRL response template structure for output alignment
 
 #### BRAT Framework Configuration
@@ -226,12 +226,12 @@ After extraction pipeline completes, verify:
 
 **Suggested navigation path (20-25 minutes):**
 
-1. **Open with context** (2 min): Show the Disease Analysis for MS — establish that the platform understands the therapeutic landscape
-2. **DILI signal deep-dive** (5 min): Navigate to AE Report — show structured DILI extraction across all ingested sources. Highlight: temporal patterns, dose-response signal, Hy's Law cases identified
-3. **Subpopulation analysis** (5 min): Show BRA with subpopulation stratification — demonstrate which patient segments have favorable vs. unfavorable B/R. This directly addresses the resubmission strategy
-4. **Evidence reframing** (5 min): Show BRA Summary — demonstrate how the platform structures the evidence narrative for regulatory resubmission, mapping to eCTD 2.5
+1. **Open with context** (2 min): Show the Disease Analysis for MS  -  establish that the platform understands the therapeutic landscape
+2. **DILI signal deep-dive** (5 min): Navigate to AE Report  -  show structured DILI extraction across all ingested sources. Highlight: temporal patterns, dose-response signal, Hy's Law cases identified
+3. **Subpopulation analysis** (5 min): Show BRA with subpopulation stratification  -  demonstrate which patient segments have favorable vs. unfavorable B/R. This directly addresses the resubmission strategy
+4. **Evidence reframing** (5 min): Show BRA Summary  -  demonstrate how the platform structures the evidence narrative for regulatory resubmission, mapping to eCTD 2.5
 5. **Auditability demonstration** (3 min): Click through from a BRA claim → source document. Show the ALCOA+ audit trail. Emphasize: zero hallucination, every claim traceable
-6. **Comparative context** (3 min): Show BTK inhibitor class comparison — DILI rates across ibrutinib, acalabrutinib, zanubrutinib to contextualize tolebrutinib's profile
+6. **Comparative context** (3 min): Show BTK inhibitor class comparison  -  DILI rates across ibrutinib, acalabrutinib, zanubrutinib to contextualize tolebrutinib's profile
 7. **Q&A** (5 min)
 
 **Key data points to highlight:**
@@ -249,7 +249,7 @@ After extraction pipeline completes, verify:
 
 ---
 
-## DEMO INSTANCE 2: Dupixent (dupilumab) — Multi-Indication B/R Monitoring
+## DEMO INSTANCE 2: Dupixent (dupilumab)  -  Multi-Indication B/R Monitoring
 
 ### Context
 
@@ -263,7 +263,7 @@ Dupixent has 9 approved indications (atopic dermatitis, asthma, CRSwNP, EoE, pru
 |--------|------|--------------|-----------------|
 | Dupixent FDA label (all approved indications) | Regulatory | ✅ Public | Ingest current USPI |
 | EMA SmPC (dupilumab) | Regulatory | ✅ Public | Ingest |
-| Phase 3 publications per indication (LIBERTY AD, LIBERTY ASTHMA, SINUS, BOREAS, NOTUS) | Clinical trial | ✅ Public | Ingest — high volume (~200+ publications) |
+| Phase 3 publications per indication (LIBERTY AD, LIBERTY ASTHMA, SINUS, BOREAS, NOTUS) | Clinical trial | ✅ Public | Ingest  -  high volume (~200+ publications) |
 | FAERS data for dupilumab | Safety DB | ✅ Public | Configure broad query across all indications |
 | COPD-specific RWD publications | RWE | ✅ Public | Search for COPD comorbidity landscape papers |
 | Published safety profiles per indication | Published literature | ✅ Public | Ingest |
@@ -271,7 +271,7 @@ Dupixent has 9 approved indications (atopic dermatitis, asthma, CRSwNP, EoE, pru
 
 #### Ontology Configuration
 
-- [ ] MedDRA v27.0: Activate SOCs across all 9 indications — broad activation required
+- [ ] MedDRA v27.0: Activate SOCs across all 9 indications  -  broad activation required
 - [ ] COPD-specific MedDRA SMQs: Cardiac disorders, Ischaemic heart disease, Infections, Lower respiratory tract infections
 - [ ] ChEBI: Map dupilumab
 - [ ] Configure indication-specific baseline event rate profiles for: atopic dermatitis, asthma, CRSwNP, EoE, PN, CSU, BP, COPD
@@ -279,7 +279,7 @@ Dupixent has 9 approved indications (atopic dermatitis, asthma, CRSwNP, EoE, pru
 
 #### SLM Pipeline Modules to Activate
 
-All 24 modules — full pipeline required for multi-indication analysis.
+All 24 modules  -  full pipeline required for multi-indication analysis.
 
 #### Therapeutic Area Vertical
 
@@ -291,7 +291,7 @@ All 24 modules — full pipeline required for multi-indication analysis.
 
 #### Step 2.2.1: Source Document Collection
 
-1. Retrieve Dupixent publications per indication — use PubMed structured search:
+1. Retrieve Dupixent publications per indication  -  use PubMed structured search:
    - `"dupilumab" AND "atopic dermatitis"` (LIBERTY AD trials)
    - `"dupilumab" AND "asthma"` (LIBERTY ASTHMA trials)
    - `"dupilumab" AND "chronic rhinosinusitis"` (SINUS trials)
@@ -301,7 +301,7 @@ All 24 modules — full pipeline required for multi-indication analysis.
    - `"dupilumab" AND "bullous pemphigoid"`
    - `"dupilumab" AND "COPD"` (BOREAS, NOTUS trials)
 2. Download current FDA USPI and EMA SmPC
-3. Query FAERS for dupilumab — all reported AEs, stratified by indication if reporter provides
+3. Query FAERS for dupilumab  -  all reported AEs, stratified by indication if reporter provides
 4. Collect COPD comorbidity landscape publications (cardiovascular, renal, diabetes prevalence in COPD)
 5. Retrieve published long-term safety data (LIBERTY AD CHRONOS, open-label extensions)
 
@@ -335,12 +335,12 @@ Same F1 thresholds as Instance 1. Additional check:
 | Disease Analysis | ✅ | Per-indication disease landscape |
 | Clinical Landscape | ✅ | Dupixent vs. competitors per indication |
 | AE Report | ✅ | Cross-indication AE report with stratification |
-| BRA | ✅ | **Primary output** — Multi-indication B/R with COPD-specific overlay |
+| BRA | ✅ | **Primary output**  -  Multi-indication B/R with COPD-specific overlay |
 | BRA Summary | ✅ | Per-indication executive B/R summary |
 
 #### Regulatory Alignment
 
-- [ ] Configure PBRER section alignment — Dupixent has an active PBRER cycle
+- [ ] Configure PBRER section alignment  -  Dupixent has an active PBRER cycle
 - [ ] eCTD Module 2.5 mapping for each indication
 - [ ] Configure aggregate safety data presentation aligned to ICH E2C(R2)
 
@@ -357,7 +357,7 @@ Same F1 thresholds as Instance 1. Additional check:
 
 - [ ] Create isolated instance: `sanofi-demo-dupixent`
 - [ ] Apply access controls per Step G4
-- [ ] Performance benchmark: Allow extended pipeline time due to corpus size — target < 30 minutes for full pipeline
+- [ ] Performance benchmark: Allow extended pipeline time due to corpus size  -  target < 30 minutes for full pipeline
 - [ ] Verify cross-indication query performance (filtering by indication should return < 5 seconds)
 
 ### 2.5 Validation & QA
@@ -374,20 +374,20 @@ Same F1 thresholds as Instance 1. Additional check:
 **Suggested navigation path (25-30 minutes):**
 
 1. **Portfolio overview** (3 min): Show the 9-indication landscape. Highlight the different patient populations and how B/R profiles diverge.
-2. **COPD deep-dive** (7 min): Navigate to the COPD-specific BRA. Show how the COPD comorbidity profile (cardiovascular, renal, polypharmacy) creates a different risk landscape vs. atopic dermatitis patients. This is the core demonstration — continuous B/R monitoring adapting to a new population.
+2. **COPD deep-dive** (7 min): Navigate to the COPD-specific BRA. Show how the COPD comorbidity profile (cardiovascular, renal, polypharmacy) creates a different risk landscape vs. atopic dermatitis patients. This is the core demonstration  -  continuous B/R monitoring adapting to a new population.
 3. **Cross-indication safety profiling** (5 min): Show AE Report across indications. Demonstrate how the platform identifies AEs that are enriched in one indication vs. another (e.g., conjunctivitis signal difference between AD and COPD).
 4. **Consistency checking** (5 min): Show how the platform flags inconsistencies in safety reporting across indications. Demonstrate value for PBRER preparation.
 5. **Auditability** (3 min): Trace a COPD-specific safety claim back to source.
 6. **Q&A** (5 min)
 
 **Anticipated Sanofi questions:**
-- *"Can this replace our PBRER workflow?"* → Augments it — structures the evidence for PBRER Section 16; final medical judgment remains with Sanofi's safety team
+- *"Can this replace our PBRER workflow?"* → Augments it  -  structures the evidence for PBRER Section 16; final medical judgment remains with Sanofi's safety team
 - *"How would this integrate with ARTEMIS data?"* → In PoC: ARTEMIS-processed case data ingested as a source alongside literature. The platform harmonizes both.
 - *"What about the EUR 22B peak sales risk?"* → Frame: the higher the commercial value, the higher the cost of a safety surprise in COPD. Continuous B/R monitoring is risk mitigation at scale.
 
 ---
 
-## DEMO INSTANCE 3: Amlitelimab (anti-OX40L mAb) — Phase 3 Competitive B/R Positioning
+## DEMO INSTANCE 3: Amlitelimab (anti-OX40L mAb)  -  Phase 3 Competitive B/R Positioning
 
 ### Context
 
@@ -400,9 +400,9 @@ Novel mechanism (anti-OX40L), Kaposi's sarcoma (KS) signal flagged in Phase 2 AT
 | Source | Type | Availability | Action Required |
 |--------|------|--------------|-----------------|
 | Amlitelimab Phase 2 ATLANTIS publications | Clinical trial | ✅ Public | Ingest |
-| COAST-1 Phase 3 data | Clinical trial | ⚠️ **NOT YET AVAILABLE** — data expected but not published | **Flag: demo will use Phase 2 data only; update when Phase 3 publishes** |
+| COAST-1 Phase 3 data | Clinical trial | ⚠️ **NOT YET AVAILABLE**  -  data expected but not published | **Flag: demo will use Phase 2 data only; update when Phase 3 publishes** |
 | OX40L mechanism-of-action literature | Mechanistic | ✅ Public | Search PubMed for OX40/OX40L biology and immunosuppression |
-| Kaposi's sarcoma and immunosuppression literature | Safety context | ✅ Public | Ingest — critical for KS signal contextualization |
+| Kaposi's sarcoma and immunosuppression literature | Safety context | ✅ Public | Ingest  -  critical for KS signal contextualization |
 | Dupixent comparative safety data | Published literature | ✅ Public (already ingested for Instance 2) | Cross-reference |
 | HHV-8 / Kaposi's sarcoma epidemiology | Published literature | ✅ Public | Ingest for KS background rate estimation |
 
@@ -410,7 +410,7 @@ Novel mechanism (anti-OX40L), Kaposi's sarcoma (KS) signal flagged in Phase 2 AT
 
 #### Ontology Configuration
 
-- [ ] MedDRA v27.0: Activate SOCs for dermatology (Skin and subcutaneous tissue disorders), infections (Infections and infestations — specifically viral infections, HHV-8), neoplasms (Neoplasms benign/malignant — Kaposi's sarcoma)
+- [ ] MedDRA v27.0: Activate SOCs for dermatology (Skin and subcutaneous tissue disorders), infections (Infections and infestations  -  specifically viral infections, HHV-8), neoplasms (Neoplasms benign/malignant  -  Kaposi's sarcoma)
 - [ ] ChEBI: Map amlitelimab, dupilumab (comparator)
 - [ ] Configure OX40L pathway ontology mapping (custom if needed)
 
@@ -429,7 +429,7 @@ All modules activated. Emphasis on:
 2. PubMed: `"OX40L" AND ("mechanism" OR "immunology" OR "T cell")`
 3. PubMed: `"Kaposi sarcoma" AND ("immunosuppression" OR "biologic" OR "monoclonal antibody")`
 4. PubMed: `"HHV-8" AND ("prevalence" OR "reactivation" OR "immunosuppression")`
-5. Retrieve Dupixent atopic dermatitis safety data (from Instance 2 corpus — reuse, do not re-ingest)
+5. Retrieve Dupixent atopic dermatitis safety data (from Instance 2 corpus  -  reuse, do not re-ingest)
 6. Retrieve competitor atopic dermatitis biologics safety data: tralokinumab, lebrikizumab, nemolizumab
 
 **Expected corpus size:** 80-150 documents
@@ -461,9 +461,9 @@ Standard thresholds apply. Additional:
 | Output Type | Enable | Notes |
 |-------------|--------|-------|
 | Disease Analysis | ✅ | Atopic dermatitis landscape |
-| Clinical Landscape | ✅ | **Primary** — Competitive landscape: amlitelimab vs. Dupixent vs. other biologics |
+| Clinical Landscape | ✅ | **Primary**  -  Competitive landscape: amlitelimab vs. Dupixent vs. other biologics |
 | AE Report | ✅ | KS signal-focused |
-| BRA | ✅ | **Primary** — Comparative B/R: amlitelimab vs. Dupixent |
+| BRA | ✅ | **Primary**  -  Comparative B/R: amlitelimab vs. Dupixent |
 | BRA Summary | ✅ | Regulatory positioning summary |
 
 #### BRAT Framework Configuration
@@ -485,7 +485,7 @@ Standard thresholds apply. Additional:
 
 - [ ] Extraction spot-check: 10 documents
 - [ ] Auditability check: 5 claims traced to source
-- [ ] **KS signal validation:** Manually verify every KS-related extraction from ATLANTIS data. Zero misses acceptable — this is the critical safety signal.
+- [ ] **KS signal validation:** Manually verify every KS-related extraction from ATLANTIS data. Zero misses acceptable  -  this is the critical safety signal.
 - [ ] **Comparative B/R check:** Verify amlitelimab vs. Dupixent comparison outputs are balanced and methodologically sound
 - [ ] Baseline comparison against HS reference
 - [ ] End-to-end user access test
@@ -494,21 +494,21 @@ Standard thresholds apply. Additional:
 
 **Suggested navigation path (20-25 minutes):**
 
-1. **Competitive landscape** (3 min): Show atopic dermatitis biologic landscape — Dupixent dominance, emerging competitors
+1. **Competitive landscape** (3 min): Show atopic dermatitis biologic landscape  -  Dupixent dominance, emerging competitors
 2. **KS signal contextualization** (7 min): This is the key demonstration. Show how the platform structures the KS signal: cases identified, mechanism plausibility (OX40L → T cell modulation → HHV-8 reactivation hypothesis), background rates, geographic variation. Demonstrate that the platform provides *context*, not just signal detection.
 3. **Comparative B/R framework** (7 min): Show side-by-side amlitelimab vs. Dupixent BRA. Demonstrate how the platform structures the differentiation narrative for regulatory and commercial positioning.
 4. **Auditability** (3 min): Trace a KS-related claim back to the ATLANTIS publication
-5. **Phase 3 readiness** (3 min): Show how the framework is ready to ingest COAST-1 data — the Value Tree, the comparator arm, the extraction pipeline are all configured. When Phase 3 data publishes, BRA updates in hours, not months.
+5. **Phase 3 readiness** (3 min): Show how the framework is ready to ingest COAST-1 data  -  the Value Tree, the comparator arm, the extraction pipeline are all configured. When Phase 3 data publishes, BRA updates in hours, not months.
 6. **Q&A** (5 min)
 
 **Anticipated Sanofi questions:**
 - *"What about the COAST-1 data?"* → Framework is ready. Upon publication, data is ingested and BRA updates automatically. Demo shows the methodology and structure.
 - *"How does this help with regulatory submission?"* → The comparative B/R framework maps directly to eCTD Module 2.5 and supports the differentiation narrative for health authority discussions
-- *"Is the KS signal a concern for approval?"* → Platform doesn't make that judgment — it structures the evidence so Sanofi's team can make an informed decision with full traceability
+- *"Is the KS signal a concern for approval?"* → Platform doesn't make that judgment  -  it structures the evidence so Sanofi's team can make an informed decision with full traceability
 
 ---
 
-## DEMO INSTANCE 4: Rilzabrutinib — Cross-Indication Hematology B/R
+## DEMO INSTANCE 4: Rilzabrutinib  -  Cross-Indication Hematology B/R
 
 ### Context
 
@@ -523,12 +523,12 @@ Multiple Phase 3 programs across ITP (immune thrombocytopenia), IgG4-RD (IgG4-re
 | Rilzabrutinib Phase 2/3 publications (LUNA 3 for ITP, others) | Clinical trial | ✅ Public (published Phase 2; Phase 3 publications emerging) | Ingest all available |
 | BTK inhibitor class safety data (cross-reference with tolebrutinib Instance 1) | Published literature | ✅ Public (partially ingested for Instance 1) | Cross-reference; add hematology-specific BTK data |
 | ITP treatment landscape (romiplostim, eltrombopag, avatrombopag, fostamatinib) | Published literature | ✅ Public | Ingest for comparative context |
-| IgG4-RD treatment landscape | Published literature | ✅ Public (limited — rare disease) | Ingest available publications |
+| IgG4-RD treatment landscape | Published literature | ✅ Public (limited  -  rare disease) | Ingest available publications |
 | wAIHA treatment landscape | Published literature | ✅ Public (limited) | Ingest |
 | Sickle Cell Disease treatment safety data | Published literature | ✅ Public | Ingest |
 | Rare disease comparator safety databases | Published/FAERS | ✅ Public | Configure FAERS queries per indication |
 
-**⚠️ DATA FLAG:** IgG4-RD and wAIHA are rare indications with limited published data. The demo will show the platform's capability with available data and highlight where evidence gaps exist — this is itself a valuable demo feature (gap analysis).
+**⚠️ DATA FLAG:** IgG4-RD and wAIHA are rare indications with limited published data. The demo will show the platform's capability with available data and highlight where evidence gaps exist  -  this is itself a valuable demo feature (gap analysis).
 
 #### Ontology Configuration
 
@@ -569,7 +569,7 @@ All modules activated. Emphasis on cross-indication entity resolution.
 | Disease Analysis | ✅ | Per-indication disease landscape |
 | Clinical Landscape | ✅ | Cross-indication competitive landscape |
 | AE Report | ✅ | Cross-program safety signal report |
-| BRA | ✅ | **Primary** — Per-indication BRA + cross-indication safety overlay |
+| BRA | ✅ | **Primary**  -  Per-indication BRA + cross-indication safety overlay |
 | BRA Summary | ✅ | Per-indication regulatory submission summary |
 
 #### BRAT Framework Configuration
@@ -593,17 +593,17 @@ All modules activated. Emphasis on cross-indication entity resolution.
 1. **Cross-indication overview** (3 min): Show the 4-indication landscape simultaneously
 2. **Cross-program safety signal detection** (7 min): Demonstrate how the platform identifies BTK inhibitor class effects that manifest across all indications vs. indication-specific signals
 3. **Per-indication BRA** (5 min): Deep-dive into ITP BRA as the most data-rich indication
-4. **Evidence gap analysis** (5 min): Show how the platform identifies and flags evidence gaps in rare indications (IgG4-RD, wAIHA) — this is a feature, not a limitation
+4. **Evidence gap analysis** (5 min): Show how the platform identifies and flags evidence gaps in rare indications (IgG4-RD, wAIHA)  -  this is a feature, not a limitation
 5. **Concurrent submission readiness** (3 min): Show how BRA outputs map to regulatory submission requirements per indication
 6. **Q&A** (5 min)
 
 **Anticipated Sanofi questions:**
-- *"How do you handle the small sample sizes in rare indications?"* → Platform explicitly flags evidence density. Probabilistic B/R modeling is especially valuable here — contextualizes limited data against class effects and natural history.
-- *"Can this support concurrent submissions to multiple regulators?"* → Yes — outputs align to eCTD structure. Each indication gets its own BRA with cross-indication safety context.
+- *"How do you handle the small sample sizes in rare indications?"* → Platform explicitly flags evidence density. Probabilistic B/R modeling is especially valuable here  -  contextualizes limited data against class effects and natural history.
+- *"Can this support concurrent submissions to multiple regulators?"* → Yes  -  outputs align to eCTD structure. Each indication gets its own BRA with cross-indication safety context.
 
 ---
 
-## DEMO INSTANCE 5: Duvakitug (TL1A/IL-23 bispecific) — Dual-Mechanism IBD B/R (Lighter Demo)
+## DEMO INSTANCE 5: Duvakitug (TL1A/IL-23 bispecific)  -  Dual-Mechanism IBD B/R (Lighter Demo)
 
 ### Context
 
@@ -621,7 +621,7 @@ Phase 3 for UC (ulcerative colitis) and Crohn's disease. Dual mechanism (TL1A + 
 | IBD treatment landscape (adalimumab, infliximab, vedolizumab, ustekinumab, tofacitinib) | Published literature | ✅ Public | Ingest for competitive context |
 | Dual-mechanism safety literature (bispecific antibody safety profiles) | Published literature | ✅ Public (limited for this mechanism) | Ingest available |
 
-**⚠️ DATA FLAG:** Duvakitug is early in clinical development. Limited published safety data. This demo is intentionally lighter — focused on the dual-mechanism safety mapping methodology rather than comprehensive BRA.
+**⚠️ DATA FLAG:** Duvakitug is early in clinical development. Limited published safety data. This demo is intentionally lighter  -  focused on the dual-mechanism safety mapping methodology rather than comprehensive BRA.
 
 #### Ontology, Pipeline, Configuration
 
@@ -679,7 +679,7 @@ Phase 3 for UC (ulcerative colitis) and Crohn's disease. Dual mechanism (TL1A + 
 
 1. **Export formats available:** PDF (regulatory-grade), Excel (data tables), JSON (API integration)
 2. **For each completed demo:** Generate a PDF export of the BRA and BRA Summary outputs
-3. **Share via:** Secure file transfer (encrypted) — confirm Sanofi's preferred method
+3. **Share via:** Secure file transfer (encrypted)  -  confirm Sanofi's preferred method
 4. **Retain all demo outputs** in ArcaScience archive for reference during PoC scoping
 
 ### Transition to PoC Engagement
@@ -717,7 +717,7 @@ ArcaScience has prepared five tailored demo instances of its Benefit-Risk Assess
 | 4 | **Rilzabrutinib** | Cross-indication hematology B/R: cross-program signal detection, per-indication BRA, concurrent submission readiness | Manages the complexity of 4 concurrent Phase 3 programs with shared BTK class signals and indication-specific profiles. |
 | 5 | **Duvakitug** | Dual-mechanism IBD B/R: mechanism-specific safety mapping, TL1A/IL-23 signal separation | Early-stage B/R framework for a novel bispecific mechanism in UC/Crohn's. |
 
-**Our validated track record with Sanofi:** ArcaScience previously delivered a BRA for a Sanofi biologic in Phase 2 (inflammatory dermatology), completing 18 months of manual work in 2 weeks, identifying 5 previously undocumented risks, and achieving F1 scores of 88-92% across extraction types — validated by Sanofi's own team. All outputs were fully auditable and traceable to source.
+**Our validated track record with Sanofi:** ArcaScience previously delivered a BRA for a Sanofi biologic in Phase 2 (inflammatory dermatology), completing 18 months of manual work in 2 weeks, identifying 5 previously undocumented risks, and achieving F1 scores of 88-92% across extraction types  -  validated by Sanofi's own team. All outputs were fully auditable and traceable to source.
 
 **Next step:** Please indicate which 1-2 demo instances you'd like to explore first, and we will schedule a guided walkthrough.
 
@@ -746,7 +746,7 @@ For each demo instance, the following must be signed off by the responsible team
 
 ## Appendix B: SLM Pipeline Module Reference
 
-The ArcaScience platform operates 24 task-specific Small Language Models (SLMs), trained by clinicians on 10M+ AE case reports, 500K+ clinical trial records, 2M+ PubMed abstracts, and 100K+ regulatory documents. No model retraining is needed for new therapeutic areas — adaptation happens through pipeline configuration.
+The ArcaScience platform operates 24 task-specific Small Language Models (SLMs), trained by clinicians on 10M+ AE case reports, 500K+ clinical trial records, 2M+ PubMed abstracts, and 100K+ regulatory documents. No model retraining is needed for new therapeutic areas  -  adaptation happens through pipeline configuration.
 
 | Category | Models | Function |
 |----------|--------|----------|
@@ -771,4 +771,4 @@ The ArcaScience platform operates 24 task-specific Small Language Models (SLMs),
 
 *Document prepared: 2026-03-25*
 *Next review: Upon Sanofi prioritization response*
-*GAMP 5 Category 5 — All outputs validated per ArcaScience quality management system*
+*GAMP 5 Category 5  -  All outputs validated per ArcaScience quality management system*
