@@ -1,342 +1,405 @@
-# MISSION: CATALYSIS — Le Jeu de Lancement BRA Platform
+# MISSION: CATALYSIS — Teambuilding de Lancement BRA Platform
 
-> **Format:** Atelier gamifié de 3h (ou 2 x 1h30)
-> **Joueurs:** Romain, Carlo, Erik, Vassili, Charbel, Jeff (+Tom en sponsor/jury)
-> **Output réel:** Plan de lancement validé, engagements signés, risques assumés
-> **Matériel:** 1 plateau imprimé (ce doc), cartes découpées, post-its, chrono, 1 dé à 6 faces
-
----
-
-## CONCEPT
-
-Le jeu simule les 7 semaines de lancement en 7 rounds accélérés. Chaque round = 1 semaine. L'équipe coopère pour atteindre **$500k ARR** avant la fin du Round 7. Si le score collectif atteint le seuil, **tout le monde gagne**. Sinon, le Chaos Board a gagné.
-
-> C'est un jeu **coopératif** — pas de compétition entre joueurs.
-> Mais chaque joueur a des **engagements personnels** qui alimentent le score collectif.
+> **Ce que c'est:** Un atelier d'une demi-journée (4h) où toute l'équipe construit ENSEMBLE le vrai plan de lancement de la BRA Platform. Pas une simulation — on en sort avec des drafts réels, des cibles réelles, des messages réels, et chacun sait exactement quoi faire dès lundi.
+>
+> **Quand:** Une fois la plateforme prête (5 steps en Prod, F1 ≥ 85%, démo live fonctionnelle).
+> **Qui:** Romain, Carlo, Erik, Vassili, Charbel, Jeff + Tom en sponsor.
+> **Output:** 6 livrables concrets prêts à exécuter (voir fin du doc).
 
 ---
 
-## PLATEAU DE JEU
+## PRINCIPE
+
+L'atelier est découpé en **6 sprints de 30-40 min**. Chaque sprint attaque une question clé du lancement. Les sprints alternent entre travail individuel, travail en binôme, et moments collectifs. Un chrono visible tourne en permanence — quand ça sonne, on livre, même si c'est imparfait.
+
+Compétition amicale: chaque sprint produit des propositions. Tom vote la meilleure. L'équipe qui accumule le plus de votes gagne le droit de choisir le restaurant de la soirée.
+
+---
+
+## SPRINT 1 — À QUI ON S'ADRESSE (40 min)
+
+### Le problème à résoudre
+On a une plateforme qui marche. Maintenant: qui sont les 30 personnes concrètes qu'on veut toucher le jour du lancement? Pas des "segments" — des noms, des visages, des raisons.
+
+### Exercice: "Les 30 Noms"
+
+**Phase 1 — Solo (10 min)**
+Chaque joueur écrit sur des post-its les noms de personnes RÉELLES qu'il connaît ou peut atteindre, et qui devraient voir BRA en premier.
+
+| Joueur | Son réseau à exploiter |
+|---|---|
+| **Vassili** | KOLs rencontrés, médecins, chercheurs, reviewers de papiers |
+| **Romain** | Contacts commerciaux, investisseurs, conseillers, anciens collègues pharma |
+| **Carlo & Erik** | Prospects déjà contactés, leads LinkedIn, contacts conférences |
+| **Charbel** | Contacts tech pharma, product managers, CTOs rencontrés |
+| **Jeff** | Contacts infra/DevOps pharma, communautés tech santé |
+| **Tom** | Board, investisseurs, CEOs, contacts stratégiques Top-10 |
+
+Format du post-it:
+```
+NOM — ENTREPRISE
+Rôle: [Medical Affairs / Regulatory / PV / R&D]
+Lien: [je le connais / intro possible via X / cold]
+Pourquoi lui/elle: [raison en 5 mots]
+```
+
+**Phase 2 — Tri collectif au mur (10 min)**
+Tous les post-its vont au mur. On trie en 4 colonnes:
+
+| Colonne | Critère |
+|---|---|
+| **TIER 1 — Jour J** | On les veut à l'événement de lancement. Relation directe ou intro chaude à 1 degré. |
+| **TIER 2 — Semaine 1** | Outreach personnalisé post-lancement. Intro possible mais pas immédiate. |
+| **TIER 3 — Mois 1** | Campagne ciblée. Pas de relation directe mais profil parfait. |
+| **PARKING** | Pas prioritaire maintenant mais à garder. |
+
+**Phase 3 — Les 10 invités VIP (10 min)**
+L'équipe sélectionne les **10 personnes les plus importantes** à avoir au lancement. Pour chacune:
+- Qui dans l'équipe l'invite? (propriétaire unique)
+- Comment? (appel direct, WhatsApp, mail perso, intro via X)
+- Quand? (cette semaine)
+- Quel message? (en 1 phrase)
+
+**Phase 4 — Tom tranche (5 min)**
+Tom challenge la liste: "Est-ce qu'il manque quelqu'un du board de Sanofi? Est-ce qu'on a un contact ANSM/EMA? Est-ce qu'on a au moins 3 personnes qui peuvent acheter dans les 60 jours?"
+
+**Livrable Sprint 1:** Liste de 30 noms qualifiés avec owner + canal d'approche + message personnalisé pour les 10 VIP.
+
+---
+
+## SPRINT 2 — LE COUP D'ÉCLAT (35 min)
+
+### Le problème à résoudre
+On est une startup inconnue. Les Top-10 pharma reçoivent 50 pitchs par semaine. Il faut un truc malin qui force l'attention. Pas un webinar de plus — un acte qui prouve la valeur.
+
+### Exercice: "Le Coup Malin"
+
+**Phase 1 — Brainstorm silencieux (8 min)**
+Chaque joueur écrit 3 idées de "coups d'éclat" sur des post-its. Le brief:
+
+> "Imagine que tu es VP Medical Affairs chez Sanofi. Tu reçois 50 mails par jour. Qu'est-ce qui te ferait cliquer / répondre / en parler à ton équipe? Qu'est-ce qu'aucun concurrent ne fait?"
+
+Idées de départ pour amorcer (ne pas lire avant le brainstorm, révéler après si le groupe sèche):
+
+<details>
+<summary>Ouvrir si le groupe a besoin d'inspiration</summary>
+
+| # | Idée | Pourquoi c'est malin |
+|---|---|---|
+| 1 | **"48h BRA Challenge"** — On prend un vrai cas (anonymisé) du prospect, on le passe dans BRA, on renvoie le résultat en 48h. Gratuit. | Prouve la valeur sur LEUR data. Impossible de dire non. Crée un moment "wow". |
+| 2 | **KOL Live Validation** — Un KOL reconnu valide un output BRA en direct, devant l'audience. Pas un témoignage filmé — du live. | Crédibilité maximale. Le prospect voit un pair valider, pas un vendeur. |
+| 3 | **"Before / After" vidéo de 90 secondes** — Côté gauche: le process BRA manuel (Excel, 47 onglets, 3 semaines). Côté droit: BRA Platform (même résultat, 2 jours). Split-screen. | Viral sur LinkedIn. Partageable. Émotionnel (la douleur du process actuel). |
+| 4 | **Open BRA Report** — Publier un vrai rapport BRA complet (sur un médicament générique) en open access. Montrer la qualité. | Preuve publique. Les regulatory affairs vont le lire et comparer à leur process. |
+| 5 | **"Regulatory Speed Run"** — Chronométrer en live combien de temps BRA prend pour produire un assessment complet. Streamer le chrono. | Spectaculaire. Comparable. Mémorable. |
+| 6 | **Inviter l'ANSM/EMA comme observateur** — Pas pour vendre, pour montrer qu'on est transparent avec les régulateurs. | Signal de confiance massif. Les pharma veulent travailler avec des outils que les régulateurs connaissent. |
+| 7 | **"Free BRA for 5"** — Offrir 5 assessments gratuits aux 5 premières entreprises qui s'inscrivent le jour du lancement. | Urgence + exclu. Les gens s'inscrivent par FOMO. Crée les premiers users. |
+| 8 | **Co-publication avec un KOL** — Publier un short paper avec Vassili + un KOL externe sur la méthodologie BRA. | Crédibilité scientifique. Partagé dans les cercles académiques et regulatory. |
+| 9 | **"Benchmark Challenge"** — Proposer aux pharma de comparer un output BRA avec leur process interne. On publie les résultats (anonymisés). | Compétitif. Les pharma adorent se benchmarker. Crée du contenu. |
+| 10 | **Side event à DIA/RAPS** — Louer une salle à côté de la conférence, inviter 20 personnes pour un "BRA Live Lab" avec pizza + démo. | Intime, exclusif, pas corporate. Les meilleurs deals se font en off-conference. |
+
+</details>
+
+**Phase 2 — Pitch & Vote (15 min)**
+Chaque joueur pitch son idée préférée en 90 secondes. Règles:
+- Pas de slides. Debout. Chrono visible.
+- Tu dois dire: QUI on cible, COMMENT ça marche, POURQUOI ça force l'attention.
+- L'équipe note chaque pitch de 1 à 5 (doigts levés).
+
+**Phase 3 — Sélection (7 min)**
+L'équipe sélectionne **2 coups** maximum:
+- 1 coup AVANT le lancement (crée le buzz)
+- 1 coup LE JOUR du lancement (convertit en leads)
+
+Pour chaque coup sélectionné, remplir:
 
 ```
- ┌──────────────────────────────────────────────────────────────┐
- │                    MISSION: CATALYSIS                        │
- │                                                              │
- │   SYNTHESIS          REACTION              CATALYSIS         │
- │   ┌─────┐  ┌─────┐  ┌─────┐  ┌─────┐  ┌─────┐  ┌─────┐   │
- │   │ S1  │→ │ S2  │→ │ R3  │→ │ R4  │→ │ C6  │→ │ C7  │   │
- │   │     │  │     │  │     │  │  R5  │  │     │  │     │   │
- │   └─────┘  └─────┘  └─────┘  └─────┘  └─────┘  └─────┘   │
- │                                                              │
- │   ┌──────────────────────────────────────────────────────┐   │
- │   │  SCORE COLLECTIF: _____ / $500k ARR                  │   │
- │   │  PIPELINE:        _____ / $1.2M                      │   │
- │   │  HEALTH:          _____ / 100 pts                    │   │
- │   └──────────────────────────────────────────────────────┘   │
- │                                                              │
- │   CHAOS BOARD: [  ] [  ] [  ] [  ] [  ] (5 slots max)       │
- └──────────────────────────────────────────────────────────────┘
+NOM DU COUP: _______________
+Cible: [qui exactement]
+Mécanique: [comment ça marche, étape par étape]
+Timeline: [quand on lance, combien de temps de prep]
+Owner: [qui porte]
+Besoin des autres: [qui doit fournir quoi]
+Métrique de succès: [comment on sait si ça a marché]
+Coût: [0€ / <500€ / <2000€ / plus]
 ```
 
----
-
-## RÔLES & POUVOIRS SPÉCIAUX
-
-Chaque joueur reçoit une **Carte Rôle** avec un pouvoir spécial utilisable 1x par partie.
-
-### Carte Rôle: ROMAIN — Le Closer
-- **Zone:** Revenue + Pipeline
-- **Pouvoir spécial (1x):** *"Mode 100%"* — Annule 1 carte Chaos liée au pipeline. Déclare: "Je drop tout, je ne fais que du pipe pendant 1 semaine."
-- **Scoring perso:** +10 pts par deal avancé d'un stage, +50 pts pour un close
-
-### Carte Rôle: CARLO — Le Hunter
-- **Zone:** Outbound + Discovery
-- **Pouvoir spécial (1x):** *"Blitz Week"* — Double les points de meetings bookés ce round
-- **Scoring perso:** +5 pts par meeting booké, +10 pts par warm intro convertie
-
-### Carte Rôle: ERIK — Le Sniper
-- **Zone:** Outbound + Demos
-- **Pouvoir spécial (1x):** *"Perfect Pitch"* — Un deal avance de 2 stages au lieu d'1 ce round
-- **Scoring perso:** +5 pts par meeting booké, +15 pts par demo délivrée
-
-### Carte Rôle: VASSILI — Le Sage
-- **Zone:** KOL + Validation + Thérapeutique
-- **Pouvoir spécial (1x):** *"KOL Express"* — Valide immédiatement 1 axe thérapeutique (skip le délai de validation)
-- **Scoring perso:** +15 pts par KOL validé, +20 pts par case study complète
-
-### Carte Rôle: CHARBEL — L'Architecte
-- **Zone:** Plateforme + Démo + UX
-- **Pouvoir spécial (1x):** *"Ship It"* — Déploie 1 Epic immédiatement (skip le round de dev)
-- **Scoring perso:** +15 pts par Epic déployé, +10 pts si démo live OK
-
-### Carte Rôle: JEFF — Le Gardien
-- **Zone:** Infra + Fiabilité + Observabilité
-- **Pouvoir spécial (1x):** *"Bouclier Infra"* — Bloque 1 carte Chaos liée à la fiabilité/bugs
-- **Scoring perso:** +10 pts par palier uptime atteint (97%, 99%), +10 pts pour 0 bugs critiques
+**Livrable Sprint 2:** 2 "coups d'éclat" détaillés avec owner, timeline, et métriques.
 
 ---
 
-## CARTES CHAOS (imprimer, mélanger, tirer 1 par round)
+## SPRINT 3 — LE CONTENU QUI VEND (30 min)
 
-Le Chaos représente les aléas du réel. Au début de chaque round, un joueur tire 1 carte Chaos. L'équipe doit décider comment réagir — ou utiliser un pouvoir spécial pour l'annuler.
+### Le problème à résoudre
+Le lancement génère de l'attention. Mais l'attention sans contenu = des curieux qui repartent. Il faut que chaque point de contact pousse vers un next step.
 
-| # | Carte Chaos | Effet | Peut être bloquée par |
+### Exercice: "La Machine à Contenu"
+
+**Phase 1 — Mapping (10 min)**
+L'équipe remplit ce tableau ensemble au tableau blanc:
+
+| Moment | Le prospect pense... | On lui donne... | Format | Owner |
+|---|---|---|---|---|
+| **Découverte** (LinkedIn, bouche-à-oreille) | "C'est quoi BRA Platform?" | Le hook en 1 phrase + vidéo 90s | Post LinkedIn + vidéo | Tom + Charbel |
+| **Intérêt** (visite site, clic email) | "Ça marche vraiment?" | Proof point: F1 ≥ 85%, Before/After, KOL quote | Landing page + case study PDF | Romain + Vassili |
+| **Évaluation** (après démo) | "C'est mieux que notre process actuel?" | Benchmark: temps, qualité, coût vs. manuel | Comparative 1-pager + ROI calculator | Romain |
+| **Décision** (négo interne chez le prospect) | "Comment je vends ça en interne?" | Business case template pré-rempli + ROI chiffré | PPT "Internal Champion Kit" | Romain + Vassili |
+| **Achat** (dernière ligne droite) | "C'est sécurisé? Conforme?" | Security whitepaper + compliance checklist + SLA | PDF technique | Jeff + Charbel |
+
+**Phase 2 — Draft Express (15 min)**
+Chaque joueur prend 1 asset et en écrit le DRAFT en 15 min. Pas parfait — un premier jet. Assignation:
+
+| Asset | Qui le draft maintenant | Temps |
+|---|---|---|
+| Post LinkedIn d'annonce de Tom (le texte complet) | **Tom** (ou Romain si Tom absent) | 15 min |
+| Post LinkedIn de Vassili (angle scientifique/KOL) | **Vassili** | 15 min |
+| Objet + 5 premières lignes de l'email de lancement | **Carlo ou Erik** | 15 min |
+| Script de la démo live (flow en 10 bullet points) | **Charbel** | 15 min |
+| 3 proof points chiffrés pour la landing page | **Jeff** (les chiffres infra + perf) | 15 min |
+| 1-pager case study (structure + données clés) | **Romain** | 15 min |
+
+**Phase 3 — Lecture croisée (5 min)**
+Chaque draft est lu à voix haute. L'équipe réagit en 30s: "j'achèterais" ou "il manque X".
+
+**Livrable Sprint 3:** 6 drafts de contenu réels (LinkedIn posts, email, script démo, proof points, case study).
+
+---
+
+## SPRINT 4 — LA MÉCANIQUE À LEADS (30 min)
+
+### Le problème à résoudre
+Un lancement sans capture = du bruit pour rien. Chaque interaction doit finir dans un pipe. Comment on transforme l'attention en noms qualifiés?
+
+### Exercice: "L'Entonnoir"
+
+**Phase 1 — Design de l'entonnoir (15 min)**
+L'équipe dessine ensemble la mécanique complète, du premier contact au premier call:
+
+```
+ÉTAPE 1: AWARENESS
+├── LinkedIn posts (Tom, Vassili, Carlo, Erik) → lien vers...
+├── Email blast ciblé (30 noms du Sprint 1) → lien vers...
+├── Coup d'éclat (Sprint 2) → lien vers...
+│
+▼
+ÉTAPE 2: CAPTURE
+├── Landing page avec: vidéo 90s + 3 proof points + CTA
+├── CTA options:
+│   ├── [A] "Réserver une démo live" (high intent → S1 direct)
+│   ├── [B] "Télécharger le case study" (medium intent → nurture)
+│   └── [C] "48h BRA Challenge: envoyez votre cas" (très high intent → S2 direct)
+│
+▼
+ÉTAPE 3: QUALIFICATION (dans les 24h)
+├── [A] → Carlo/Erik appellent dans les 4h. MEDDPIC rapide.
+├── [B] → Email automatique J+1 avec proposition de démo.
+├── [C] → Vassili + Data-Team traitent le cas. Romain rappelle avec résultats.
+│
+▼
+ÉTAPE 4: PIPELINE
+└── S0 dans le CRM avec source "Launch" + date + score
+```
+
+**Phase 2 — Rôles D-Day (10 min)**
+Qui fait quoi LE JOUR du lancement, heure par heure:
+
+| Heure | Romain | Carlo & Erik | Vassili | Charbel | Jeff | Tom |
+|---|---|---|---|---|---|---|
+| 8h | Dernière vérif pipeline | Check emails prêts | Relit script démo | Test démo live | Monitoring infra | Review final des posts |
+| 9h | **Envoie les 10 mails VIP** | **Lancent l'email blast** | Poste sur LinkedIn | Vérifie landing page | Surveille uptime | **Publie le post LinkedIn** |
+| 10h | Répond aux premiers retours | Trackent les ouvertures | Répond aux questions scientifiques | Support démo si besoin | Alerte si incident | Appelle les 3 contacts les plus chauds |
+| 11h-12h | **Événement live / démo** | Gèrent le chat | **Présentent la démo** | **Support technique live** | Monitoring temps réel | **Host + Q&A** |
+| 14h | Follow-up des hot leads | Qualifient les leads entrants | Follow-up KOL réactions | Fixe tout bug remonté | Post-mortem technique | Appelle les participants VIP |
+| 16h | Bilan J+0: combien de leads? | Mettent à jour le CRM | Debrief scientifique | Métriques d'usage landing | Rapport uptime | Go/No-Go pour J+1 push |
+
+**Phase 3 — Objectifs chiffrés (5 min)**
+L'équipe se met d'accord sur les targets du lancement:
+
+| Métrique | Target jour J | Target semaine 1 | Target mois 1 | Owner |
+|---|---|---|---|---|
+| Vues LinkedIn (cumulé tous posts) | ≥ 5 000 | ≥ 20 000 | ≥ 50 000 | Tom + Vassili |
+| Visites landing page | ≥ 200 | ≥ 500 | ≥ 1 500 | Charbel |
+| Leads capturés (email laissé) | ≥ 30 | ≥ 80 | ≥ 200 | Romain |
+| Démos réservées | ≥ 5 | ≥ 15 | ≥ 30 | Carlo & Erik |
+| Meetings qualifiés (S1+) | ≥ 2 | ≥ 8 | ≥ 20 | Romain |
+| Propositions envoyées | 0 | ≥ 3 | ≥ 8 | Romain |
+| Participants événement live | ≥ 30 | — | — | Tom |
+
+**Livrable Sprint 4:** Entonnoir de conversion documenté + planning heure par heure du jour J + targets chiffrés signés.
+
+---
+
+## SPRINT 5 — LE CALENDRIER DE LANCEMENT (30 min)
+
+### Le problème à résoudre
+On sait quoi faire. Maintenant: quand exactement, et dans quel ordre?
+
+### Exercice: "Le Countdown"
+
+L'équipe remplit ensemble le calendrier réel, en mettant des noms sur chaque ligne:
+
+### D-21 (3 semaines avant)
+
+| Action | Owner | Statut |
+|---|---|---|
+| Landing page V1 en ligne (même si draft) | Charbel | [ ] |
+| Liste des 30 noms finalisée + enrichie | Carlo & Erik | [ ] |
+| 3 case studies sélectionnées (axes thérapeutiques) | Vassili | [ ] |
+| Vidéo 90s tournée (screen recording de la démo) | Charbel | [ ] |
+| Date de l'événement live fixée + outil choisi (Zoom/Teams/Livestorm) | Romain | [ ] |
+| Invitations VIP envoyées (les 10 noms du Sprint 1) | Chaque owner de son VIP | [ ] |
+
+### D-14 (2 semaines avant)
+
+| Action | Owner | Statut |
+|---|---|---|
+| Post LinkedIn teaser #1 (Tom): "Dans 2 semaines, on change le BRA" | Tom | [ ] |
+| Email teaser aux 30 noms: save the date + 1 phrase hook | Carlo & Erik | [ ] |
+| Case study PDF V1 prête | Romain + Vassili | [ ] |
+| Script démo finalisé et répété 1 fois | Vassili + Charbel | [ ] |
+| Landing page V2 avec vidéo + lead capture | Charbel | [ ] |
+| Séquence email post-événement programmée (J+1, J+3, J+7) | Carlo & Erik | [ ] |
+| Coup d'éclat #1 lancé (celui d'avant-lancement) | Owner défini au Sprint 2 | [ ] |
+
+### D-7 (1 semaine avant)
+
+| Action | Owner | Statut |
+|---|---|---|
+| Post LinkedIn teaser #2 (Vassili): angle scientifique, F1 score, KOL | Vassili | [ ] |
+| Relance email: "Plus que 7 jours — réservez votre place" | Carlo & Erik | [ ] |
+| Dry run complète de l'événement live (30 min, toute l'équipe) | Romain | [ ] |
+| Vérification infra: uptime, monitoring, alerting | Jeff | [ ] |
+| "Champion Kit" PDF prêt (pour les prospects qui doivent vendre en interne) | Romain | [ ] |
+| Security whitepaper prêt (pour les questions compliance) | Jeff | [ ] |
+| CRM prêt: source "Launch", tags, pipeline stages | Jeff + Romain | [ ] |
+
+### D-1 (la veille)
+
+| Action | Owner | Statut |
+|---|---|---|
+| Test final de la démo live (environnement de prod) | Charbel + Jeff | [ ] |
+| Tous les posts LinkedIn schedulés pour D-0 9h | Tom + Vassili + Carlo + Erik | [ ] |
+| Email blast prêt à envoyer (pas encore envoyé) | Carlo & Erik | [ ] |
+| Briefing équipe 15 min: rôles D-Day, qui fait quoi heure par heure | Romain | [ ] |
+| Bonne nuit de sommeil | **Tous** | [ ] |
+
+### D-0 (JOUR J)
+
+Voir le planning heure par heure du Sprint 4.
+
+### D+1 à D+7
+
+| Jour | Action | Owner |
+|---|---|---|
+| **D+1** | Email follow-up personnalisé aux participants de l'événement | Carlo & Erik |
+| **D+1** | Post LinkedIn récap de l'événement (Tom) + reshare (tous) | Tom |
+| **D+1** | Appel aux 5 leads les plus chauds (ont posé des questions, ont cliqué démo) | Romain |
+| **D+2** | Email à ceux qui ne sont pas venus: "Vous avez manqué ça — voici le replay" | Carlo & Erik |
+| **D+3** | Première vague de démos bookées | Romain + Carlo & Erik |
+| **D+3** | Post LinkedIn #2: partage d'un résultat concret ("Voici un BRA produit en 48h") | Vassili |
+| **D+5** | Relance des leads medium-intent (ceux qui ont téléchargé le case study) | Carlo & Erik |
+| **D+7** | **Bilan semaine 1:** combien de leads, combien en S1+, combien de démos faites | Romain |
+| **D+7** | Décision: on continue le push ou on ajuste le message? | Romain + Tom |
+
+**Livrable Sprint 5:** Calendrier D-21 à D+7 complet avec owners et checkboxes.
+
+---
+
+## SPRINT 6 — LES ENGAGEMENTS (20 min)
+
+### Le problème à résoudre
+Un plan sans engagement = du papier. Chaque personne doit repartir en sachant exactement ce qu'elle doit livrer et quand.
+
+### Exercice: "La Signature"
+
+**Phase 1 (10 min)** — Chaque joueur écrit ses **3 engagements personnels** pour le lancement:
+
+Format:
+```
+MOI, [NOM], JE M'ENGAGE À:
+
+1. [ACTION CONCRÈTE] d'ici [DATE].
+   Résultat mesurable: [CHIFFRE].
+
+2. [ACTION CONCRÈTE] d'ici [DATE].
+   Résultat mesurable: [CHIFFRE].
+
+3. [ACTION CONCRÈTE] d'ici [DATE].
+   Résultat mesurable: [CHIFFRE].
+
+Signé: ______________
+```
+
+Exemples:
+- "Moi, Carlo, je m'engage à booker 8 démos dans les 7 jours après le lancement. Mesurable: 8 créneaux dans le calendrier."
+- "Moi, Vassili, je m'engage à avoir 2 KOLs qui acceptent de valider un output BRA en live avant D-0. Mesurable: 2 confirmations email."
+- "Moi, Jeff, je m'engage à un uptime ≥ 99.5% le jour J et la semaine suivante. Mesurable: dashboard APM."
+
+**Phase 2 (10 min)** — Chaque joueur lit ses engagements à voix haute. L'équipe applaudit (ou challenge: "c'est pas assez ambitieux" / "c'est irréaliste").
+
+Tom valide chaque engagement avec un "Go" ou "Monte d'un cran".
+
+**Livrable Sprint 6:** 6 fiches d'engagement signées (photo → Slack de l'équipe).
+
+---
+
+## RÉSUMÉ DES 6 LIVRABLES
+
+À la fin de l'atelier, l'équipe repart avec:
+
+| # | Livrable | Produit au Sprint | Prêt à utiliser? |
 |---|---|---|---|
-| C1 | **"Le KOL annule"** | Vassili perd 1 tour de validation. Retard KOL de 1 round. | Vassili (KOL Express) |
-| C2 | **"Bug critique en Prod"** | -10 pts Health. Charbel + Jeff doivent dédier 50% du round au fix. | Jeff (Bouclier Infra) |
-| C3 | **"Le champion change de poste"** | 1 deal actif recule de 1 stage. Romain choisit lequel. | Erik (Perfect Pitch) |
-| C4 | **"Pipeline sèche"** | Aucun nouveau meeting ce round sauf si Carlo/Erik trouvent 1 solution créative en 2 min. | Carlo (Blitz Week) |
-| C5 | **"Scope creep client"** | 1 deal demande du custom. -15 pts si accepté. L'équipe vote: refuser ou accepter. | Romain (Mode 100%) |
-| C6 | **"Concurrent agressif"** | Veeva/IQVIA baisse ses prix. Chaque joueur doit donner 1 argument "Why we win" en 30s. | Aucun — tout le monde joue |
-| C7 | **"Incident infra weekend"** | Uptime tombe à 95%. Jeff doit proposer un plan de fix en 1 min. -5 pts Health. | Jeff (Bouclier Infra) |
-| C8 | **"Le prospect veut une démo demain"** | Charbel doit confirmer que la démo est prête. Si oui: +20 pts. Si non: -10 pts. | Charbel (Ship It) |
-| C9 | **"F1 régresse après un merge"** | F1 score baisse de 10%. Data-Team + Vassili doivent proposer 1 action corrective. | Vassili (KOL Express) |
-| C10 | **"BONNE NOUVELLE: Intro chaude d'un board member"** | +1 meeting gratuit avec un Top-10. +15 pts pipeline. Pas de blocage nécessaire. | — (carte positive!) |
+| 1 | **Liste de 30 cibles nommées** avec owner + canal + message VIP | Sprint 1 | Oui — commencer les invitations dès demain |
+| 2 | **2 coups d'éclat** détaillés avec mécanique + timeline + owner | Sprint 2 | Oui — lancer le coup pré-lancement cette semaine |
+| 3 | **6 drafts de contenu** (LinkedIn, email, script démo, case study, proof points) | Sprint 3 | Draft — à finaliser dans les 3 jours |
+| 4 | **Entonnoir de conversion + planning D-Day heure par heure + targets** | Sprint 4 | Oui — à mettre dans le CRM |
+| 5 | **Calendrier D-21 à D+7** avec checkboxes et owners | Sprint 5 | Oui — commencer le countdown |
+| 6 | **Engagements individuels signés** | Sprint 6 | Oui — trackés chaque semaine |
 
 ---
 
-## DÉROULEMENT DES ROUNDS
+## PLANNING DE L'ATELIER
 
-### Structure d'un Round (15-20 min)
-
-```
- ┌─────────────────────────────────────────────────┐
- │  1. CHAOS (2 min)                               │
- │     Tirer 1 carte Chaos. Décider de la réponse. │
- │                                                  │
- │  2. ENGAGEMENTS (5 min)                          │
- │     Chaque joueur pose 1-3 post-its:             │
- │     "Cette semaine, je m'engage à _____"         │
- │     Format: [Action] → [Résultat mesurable]      │
- │                                                  │
- │  3. NÉGOCIATION (5 min)                          │
- │     Les joueurs peuvent demander de l'aide       │
- │     entre eux. "J'ai besoin que Vassili me       │
- │     donne 2 intros KOL pour mon deal Sanofi."    │
- │     Les deux joueurs doivent accepter.            │
- │                                                  │
- │  4. SCORING (3 min)                              │
- │     Calculer les points du round.                │
- │     Mettre à jour le Score Collectif.            │
- │     Si Health = 0: Game Over.                    │
- │                                                  │
- │  5. CHECKPOINT (2 min — Tom/sponsor)             │
- │     Tom valide ou challenge 1 engagement.        │
- │     "Est-ce que $500k pipeline en S3 est         │
- │     réaliste avec 3 meetings bookés?"            │
- └─────────────────────────────────────────────────┘
-```
-
----
-
-## LES 7 ROUNDS — OBJECTIFS MINIMUM
-
-### Round 1-2: SYNTHESIS — Poser les fondations
-**Seuil pour passer au Round 3:** ≥ 30 pts collectifs + Health ≥ 80
-
-| Objectif Round | Points | Qui décide |
+| Heure | Sprint | Énergie |
 |---|---|---|
-| OKRs signés par Tom | 10 pts | Romain pose le doc, Tom signe |
-| Jira + pipeline configuré | 10 pts | Jeff confirme "c'est live" |
-| 2 axes thérapeutiques sélectionnés | 10 pts | Vassili pitch 3 options, l'équipe vote |
-| 50 comptes ciblés + recherchés | 10 pts | Carlo & Erik présentent la liste |
-| 3 meetings bookés pour S3-S4 | 15 pts | Carlo/Erik/Romain montrent le calendrier |
-| Pricing sheet finalisée | 10 pts | Romain + Tom valident |
-| BRA V1 démo-able? (Y/N gate) | 10 pts si Y, 0 si N | Charbel fait une démo live de 2 min |
-| Baseline infra documentée | 5 pts | Jeff montre les chiffres |
-
-**Mini-jeu SYNTHESIS:** *"Elevator Pitch Battle"*
-- Chaque joueur a 60 secondes pour pitcher BRA à un prospect fictif (Tom joue le prospect).
-- Tom note de 1 à 5. Le meilleur pitch gagne +10 pts bonus pour l'équipe.
-- But réel: aligner tout le monde sur le même message avant d'aller sur le terrain.
-
----
-
-### Round 3-4: REACTION — Accélérer le pipeline
-**Seuil pour passer au Round 5:** Score cumulé ≥ 100 pts + Pipeline ≥ $500k
-
-| Objectif Round | Points | Qui décide |
-|---|---|---|
-| Epic 2 déployé en Prod | 15 pts | Charbel + Jeff confirment |
-| Context Alt-T ≥ 50% | 10 pts | Data-Team + Vassili |
-| 3-5 discovery calls réalisés | 15 pts | Romain/Carlo/Erik racontent |
-| 2-3 démos live données | 20 pts | Romain + Charbel confirment |
-| 1ère proposition pilote envoyée | 15 pts | Romain montre le mail |
-| Gap analysis axes complète | 10 pts | Vassili présente en 2 min |
-| Pipeline qualifié ≥ $500k | 15 pts | Romain montre le tracker |
-
-**Mini-jeu REACTION:** *"Objection Ping-Pong"*
-- Tom (ou un volontaire) joue un prospect sceptique et lance des objections.
-- L'équipe répond en tag-team: chaque joueur a max 20 secondes pour répondre, puis passe à un coéquipier.
-- Objections tirées des cartes: "On peut le construire en interne", "Veeva fait déjà ça", "L'IA c'est une boîte noire".
-- Si l'équipe survit 3 rounds d'objections sans silence > 5s: +10 pts bonus.
-
----
-
-### Round 5: REACTION — Peak Pipeline
-**Seuil pour passer au Round 6:** Score cumulé ≥ 170 pts + Pipeline ≥ $1M
-
-| Objectif Round | Points | Qui décide |
-|---|---|---|
-| Epic 3 déployé | 15 pts | Charbel + Jeff |
-| Context ≥ 75% | 10 pts | Data-Team + Vassili |
-| F1 ≥ 60% | 15 pts | Data-Team |
-| Platform availability ≥ 97% | 10 pts | Jeff |
-| 1 deal en S5 (négociation) | 25 pts | Romain montre le deal |
-| Pipeline ≥ $1M | 15 pts | Romain |
-| 2+ sessions KOL réalisées | 10 pts | Vassili |
-| Sales deck v2 intégrant feedback | 5 pts | Romain |
-
-**Mini-jeu PEAK:** *"Deal War Room"*
-- Romain présente le deal le plus avancé (2 min). Toute l'équipe a 5 min pour identifier les risques et proposer des actions.
-- Chaque action concrète proposée = +2 pts.
-- But réel: préparer la vraie stratégie de close du premier deal.
-
----
-
-### Round 6: CATALYSIS — Premier Logo
-**Seuil pour passer au Round 7:** Score cumulé ≥ 280 pts + 1 deal fermé
-
-| Objectif Round | Points | Qui décide |
-|---|---|---|
-| Epic 4 déployé | 15 pts | Charbel + Jeff |
-| 0 bugs critiques en Prod | 15 pts | Jeff |
-| **Premier logo fermé $100k-$175k** | **50 pts** | Romain montre le contrat |
-| Validation externe: 2+ outputs | 15 pts | Vassili |
-| GTM bundle axe 1 complet | 10 pts | Romain + Vassili |
-| F1 ≥ 85% | 20 pts | Data-Team |
-| Context ≥ 90% | 10 pts | Data-Team + Vassili |
-| Pipeline maintenu ≥ $1.2M | 10 pts | Romain |
-| 1ère expansion proposée | 10 pts | Romain/Carlo/Erik |
-
-**Mini-jeu CATALYSIS:** *"Speed Closing"*
-- Simulation: Tom joue un VP Medical Affairs qui a dit "oui en principe" mais hésite.
-- Romain a 3 min pour closer. Les autres joueurs peuvent passer des "notes" (post-its) avec des arguments pendant la négo.
-- Si Tom dit "deal": +20 pts bonus. Si "non": l'équipe discute ce qui a manqué (5 min).
-
----
-
-### Round 7: CATALYSIS — Wrap & Win
-**Seuil de victoire:** Score cumulé ≥ 400 pts + ARR ≥ $500k
-
-| Objectif Round | Points | Qui décide |
-|---|---|---|
-| **5/5 Epics déployés (KR1.1a)** | 20 pts | Charbel + Jeff |
-| **$500k ARR atteint** | **100 pts** | Romain + Tom valident |
-| 2 démos fonctionnelles (KR2.3) | 15 pts | Data-Team + Vassili |
-| Ship time ≤ 10 min (KR1.5d) | 10 pts | Jeff |
-| APM 100% (KR1.5e) | 10 pts | Jeff |
-| 10-50 users on platform | 15 pts | App-Team |
-| Next-quarter pipeline ≥ $500k | 15 pts | Romain/Carlo/Erik |
-| Board report prêt | 10 pts | Romain |
-| Rétrospective complétée | 5 pts | Tous |
-
----
-
-## SYSTÈME DE SCORING
-
-### Score Collectif (ARR proxy)
-Le score monte avec chaque milestone atteint. Le mapping:
-
-| Score | ARR Proxy | Statut |
-|---|---|---|
-| 0-99 | $0-$100k | On construit les fondations |
-| 100-199 | $100k-$250k | Pipeline chauffe |
-| 200-299 | $250k-$400k | Deals en négociation |
-| 300-399 | $400k-$499k | Presque... |
-| **400+** | **$500k+** | **MISSION ACCOMPLIE** |
-
-### Health (Platform + Team)
-- Démarre à **100 pts**
-- Les cartes Chaos enlèvent des points (-5 à -15)
-- Les pouvoirs spéciaux et les actions correctives restaurent des points (+5 à +10)
-- **Si Health tombe à 0: Game Over** — la plateforme est down, les démos annulées, les deals morts
-
-### Points Bonus (individuel → collectif)
-- **MVP du round:** Le joueur qui a le plus contribué gagne +5 pts pour l'équipe (voté à main levée)
-- **Assist du round:** Un joueur qui a aidé un coéquipier de manière décisive: +5 pts (nominé par le bénéficiaire)
-
----
-
-## CONDITIONS DE VICTOIRE
-
-| Résultat | Condition | Célébration |
-|---|---|---|
-| **VICTOIRE TOTALE** | Score ≥ 400 + Health > 50 + Pipeline > $1.2M | L'équipe a prouvé qu'on peut closer $500k. Champagne. |
-| **VICTOIRE** | Score ≥ 400 + Health > 0 | $500k atteint mais l'équipe est épuisée. Bon mais fragile. |
-| **PRESQUE** | Score 300-399 | On y est presque. Discussion: qu'est-ce qui manque pour les derniers $100k? |
-| **LE CHAOS GAGNE** | Score < 300 ou Health = 0 | Retour au tableau blanc. Qu'est-ce qu'on n'a pas vu venir? |
-
----
-
-## APRÈS LE JEU: LE VRAI LIVRABLE (30 min)
-
-Le jeu produit du **vrai travail**. À la fin des 7 rounds:
-
-### 1. Mur d'Engagements
-Tous les post-its d'engagements sont sur le mur, organisés par semaine. Chaque joueur:
-- **Signe ses 3 engagements les plus importants** (photo + Slack)
-- Format: "Moi [Nom], je m'engage à [action] d'ici [date]. Résultat mesurable: [KPI]."
-
-### 2. Carte des Dépendances
-Pendant la phase Négociation, les joueurs ont identifié qui a besoin de qui. Dessiner:
-- Les flèches de dépendance entre joueurs
-- Les bottlenecks identifiés
-- Les "handoffs" critiques (ex: Vassili → Romain pour les intros KOL)
-
-### 3. Plan Anti-Chaos
-Les cartes Chaos tirées pendant le jeu révèlent les vrais risques. Pour chaque carte tirée:
-- Est-ce qu'on a un plan B réel?
-- Qui est le owner du plan B?
-- À quel moment on déclenche le plan B?
-
-### 4. Scoreboard Semaine 1
-Remplir le vrai tableau B1 (Master OKR Scorecard) avec les baselines discutées pendant le jeu.
+| 9h00 | Accueil + café + briefing (15 min) | Calme |
+| 9h15 | **Sprint 1 — À qui on s'adresse** (40 min) | Focus |
+| 9h55 | **Sprint 2 — Le coup d'éclat** (35 min) | Créatif |
+| 10h30 | **Pause** (15 min) | Café + discussion libre |
+| 10h45 | **Sprint 3 — Le contenu qui vend** (30 min) | Production |
+| 11h15 | **Sprint 4 — La mécanique à leads** (30 min) | Stratégique |
+| 11h45 | **Sprint 5 — Le calendrier** (30 min) | Opérationnel |
+| 12h15 | **Sprint 6 — Les engagements** (20 min) | Solennel |
+| 12h35 | Photo d'équipe + next steps (10 min) | Célébration |
+| 12h45 | **Déjeuner d'équipe** | On a mérité |
 
 ---
 
 ## MATÉRIEL À PRÉPARER
 
-### À imprimer
-- [ ] 6 Cartes Rôle (1 par joueur — découper la section "Rôles & Pouvoirs")
-- [ ] 10 Cartes Chaos (découper le tableau, mettre face cachée)
-- [ ] 1 Plateau de score (le schéma ASCII agrandi en A3)
-- [ ] 7 feuilles "Round X" avec les objectifs pré-imprimés
-- [ ] Post-its (3 couleurs: vert = engagement, jaune = besoin d'aide, rouge = risque)
-- [ ] 1 chronomètre visible
-
-### À préparer en amont
-- [ ] Romain: liste des 50 comptes ciblés (draft)
-- [ ] Charbel: statut réel de la démo BRA V1
-- [ ] Jeff: baselines infra actuelles (uptime, ship time, APM)
-- [ ] Vassili: 3 axes thérapeutiques candidats avec argumentaire
-- [ ] Carlo & Erik: 10 premiers comptes recherchés
-
-### Nice-to-have
-- [ ] Musique de fond (soundtrack de heist movie)
-- [ ] Timer visible sur grand écran
-- [ ] Pizza pour la mi-temps (entre Round 4 et 5)
-- [ ] Un petit trophée "Mission: Catalysis" pour l'équipe si victoire
+| Item | Qui prépare | Quantité |
+|---|---|---|
+| Post-its (3 couleurs) | Romain | 3 packs |
+| Marqueurs | Romain | 6 |
+| Tableau blanc ou grande feuille de papier | Romain | 2 |
+| Chrono visible (téléphone sur écran ou timer web) | Jeff | 1 |
+| Impression de ce document (1 par personne) | Romain | 7 copies |
+| Laptop avec BRA Platform live (pour montrer la démo pendant le Sprint 3) | Charbel | 1 |
+| Laptop avec CRM ouvert (pour remplir en direct au Sprint 4) | Carlo ou Erik | 1 |
+| Café, eau, snacks | Romain | Suffisant pour 4h |
 
 ---
 
-## PLANNING SUGGÉRÉ
+## CE QUI REND CET ATELIER DIFFÉRENT D'UNE RÉUNION
 
-| Temps | Activité |
+| Réunion classique | Cet atelier |
 |---|---|
-| 0:00 | Accueil + règles du jeu (10 min) |
-| 0:10 | Distribution des Cartes Rôle |
-| 0:15 | **Round 1-2: Synthesis** (20 min) + Mini-jeu Elevator Pitch (10 min) |
-| 0:45 | **Round 3-4: Reaction** (20 min) + Mini-jeu Objection Ping-Pong (10 min) |
-| 1:15 | **PAUSE** — Pizza + discussion libre (15 min) |
-| 1:30 | **Round 5: Peak** (15 min) + Mini-jeu Deal War Room (10 min) |
-| 1:55 | **Round 6: Catalysis** (15 min) + Mini-jeu Speed Closing (10 min) |
-| 2:20 | **Round 7: Wrap** (15 min) |
-| 2:35 | **Scoring final + Victoire ou pas** (5 min) |
-| 2:40 | **Le Vrai Livrable:** Engagements + Dépendances + Anti-Chaos (20 min) |
-| 3:00 | Fin |
+| On discute de ce qu'il faudrait faire | On LE FAIT en live (drafts, listes, calendrier) |
+| Tout le monde hoche la tête | Chaque personne SIGNE un engagement public |
+| Le commercial fait le plan seul | L'ingénieur écrit des proof points, le scientifique écrit un post LinkedIn |
+| On sort avec un "on se revoit la semaine prochaine" | On sort avec 6 livrables et un countdown qui démarre |
+| Les idées créatives restent dans les têtes | On vote les meilleures et on les détaille assez pour les exécuter |
 
 ---
 
-*Mission: Catalysis — ArcaScience BRA Platform Launch Game — Q2 2026*
-*"On ne planifie pas un lancement. On le joue."*
+*Mission: Catalysis — ArcaScience BRA Platform Launch Teambuilding*
+*"On ne planifie pas un lancement en réunion. On le construit ensemble en 4 heures."*
