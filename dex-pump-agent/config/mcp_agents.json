@@ -1,0 +1,106 @@
+{
+  "agents": {
+    "signal_interpreter": {
+      "model": "claude-sonnet-4-20250514",
+      "schedule": "event-driven",
+      "description": "Analyzes incoming signals, produces recommendation (EXECUTE/WATCH/IGNORE/INVESTIGATE)",
+      "mcp_servers": [
+        {
+          "name": "filesystem_read",
+          "type": "filesystem",
+          "config": {
+            "mode": "read_only",
+            "allowed_paths": [
+              "./data/",
+              "./pine/",
+              "./config/",
+              "./analysis/"
+            ]
+          }
+        },
+        {
+          "name": "filesystem_write_scoped",
+          "type": "filesystem",
+          "config": {
+            "mode": "write",
+            "allowed_paths": ["./analysis/signals/"]
+          }
+        }
+      ],
+      "auto_execution": {
+        "enabled": false,
+        "min_conviction": 85,
+        "max_daily_trades": 3,
+        "fixed_size_eur": 500,
+        "requires_all_gates": true,
+        "note": "Set enabled=true only after paper trading validation"
+      }
+    },
+    "compliance_reviewer": {
+      "model": "claude-sonnet-4-20250514",
+      "schedule": "cron: daily 06:00 UTC",
+      "description": "Daily operational health and compliance review",
+      "mcp_servers": [
+        {
+          "name": "filesystem_read",
+          "type": "filesystem",
+          "config": {
+            "mode": "read_only",
+            "allowed_paths": [
+              "./data/",
+              "./analysis/",
+              "./backtester/results/"
+            ]
+          }
+        },
+        {
+          "name": "filesystem_write_scoped",
+          "type": "filesystem",
+          "config": {
+            "mode": "write",
+            "allowed_paths": ["./analysis/compliance/"]
+          }
+        }
+      ]
+    },
+    "research_analyst": {
+      "model": "claude-sonnet-4-20250514",
+      "schedule": "cron: Sunday 08:00 UTC",
+      "description": "Weekly strategy R&D analysis and improvement proposals",
+      "mcp_servers": [
+        {
+          "name": "filesystem_read",
+          "type": "filesystem",
+          "config": {
+            "mode": "read_only",
+            "allowed_paths": [
+              "./data/",
+              "./analysis/",
+              "./backtester/results/",
+              "./pine/"
+            ]
+          }
+        },
+        {
+          "name": "filesystem_write_scoped",
+          "type": "filesystem",
+          "config": {
+            "mode": "write",
+            "allowed_paths": ["./analysis/research/"]
+          }
+        }
+      ]
+    }
+  },
+  "permissions_model": {
+    "principle": "Agents are READ-ONLY on all operational data. They write ONLY to analysis/ subdirectories.",
+    "code_modification": "NEVER — only the human operator modifies code via PR",
+    "trade_execution": "NEVER directly — agent produces recommendation, auto-executor is a separate gated component",
+    "config_modification": "NEVER — agent proposes adjustments in reports, human applies"
+  },
+  "telegram_notifications": {
+    "signal_interpreter": "EXECUTE and INVESTIGATE recommendations only",
+    "compliance_reviewer": "Daily summary with health score",
+    "research_analyst": "Weekly notification with link to report"
+  }
+}

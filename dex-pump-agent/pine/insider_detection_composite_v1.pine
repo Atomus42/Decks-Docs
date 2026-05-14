@@ -1,0 +1,248 @@
+// ============================================================
+// INSIDER DETECTION COMPOSITE SCORE v1
+// ============================================================
+// Purpose: Detect accumulation (pre-pump) and distribution (post-pump)
+// patterns on DEX-traded memecoins triggered by public figures.
+//
+// Signals detected:
+//   ACCUMULATION (green): CVD divergence, Wyckoff Spring/SOS,
+//     volume bursts with range compression, Asian session accumulation,
+//     round-number absorption, OI spike without price move
+//   DISTRIBUTION (red): Shooting stars on volume, CVD bearish divergence,
+//     decreasing volume on rallies, stop-hunt reversals
+//
+// Use with TradingView Premium webhooks → bot on EC2.
+// Recommended timeframes: 15m (primary), 1H (confirmation), 4H (context)
+// ============================================================
+
+//@version=6
+indicator("Insider Detection Composite v1", overlay=false, max_bars_back=500)
+
+// === USER INPUTS ===
+group_volume = "Volume Signals"
+cvd_period    = input.int(20, "CVD lookback", group=group_volume, minval=5, maxval=100)
+vol_burst_z   = input.float(5.0, "Volume burst Z-score threshold", group=group_volume, step=0.5)
+range_comp    = input.float(0.3, "Range compression vs ATR", group=group_volume, step=0.05)
+obv_div_len   = input.int(14, "OBV divergence lookback", group=group_volume)
+
+group_wyckoff = "Wyckoff Phase"
+wk_lookback   = input.int(20, "Wyckoff range lookback", group=group_wyckoff)
+sos_vol_mult  = input.float(1.5, "SOS volume multiplier", group=group_wyckoff, step=0.1)
+
+group_time = "Time Patterns"
+asia_start    = input.int(0, "Asian session start UTC", group=group_time, minval=0, maxval=23)
+asia_end      = input.int(8, "Asian session end UTC", group=group_time, minval=0, maxval=23)
+
+group_cross = "Cross-Asset"
+use_btc_dom   = input.bool(true, "Use BTC.D rotation signal", group=group_cross)
+btc_dom_sym   = input.string("BTC.D", "BTC dominance symbol", group=group_cross)
+
+group_deriv = "Derivatives"
+use_oi_sig    = input.bool(false, "Use OI signal (requires OI data)", group=group_deriv)
+oi_symbol     = input.string("", "OI symbol (e.g. BINANCE:DOGEUSDT.P_OI)", group=group_deriv)
+
+group_thresh = "Score Thresholds"
+thresh_high   = input.int(70, "HIGH conviction", group=group_thresh, minval=50, maxval=100)
+thresh_med    = input.int(40, "MEDIUM conviction", group=group_thresh, minval=20, maxval=70)
+
+group_dist = "Distribution Detection"
+dist_rally_pct = input.float(3.0, "Rally threshold %", group=group_dist, step=0.5)
+
+// ════════════════════════════════════════════════════════════
+// VOLUME SIGNALS
+// ════════════════════════════════════════════════════════════
+
+// — Cumulative Volume Delta (CVD) —
+// Approximation: bullish candle → positive delta, bearish → negative
+cvd_delta   = volume * (close >= open ? 1.0 : -1.0)
+cvd         = ta.cum(cvd_delta)
+cvd_mean    = ta.sma(cvd, cvd_period)
+cvd_std     = ta.stdev(cvd, cvd_period)
+cvd_z       = cvd_std > 0 ? (cvd - cvd_mean) / cvd_std : 0.0
+
+// — CVD Divergence (bullish accumulation): price flat, CVD rising —
+price_chg_pct = (close - close[cvd_period]) / close[cvd_period] * 100
+cvd_div_bull  = math.abs(price_chg_pct) < 3.0 and cvd_z > 1.5
+
+// — CVD Divergence (bearish distribution): price rising, CVD falling —
+cvd_div_bear  = price_chg_pct > 5.0 and cvd_z < -1.0
+
+// — Volume Burst: extreme volume, tiny range → coordinated cluster buy —
+vol_mean_60  = ta.sma(volume, 60)
+vol_std_60   = ta.stdev(volume, 60)
+vol_z_score  = vol_std_60 > 0 ? (volume - vol_mean_60) / vol_std_60 : 0.0
+range_vs_atr = ta.atr(20) > 0 ? (high - low) / ta.atr(20) : 1.0
+volume_burst = vol_z_score > vol_burst_z and range_vs_atr < range_comp
+
+// — OBV Divergence —
+obv_val      = ta.obv
+obv_rising   = ta.change(ta.sma(obv_val, obv_div_len)) > 0
+price_flat   = math.abs(ta.change(ta.sma(close, obv_div_len)) / close) < 0.02
+obv_div_acc  = obv_rising and price_flat  // accumulation pattern
+
+// ════════════════════════════════════════════════════════════
+// WYCKOFF PATTERNS
+// ════════════════════════════════════════════════════════════
+
+// — Spring: false breakdown below recent low, close recovers —
+recent_low  = ta.lowest(low, wk_lookback)[1]
+spring      = low < recent_low and close > recent_low and close > open
+
+// — Sign of Strength (SOS): breakout above range with volume —
+recent_high = ta.highest(high, wk_lookback)[1]
+sos         = ta.crossover(close, recent_high) and volume > vol_mean_60 * sos_vol_mult
+
+// ════════════════════════════════════════════════════════════
+// TIME-OF-DAY PATTERN
+// ════════════════════════════════════════════════════════════
+
+cur_hour  = hour(time, "UTC")
+in_asia   = cur_hour >= asia_start and cur_hour <= asia_end
+asia_acc  = in_asia and cvd_z > 1.5 and volume > vol_mean_60
+
+// ════════════════════════════════════════════════════════════
+// ROUND-NUMBER ABSORPTION
+// ════════════════════════════════════════════════════════════
+
+get_round_dist() =>
+    lp = math.log10(math.max(close, 1e-12))
+    mag = math.pow(10, math.floor(lp))
+    nr = math.round(close / mag) * mag
+    math.abs(close - nr) / close * 100
+
+near_round      = get_round_dist() < 1.0
+round_absorb    = near_round and volume > vol_mean_60 * 2 and math.abs(close - open) / math.max(ta.atr(20), 1e-12) < 0.5
+
+// ════════════════════════════════════════════════════════════
+// DISTRIBUTION DETECTION (for short setups)
+// ════════════════════════════════════════════════════════════
+
+// — Shooting Star on high volume —
+upper_wick  = high - math.max(open, close)
+body_size   = math.abs(close - open)
+candle_rng  = high - low
+shoot_star  = candle_rng > 0 and upper_wick > candle_rng * 0.5 and body_size < candle_rng * 0.3 and volume > vol_mean_60 * 2
+
+// — Decreasing volume on rallies —
+rally_det   = (close - low) / low > dist_rally_pct / 100 and close > open
+var float[] rv = array.new_float(0)
+if rally_det
+    array.push(rv, volume)
+    if array.size(rv) > 5
+        array.shift(rv)
+
+dist_vol_pattern = false
+if array.size(rv) == 5
+    sum_new = array.get(rv, 3) + array.get(rv, 4)
+    sum_old = array.get(rv, 0) + array.get(rv, 1)
+    dist_vol_pattern := sum_new < sum_old * 0.8
+
+// — Multi-timeframe volume convergence (volume Z >2 across timeframes) —
+vol_z_1h    = request.security(syminfo.tickerid, "60", vol_z_score)
+mtf_vol_conv = vol_z_score > 2 and vol_z_1h > 2
+
+// ════════════════════════════════════════════════════════════
+// CROSS-ASSET SIGNALS
+// ════════════════════════════════════════════════════════════
+
+btc_dom_chg = use_btc_dom ? request.security(btc_dom_sym, timeframe.period, ta.change(close, 1)) : 0.0
+btc_dom_drop = btc_dom_chg < -0.5  // capital rotating out of BTC → altcoins
+
+// ════════════════════════════════════════════════════════════
+// OI SIGNAL (optional — requires exchange OI data symbol)
+// ════════════════════════════════════════════════════════════
+
+oi_spike = false
+if use_oi_sig and oi_symbol != ""
+    oi_val   = request.security(oi_symbol, timeframe.period, close)
+    oi_mean  = request.security(oi_symbol, timeframe.period, ta.sma(close, 24))
+    oi_std   = request.security(oi_symbol, timeframe.period, ta.stdev(close, 24))
+    oi_z     = oi_std > 0 ? (oi_val - oi_mean) / oi_std : 0.0
+    oi_spike := oi_z > 3 and math.abs(price_chg_pct) < 2  // OI spike without price move
+
+// ════════════════════════════════════════════════════════════
+// COMPOSITE SCORES
+// ════════════════════════════════════════════════════════════
+
+// ACCUMULATION SCORE (0-100+, capped at 100)
+acc_score = 0.0
+acc_score += cvd_z > 2 ? 15.0 : (cvd_z > 1.5 ? 8.0 : 0.0)
+acc_score += cvd_div_bull ? 15.0 : 0.0
+acc_score += spring ? 12.0 : 0.0
+acc_score += sos ? 12.0 : 0.0
+acc_score += volume_burst ? 20.0 : 0.0
+acc_score += asia_acc ? 10.0 : 0.0
+acc_score += round_absorb ? 8.0 : 0.0
+acc_score += btc_dom_drop ? 8.0 : 0.0
+acc_score += obv_div_acc ? 8.0 : 0.0
+acc_score += oi_spike ? 12.0 : 0.0
+acc_score += mtf_vol_conv ? 10.0 : 0.0
+acc_score := math.min(acc_score, 100)
+
+// DISTRIBUTION SCORE (0-100, for short setups)
+dist_score = 0.0
+dist_score += shoot_star ? 30.0 : 0.0
+dist_score += dist_vol_pattern ? 25.0 : 0.0
+dist_score += cvd_div_bear ? 25.0 : 0.0
+dist_score += (volume_burst and close < open) ? 15.0 : 0.0
+dist_score += (not btc_dom_drop and price_chg_pct > 10) ? 5.0 : 0.0  // coin-specific, not market-wide
+dist_score := math.min(dist_score, 100)
+
+// ════════════════════════════════════════════════════════════
+// VISUALIZATION
+// ════════════════════════════════════════════════════════════
+
+plot(acc_score, "Accumulation Score", color=color.new(color.lime, 0), linewidth=2)
+plot(dist_score, "Distribution Score", color=color.new(color.red, 0), linewidth=2)
+hline(float(thresh_high), "HIGH", color=color.new(color.green, 50), linestyle=hline.style_dashed)
+hline(float(thresh_med), "MEDIUM", color=color.new(color.orange, 50), linestyle=hline.style_dotted)
+
+bgcolor(acc_score >= thresh_high ? color.new(color.green, 92) : na)
+bgcolor(dist_score >= 50 ? color.new(color.red, 92) : na)
+
+// Component breakdown table
+var table scoreTable = table.new(position.top_right, 2, 12, border_width=1)
+if barstate.islast
+    table.cell(scoreTable, 0, 0, "Component", text_color=color.white, bgcolor=color.gray)
+    table.cell(scoreTable, 1, 0, "Score", text_color=color.white, bgcolor=color.gray)
+    table.cell(scoreTable, 0, 1, "CVD Z-score")
+    table.cell(scoreTable, 1, 1, str.tostring(cvd_z, "#.##"))
+    table.cell(scoreTable, 0, 2, "CVD Div Bull")
+    table.cell(scoreTable, 1, 2, cvd_div_bull ? "YES" : "-")
+    table.cell(scoreTable, 0, 3, "Spring")
+    table.cell(scoreTable, 1, 3, spring ? "YES" : "-")
+    table.cell(scoreTable, 0, 4, "SOS")
+    table.cell(scoreTable, 1, 4, sos ? "YES" : "-")
+    table.cell(scoreTable, 0, 5, "Vol Burst")
+    table.cell(scoreTable, 1, 5, volume_burst ? "YES" : "-")
+    table.cell(scoreTable, 0, 6, "Asia Acc")
+    table.cell(scoreTable, 1, 6, asia_acc ? "YES" : "-")
+    table.cell(scoreTable, 0, 7, "Round Absorb")
+    table.cell(scoreTable, 1, 7, round_absorb ? "YES" : "-")
+    table.cell(scoreTable, 0, 8, "Shoot Star")
+    table.cell(scoreTable, 1, 8, shoot_star ? "YES" : "-")
+    table.cell(scoreTable, 0, 9, "Dist Vol Pattern")
+    table.cell(scoreTable, 1, 9, dist_vol_pattern ? "YES" : "-")
+    table.cell(scoreTable, 0, 10, "== ACC SCORE ==")
+    table.cell(scoreTable, 1, 10, str.tostring(acc_score, "#"), bgcolor=acc_score >= thresh_high ? color.green : color.new(color.gray, 80))
+    table.cell(scoreTable, 0, 11, "== DIST SCORE ==")
+    table.cell(scoreTable, 1, 11, str.tostring(dist_score, "#"), bgcolor=dist_score >= 50 ? color.red : color.new(color.gray, 80))
+
+// ════════════════════════════════════════════════════════════
+// ALERTS → WEBHOOK
+// ════════════════════════════════════════════════════════════
+
+alertcondition(acc_score >= thresh_high, "HIGH Conviction Long",
+     '{"action":"long_signal","ticker":"{{ticker}}","acc_score":"{{plot_0}}","dist_score":"{{plot_1}}","price":"{{close}}","volume":"{{volume}}","tf":"{{interval}}","time":"{{time}}","exchange":"{{exchange}}"}')
+
+alertcondition(dist_score >= 50, "Distribution / Short Setup",
+     '{"action":"short_signal","ticker":"{{ticker}}","acc_score":"{{plot_0}}","dist_score":"{{plot_1}}","price":"{{close}}","volume":"{{volume}}","tf":"{{interval}}","time":"{{time}}","exchange":"{{exchange}}"}')
+
+alertcondition(acc_score >= thresh_med and acc_score < thresh_high, "MEDIUM Conviction Watch",
+     '{"action":"watch","ticker":"{{ticker}}","acc_score":"{{plot_0}}","dist_score":"{{plot_1}}","price":"{{close}}","volume":"{{volume}}","tf":"{{interval}}","time":"{{time}}","exchange":"{{exchange}}"}')
+
+alertcondition(volume_burst, "Volume Burst Detected",
+     '{"action":"volume_burst","ticker":"{{ticker}}","vol_z":"' + str.tostring(vol_z_score, "#.#") + '","price":"{{close}}","tf":"{{interval}}","time":"{{time}}"}')
+
+alertcondition(spring, "Wyckoff Spring Detected",
+     '{"action":"wyckoff_spring","ticker":"{{ticker}}","price":"{{close}}","tf":"{{interval}}","time":"{{time}}"}')
