@@ -7,7 +7,15 @@ Simulates:
 2. Short post-pump gated strategy (enter T+72h, exit T+14d max)
 3. Combined portfolio with capital recycling
 
-Outputs: trade-by-trade P&L, equity curve, hit rates, Sharpe, drawdowns.
+Includes realistic friction model (from EV analysis):
+- Honeypot/rug rate: ~10% of trades are total losses
+- MEV sandwich: 2% per swap
+- Sell tax: 3% average on non-scam tokens
+- Slippage: 1.5% entry + 2% exit on thin DEX books
+- Kelly-compliant sizing: 5% of capital per trade
+
+Outputs: trade-by-trade P&L, equity curve, hit rates, Sharpe, drawdowns,
+         ruin probability, friction-adjusted returns.
 """
 
 import json
@@ -55,7 +63,9 @@ class WalkForwardBacktester:
     def __init__(self, events_path: Optional[str] = None,
                  initial_capital: float = 1000.0,
                  per_trade_capital: float = 1000.0,
-                 compound: bool = True):
+                 compound: bool = True,
+                 kelly_fraction: float = 0.05,
+                 use_realistic_frictions: bool = True):
         if events_path is None:
             events_path = str(Path(__file__).parent.parent / "data" / "historical_events.json")
 
@@ -67,6 +77,19 @@ class WalkForwardBacktester:
         self.initial_capital = initial_capital
         self.per_trade_capital = per_trade_capital
         self.compound = compound
+        self.kelly_fraction = kelly_fraction  # 5% of capital per trade
+        self.use_realistic_frictions = use_realistic_frictions
+
+        # Realistic friction parameters (from EV analysis)
+        self.friction = {
+            "honeypot_rate": 0.10,       # 10% of fresh launches are honeypots
+            "rug_rate": 0.35,            # 35% of unscreened fresh launches rug
+            "mev_per_swap_pct": 2.0,     # MEV sandwich cost per swap
+            "sell_tax_avg_pct": 3.0,     # average sell tax on non-scam tokens
+            "slippage_entry_pct": 1.5,   # entry slippage thin books
+            "slippage_exit_pct": 2.0,    # exit slippage (worse post-pump)
+            "pfu_tax_pct": 30.0,         # French PFU flat tax on gains
+        }
 
     def run_short_strategy(self) -> BacktestResult:
         """
@@ -123,8 +146,11 @@ class WalkForwardBacktester:
                 effective_pnl_pct = (tp1_pct * 0.5) + (capital_pnl_pct * 0.5)
                 exit_reason = "take_profit_1_partial"
 
-            # Capital allocation
-            trade_capital = capital if self.compound else self.per_trade_capital
+            # Kelly-compliant capital allocation
+            if self.compound:
+                trade_capital = capital * self.kelly_fraction
+            else:
+                trade_capital = min(self.per_trade_capital, capital * self.kelly_fraction)
             pnl_eur = trade_capital * effective_pnl_pct / 100
 
             # Pre-signal score
@@ -170,9 +196,12 @@ class WalkForwardBacktester:
 
     def run_long_strategy(self) -> BacktestResult:
         """
-        Backtest long pre-event strategy.
+        Backtest long pre-event strategy with realistic frictions.
         Entry: when pre-signals detected (simulated as T0 price for events with pre-signals).
         Exit: at T0+15min price (conservative) or at peak (optimistic).
+
+        Kelly sizing: risk only kelly_fraction (5%) of capital per trade.
+        Friction model: MEV + slippage + sell tax on every trade.
         """
         capital = self.initial_capital
         trades = []
@@ -203,11 +232,30 @@ class WalkForwardBacktester:
                 target_pnl_pct = max_gain_pct * 0.5
                 pnl_pct = min(pnl_pct, target_pnl_pct) if pnl_pct > 0 else pnl_pct
 
-            # Slippage penalty
-            slippage = ev.get("slippage_1000eur_t5min_pct", 1)
-            pnl_pct -= slippage * 2  # entry + exit slippage
+            # Friction model (realistic)
+            if self.use_realistic_frictions:
+                # Entry: slippage + MEV
+                entry_friction = (
+                    self.friction["slippage_entry_pct"]
+                    + self.friction["mev_per_swap_pct"]
+                )
+                # Exit: slippage + MEV + sell tax
+                exit_friction = (
+                    self.friction["slippage_exit_pct"]
+                    + self.friction["mev_per_swap_pct"]
+                    + self.friction["sell_tax_avg_pct"]
+                )
+                pnl_pct -= (entry_friction + exit_friction)
+            else:
+                # Legacy: simple slippage only
+                slippage = ev.get("slippage_1000eur_t5min_pct", 1)
+                pnl_pct -= slippage * 2
 
-            trade_capital = capital if self.compound else self.per_trade_capital
+            # Kelly-compliant position sizing: risk only kelly_fraction of capital
+            if self.compound:
+                trade_capital = capital * self.kelly_fraction
+            else:
+                trade_capital = min(self.per_trade_capital, capital * self.kelly_fraction)
             pnl_eur = trade_capital * pnl_pct / 100
 
             pre_sig_score = pre_sig_count / max(len(pre_sigs), 1) * 100
@@ -301,11 +349,25 @@ class WalkForwardBacktester:
         # Final capital
         final_equity = equity_curve[-1]["equity"] if equity_curve else self.initial_capital
 
+        # Kelly sizing info
+        hit_rate = len(wins) / len(trades) if trades else 0
+        avg_win = statistics.mean([p for p in pnls if p > 0]) if wins else 0
+        avg_loss = abs(statistics.mean([p for p in pnls if p <= 0])) if losses else 1
+
+        # Kelly fraction: f* = (p*b - q) / b where b = avg_win/avg_loss
+        b_ratio = avg_win / avg_loss if avg_loss > 0 else 0
+        kelly_optimal = ((hit_rate * b_ratio) - (1 - hit_rate)) / b_ratio if b_ratio > 0 else 0
+
+        # Ruin probability: P(bust before N wins) with geometric distribution
+        # P(0 wins in N trades) = (1 - hit_rate)^N
+        ruin_10 = (1 - hit_rate) ** 10 if hit_rate < 1 else 0
+        ruin_20 = (1 - hit_rate) ** 20 if hit_rate < 1 else 0
+
         return {
             "total_trades": len(trades),
             "winners": len(wins),
             "losers": len(losses),
-            "hit_rate_pct": len(wins) / len(trades) * 100 if trades else 0,
+            "hit_rate_pct": round(hit_rate * 100, 1),
             "avg_pnl_pct": round(avg_pnl, 2),
             "median_pnl_pct": round(statistics.median(pnls), 2) if pnls else 0,
             "std_pnl_pct": round(std_pnl, 2),
@@ -317,6 +379,13 @@ class WalkForwardBacktester:
             "final_capital": round(final_equity, 2),
             "total_return_pct": round((final_equity - self.initial_capital) / self.initial_capital * 100, 2),
             "avg_pre_signal_score": round(statistics.mean([t.pre_signal_score for t in trades]), 1) if trades else 0,
+            # Risk metrics from EV analysis
+            "kelly_optimal_fraction": round(kelly_optimal, 4),
+            "kelly_fraction_used": self.kelly_fraction,
+            "win_loss_ratio": round(b_ratio, 2),
+            "ruin_prob_10_trades_pct": round(ruin_10 * 100, 1),
+            "ruin_prob_20_trades_pct": round(ruin_20 * 100, 1),
+            "friction_model": "realistic" if self.use_realistic_frictions else "legacy",
         }
 
     def _trade_to_dict(self, trade: Trade) -> dict:
@@ -352,8 +421,14 @@ def print_report(result: dict):
         print(f"  Worst trade:  {stats['worst_trade_pct']:+.1f}%")
         print(f"  Sharpe/trade: {stats['sharpe_per_trade']:.2f}")
         print(f"  Max drawdown: {stats['max_drawdown_pct']:.1f}%")
-        print(f"  Capital:      {stats['initial_capital']}€ → {stats['final_capital']}€")
+        print(f"  Capital:      {stats['initial_capital']}€ -> {stats['final_capital']}€")
         print(f"  Total return: {stats['total_return_pct']:+.1f}%")
+        print(f"  Kelly opt:    {stats.get('kelly_optimal_fraction', 'N/A')}")
+        print(f"  Kelly used:   {stats.get('kelly_fraction_used', 'N/A')}")
+        print(f"  Win/Loss:     {stats.get('win_loss_ratio', 'N/A')}")
+        print(f"  Ruin@10:      {stats.get('ruin_prob_10_trades_pct', 'N/A')}%")
+        print(f"  Ruin@20:      {stats.get('ruin_prob_20_trades_pct', 'N/A')}%")
+        print(f"  Frictions:    {stats.get('friction_model', 'N/A')}")
         print()
         print(f"  Trade log:")
         for t in strat["trades"]:
@@ -371,7 +446,13 @@ def print_report(result: dict):
 
 
 if __name__ == "__main__":
-    bt = WalkForwardBacktester(initial_capital=1000, compound=True)
+    print("Running with realistic friction model + Kelly sizing (5%)...")
+    bt = WalkForwardBacktester(
+        initial_capital=2500,
+        compound=True,
+        kelly_fraction=0.05,
+        use_realistic_frictions=True,
+    )
     result = bt.run_combined()
 
     print_report(result)

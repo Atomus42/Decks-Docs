@@ -43,10 +43,37 @@ MAX_TOTAL_EXPOSURE_EUR = float(os.getenv("MAX_TOTAL_EXPOSURE_EUR", "10000"))
 KILL_SWITCH_DRAWDOWN_PCT = float(os.getenv("KILL_SWITCH_DRAWDOWN_PCT", "20"))
 PAPER_TRADING_MODE = os.getenv("PAPER_TRADING_MODE", "true").lower() == "true"
 
+# === KELLY CRITERION SIZING ===
+# Optimal Kelly fraction f* = (p*b - q) / b
+# With p=0.03 (3% hit rate), b=7 (net x7 after frictions), q=0.97:
+#   f* = (0.03*7 - 0.97)/7 = -0.076 => negative EV at naive scale
+# With p=0.10 (filtered 10%), b=7: f* = (0.10*7 - 0.90)/7 = -0.029
+# With p=0.17 (real events only), b=7: f* = (0.17*7 - 0.83)/7 = 0.05 = 5%
+# => Only profitable with aggressive filtering to real events only
+KELLY_FRACTION = float(os.getenv("KELLY_FRACTION", "0.05"))  # 5% of capital per trade
+MAX_PER_TRADE_PCT = float(os.getenv("MAX_PER_TRADE_PCT", "5.0"))  # hard cap at Kelly optimal
+
+# === REALISTIC FRICTION MODEL ===
+# From EV analysis: honeypots 5-15%, rug pulls 40-60% on fresh launches,
+# sell tax 1-50%, MEV sandwich 1-5% per swap
+FRICTION_HONEYPOT_RATE = 0.10  # 10% of fresh-launch trades are honeypots
+FRICTION_RUG_RATE = 0.35  # 35% of unscreened fresh launches rug
+FRICTION_SELL_TAX_AVG_PCT = 3.0  # average sell tax on non-scam tokens
+FRICTION_MEV_PER_SWAP_PCT = 2.0  # average MEV + sandwich cost per swap
+FRICTION_SLIPPAGE_ENTRY_PCT = 1.5  # entry slippage on thin books
+FRICTION_SLIPPAGE_EXIT_PCT = 2.0  # exit slippage (worse, less liquidity post-pump)
+FRICTION_TOTAL_ROUND_TRIP_PCT = 8.5  # sum of above for non-rug trades
+
+# === RUIN PROBABILITY PARAMETERS ===
+# P(zero x10 in N trades) = 0.9^N at 10% hit rate
+# N=10: 35%, N=15: 21%, N=20: 12%
+# System must survive 20+ losing trades before first big win
+MIN_CAPITAL_SURVIVAL_TRADES = 20  # must be able to sustain this many losses
+
 # === AUTO EXECUTION (Option B) ===
 AUTO_EXEC_ENABLED = os.getenv("AUTO_EXEC_ENABLED", "false").lower() == "true"
 AUTO_EXEC_MIN_CONVICTION = int(os.getenv("AUTO_EXEC_MIN_CONVICTION", "85"))
-AUTO_EXEC_FIXED_SIZE_EUR = float(os.getenv("AUTO_EXEC_FIXED_SIZE_EUR", "500"))
+AUTO_EXEC_FIXED_SIZE_EUR = float(os.getenv("AUTO_EXEC_FIXED_SIZE_EUR", "125"))  # Kelly: 5% of 2500
 AUTO_EXEC_MAX_DAILY = int(os.getenv("AUTO_EXEC_MAX_DAILY", "3"))
 
 # === SCRAPER INTERVALS ===
@@ -68,10 +95,19 @@ SHORT_OI_MAX_PCT = 55.0
 SHORT_LIQUIDATION_MAX_PCT = 2.0
 
 # === SIGNAL SCORING ===
-DEXSCREENER_ALERT_THRESHOLD = 60  # score out of 100
-RSS_ALERT_THRESHOLD = 50
+# Tightened: only top 5-10% of alerts should pass (quality over volume)
+DEXSCREENER_ALERT_THRESHOLD = 75  # was 60 — raised to filter false positives
+RSS_ALERT_THRESHOLD = 65  # was 50 — raised
 PINE_HIGH_CONVICTION = 70
 PINE_MEDIUM_CONVICTION = 40
+
+# === ANTI-RUG PRE-TRADE GATES (mandatory for long pre-event) ===
+ANTIRUG_LP_LOCK_MIN_MONTHS = 6  # LP must be locked >= 6 months
+ANTIRUG_MINT_FUNCTION_BLOCKED = True  # contract must not have active mint ownership
+ANTIRUG_SELL_SIMULATION_REQUIRED = True  # eth_call sell simulation must succeed
+ANTIRUG_TOP10_HOLDERS_MAX_PCT = 30.0  # top 10 holders < 30% of supply (was 80%)
+ANTIRUG_MIN_HOLDERS = 200  # minimum holder count (was 100)
+ANTIRUG_MAX_SELL_TAX_PCT = 5.0  # reject tokens with sell tax > 5%
 
 
 def validate_config():
